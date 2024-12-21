@@ -18,7 +18,7 @@
     </select>
 
     <!-- 인적사항 저장 -->
-    <insert id="insertPersonal" parameterType="PersonalInfo">
+    <insert id="insertPersonal" parameterType="PersonalInfo" keyProperty="infoId" useGeneratedKeys="true">
         INSERT INTO personal_info (resume_id, username, birth_date, gender, email, home_phone, mobile_phone, address, address_detail, postal_code, degree, hobby, specialty)
         VALUES (#{resumeId}, #{username}, #{birthDate}, #{gender}, #{email}, #{homePhone}, #{mobilePhone}, #{address}, #{addressDetail}, #{postalCode}, #{degree}, #{hobby}, #{specialty});
     </insert>

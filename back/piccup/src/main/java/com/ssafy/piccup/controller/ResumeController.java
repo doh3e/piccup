@@ -3,17 +3,21 @@ package com.ssafy.piccup.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.PersonalInfo;
 import com.ssafy.piccup.service.PersonalInfoService;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 @RestController
 @RequestMapping("/resume")
@@ -26,21 +30,42 @@ public class ResumeController {
 		this.personalInfoService = personalInfoService;
 	}
 	
-	// 이력서 전체조회
+	// 이력서 전체 조회
 	@GetMapping("/")
 	public ResponseEntity<List<PersonalInfo>> list(Model model) {
+		// 인적사항
 		List<PersonalInfo> personalInfos = personalInfoService.readPersonalList();
-//		model.addAttribute("personalInfos", personalInfos);
-		System.out.println(personalInfos); // 디버깅용
 		return new ResponseEntity<>(personalInfos, HttpStatus.OK);
 	}
-//	
-//	@GetMapping("/writeForm")
-//	public String writeForm() {
-//		return "board/writeform";
-//	}
-//	
-//	@PostMapping("/write")
+	
+	// 특정 인적사항 조회
+	@GetMapping("/{infoId}")
+	public ResponseEntity<?> detail(@PathVariable int infoId) {
+		PersonalInfo personalinfo = personalInfoService.readPersonal(infoId);
+		if (personalinfo != null) {
+			return new ResponseEntity<PersonalInfo>(personalinfo, HttpStatus.OK);
+		}
+		// infoId에 해당하는 데이터가 없는 경우
+		return new ResponseEntity<String>("infoId에 해당하는 인적사항이 없습니다.", HttpStatus.NOT_FOUND);
+	}
+	
+	// 인적사항 생성
+	@PostMapping("/")
+	public ResponseEntity<PersonalInfo> write(@RequestBody PersonalInfo personalInfo) {
+		personalInfoService.createPersonal(personalInfo);
+		return new ResponseEntity<>(personalInfo, HttpStatus.CREATED);
+	}	
+
+	
+//  // 인적사항 삭제
+//  @DeleteMapping("/{infoId}")
+//  public ResponseEntity<String> deletePersonalInfo(@PathVariable int infoId) {
+//      personalInfoService.deletePersonalInfoById(infoId);
+//      return new ResponseEntity<>("Personal info deleted successfully.", HttpStatus.NO_CONTENT);
+//  }
+
+	
+	//	@PostMapping("/write")
 //	public String write(@ModelAttribute Board board) {
 //		boardService.writeBoard(board);
 //		return "redirect:list";
@@ -76,22 +101,6 @@ public class ResumeController {
 //	
 	
 
-    // 특정 인적사항 조회
-//    @GetMapping("/{infoId}")
-//    public ResponseEntity<PersonalInfo> getPersonalInfo(@PathVariable int infoId) {
-//        PersonalInfo personalInfo = personalInfoService.readPersonal(infoId);
-//        if (personalInfo != null) {
-//            return new ResponseEntity<>(personalInfo, HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
-//
-//    // 인적사항 생성
-//    @PostMapping("/")
-//    public ResponseEntity<String> createPersonal(@RequestBody PersonalInfo personalInfo) {
-//        personalInfoService.createPersonal(personalInfo);
-//        return new ResponseEntity<>("Personal info created successfully.", HttpStatus.CREATED);
-//    }
 //
 //    // 인적사항 수정
 //    @PutMapping("/{infoId}")
@@ -100,12 +109,5 @@ public class ResumeController {
 //        personalInfoService.updatePersonal(personalInfo);
 //        return new ResponseEntity<>("Personal info updated successfully.", HttpStatus.OK);
 //    }
-//
-//    // 인적사항 삭제
-//    @DeleteMapping("/{infoId}")
-//    public ResponseEntity<String> deletePersonalInfo(@PathVariable int infoId) {
-//        personalInfoService.deletePersonalInfoById(infoId);
-//        return new ResponseEntity<>("Personal info deleted successfully.", HttpStatus.NO_CONTENT);
-//    }
-	
+//	
 }
