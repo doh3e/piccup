@@ -13,11 +13,11 @@ public interface PersonalInfoService {
     public PersonalInfo readPersonal(int infoId);
 
     // 인적사항 추가
-    public void createPersonal(PersonalInfo personalInfo);
+    public boolean createPersonal(PersonalInfo personalInfo);
 
     // 인적사항 수정
     public void updatePersonal(PersonalInfo personalInfo);
 
     // 인적사항 삭제
-    public void deletePersonalInfoById(int infoId);
+    public boolean deletePersonal(int infoId);
 }

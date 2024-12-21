@@ -13,11 +13,11 @@ public interface PersonalInfoDao {
     public PersonalInfo selectOnePersonal(int infoId);
 
     // 인적사항 저장
-    public void insertPersonal(PersonalInfo personalInfo);
+    public int insertPersonal(PersonalInfo personalInfo);
 
     // 인적사항 수정
     public void updatePersonal(PersonalInfo personalInfo);
 
     // 인적사항 삭제
-    public void deletePersonal(int infoId);
+    public int deletePersonal(int infoId); // 실제 테이블에서 건드려지는 개수 반환 (1개 삭제 -> 1 or 0)
 }
