@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssafy.piccup.model.dao.PersonalInfoDao;
 import com.ssafy.piccup.model.dto.PersonalInfo;
 import com.ssafy.piccup.service.PersonalInfoService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -72,9 +76,26 @@ public class ResumeController {
 	
 	// 인적사항 수정
 	@PutMapping("/{infoId}")
-	public ResponseEntity<String> updatePersonal(@PathVariable("infoId") int infoId, @RequestBody PersonalInfo personalInfo) {
-	      personalInfo.setInfoId(infoId);
-	      personalInfoService.updatePersonal(personalInfo);
-	      return new ResponseEntity<>("인적사항 수정을 성공하였습니다.", HttpStatus.OK);
+	public ResponseEntity<String> updatePersonal(@PathVariable("infoId") int infoId, @RequestBody PersonalInfo personalInfo) { 
+		personalInfo.setInfoId(infoId);
+
+        
+	    boolean isUpdated = personalInfoService.updatePersonal(personalInfo);
+	    if (isUpdated) {
+	    	return new ResponseEntity<>("인적사항 수정을 성공하였습니다.", HttpStatus.OK);	    	
+	    }
+	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("인적사항 수정을 실패하였습니다.");
     }
+	
+	// 검색 예 - DTO, Service 등 추가 작성 필요
+//	@GetMapping("/search")
+//	public ResponseEntity<?> list(@ModelAttribute SearchCondition condition) {
+//		List<PersonalInfo> list = personalInfoService.search(condition);
+//		
+//		if(list == null || list.size() == 0) {
+//			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+//		}
+//		return new ResponseEntity<List<PersonalInfo>>(list, HttpStatus.OK);
+//	}
+	
 }

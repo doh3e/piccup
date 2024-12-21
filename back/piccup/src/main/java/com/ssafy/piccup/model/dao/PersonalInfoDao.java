@@ -16,7 +16,7 @@ public interface PersonalInfoDao {
     public int insertPersonal(PersonalInfo personalInfo);
 
     // 인적사항 수정
-    public void updatePersonal(PersonalInfo personalInfo);
+    public int updatePersonal(PersonalInfo personalInfo);
 
     // 인적사항 삭제
     public int deletePersonal(int infoId); // 실제 테이블에서 건드려지는 개수 반환 (1개 삭제 -> 1 or 0)
