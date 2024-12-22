@@ -1,16 +1,15 @@
 package com.ssafy.piccup.model.dto;
 
 public class Resume {
-	private int resumeId;
-	private String updatedAt;
+	private int resumeId; // 이력서 고유id
+	private String updatedAt; // 수정일자
 	
 	public Resume() {
 	}
 	
-	// 모든 필드 포함
-	public Resume(int resumeId, String updatedAt) {
+	public Resume(int resumeId) {
 		this.resumeId = resumeId;
-		this.updatedAt = updatedAt;
+//		this.updatedAt = updatedAt;
 	}
 
 	public int getResumeId() {
@@ -24,8 +23,8 @@ public class Resume {
 	public String getUpdatedAt() {
 		return updatedAt;
 	}
-
-	public void setUpdatedAt(String updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+//
+//	public void setUpdatedAt(String updatedAt) {
+//		this.updatedAt = updatedAt;
+//	}
 }

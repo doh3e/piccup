@@ -42,44 +42,19 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	@Transactional
 	@Override
 	public boolean createPersonal(PersonalInfo personalInfo, MultipartFile file) {
-		 try {
-	            // 파일 저장 디렉토리
-	            String uploadDir = "profile_images/";
-				Resource resource = resourceLoader.getResource("classpath:/static/img");
-
-	            // 저장 파일명 생성
-	            String savedFileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-	            String savedFilePath = uploadDir + savedFileName;
-
-	            // 파일 저장
-	            file.transferTo(new File(savedFilePath));
-
-	            // PersonalInfo 객체에 파일 정보 추가
-	            personalInfo.setProfileImgPath(savedFilePath);
-	            personalInfo.setProfileImgName(savedFileName);
-
-	            // DB 저장
-	            int result = personalInfoDao.insertPersonal(personalInfo);
-	            return result == 1;
-
-	        } catch (IOException e) {
-	            throw new RuntimeException("파일 업로드 실패", e);
-	        }
-		 
-//		int result = personalInfoDao.insertPersonal(personalInfo);
-//		return result == 1;
+		int result = personalInfoDao.insertPersonal(personalInfo);
+		return result == 1;
 	}
 
 	// 인적사항 수정
 	@Transactional
 	@Override
-	public boolean updatePersonal(PersonalInfo personalInfo) {
+	public boolean updatePersonal(PersonalInfo personalInfo, MultipartFile file) {
 		PersonalInfo existingPersonal = personalInfoDao.selectOnePersonal(personalInfo.getInfoId());
 
 	    if (existingPersonal == null) {
 	        throw new PersonalInfoNotFoundException("해당 infoId의 인적사항은 없습니다.");
 	    }
-		
 	    
 		int result = personalInfoDao.updatePersonal(personalInfo);
 		return result == 1;
@@ -93,7 +68,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 		return result == 1;
 	}
 	
-	// 인적사항 사진 추가
+	// 사진 추가
 	@Transactional
 	@Override
 	public boolean uploadFile(PersonalInfo personalInfo, MultipartFile file) {
@@ -117,15 +92,11 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 				Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
 				file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
 				
-				personalInfoDao.insertPersonal(personalInfo);
-				personalInfoDao.insertFile(personalInfo);
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
+				return true; // 파일변환 성공
+			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
-			
 		}
-		return false;
+		return false; // 파일 변환 실패
 	}
 }

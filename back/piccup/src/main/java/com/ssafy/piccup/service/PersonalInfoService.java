@@ -18,7 +18,7 @@ public interface PersonalInfoService {
     public boolean createPersonal(PersonalInfo personalInfo, MultipartFile file);
 
     // 인적사항 수정
-    public boolean updatePersonal(PersonalInfo personalInfo);
+    public boolean updatePersonal(PersonalInfo personalInfo, MultipartFile file);
 
     // 인적사항 삭제
     public boolean deletePersonal(int infoId);

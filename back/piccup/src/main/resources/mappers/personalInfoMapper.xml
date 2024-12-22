@@ -37,6 +37,8 @@
             address_detail = #{addressDetail},
             postal_code = #{postalCode},
             degree = #{degree},
+            profile_img_path = #{profileImgPath},
+            profile_img_name = #{profileImgName},
             hobby = #{hobby},
             specialty = #{specialty}
         WHERE info_id = #{infoId};
@@ -47,11 +49,4 @@
         DELETE FROM personal_info
         WHERE info_id = #{infoId};
     </delete>
-    
-    <!-- 인적사항 파일 저장 -->
-   	<insert id="insertFile" parameterType="PersonalInfo">
-   	INSERT INTO personal_info (resume_id, profile_img_name, profile_img_path)
-   	VALUES (#{resumeId}, #{profileImgName}, #{profileImgPath});   	
-   	</insert>
-    	
 </mapper>

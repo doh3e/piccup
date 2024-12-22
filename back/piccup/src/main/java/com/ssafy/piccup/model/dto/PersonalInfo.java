@@ -18,8 +18,8 @@ public class PersonalInfo {
 	private String address;
 	private String addressDetail;
 	private int postalCode;
-	private String profileImgPath;
-	private String profileImgName;
+	private String profileImgPath = "profile_images/default.png";
+	private String profileImgName = "default.png";
 	private String degree;
 	private String hobby;
 	private String specialty;
@@ -30,8 +30,8 @@ public class PersonalInfo {
 	
 	// 모든 필드 포함
 	public PersonalInfo(int infoId, int resumeId, String username, LocalDate birthDate, String gender, String email,
-			String homePhone, String mobilePhone, String address, String addressDetail, int postalCode, String degree,
-			String hobby, String specialty) {
+			String homePhone, String mobilePhone, String address, String addressDetail, int postalCode, String profileImgPath,
+			String profileImgName, String degree, String hobby, String specialty) {
 		this.infoId = infoId;
 		this.resumeId = resumeId;
 		this.username = username;
@@ -44,17 +44,10 @@ public class PersonalInfo {
 		this.addressDetail = addressDetail;
 		this.postalCode = postalCode;
 		this.degree = degree;
+		this.profileImgPath = profileImgPath;
+		this.profileImgName = profileImgName;
 		this.hobby = hobby;
 		this.specialty = specialty;
-	}
-	
-	// username, birthDate, gender만 입력받는 생성자
-	public PersonalInfo(int infoId, int resumeId, String username, LocalDate birthDate, String gender) {
-		this.infoId = infoId;
-		this.resumeId = resumeId;
-		this.username = username;
-		this.birthDate = birthDate;
-		this.gender = gender;
 	}
 
 	public int getInfoId() {
