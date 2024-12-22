@@ -100,9 +100,16 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 		// 파일이 존재할 때 처리
 		if (file != null && file.getSize() > 0) {
 			try {
-				String profileImgName = file.getOriginalFilename(); // 실제 파일이름
-				String profileImgPath = UUID.randomUUID().toString(); // 고유한 파일이름 (확장자 없음)
-				// 확장자 처리필요------------
+				// 실제 파일이름 생성
+				String profileImgName = file.getOriginalFilename(); 
+				
+				// 확장자 추출
+	            String fileExtension = "";
+	            if (profileImgName != null && profileImgName.contains(".")) {
+	                fileExtension = profileImgName.substring(profileImgName.lastIndexOf("."));
+	            }
+	            // 고유한 파일 이름 생성 (UUID + 확장자)
+	            String profileImgPath = UUID.randomUUID().toString() + fileExtension;
 				
 				personalInfo.setProfileImgName(profileImgName);
 				personalInfo.setProfileImgPath(profileImgPath);
