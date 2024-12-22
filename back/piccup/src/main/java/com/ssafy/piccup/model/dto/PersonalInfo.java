@@ -1,27 +1,35 @@
 package com.ssafy.piccup.model.dto;
 
+import java.time.LocalDate;
+
+import jakarta.validation.constraints.NotNull;
+
 public class PersonalInfo {
 	private int infoId;
+    @NotNull(message = "성별은 필수입니다.")
+
 	private int resumeId;
 	private String username;
-	private String birthDate;
-	private String gender;
+	private LocalDate birthDate;
+	private String gender = "미지정";
 	private String email;
 	private String homePhone;
 	private String mobilePhone;
 	private String address;
 	private String addressDetail;
 	private int postalCode;
-//	private String profileImg;
+	private String profileImgPath;
+	private String profileImgName;
 	private String degree;
 	private String hobby;
 	private String specialty;
+
 	
 	public PersonalInfo() {
 	}
 	
 	// 모든 필드 포함
-	public PersonalInfo(int infoId, int resumeId, String username, String birthDate, String gender, String email,
+	public PersonalInfo(int infoId, int resumeId, String username, LocalDate birthDate, String gender, String email,
 			String homePhone, String mobilePhone, String address, String addressDetail, int postalCode, String degree,
 			String hobby, String specialty) {
 		this.infoId = infoId;
@@ -41,7 +49,7 @@ public class PersonalInfo {
 	}
 	
 	// username, birthDate, gender만 입력받는 생성자
-	public PersonalInfo(int infoId, int resumeId, String username, String birthDate, String gender) {
+	public PersonalInfo(int infoId, int resumeId, String username, LocalDate birthDate, String gender) {
 		this.infoId = infoId;
 		this.resumeId = resumeId;
 		this.username = username;
@@ -73,11 +81,11 @@ public class PersonalInfo {
 		this.username = username;
 	}
 
-	public String getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -143,6 +151,22 @@ public class PersonalInfo {
 
 	public void setDegree(String degree) {
 		this.degree = degree;
+	}	
+	
+	public String getProfileImgPath() {
+		return profileImgPath;
+	}
+
+	public void setProfileImgPath(String profileImgPath) {
+		this.profileImgPath = profileImgPath;
+	}
+
+	public String getProfileImgName() {
+		return profileImgName;
+	}
+
+	public void setProfileImgName(String profileImgName) {
+		this.profileImgName = profileImgName;
 	}
 
 	public String getHobby() {

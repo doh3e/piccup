@@ -108,6 +108,14 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>-->
+		
+		<!-- 임시확인용 --> 
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

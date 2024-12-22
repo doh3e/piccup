@@ -20,4 +20,7 @@ public interface PersonalInfoDao {
 
     // 인적사항 삭제
     public int deletePersonal(int infoId); // 실제 테이블에서 건드려지는 개수 반환 (1개 삭제 -> 1 or 0)
+
+    // 인적사항 사진 저장
+	public void insertFile(PersonalInfo personalInfo);
 }

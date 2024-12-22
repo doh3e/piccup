@@ -1,9 +1,12 @@
 package com.ssafy.piccup.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,20 +18,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.ssafy.piccup.model.dao.PersonalInfoDao;
 import com.ssafy.piccup.model.dto.PersonalInfo;
 import com.ssafy.piccup.service.PersonalInfoService;
 import org.springframework.web.bind.annotation.RequestParam;
-
-
-
 
 @RestController
 @RequestMapping("/resume")
 public class ResumeController {
 
-	// 서비스 의존성 주입
+	// 의존성 주입
 	private final PersonalInfoService personalInfoService;
 	
 	public ResumeController(PersonalInfoService personalInfoService) {
@@ -56,12 +56,31 @@ public class ResumeController {
 	
 	// 인적사항 생성
 	@PostMapping("/")
-	public ResponseEntity<?> write(@RequestBody PersonalInfo personalInfo) {
-		boolean isCreated = personalInfoService.createPersonal(personalInfo);
+	public ResponseEntity<?> write(
+			@ModelAttribute PersonalInfo personalInfo,
+			@RequestParam("fileImgPath") MultipartFile fileImgPath
+			) {
+		
+		// 파일업로드
+
+		
+		
+		// DB저장
+		boolean isCreated = personalInfoService.createPersonal(personalInfo, fileImgPath);
 		if (isCreated) {
 			return new ResponseEntity<PersonalInfo>(personalInfo, HttpStatus.CREATED);
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("인적사항 등록을 실패하였습니다.");
+	}
+	
+	// 인적사항 파일업로드
+	@PostMapping("/upload")
+	public ResponseEntity<Void> uploadFile(@RequestParam("file") MultipartFile file, @ModelAttribute PersonalInfo personalInfo){
+		System.out.println(file.getOriginalFilename());
+		System.out.println(file);
+		
+		personalInfoService.uploadFile(personalInfo, file);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	// 인적사항 삭제

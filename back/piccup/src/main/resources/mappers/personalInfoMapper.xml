@@ -19,8 +19,8 @@
 
     <!-- 인적사항 저장 -->
     <insert id="insertPersonal" parameterType="PersonalInfo" keyProperty="infoId" useGeneratedKeys="true">
-        INSERT INTO personal_info (resume_id, username, birth_date, gender, email, home_phone, mobile_phone, address, address_detail, postal_code, degree, hobby, specialty)
-        VALUES (#{resumeId}, #{username}, #{birthDate}, #{gender}, #{email}, #{homePhone}, #{mobilePhone}, #{address}, #{addressDetail}, #{postalCode}, #{degree}, #{hobby}, #{specialty});
+        INSERT INTO personal_info (resume_id, username, birth_date, gender, email, home_phone, mobile_phone, address, address_detail, postal_code, degree, profile_img_path, profile_img_name, hobby, specialty)
+        VALUES (#{resumeId}, #{username}, #{birthDate}, #{gender}, #{email}, #{homePhone}, #{mobilePhone}, #{address}, #{addressDetail}, #{postalCode}, #{degree}, #{profileImgPath}, #{profileImgName}, #{hobby}, #{specialty});
     </insert>
 
     <!-- 인적사항 수정 -->
@@ -47,5 +47,11 @@
         DELETE FROM personal_info
         WHERE info_id = #{infoId};
     </delete>
+    
+    <!-- 인적사항 파일 저장 -->
+   	<insert id="insertFile" parameterType="PersonalInfo">
+   	INSERT INTO personal_info (resume_id, profile_img_name, profile_img_path)
+   	VALUES (#{resumeId}, #{profileImgName}, #{profileImgPath});   	
+   	</insert>
     	
 </mapper>
