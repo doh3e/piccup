@@ -6,8 +6,6 @@ import jakarta.validation.constraints.NotNull;
 
 public class PersonalInfo {
 	private int infoId;
-    @NotNull(message = "성별은 필수입니다.")
-
 	private int resumeId;
 	private String username;
 	private LocalDate birthDate;

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.SkillDao">
+
+	<!-- 스킬 전체 조회 -->
+    <select id="selectAllSkills" resultType="Skill">
+        SELECT *
+        FROM skill;
+    </select>
+
+    <!-- 스킬 저장 -->
+    <insert id="insertSkill" parameterType="Skill" keyProperty="skillId" useGeneratedKeys="true">
+        INSERT INTO skill (resume_id, skill_name, skill_level)
+        VALUES (#{resumeId}, #{skillName}, #{skillLevel});
+    </insert>
+
+    <!-- 스킬 수정 -->
+    <update id="updateSkill" parameterType="Skill">
+        UPDATE skill
+        SET skill_name = #{skillName},
+        	skill_level = #{skillLevel}
+        WHERE skill_id = #{skillId};
+    </update>
+
+    <!-- 스킬 삭제 -->
+    <delete id="deleteSkill" parameterType="int">
+        DELETE FROM skill
+        WHERE skill_id = #{skillId};
+    </delete>
+</mapper>

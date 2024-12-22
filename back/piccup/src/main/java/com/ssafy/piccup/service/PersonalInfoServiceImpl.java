@@ -19,7 +19,7 @@ import com.ssafy.piccup.model.dto.PersonalInfo;
 public class PersonalInfoServiceImpl implements PersonalInfoService{
 	
     private final PersonalInfoDao personalInfoDao;
-	private final ResourceLoader resourceLoader;
+	private final ResourceLoader resourceLoader; // 파일작업
 
     public PersonalInfoServiceImpl(PersonalInfoDao personalInfoDao, ResourceLoader resourceLoader) {
     	this.personalInfoDao = personalInfoDao;

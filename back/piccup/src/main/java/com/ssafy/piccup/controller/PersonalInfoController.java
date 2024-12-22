@@ -75,7 +75,7 @@ public class PersonalInfoController {
 	
 	// 수정
 	@PutMapping("/{infoId}")
-	public ResponseEntity<String> updatePersonal(
+	public ResponseEntity<String> modifyPersonal(
 			@PathVariable("infoId") int infoId,
 			@ModelAttribute PersonalInfo personalInfo,
 			@RequestParam(value = "file") MultipartFile file) { 
