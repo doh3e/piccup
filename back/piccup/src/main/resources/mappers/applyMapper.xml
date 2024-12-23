@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.ApplyDao">
+  <select id="selectAll" resultType="Apply">
+    select * from apply
+  </select>
+  
+  <select id="selectOne" resultType="Apply" parameterType="int">
+  	select * from apply where apply_id=#{applyId};
+  </select>
+  
+  <insert id="insertApply" parameterType="Apply" keyProperty="applyId" useGeneratedKeys="true">
+  	INSERT INTO apply (user_id, company_name, company_size,
+  	job, industry, apply_start_date, apply_end_date,
+  	feedback)
+  	VALUES (#{userId}, #{companyName}, #{companySize},
+  	#{job}, #{industry}, #{applyStartDate}, #{applyEndDate},
+  	#{feedback} );
+  </insert>
+  
+  <delete id="deleteCoverLetter" parameterType="int">
+  	DELETE FROM cover_letter
+  	WHERE cover_id = #{coverId};
+  </delete>
+  
+  <update id="updateCoverLetter" parameterType="CoverLetter">
+  	UPDATE cover_letter
+  	SET apply_id = #{applyId}, user_id = #{userId}, category = #{category},
+  	cover_title = #{coverTitle}, cover_content = #{coverContent}
+  	WHERE cover_id = #{coverId};
+  </update>
+</mapper>
