@@ -1,6 +1,8 @@
 package com.ssafy.piccup.model.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Apply {
 	private int applyId;               // apply_id (Primary Key)
@@ -15,6 +17,8 @@ public class Apply {
     private String currentStatus;      // current_status
     private LocalDateTime updatedAt;   // updated_at
     private String feedback;
+    
+    private List<CoverLetter> coverLetters = new ArrayList<>();
     
     public Apply() {
 	   
@@ -143,6 +147,15 @@ public class Apply {
 
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
+	}
+	
+
+	public List<CoverLetter> getCoverLetters() {
+		return coverLetters;
+	}
+
+	public void setCoverLetters(List<CoverLetter> coverLetters) {
+		this.coverLetters = coverLetters;
 	}
 
 	@Override

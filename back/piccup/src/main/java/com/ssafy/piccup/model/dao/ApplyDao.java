@@ -12,7 +12,7 @@ public interface ApplyDao {
 	
 	public void insertApply(Apply apply);
 	
-	public void deleteApply(int id);
+	public void deleteApply(int applyId);
 	
 	public int updateApply(Apply apply);
 	

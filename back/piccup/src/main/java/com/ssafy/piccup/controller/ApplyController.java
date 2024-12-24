@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,5 +40,10 @@ public class ApplyController {
 		System.out.println(apply);
 		applyService.addApply(apply);
 		return new ResponseEntity<>(apply, HttpStatus.CREATED); 
+	}
+	@DeleteMapping("/apply/{apply_id}")
+	public ResponseEntity<?> delete(@PathVariable("apply_id")int apply_id) {
+		applyService.removeApply(apply_id);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

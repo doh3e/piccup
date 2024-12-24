@@ -33,8 +33,8 @@ public class ApplyServiceImpl implements ApplyService {
 	}
 
 	@Override
-	public void removeApply(int id) {
-		// TODO Auto-generated method stub
+	public void removeApply(int applyId) {
+		applyDao.deleteApply(applyId);
 		
 	}
 

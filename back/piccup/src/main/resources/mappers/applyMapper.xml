@@ -3,8 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.ApplyDao">
-  <select id="selectAll" resultType="Apply">
-    select * from apply
+  <resultMap id="applyCoverLetterSetResultMap" type="Apply">
+  	<id property="applyId" column="apply_id"/>
+  	<result property="userId" column="user_id"/>
+    <result property="companyName" column="company_name"/>
+    <result property="companySize" column="company_size"/>
+    <result property="job" column="job"/>
+    <result property="industry" column="industry"/>
+    <result property="applyStartDate" column="apply_start_date"/>
+    <result property="applyEndDate" column="apply_end_date"/>
+    <result property="updatedAt" column="updated_at"/>
+    <result property="currentStatus" column="current_status"/>
+    <result property="feedback" column="feedback"/>
+    <result property="isProgressing" column="is_progressing"/>
+    <collection property="coverLetters" ofType="CoverLetter" notNullColumn="cover_id">
+      <id property="coverId" column="cover_id"/>
+      <result property="applyId" column="apply_id"/>
+      <result property="userId" column="user_id"/>
+      <result property="category" column="category"/>
+      <result property="coverTitle" column="cover_title"/>
+      <result property="coverContent" column="cover_content"/>
+    </collection>
+  </resultMap>
+  
+  <select id="selectAll" resultMap="applyCoverLetterSetResultMap">
+    select a.*, c.* from apply a
+    left join cover_letter c on a.apply_id = c.apply_id
   </select>
   
   <select id="selectOne" resultType="Apply" parameterType="int">
@@ -20,15 +44,15 @@
   	#{feedback} );
   </insert>
   
-  <delete id="deleteCoverLetter" parameterType="int">
-  	DELETE FROM cover_letter
-  	WHERE cover_id = #{coverId};
+  <delete id="deleteApply" parameterType="int">
+  	DELETE FROM apply
+  	WHERE apply_id = #{applyId};
   </delete>
   
-  <update id="updateCoverLetter" parameterType="CoverLetter">
+  <!-- <update id="updateCoverLetter" parameterType="CoverLetter">
   	UPDATE cover_letter
   	SET apply_id = #{applyId}, user_id = #{userId}, category = #{category},
   	cover_title = #{coverTitle}, cover_content = #{coverContent}
   	WHERE cover_id = #{coverId};
-  </update>
+  </update> -->
 </mapper>

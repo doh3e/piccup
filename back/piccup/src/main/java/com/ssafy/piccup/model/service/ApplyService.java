@@ -11,7 +11,7 @@ public interface ApplyService {
 	
 	public void addApply(Apply apply);
 	
-	public void removeApply(int id);
+	public void removeApply(int applyId);
 	
 	public boolean updateApply(Apply apply);
 }
