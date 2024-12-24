@@ -1,4 +1,4 @@
-package com.ssafy.piccup.controller;
+package com.ssafy.piccup.controller.resume;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ssafy.piccup.model.dto.PersonalInfo;
-import com.ssafy.piccup.service.PersonalInfoService;
+import com.ssafy.piccup.model.dto.resume.PersonalInfo;
+import com.ssafy.piccup.service.resume.PersonalInfoService;
 
 // 인적사항 테이블 관련
 @RestController

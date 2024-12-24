@@ -1,12 +1,12 @@
-package com.ssafy.piccup.service;
+package com.ssafy.piccup.service.resume;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ssafy.piccup.model.dao.SkillDao;
-import com.ssafy.piccup.model.dto.Skill;
+import com.ssafy.piccup.model.dao.resume.SkillDao;
+import com.ssafy.piccup.model.dto.resume.Skill;
 
 @Service
 public class SkillServiceImpl implements SkillService {

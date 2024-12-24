@@ -1,10 +1,10 @@
-package com.ssafy.piccup.service;
+package com.ssafy.piccup.service.resume;
 
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ssafy.piccup.model.dto.PersonalInfo;
+import com.ssafy.piccup.model.dto.resume.PersonalInfo;
 
 public interface PersonalInfoService {
 	

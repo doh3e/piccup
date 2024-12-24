@@ -1,6 +1,6 @@
-package com.ssafy.piccup.service;
+package com.ssafy.piccup.service.resume;
 
-import com.ssafy.piccup.model.dto.Resume;
+import com.ssafy.piccup.model.dto.resume.Resume;
 
 public interface ResumeService {
 

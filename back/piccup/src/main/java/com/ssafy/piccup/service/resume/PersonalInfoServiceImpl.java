@@ -1,4 +1,4 @@
-package com.ssafy.piccup.service;
+package com.ssafy.piccup.service.resume;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.exception.PersonalInfoNotFoundException;
-import com.ssafy.piccup.model.dao.PersonalInfoDao;
-import com.ssafy.piccup.model.dto.PersonalInfo;
+import com.ssafy.piccup.model.dao.resume.PersonalInfoDao;
+import com.ssafy.piccup.model.dto.resume.PersonalInfo;
 
 @Service
 public class PersonalInfoServiceImpl implements PersonalInfoService{

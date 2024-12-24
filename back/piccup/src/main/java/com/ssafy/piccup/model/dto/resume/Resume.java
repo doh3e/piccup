@@ -1,4 +1,4 @@
-package com.ssafy.piccup.model.dto;
+package com.ssafy.piccup.model.dto.resume;
 
 public class Resume {
 	private int resumeId; // 이력서 고유id
@@ -6,10 +6,6 @@ public class Resume {
 	private String updatedAt; // 수정일자
 	
 	public Resume() {
-	}
-	
-	public Resume(int resumeId) {
-		this.resumeId = resumeId;
 	}
 
 	public int getResumeId() {

@@ -1,9 +1,9 @@
-package com.ssafy.piccup.service;
+package com.ssafy.piccup.service.resume;
 
 import org.springframework.stereotype.Service;
 
-import com.ssafy.piccup.model.dao.ResumeDao;
-import com.ssafy.piccup.model.dto.Resume;
+import com.ssafy.piccup.model.dao.resume.ResumeDao;
+import com.ssafy.piccup.model.dto.resume.Resume;
 
 @Service
 public class ResumeServiceImpl implements ResumeService {

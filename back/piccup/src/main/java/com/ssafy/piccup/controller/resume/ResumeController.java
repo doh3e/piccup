@@ -1,10 +1,10 @@
-package com.ssafy.piccup.controller;
+package com.ssafy.piccup.controller.resume;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.piccup.service.ResumeService;
+import com.ssafy.piccup.service.resume.ResumeService;
 
 // 공통 이력서 관련
 @RestController

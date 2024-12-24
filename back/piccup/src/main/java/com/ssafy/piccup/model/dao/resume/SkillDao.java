@@ -1,8 +1,8 @@
-package com.ssafy.piccup.model.dao;
+package com.ssafy.piccup.model.dao.resume;
 
 import java.util.List;
 
-import com.ssafy.piccup.model.dto.Skill;
+import com.ssafy.piccup.model.dto.resume.Skill;
 
 public interface SkillDao {
 	

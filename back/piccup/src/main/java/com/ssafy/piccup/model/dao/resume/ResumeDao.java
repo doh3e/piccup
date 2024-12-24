@@ -1,6 +1,6 @@
-package com.ssafy.piccup.model.dao;
+package com.ssafy.piccup.model.dao.resume;
 
-import com.ssafy.piccup.model.dto.Resume;
+import com.ssafy.piccup.model.dto.resume.Resume;
 
 public interface ResumeDao {
 	// 이력서 조회

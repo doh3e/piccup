@@ -1,4 +1,4 @@
-package com.ssafy.piccup.model.dto;
+package com.ssafy.piccup.model.dto.resume;
 
 import java.time.LocalDate;
 
@@ -24,28 +24,6 @@ public class PersonalInfo {
 
 	
 	public PersonalInfo() {
-	}
-	
-	// 모든 필드 포함
-	public PersonalInfo(int infoId, int resumeId, String username, LocalDate birthDate, String gender, String email,
-			String homePhone, String mobilePhone, String address, String addressDetail, int postalCode, String profileImgPath,
-			String profileImgName, String degree, String hobby, String specialty) {
-		this.infoId = infoId;
-		this.resumeId = resumeId;
-		this.username = username;
-		this.birthDate = birthDate;
-		this.gender = gender;
-		this.email = email;
-		this.homePhone = homePhone;
-		this.mobilePhone = mobilePhone;
-		this.address = address;
-		this.addressDetail = addressDetail;
-		this.postalCode = postalCode;
-		this.degree = degree;
-		this.profileImgPath = profileImgPath;
-		this.profileImgName = profileImgName;
-		this.hobby = hobby;
-		this.specialty = specialty;
 	}
 
 	public int getInfoId() {

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssafy.piccup.model.dao.ResumeDao">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.ResumeDao">
 	<!-- <resultMap type="Board" id="boardMap">
 		안 써도 감
 		<result column="writer" property="writer"/>

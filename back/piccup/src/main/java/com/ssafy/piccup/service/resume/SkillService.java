@@ -1,8 +1,8 @@
-package com.ssafy.piccup.service;
+package com.ssafy.piccup.service.resume;
 
 import java.util.List;
 
-import com.ssafy.piccup.model.dto.Skill;
+import com.ssafy.piccup.model.dto.resume.Skill;
 
 
 public interface SkillService {

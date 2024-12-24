@@ -1,8 +1,8 @@
-package com.ssafy.piccup.model.dao;
+package com.ssafy.piccup.model.dao.resume;
 
 import java.util.List;
 
-import com.ssafy.piccup.model.dto.PersonalInfo;
+import com.ssafy.piccup.model.dto.resume.PersonalInfo;
 
 public interface PersonalInfoDao {
 

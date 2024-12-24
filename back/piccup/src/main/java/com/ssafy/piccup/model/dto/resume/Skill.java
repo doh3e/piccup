@@ -1,4 +1,4 @@
-package com.ssafy.piccup.model.dto;
+package com.ssafy.piccup.model.dto.resume;
 
 public class Skill {
 	private int skillId;
@@ -7,14 +7,6 @@ public class Skill {
 	private String skillLevel = "미지정";
 	
 	public Skill() {
-	}
-	
-	public Skill(int skillId, int resumeId, String skillName, String skillLevel) {
-		super();
-		this.skillId = skillId;
-		this.resumeId = resumeId;
-		this.skillName = skillName;
-		this.skillLevel = skillLevel;
 	}
 
 	public int getSkillId() {
