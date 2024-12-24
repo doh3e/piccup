@@ -8,7 +8,7 @@ public class Language {
 	private String languageName;
 	private String testName;
 	private String score;
-	private LocalDate obtainedAt;
+	private LocalDate obtainedDate;
 	private String certCode;
 	
 	public Language() {
@@ -55,11 +55,11 @@ public class Language {
 	}
 
 	public LocalDate getObtainedAt() {
-		return obtainedAt;
+		return obtainedDate;
 	}
 
-	public void setObtainedAt(LocalDate obtainedAt) {
-		this.obtainedAt = obtainedAt;
+	public void setObtainedAt(LocalDate obtainedDate) {
+		this.obtainedDate = obtainedDate;
 	}
 
 	public String getCertCode() {

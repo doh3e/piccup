@@ -7,7 +7,7 @@ public class Certification {
 	private int resumeId; // 외래키
 	private String certName;
 	private String publisher;
-	private LocalDate obtainedAt;
+	private LocalDate obtainedDate;
 	private String certCode;
 	
 	public Certification() {
@@ -45,12 +45,12 @@ public class Certification {
 		this.publisher = publisher;
 	}
 
-	public LocalDate getObtainedAt() {
-		return obtainedAt;
+	public LocalDate getObtainedDate() {
+		return obtainedDate;
 	}
 
-	public void setObtainedAt(LocalDate obtainedAt) {
-		this.obtainedAt = obtainedAt;
+	public void setObtainedDate(LocalDate obtainedDate) {
+		this.obtainedDate = obtainedDate;
 	}
 
 	public String getCertCode() {

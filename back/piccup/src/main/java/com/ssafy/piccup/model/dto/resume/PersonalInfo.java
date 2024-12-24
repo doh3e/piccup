@@ -18,7 +18,7 @@ public class PersonalInfo {
 	private int postalCode;
 	private String profileImgPath = "profile_images/default.png";
 	private String profileImgName = "default.png";
-	private String degree;
+	private String degree = "미지정";
 	private String hobby;
 	private String specialty;
 

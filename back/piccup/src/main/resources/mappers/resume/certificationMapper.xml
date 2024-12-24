@@ -12,8 +12,8 @@
 
     <!-- 자격증 저장 -->
     <insert id="insertCertification" parameterType="Certification" keyProperty="certId" useGeneratedKeys="true">
-        INSERT INTO certification (resume_id, cert_name, publisher, obtained_at, cert_code)
-        VALUES (#{resumeId}, #{certName}, #{publisher}, #{obtainedAt}, #{certCode});
+        INSERT INTO certification (resume_id, cert_name, publisher, obtained_date, cert_code)
+        VALUES (#{resumeId}, #{certName}, #{publisher}, #{obtainedDate}, #{certCode});
     </insert>
 
     <!-- 자격증 수정 -->
@@ -21,7 +21,7 @@
         UPDATE certification
         SET cert_name = #{certName},
         	publisher = #{publisher},
-        	obtained_at = #{obtainedAt},
+        	obtained_date = #{obtainedDate},
         	cert_code = #{certCode}
         WHERE cert_id = #{certId};
     </update>
