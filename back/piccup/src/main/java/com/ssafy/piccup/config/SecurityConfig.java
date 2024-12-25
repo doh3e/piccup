@@ -14,10 +14,10 @@
 //      .cors(cors -> cors.configure(http)) // CORS 설정 활성화
 //      .csrf(csrf -> csrf.disable())       // CSRF 비활성화
 //      .authorizeHttpRequests(auth -> auth
-//        .requestMatchers("/api/v1/**").permitAll()
-//        .anyRequest().authenticated()
+//	  .anyRequest().permitAll()
+////        .requestMatchers("/api/v1/**").permitAll()
+////        .anyRequest().authenticated()
 //      );
-//
 //    return http.build();
 //  }
 //}

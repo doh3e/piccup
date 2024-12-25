@@ -9,6 +9,7 @@ public class User {
 	private String password;
 	private String mobilePhone;
 	private LocalDate createdAt;
+	private String token;
 	
 	public User() {
 	}
@@ -56,6 +57,13 @@ public class User {
 	public LocalDate getCreatedAt() {
 		return createdAt;
 	}
-	
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}	
 	
 }
