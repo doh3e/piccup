@@ -51,11 +51,8 @@ public class UserController {
 //		log.debug("userId : {}, header: {}", userId, header);
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = HttpStatus.ACCEPTED;
-		System.out.println(header);
-		System.out.println(jwtUtil.checkToken(header));
 		if (jwtUtil.checkToken(header)) {
 //			log.info("사용 가능한 토큰");
-			System.out.println("통과");
 			try {
 				// 사용자 정보
 				User userById = userService.getUserInfo(userId);
@@ -73,7 +70,7 @@ public class UserController {
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 	
-	// 사용자 회원가입
+	// 사용자 회원가입 (토큰 미부여)
 	@PostMapping("/signup")
 	public ResponseEntity<String> signup(@RequestBody User user) {
 		if (userService.signup(user)) {
@@ -93,8 +90,8 @@ public class UserController {
 		try {
 			User loginUser = userService.login(user.getEmail(), user.getPassword());
 			if(loginUser != null) {
-				String accessToken = jwtUtil.createAccessToken(loginUser.getEmail());
-				String refreshToken = jwtUtil.createRefreshToken(loginUser.getEmail());
+				String accessToken = jwtUtil.createAccessToken(loginUser.getUserId(), loginUser.getEmail());
+				String refreshToken = jwtUtil.createRefreshToken(loginUser.getUserId(), loginUser.getEmail());
 //				log.debug("access token: {}", accessToken);
 //				log.debug("refresh token: {}", refreshToken);
 				

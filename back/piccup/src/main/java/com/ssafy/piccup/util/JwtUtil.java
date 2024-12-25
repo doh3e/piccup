@@ -30,13 +30,13 @@ public class JwtUtil {
 	@Value("${jwt.refresh-token.expiretime}")
 	private long refreshTokenExpireTime;
 	
-	public String createAccessToken(String email) {
-		return create(email, "access-token", accessTokenExpireTime); 
+	public String createAccessToken(int userId, String email) {
+		return create(userId, email, "access-token", accessTokenExpireTime); 
 	}
 
 	// AccessToken에 비해 유효기간을 길게 설정
-	public String createRefreshToken(String email) {
-		return create(email, "refresh-token", refreshTokenExpireTime);
+	public String createRefreshToken(int userId, String email) {
+		return create(userId, email, "refresh-token", refreshTokenExpireTime);
 	}	
 	
 	// 키 생성 - 이전방식	
@@ -94,7 +94,7 @@ public class JwtUtil {
 	//  - expire: 토큰 유효기간 설정값
 	
 	//  - jwt 토큰의 구성 : header _ payload _ signature
-	private String create(String email, String subject, long expireTime) {
+	private String create(int userId, String email, String subject, long expireTime) {
 		// payloa설정 : 생성일 (IssuedAt), 유효기간 (Expiration), 토큰제목 (Subject), 데이터 (Claim)
 		Claims claims = Jwts.claims()
 				.setSubject(subject)
@@ -102,6 +102,7 @@ public class JwtUtil {
 				.setExpiration(new Date(System.currentTimeMillis() + expireTime));
 		
 		claims.put("email", email);
+		claims.put("userId", userId);
 		
 		// jwt생성
 		// 이전버전
@@ -119,8 +120,8 @@ public class JwtUtil {
 		return jwt;
 	}
 	
-	// email가져오기
-	public String getUserId(String authorization) {
+	// JWT에서 추출 - email 가져오기
+	public String getUserEmail(String authorization) {
 		Jws<Claims> claims  = null;
 		try {
 			claims = Jwts.parserBuilder().setSigningKey(this.generateKey()).build().parseClaimsJws(authorization);
@@ -133,4 +134,17 @@ public class JwtUtil {
 //		log.info("value: {}", value);
 		return (String) value.get("email");
 	}
+	
+	// JWT에서 추출 - userId 가져오기
+    public int getUserId(String authorization) {
+		Jws<Claims> claims  = null;
+		try {
+			claims = Jwts.parserBuilder().setSigningKey(this.generateKey()).build().parseClaimsJws(authorization);
+		} catch (Exception e) {
+			throw new SecurityException("Invalid JWT token");
+		}
+		Map<String, Object> value = claims.getBody();
+		return (int) value.get("userId");
+	}
+
 }
