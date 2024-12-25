@@ -78,7 +78,7 @@ public class PersonalInfoController {
 	public ResponseEntity<String> modifyPersonal(
 			@PathVariable("infoId") int infoId,
 			@ModelAttribute PersonalInfo personalInfo,
-			@RequestParam(value = "file") MultipartFile file) { 
+			@RequestParam(value = "file", required = false) MultipartFile file) { 
 		personalInfo.setInfoId(infoId);
         
 		// 파일 수정
