@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.resume.Activity;
-import com.ssafy.piccup.service.resume.ActivityService;
+import com.ssafy.piccup.model.service.resume.ActivityService;
 
 // 대내외활동 테이블 관련
 @RestController

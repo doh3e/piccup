@@ -1,11 +1,12 @@
 package com.ssafy.piccup.model.dto.resume;
 
-import java.security.Timestamp;
+import java.time.LocalDateTime;
+
 
 public class Resume {
 	private int resumeId; // 이력서 고유id
 	private int userId; // 유저 고유id (외래키)
-	private Timestamp updatedAt; // 수정일자
+	private LocalDateTime updatedAt; // 수정일자
 	
 	public Resume() {
 	}
@@ -26,7 +27,7 @@ public class Resume {
 		this.userId = userId;
 	}
 
-	public Timestamp getUpdatedAt() {
+	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}	
 	

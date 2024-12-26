@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.resume.Certification;
-import com.ssafy.piccup.service.resume.CertificationService;
+import com.ssafy.piccup.model.service.resume.CertificationService;
 
 // 자격증 테이블 관련
 @RestController

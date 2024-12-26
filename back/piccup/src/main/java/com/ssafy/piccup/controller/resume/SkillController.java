@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dto.resume.PersonalInfo;
 import com.ssafy.piccup.model.dto.resume.Skill;
-import com.ssafy.piccup.service.resume.SkillService;
+import com.ssafy.piccup.model.service.resume.SkillService;
 
 // 스킬 테이블 관련
 @RestController

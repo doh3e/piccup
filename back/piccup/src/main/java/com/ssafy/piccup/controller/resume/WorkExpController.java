@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dto.resume.WorkExp;
-import com.ssafy.piccup.service.resume.WorkExpService;
+import com.ssafy.piccup.model.service.resume.WorkExpService;
 
 // 경력 테이블 관련
 @RestController

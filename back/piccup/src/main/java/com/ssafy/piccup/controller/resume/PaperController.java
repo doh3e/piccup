@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.resume.Paper;
-import com.ssafy.piccup.service.resume.PaperService;
+import com.ssafy.piccup.model.service.resume.PaperService;
 
 // 논문 테이블 관련
 @RestController

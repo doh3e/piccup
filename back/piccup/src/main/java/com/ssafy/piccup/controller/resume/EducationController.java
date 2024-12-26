@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dto.resume.Education;
 import com.ssafy.piccup.model.dto.resume.PersonalInfo;
-import com.ssafy.piccup.service.resume.EducationService;
+import com.ssafy.piccup.model.service.resume.EducationService;
 
 // 학력 테이블 관련
 @RestController

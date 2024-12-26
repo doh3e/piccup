@@ -9,7 +9,7 @@ public interface ResumeDao {
 	public List<Resume> selectResume(int userId);
 	
 	// 이력서 추가
-	public void insertResume(Resume resume);
+	public int insertResume(Resume resume);
 	
 	// 이력서 삭제
 	public void deleteResume(int resumeId);

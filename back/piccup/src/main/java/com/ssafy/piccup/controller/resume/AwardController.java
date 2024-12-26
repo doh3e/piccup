@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.resume.Award;
-import com.ssafy.piccup.service.resume.AwardService;
+import com.ssafy.piccup.model.service.resume.AwardService;
 
 // 수상내역 테이블 관련
 @RestController

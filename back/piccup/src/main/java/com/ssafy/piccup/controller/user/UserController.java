@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.user.User;
-import com.ssafy.piccup.service.user.UserService;
+import com.ssafy.piccup.model.service.user.UserService;
 import com.ssafy.piccup.util.JwtUtil;
 
 import lombok.extern.slf4j.Slf4j;

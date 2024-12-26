@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.resume.Language;
-import com.ssafy.piccup.service.resume.LanguageService;
+import com.ssafy.piccup.model.service.resume.LanguageService;
 
 // 어학 테이블 관련
 @RestController

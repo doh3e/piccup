@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.resume.Patent;
-import com.ssafy.piccup.service.resume.PatentService;
+import com.ssafy.piccup.model.service.resume.PatentService;
 
 // 특허 테이블 관련
 @RestController

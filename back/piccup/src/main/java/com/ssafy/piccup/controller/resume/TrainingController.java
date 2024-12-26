@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.resume.Training;
-import com.ssafy.piccup.service.resume.TrainingService;
+import com.ssafy.piccup.model.service.resume.TrainingService;
 
 // 교육 테이블 관련
 @RestController

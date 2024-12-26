@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dto.resume.Portfolio;
-import com.ssafy.piccup.service.resume.PortfolioService;
+import com.ssafy.piccup.model.service.resume.PortfolioService;
 
 // 포트폴리오 테이블 관련
 @RestController

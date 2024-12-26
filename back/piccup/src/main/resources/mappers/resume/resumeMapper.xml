@@ -11,25 +11,12 @@
  		WHERE user_id = #{userId}; 
 	</select>
 
-	<!-- 상세 게시글 조회 -->
- 	<!-- <select id="selectOne" resultMap="boardMap" parameterType="int"> column명과 dto가 달라서 boardmap으로 지정함
-		SELECT * FROM board
-		WHERE id = #{id};	
-	</select> -->
-	
-	<!-- application.properties설정으로 map 쓰지 않아도 reg_date, view_cnt가 잘 출력됨
-	 mybatis.configuration.map-underscore-to-camel-case=true -->
- 	<!-- <select id="selectOne" resultType="Board" parameterType="int"> column명과 dto가 달라서 boardmap으로 지정함
-		SELECT * FROM board
-		WHERE id = #{id};	
-	</select>
- -->
-	<!-- 게시글 등록 -->
-  	<!-- <insert id="insertBoard" parameterType="Board">
-		INSERT INTO board (title, writer, content)
-		VALUES (#{title}, #{writer}, #{content});
+	<!-- 이력서 등록 -->
+  	<insert id="insertResume" parameterType="Resume" keyProperty="resumeId" useGeneratedKeys="true">
+		INSERT INTO resume (user_id, updated_at)
+		VALUES (#{userId}, NOW());
 	</insert>
- -->
+	
 	<!-- 게시글 삭제 -->
 	<!-- <delete id="deleteBoard" parameterType="int">
 		DELETE FROM board
