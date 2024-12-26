@@ -13,9 +13,13 @@
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/vue3": "^6.1.15",
     "axios": "^1.7.9",
+<<<<<<< HEAD
     "fullcalendar": "^6.1.15",
     "jquery": "^3.7.1",
     "moment": "^2.30.1",
+=======
+    "lucide-vue-next": "^0.468.0",
+>>>>>>> 674bbece3c5017e19958f99c7d13f52f1eb338ae
     "pinia": "^2.2.6",
     "pinia-plugin-persistedstate": "^4.2.0",
     "vue": "^3.5.13",
