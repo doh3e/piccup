@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.UserDao">
+
+
+	<!-- 전체 유저 조회 -->
+	<!-- <select id="selectAll" resultType="com.ssafy.board.model.dto.Board">  -->
+	<select id="selectAllUser" resultType="User">
+		SELECT * FROM user;
+		
+	</select>
+	
+	<!-- 상세 유저 조회 -->
+	<select id="selectOneUser" resultType="User" parameterType="int">
+		SELECT * FROM user
+		WHERE user_id = #{id};
+	</select>
+	
+	<!-- 유저 등록 -->
+	<select id="registUser" parameterType="User">
+		INSERT INTO user (email, nickname, password, profile_img, mobile_phone)
+		VALUES(#{email}, #{nickname}, #{password}, ${profileImg}, #{mobilePhone});
+	</select>
+
+	<!-- 유저 탈퇴 -->
+	<select id="deleteUser" parameterType="int">
+		DELETE FROM user
+		WHERE user_id = #{id};
+	</select>
+	
+	<!-- 유저 정보 변경 -->
+	<update id="updateUser" parameterType="User">
+		UPDATE user
+		SET nickname = #{nickname}, password = #{password}, profile_img = #{profileImg}, mobile_phone = #{mobilePhone}
+		WHERE user_id = #{userId};
+	</update>
+</mapper>
