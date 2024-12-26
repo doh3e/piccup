@@ -77,33 +77,6 @@ onMounted(() => {
 </script>
 
 <style>
-@font-face {
-  font-family: 'NotoSansKR';
-  src: url('../assets/fonts/NotoSansKR-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'NotoSansKR';
-  src: url('../assets/fonts/NotoSansKR-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'NotoSansKR';
-  src: url('../assets/fonts/NotoSansKR-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'NotoSansKR';
-  src: url('../assets/fonts/NotoSansKR-Black.woff') format('woff');
-  font-weight: 900;
-  font-style: normal;
-}
 
 :root {
   --bg-color: #F8F8F8;

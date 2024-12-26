@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import MydataView from '@/views/MydataView.vue'
-import HomeView from '../views/MainView.vue'
+import HomeView from '@/views/MainView.vue'
 import MydataView from '@/views/MydataView.vue'
 
 const router = createRouter({

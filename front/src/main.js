@@ -5,11 +5,10 @@ import { authAxios, publicAxios } from '@/utils/axios'
 
 import App from './App.vue'
 import router from './router'
-import '@/index.css';
+import '@/assets/css/tailwind.css'
 import '@/assets/css/normalize.css'
 import '@/assets/css/base.css'
 import '@/assets/css/font.css'
-import '@/assets/css/tailwind.css'
 
 
 const app = createApp(App)

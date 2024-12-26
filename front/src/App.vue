@@ -15,6 +15,10 @@ import Header from '@/components/Main/Header.vue'
 
 <style>
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
   :root {
     --bg-color: #F8F8F8;
