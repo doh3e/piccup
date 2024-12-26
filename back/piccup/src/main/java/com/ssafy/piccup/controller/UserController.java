@@ -38,10 +38,10 @@ public class UserController {
 	//// 회원가입
 	
 	// 회원가입 폼으로 이동
-//	@GetMapping("/join")
-//	public String joinform(UserJoinForm userJoinForm) {
-//		return "/user/joinform";
-//	}
+	@GetMapping("/join")
+	public String joinform() {
+		return "/user/joinform";
+	}
 	
 	// 회원가입 - 유저 등록
 //	@PostMapping("/join")
