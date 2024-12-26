@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.ResumeDao">
+	
+	<!-- 로그인 유저의 전체 이력서 조회 -->
+ 	<select id="selectResume" resultType="Resume">
+ 		SELECT *
+ 		FROM resume
+ 		WHERE user_id = #{userId}; 
+	</select>
+
+	<!-- 이력서 등록 -->
+  	<insert id="insertResume" parameterType="Resume" keyProperty="resumeId" useGeneratedKeys="true">
+		INSERT INTO resume (user_id, updated_at)
+		VALUES (#{userId}, NOW());
+	</insert>
+	
+	<!-- 게시글 삭제 -->
+	<!-- <delete id="deleteBoard" parameterType="int">
+		DELETE FROM board
+		WHERE id = #{id};
+	</delete>
+	 -->
+	 
+	 <!-- 조회수 증가 -->
+ 	<!-- <update id="updateViewCnt" parameterType="int">
+		UPDATE board
+		SET view_cnt = view_cnt+1
+		WHERE id = #{id}
+	</update>
+	 -->
+	<!-- 업데이트 -->
+ 	<!-- <update id="updateBoard" parameterType="Board">
+		UPDATE board
+		SET title = #{title}, content = #{content}, reg_date = now()
+		WHERE id = #{id};	
+	</update>
+ -->	
+</mapper>
