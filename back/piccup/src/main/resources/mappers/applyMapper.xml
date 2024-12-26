@@ -31,8 +31,10 @@
     left join cover_letter c on a.apply_id = c.apply_id
   </select>
   
-  <select id="selectOne" resultType="Apply" parameterType="int">
-  	select * from apply where apply_id=#{applyId};
+  <select id="selectOne" resultMap="applyCoverLetterSetResultMap" parameterType="int">
+  	select a.*, c.* from apply a
+  	left join cover_letter c on a.apply_id = c.apply_id
+  	where a.apply_id=#{applyId};
   </select>
   
   <insert id="insertApply" parameterType="Apply" keyProperty="applyId" useGeneratedKeys="true">

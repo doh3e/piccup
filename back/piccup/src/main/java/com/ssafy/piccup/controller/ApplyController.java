@@ -25,25 +25,25 @@ public class ApplyController {
 	public ApplyController(ApplyService applyService) {
 		this.applyService = applyService;
 	}
-	@GetMapping("/apply")
+	@GetMapping("/applys")
 	public ResponseEntity<List<Apply>> read() {
 		List<Apply> list = applyService.getApplyList();
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
-	@GetMapping("/apply/{apply_id}")
+	@GetMapping("/applys/{apply_id}")
 	public ResponseEntity<Apply> detail(@PathVariable("apply_id")int apply_id) {
 		Apply apply = applyService.viewApply(apply_id);
 		if (apply == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		return new ResponseEntity<>(apply, HttpStatus.OK);
 	}
-	@PostMapping("/apply")
+	@PostMapping("/applys")
 	public ResponseEntity<?> create(@RequestBody Apply apply) {
 		
 		System.out.println(apply);
 		applyService.addApply(apply);
 		return new ResponseEntity<>(apply, HttpStatus.CREATED); 
 	}
-	@DeleteMapping("/apply/{apply_id}")
+	@DeleteMapping("/applys/{apply_id}")
 	public ResponseEntity<?> delete(@PathVariable("apply_id")int apply_id) {
 		applyService.removeApply(apply_id);
 		return new ResponseEntity<>(HttpStatus.OK);
