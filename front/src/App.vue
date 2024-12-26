@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/"  class="bg-blue-500 text-white py-2 px-4 rounded">Home</RouterLink>
       </nav>
     </div>
   </header>
