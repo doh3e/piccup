@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,7 +49,7 @@ public class CoverLetterController {
 	}
 	
 	@PostMapping("/coverletters")
-	public ResponseEntity<CoverLetter> create(@ModelAttribute CoverLetter letter) {
+	public ResponseEntity<CoverLetter> create(@RequestBody CoverLetter letter) {
 		coverLetterService.addCoverLetter(letter);
 		if (letter != null) {
 			return new ResponseEntity<>(letter, HttpStatus.CREATED);
@@ -59,7 +60,7 @@ public class CoverLetterController {
 	}
 	
 	@PutMapping("/coverletters/{cover_id}")
-	public ResponseEntity<?> update(@PathVariable("cover_id")int coverId, @ModelAttribute CoverLetter letter) {
+	public ResponseEntity<?> update(@PathVariable("cover_id")int coverId, @RequestBody CoverLetter letter) {
 		CoverLetter temp = coverLetterService.viewCoverLetter(coverId);
 		letter.setCoverId(coverId);
 //		letter.setApplyId(temp.getApplyId());
