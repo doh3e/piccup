@@ -10,12 +10,9 @@
     <result property="companySize" column="company_size"/>
     <result property="job" column="job"/>
     <result property="industry" column="industry"/>
-    <result property="applyStartDate" column="apply_start_date"/>
-    <result property="applyEndDate" column="apply_end_date"/>
+    <result property="createdAt" column="created_at"/>
     <result property="updatedAt" column="updated_at"/>
-    <result property="currentStatus" column="current_status"/>
-    <result property="feedback" column="feedback"/>
-    <result property="isProgressing" column="is_progressing"/>
+
     <collection property="coverLetters" ofType="CoverLetter" notNullColumn="cover_id">
       <id property="coverId" column="cover_id"/>
       <result property="applyId" column="apply_id"/>
@@ -39,11 +36,9 @@
   
   <insert id="insertApply" parameterType="Apply" keyProperty="applyId" useGeneratedKeys="true">
   	INSERT INTO apply (user_id, company_name, company_size,
-  	job, industry, apply_start_date, apply_end_date,
-  	feedback)
+  	job, industry)
   	VALUES (#{userId}, #{companyName}, #{companySize},
-  	#{job}, #{industry}, #{applyStartDate}, #{applyEndDate},
-  	#{feedback} );
+  	#{job}, #{industry});
   </insert>
   
   <delete id="deleteApply" parameterType="int">
@@ -51,10 +46,10 @@
   	WHERE apply_id = #{applyId};
   </delete>
   
-  <!-- <update id="updateCoverLetter" parameterType="CoverLetter">
-  	UPDATE cover_letter
-  	SET apply_id = #{applyId}, user_id = #{userId}, category = #{category},
-  	cover_title = #{coverTitle}, cover_content = #{coverContent}
-  	WHERE cover_id = #{coverId};
-  </update> -->
+  <update id="updateApply" parameterType="Apply">
+  	UPDATE apply
+  	SET user_id = #{userId}, company_name = #{companyName},
+  	company_size = #{companySize}, job = #{job}, industry = #{industry}
+  	WHERE apply_id = #{applyId};
+  </update>
 </mapper>
