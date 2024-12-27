@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.PaperDao;
 import com.ssafy.piccup.model.dto.resume.Paper;
+import com.ssafy.piccup.model.dto.resume.Training;
 
 @Service
 public class PaperServiceImpl implements PaperService {
@@ -19,8 +21,9 @@ public class PaperServiceImpl implements PaperService {
 	
 	// 논문 전체 조회
 	@Override
-	public List<Paper> readPaperList() {
-		return paperDao.selectAllPapers();
+	public List<Paper> readPaperList(int resumeId) {
+		List<Paper> paperList = paperDao.selectAllPapers(resumeId);
+		return paperList.isEmpty() ? new ArrayList<Paper>() : paperList;
 	}
 
     // 논문 추가

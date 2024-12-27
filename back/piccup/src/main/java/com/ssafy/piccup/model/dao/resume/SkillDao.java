@@ -7,7 +7,7 @@ import com.ssafy.piccup.model.dto.resume.Skill;
 public interface SkillDao {
 	
 	// 스킬 전체 조회
-    public List<Skill> selectAllSkills();
+    public List<Skill> selectAllSkills(int resumeId);
 
     // 스킬 추가
     public int insertSkill(Skill skill);

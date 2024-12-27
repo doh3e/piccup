@@ -7,7 +7,8 @@
 	<!-- 학력 전체 조회 -->
     <select id="selectAllEducation" resultType="Education">
         SELECT *
-        FROM education;
+        FROM education
+        WHERE resume_id = #{resumeId};
     </select>
 
     <!-- 학력 저장 -->

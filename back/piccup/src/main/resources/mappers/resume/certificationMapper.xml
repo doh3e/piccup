@@ -7,7 +7,8 @@
 	<!-- 자격증 전체 조회 -->
     <select id="selectAllCertifications" resultType="Certification">
         SELECT *
-        FROM certification;
+        FROM certification
+        WHERE resume_id = #{resumeId};
     </select>
 
     <!-- 자격증 저장 -->

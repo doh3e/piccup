@@ -8,7 +8,7 @@ import com.ssafy.piccup.model.dto.resume.Language;
 public interface LanguageService {
 	
 	// 어학 전체 조회
-    public List<Language> readLanguageList();
+    public List<Language> readLanguageList(int resumeId);
 
     // 어학 추가
     public boolean createLanguage(Language oversea);

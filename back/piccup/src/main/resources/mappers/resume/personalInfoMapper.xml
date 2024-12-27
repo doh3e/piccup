@@ -4,10 +4,12 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.PersonalInfoDao">
 
-	<!-- 인적사항 전체 조회 -->
-    <select id="selectAllPersonal" resultType="PersonalInfo">
+	<!-- 로그인 유저의 인적사항 전체 조회 -->
+    <select id="selectPersonalByResume" resultType="PersonalInfo">
         SELECT *
-        FROM personal_info;
+        FROM personal_info
+        WHERE resume_id = #{resumeId}
+        LIMIT 1;
     </select>
 
     <!-- 특정 인적사항 조회 -->

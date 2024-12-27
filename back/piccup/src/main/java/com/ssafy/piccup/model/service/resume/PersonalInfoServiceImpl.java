@@ -2,7 +2,9 @@ package com.ssafy.piccup.model.service.resume;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.core.io.Resource;
@@ -11,9 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.piccup.exception.PersonalInfoNotFoundException;
 import com.ssafy.piccup.model.dao.resume.PersonalInfoDao;
 import com.ssafy.piccup.model.dto.resume.PersonalInfo;
+import com.ssafy.piccup.model.dto.resume.Preference;
 
 @Service
 public class PersonalInfoServiceImpl implements PersonalInfoService{
@@ -26,12 +31,12 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
     	this.resourceLoader = resourceLoader;
     }
 
-    // 인적사항 전체 조회
+    // 인적사항 조회 (resume 기반)
 	@Override
-	public List<PersonalInfo> readPersonalList() {
-		return personalInfoDao.selectAllPersonal();
+	public PersonalInfo readPersonalByResume(int resumeId) {
+	    return personalInfoDao.selectPersonalByResume(resumeId);
 	}
-
+	
 	// 특정 인적사항 조회
 	@Override
 	public PersonalInfo readPersonal(int infoId) {

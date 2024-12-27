@@ -11,7 +11,7 @@ import com.ssafy.piccup.model.dto.resume.PersonalInfo;
 public interface EducationService {
 	
 	// 학력 전체 조회
-    public List<Education> readEducationList();
+    public List<Education> readEducationList(int resumeId);
 
     // 학력 추가
     public boolean createEducation(Education education, MultipartFile file);

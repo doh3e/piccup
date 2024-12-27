@@ -7,7 +7,7 @@ import com.ssafy.piccup.model.dto.resume.Language;
 public interface LanguageDao {
 	
 	// 어학 전체 조회
-    public List<Language> selectAllLanguages();
+    public List<Language> selectAllLanguages(int resumeId);
 
     // 어학 추가
     public int insertLanguage(Language language);

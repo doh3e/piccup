@@ -7,7 +7,7 @@ import com.ssafy.piccup.model.dto.resume.WorkExp;
 public interface WorkExpDao {
 	
 	// 경력 전체 조회
-    public List<WorkExp> selectAllWorkExp();
+    public List<WorkExp> selectAllWorkExp(int resumeId);
 
     // 경력 추가
     public int insertWorkExp(WorkExp workExp);

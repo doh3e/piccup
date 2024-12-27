@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -19,8 +20,9 @@ public class CertificationServiceImpl implements CertificationService {
 	
 	// 자격증 전체 조회
 	@Override
-	public List<Certification> readCertificationList() {
-		return certificationDao.selectAllCertifications();
+	public List<Certification> readCertificationList(int resumeId) {
+		List<Certification> certificationList = certificationDao.selectAllCertifications(resumeId);
+		return certificationList.isEmpty() ? new ArrayList<Certification>() : certificationList;
 	}
 
     // 자격증 추가

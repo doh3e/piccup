@@ -8,7 +8,7 @@ import com.ssafy.piccup.model.dto.resume.Paper;
 public interface PaperService {
 	
 	// 논문 전체 조회
-    public List<Paper> readPaperList();
+    public List<Paper> readPaperList(int resumeId);
 
     // 논문 추가
     public boolean createPaper(Paper oversea);

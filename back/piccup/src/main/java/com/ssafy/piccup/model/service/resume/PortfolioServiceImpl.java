@@ -2,6 +2,7 @@ package com.ssafy.piccup.model.service.resume;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dao.resume.PortfolioDao;
 import com.ssafy.piccup.model.dto.resume.Portfolio;
+import com.ssafy.piccup.model.dto.resume.Training;
 
 @Service
 public class PortfolioServiceImpl implements PortfolioService{
@@ -27,8 +29,9 @@ public class PortfolioServiceImpl implements PortfolioService{
 
     // 포트폴리오 전체 조회
 	@Override
-	public List<Portfolio> readPortList() {
-		return portfolioDao.selectAllPort();
+	public List<Portfolio> readPortList(int resumeId) {
+		List<Portfolio> portfolioList = portfolioDao.selectAllPort(resumeId);
+		return portfolioList.isEmpty() ? new ArrayList<Portfolio>() : portfolioList;
 	}
 
 	// 포트폴리오 추가

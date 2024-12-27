@@ -8,7 +8,7 @@ import com.ssafy.piccup.model.dto.resume.Training;
 public interface TrainingService {
 	
 	// 교육 전체 조회
-    public List<Training> readTrainingList();
+    public List<Training> readTrainingList(int resumeId);
 
     // 교육 추가
     public boolean createTraining(Training training);

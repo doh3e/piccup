@@ -8,7 +8,7 @@ import com.ssafy.piccup.model.dto.resume.Oversea;
 public interface OverseaService {
 	
 	// 해외경험 전체 조회
-    public List<Oversea> readOverseaList();
+    public List<Oversea> readOverseaList(int resumeId);
 
     // 해외경험 추가
     public boolean createOversea(Oversea oversea);

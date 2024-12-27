@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -19,8 +20,9 @@ public class OverseaServiceImpl implements OverseaService {
 	
 	// 해외경험 전체 조회
 	@Override
-	public List<Oversea> readOverseaList() {
-		return overseaDao.selectAllOverseas();
+	public List<Oversea> readOverseaList(int resumeId) {
+		List<Oversea> overseaList = overseaDao.selectAllOverseas(resumeId);
+		return overseaList.isEmpty() ? new ArrayList<Oversea>() : overseaList;
 	}
 
     // 해외경험 추가

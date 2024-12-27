@@ -8,7 +8,7 @@ import com.ssafy.piccup.model.dto.resume.Skill;
 public interface SkillService {
 	
 	// 스킬 전체 조회
-    public List<Skill> readSkillList();
+    public List<Skill> readSkillList(int resumeId);
 
     // 스킬 추가
     public boolean createSkill(Skill skill);

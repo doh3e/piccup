@@ -7,7 +7,7 @@ import com.ssafy.piccup.model.dto.resume.Education;
 public interface EducationDao {
 	
 	// 학력 전체 조회
-    public List<Education> selectAllEducation();
+    public List<Education> selectAllEducation(int resumeId);
 
     // 학력 추가
     public int insertEducation(Education education);

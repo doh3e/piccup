@@ -10,7 +10,7 @@ import com.ssafy.piccup.model.dto.resume.WorkExp;
 public interface WorkExpService {
 	
 	// 경력 전체 조회
-    public List<WorkExp> readWorkExpList();
+    public List<WorkExp> readWorkExpList(int resumeId);
 
     // 경력 추가
     public boolean createWorkExp(WorkExp workExp, MultipartFile file);

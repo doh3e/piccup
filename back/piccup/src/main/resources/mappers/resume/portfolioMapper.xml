@@ -4,10 +4,11 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.PortfolioDao">
 
-	<!-- 포트폴리오 전체 조회 -->
+	<!-- 로그인 유저의 포트폴리오 전체 조회 -->
     <select id="selectAllPort" resultType="Portfolio">
         SELECT *
-        FROM portfolio;
+        FROM portfolio
+        WHERE resume_id = #{resumeId};
     </select>
 
     <!-- 포트폴리오 저장 -->

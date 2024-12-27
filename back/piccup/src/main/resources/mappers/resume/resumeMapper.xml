@@ -8,7 +8,8 @@
  	<select id="selectResume" resultType="Resume">
  		SELECT *
  		FROM resume
- 		WHERE user_id = #{userId}; 
+ 		WHERE user_id = #{userId}
+ 		LIMIT 1; 
 	</select>
 
 	<!-- 이력서 등록 -->

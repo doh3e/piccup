@@ -1,6 +1,10 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,10 +21,10 @@ public class PreferenceServiceImpl implements PreferenceService {
 		this.preferenceDao = PreferenceDao;
 	}
 	
-	// 취업우대 전체 조회
+	// 취업우대 조회 (resume기반)
 	@Override
-	public List<Preference> readPreferenceList() {
-		return preferenceDao.selectAllPreferences();
+	public Preference readPreferenceByResume(int resumeId) {
+		return preferenceDao.selectPreferenceByResume(resumeId);
 	}
 
     // 취업우대 추가

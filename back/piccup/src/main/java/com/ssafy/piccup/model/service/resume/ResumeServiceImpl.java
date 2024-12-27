@@ -1,6 +1,5 @@
 package com.ssafy.piccup.model.service.resume;
 
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +18,7 @@ public class ResumeServiceImpl implements ResumeService {
 	
 	// 이력서 조회
 	@Override
-	public List<Resume> findByUserId(int userId) {
+	public Resume findByUserId(int userId) {
 		return resumeDao.selectResume(userId);
 	}
 	

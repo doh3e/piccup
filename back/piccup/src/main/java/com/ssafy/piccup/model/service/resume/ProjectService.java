@@ -8,7 +8,7 @@ import com.ssafy.piccup.model.dto.resume.Project;
 public interface ProjectService {
 	
 	// 프로젝트 전체 조회
-    public List<Project> readProjectList();
+    public List<Project> readProjectList(int resumeId);
 
     // 프로젝트 추가
     public boolean createProject(Project oversea);

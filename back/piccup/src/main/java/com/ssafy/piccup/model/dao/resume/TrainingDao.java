@@ -7,7 +7,7 @@ import com.ssafy.piccup.model.dto.resume.Training;
 public interface TrainingDao {
 	
 	// 교육 전체 조회
-    public List<Training> selectAllTrainings();
+    public List<Training> selectAllTrainings(int resumeId);
 
     // 교육 추가
     public int insertTraining(Training training);

@@ -1,6 +1,7 @@
 package com.ssafy.piccup.model.dto.resume;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -152,6 +153,6 @@ public class PersonalInfo {
 
 	public void setSpecialty(String specialty) {
 		this.specialty = specialty;
-	}	
-	
+	}
+
 }

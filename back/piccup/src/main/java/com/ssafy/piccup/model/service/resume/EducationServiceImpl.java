@@ -2,6 +2,7 @@ package com.ssafy.piccup.model.service.resume;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dao.resume.EducationDao;
 import com.ssafy.piccup.model.dto.resume.Education;
-import com.ssafy.piccup.model.dto.resume.PersonalInfo;
 
 @Service
 public class EducationServiceImpl implements EducationService {
@@ -28,8 +28,9 @@ public class EducationServiceImpl implements EducationService {
 	
 	// 학력 전체 조회
 	@Override
-	public List<Education> readEducationList() {
-		return educationDao.selectAllEducation();
+	public List<Education> readEducationList(int resumeId) {
+		List<Education> educationList = educationDao.selectAllEducation(resumeId);
+		return educationList.isEmpty() ? new ArrayList<Education>() : educationList;
 	}
 
     // 학력 추가

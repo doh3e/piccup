@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.SkillDao;
 import com.ssafy.piccup.model.dto.resume.Skill;
+import com.ssafy.piccup.model.dto.resume.Training;
 
 @Service
 public class SkillServiceImpl implements SkillService {
@@ -19,8 +21,9 @@ public class SkillServiceImpl implements SkillService {
 	
 	// 스킬 전체 조회
 	@Override
-	public List<Skill> readSkillList() {
-		return skillDao.selectAllSkills();
+	public List<Skill> readSkillList(int resumeId) {
+		List<Skill> skillList = skillDao.selectAllSkills(resumeId);
+		return skillList.isEmpty() ? new ArrayList<Skill>() : skillList;
 	}
 
     // 스킬 추가

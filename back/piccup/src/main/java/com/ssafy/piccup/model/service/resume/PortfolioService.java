@@ -9,7 +9,7 @@ import com.ssafy.piccup.model.dto.resume.Portfolio;
 public interface PortfolioService {
 	
 	// 포트폴리오 전체 조회
-    public List<Portfolio> readPortList();
+    public List<Portfolio> readPortList(int resumeId);
 
     // 포트폴리오 추가
     public boolean createPort(Portfolio portfolio, MultipartFile file);

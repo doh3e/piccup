@@ -7,8 +7,8 @@ import com.ssafy.piccup.model.dto.resume.Award;
 
 public interface AwardService {
 	
-	// 수상내역 전체 조회
-    public List<Award> readAwardList();
+	// 로그인 유저의 수상내역 전체 조회
+    public List<Award> readAwardList(int resumeId);
 
     // 수상내역 추가
     public boolean createAward(Award award);

@@ -49,9 +49,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		        response.getWriter().write("{\"message\": \"토큰이 만료되었습니다.\"}");		        
 		        return;
 		} catch (Exception e) {
-	        response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+	        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 	        response.setContentType("application/json");
-	        response.getWriter().write("{\"message\": \"인증 로직 예외가 발생하였습니다.\"}"+e.getMessage());
+	        response.getWriter().write("{\"message\": \"잘못된 서명입니다.\"}");
             return;
    		}
 

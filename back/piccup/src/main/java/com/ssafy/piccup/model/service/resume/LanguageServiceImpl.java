@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -19,8 +20,9 @@ public class LanguageServiceImpl implements LanguageService {
 	
 	// 어학 전체 조회
 	@Override
-	public List<Language> readLanguageList() {
-		return languageDao.selectAllLanguages();
+	public List<Language> readLanguageList(int resumeId) {
+		List<Language> languageList = languageDao.selectAllLanguages(resumeId);
+		return languageList.isEmpty() ? new ArrayList<Language>() : languageList;
 	}
 
     // 어학 추가

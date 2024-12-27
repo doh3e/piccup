@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.ProjectDao;
 import com.ssafy.piccup.model.dto.resume.Project;
+import com.ssafy.piccup.model.dto.resume.Training;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -19,8 +21,9 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	// 프로젝트 전체 조회
 	@Override
-	public List<Project> readProjectList() {
-		return projectDao.selectAllProjects();
+	public List<Project> readProjectList(int resumeId) {
+		List<Project> projectList = projectDao.selectAllProjects(resumeId);
+		return projectList.isEmpty() ? new ArrayList<Project>() : projectList;
 	}
 
     // 프로젝트 추가

@@ -7,7 +7,7 @@ import com.ssafy.piccup.model.dto.resume.Activity;
 public interface ActivityDao {
 	
 	// 대내외활동 전체 조회
-    public List<Activity> selectAllActivity();
+    public List<Activity> selectAllActivity(int resumeId);
 
     // 대내외활동 추가
     public int insertActivity(Activity activity);

@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -17,10 +18,11 @@ public class ActivityServiceImpl implements ActivityService {
 		this.activityDao = ActivityDao;
 	}
 	
-	// 대내외활동 전체 조회
+	// 로그인 유저의 대내외활동 전체 조회
 	@Override
-	public List<Activity> readActivityList() {
-		return activityDao.selectAllActivity();
+	public List<Activity> readActivityList(int resumeId) {
+		List<Activity> activityList = activityDao.selectAllActivity(resumeId);
+		return activityList.isEmpty() ? new ArrayList<Activity>() : activityList;
 	}
 
     // 대내외활동 추가

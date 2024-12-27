@@ -1,13 +1,12 @@
 package com.ssafy.piccup.model.dao.resume;
 
-import java.util.List;
 
 import com.ssafy.piccup.model.dto.resume.Preference;
 
 public interface PreferenceDao {
 	
-	// 취업우대 전체 조회
-    public List<Preference> selectAllPreferences();
+	// 취업우대 조회
+    public Preference selectPreferenceByResume(int resumeId);
 
     // 취업우대 추가
     public int insertPreference(Preference preference);

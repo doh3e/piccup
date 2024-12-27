@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -19,8 +20,9 @@ public class TrainingServiceImpl implements TrainingService {
 	
 	// 교육 전체 조회
 	@Override
-	public List<Training> readTrainingList() {
-		return trainingDao.selectAllTrainings();
+	public List<Training> readTrainingList(int resumeId) {
+		List<Training> trainingList = trainingDao.selectAllTrainings(resumeId);
+		return trainingList.isEmpty() ? new ArrayList<Training>() : trainingList;
 	}
 
     // 교육 추가

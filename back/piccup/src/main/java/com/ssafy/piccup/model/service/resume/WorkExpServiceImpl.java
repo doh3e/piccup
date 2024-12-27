@@ -2,6 +2,7 @@ package com.ssafy.piccup.model.service.resume;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dao.resume.WorkExpDao;
+import com.ssafy.piccup.model.dto.resume.Language;
 import com.ssafy.piccup.model.dto.resume.Portfolio;
 import com.ssafy.piccup.model.dto.resume.WorkExp;
 
@@ -28,8 +30,9 @@ public class WorkExpServiceImpl implements WorkExpService {
 	
 	// 경력 전체 조회
 	@Override
-	public List<WorkExp> readWorkExpList() {
-		return workExpDao.selectAllWorkExp();
+	public List<WorkExp> readWorkExpList(int resumeId) {
+		List<WorkExp> workExpList = workExpDao.selectAllWorkExp(resumeId);
+		return workExpList.isEmpty() ? new ArrayList<WorkExp>() : workExpList;
 	}
 
     // 경력 추가

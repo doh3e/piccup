@@ -1,6 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
-import java.util.List;
+
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,8 +8,8 @@ import com.ssafy.piccup.model.dto.resume.PersonalInfo;
 
 public interface PersonalInfoService {
 	
-	// 인적사항 전체 조회
-    public List<PersonalInfo> readPersonalList();
+	// 인적사항 조회 (resume기반)
+    public PersonalInfo readPersonalByResume(int resumeId);
 
     // 특정 인적사항 조회
     public PersonalInfo readPersonal(int infoId);

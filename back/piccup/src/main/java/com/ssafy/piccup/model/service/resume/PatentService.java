@@ -8,7 +8,7 @@ import com.ssafy.piccup.model.dto.resume.Patent;
 public interface PatentService {
 	
 	// 특허 전체 조회
-    public List<Patent> readPatentList();
+    public List<Patent> readPatentList(int resumeId);
 
     // 특허 추가
     public boolean createPatent(Patent oversea);

@@ -4,10 +4,11 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.PaperDao">
 
-	<!-- 논문 전체 조회 -->
+	<!-- 로그인 유저의 논문 전체 조회 -->
     <select id="selectAllPapers" resultType="Paper">
         SELECT *
-        FROM paper;
+        FROM paper
+        WHERE resume_id = #{resumeId};
     </select>
 
     <!-- 논문 저장 -->

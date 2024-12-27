@@ -1,13 +1,12 @@
 package com.ssafy.piccup.model.dao.resume;
 
-import java.util.List;
 
 import com.ssafy.piccup.model.dto.resume.PersonalInfo;
 
 public interface PersonalInfoDao {
 
-	// 인적사항 전체 조회
-    public List<PersonalInfo> selectAllPersonal();
+	// 로그인한 유저의 인적사항 조회
+    public PersonalInfo selectPersonalByResume(int resumeId);
 
     // 특정 인적사항 조회
     public PersonalInfo selectOnePersonal(int infoId);

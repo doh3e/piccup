@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -17,10 +18,11 @@ public class AwardServiceImpl implements AwardService {
 		this.awardDao = AwardDao;
 	}
 	
-	// 수상내역 전체 조회
+	// 로그인 유저의 수상내역 전체 조회
 	@Override
-	public List<Award> readAwardList() {
-		return awardDao.selectAllAwards();
+	public List<Award> readAwardList(int resumeId) {
+		List<Award> awardList = awardDao.selectAllAwards(resumeId);
+		return awardList.isEmpty() ? new ArrayList<Award>() : awardList;
 	}
 
     // 수상내역 추가

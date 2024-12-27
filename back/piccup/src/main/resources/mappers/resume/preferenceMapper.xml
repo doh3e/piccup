@@ -4,10 +4,12 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.PreferenceDao">
 
-	<!-- 취업우대 전체 조회 -->
-    <select id="selectAllPreferences" resultType="Preference">
+	<!-- 로그인 유저의 취업우대 조회 -->
+    <select id="selectPreferenceByResume" resultType="Preference">
         SELECT *
-        FROM preference;
+        FROM preference
+        WHERE resume_id = #{resumeId}
+        LIMIT 1;
     </select>
 
     <!-- 취업우대 저장 -->
