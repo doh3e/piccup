@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +21,27 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.JwtAuthenticationToken;
-import com.ssafy.piccup.model.dto.resume.*;
-import com.ssafy.piccup.model.service.resume.*;
+import com.ssafy.piccup.model.dto.resume.PersonalInfo;
+import com.ssafy.piccup.model.dto.resume.Preference;
+import com.ssafy.piccup.model.dto.resume.Resume;
+import com.ssafy.piccup.model.service.resume.ActivityService;
+import com.ssafy.piccup.model.service.resume.AwardService;
+import com.ssafy.piccup.model.service.resume.CertificationService;
+import com.ssafy.piccup.model.service.resume.EducationService;
+import com.ssafy.piccup.model.service.resume.LanguageService;
+import com.ssafy.piccup.model.service.resume.OverseaService;
+import com.ssafy.piccup.model.service.resume.PaperService;
+import com.ssafy.piccup.model.service.resume.PatentService;
+import com.ssafy.piccup.model.service.resume.PersonalInfoService;
+import com.ssafy.piccup.model.service.resume.PortfolioService;
+import com.ssafy.piccup.model.service.resume.PreferenceService;
+import com.ssafy.piccup.model.service.resume.ProjectService;
+import com.ssafy.piccup.model.service.resume.ResumeService;
+import com.ssafy.piccup.model.service.resume.SkillService;
+import com.ssafy.piccup.model.service.resume.TrainingService;
+import com.ssafy.piccup.model.service.resume.WorkExpService;
+
+import jakarta.validation.Valid;
 
 // 이력서 도메인 - 이력서
 @RestController
@@ -144,7 +164,25 @@ public class ResumeController {
 	
 	// 생성 (json)
 	@PostMapping("")
-	public ResponseEntity<?> writeResume(@RequestBody Resume resumeRequest) {
+	public ResponseEntity<?> writeResume(@Valid @RequestBody Resume resumeRequest, BindingResult bindingResult) {
+		  // 유효성 검증 오류 처리
+        if (bindingResult.hasErrors()) {
+            Map<String, String> errors = new HashMap<>();
+            bindingResult.getFieldErrors().forEach(error -> {
+                errors.put(error.getField(), error.getDefaultMessage());
+            });
+            return ResponseEntity.badRequest().body(errors);
+        }
+        System.out.println(bindingResult.hasErrors());
+        
+//		if (bindingResult.hasErrors()) {
+//	        // 유효성 검증 실패 시 오류 메시지 반환
+//	        Map<String, String> errors = new HashMap<>();
+//	        bindingResult.getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
+//	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+//	    }
+		
+		
 		// 현재 인증 정보에서 userId 추출 가져오기
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 현재 인증정보
         JwtAuthenticationToken jwtAuth = (JwtAuthenticationToken) authentication; 				// 토큰

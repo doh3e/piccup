@@ -6,31 +6,47 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 
 public class Resume {
 	private int resumeId; // 이력서 고유id
-	@NotNull
+	@NotNull(message = "유저 ID는 필수입니다.")
 	private int userId; // 유저 고유id (외래키)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime updatedAt; // 수정일자
 	
 	// data - 직렬화에서 제외
+	@Valid
 	private transient PersonalInfo personalInfo;
+	@Valid
     private transient List<Project> projects;
+	@Valid
     private transient List<Language> languages;
+	@Valid
     private transient Preference preference;
+	@Valid
     private transient List<Portfolio> portfolios;
+	@Valid
     private transient List<Training> trainings;
+	@Valid
     private transient List<WorkExp> workExp;
+	@Valid
     private transient List<Education> educations;
+	@Valid
     private transient List<Certification> certifications;
+	@Valid
     private transient List<Paper> papers;
+	@Valid
     private transient List<Oversea> overseas;
+	@Valid
     private transient List<Skill> skills;
+	@Valid
     private transient List<Activity> activities;
+	@Valid
     private transient List<Award> awards;
+	@Valid
     private transient List<Patent> patents;
 	
 	public Resume() {

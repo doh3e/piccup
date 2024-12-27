@@ -42,9 +42,9 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	@Transactional
 	@Override
 	public boolean createPersonal(PersonalInfo personalInfo) {
-		if (!Arrays.asList("남", "여", "미지정").contains(personalInfo.getGender())){
-	        personalInfo.setGender("미지정");
-	    }
+//		if (!Arrays.asList("남", "여", "미지정").contains(personalInfo.getGender())){
+//	        personalInfo.setGender("미지정");
+//	    }
 		if (!Arrays.asList("미지정", "중등교육이수", "학사", "석사", "박사").contains(personalInfo.getDegree())) {
 			personalInfo.setDegree("미지정");
 		}
