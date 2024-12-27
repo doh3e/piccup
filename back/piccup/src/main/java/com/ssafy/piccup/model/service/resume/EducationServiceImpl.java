@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dao.resume.EducationDao;
+import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Education;
 
 @Service
@@ -41,7 +42,25 @@ public class EducationServiceImpl implements EducationService {
 		return result == 1;
 	}
 
-    // 학력 수정
+	// 학력 리스트 추가
+	@Transactional
+	@Override
+	public void createEducationList(List<Education> educations, int resumeId) {
+		int result = 0;
+		try {
+			for (Education education : educations) {
+				education.setResumeId(resumeId);
+				if (educationDao.insertEducation(education) == 1) result += 1;
+			}
+			if (result != educations.size()) {
+				throw new RuntimeException("create EducationList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }		
+	}
+
+	// 학력 수정
 	@Transactional
 	@Override
 	public boolean updateEducation(Education education, MultipartFile file) {

@@ -15,6 +15,9 @@ public interface WorkExpService {
     // 경력 추가
     public boolean createWorkExp(WorkExp workExp, MultipartFile file);
 
+    // 경력 추가 - 파일 별도
+    public void createWorkExpList(List<WorkExp> workExps, int resumeId);
+
     // 경력 수정
     public boolean updateWorkExp(WorkExp workExp, MultipartFile file);
 
@@ -23,4 +26,5 @@ public interface WorkExpService {
     
     // 경력 파일 추가
     public boolean uploadFile(WorkExp workExp, MultipartFile file);
+
 }

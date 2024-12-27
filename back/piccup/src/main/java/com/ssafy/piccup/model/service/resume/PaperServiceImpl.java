@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.PaperDao;
+import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Paper;
 import com.ssafy.piccup.model.dto.resume.Training;
 
@@ -33,8 +34,26 @@ public class PaperServiceImpl implements PaperService {
 		int result = paperDao.insertPaper(paper);
 		return result == 1;
 	}
+	
+	// 논문 리스트 추가
+	@Transactional
+	@Override
+	public void createPaperList(List<Paper> papers, int resumeId) {
+		int result = 0;
+		try {
+			for (Paper paper : papers) {
+				paper.setResumeId(resumeId);
+				if (paperDao.insertPaper(paper) == 1) result += 1;
+			}
+			if (result != papers.size()) {
+				throw new RuntimeException("create PaperList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }
+	}
 
-    // 논문 수정
+	// 논문 수정
 	@Transactional
 	@Override
 	public boolean updatePaper(Paper paper) {
@@ -49,5 +68,6 @@ public class PaperServiceImpl implements PaperService {
 		int result = paperDao.deletePaper(paperId);
 		return result == 1;
 	}
+
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.CertificationDao;
+import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Certification;
 
 @Service
@@ -31,6 +32,24 @@ public class CertificationServiceImpl implements CertificationService {
 	public boolean createCertification(Certification certification) {
 		int result = certificationDao.insertCertification(certification);
 		return result == 1;
+	}
+
+	// 자격증 리스트 추가
+	@Transactional
+	@Override
+	public void createCertificationList(List<Certification> certifications, int resumeId) {
+		int result = 0;
+		try {
+			for (Certification certification : certifications) {
+				certification.setResumeId(resumeId);
+				if (certificationDao.insertCertification(certification) == 1) result += 1;
+			}
+			if (result != certifications.size()) {
+				throw new RuntimeException("create CertificationList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }
 	}
 
     // 자격증 수정

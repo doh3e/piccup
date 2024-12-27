@@ -9,5 +9,5 @@ public interface ResumeService {
 	public Resume findByUserId(int userId);
 	
 	// 이력서 생성
-	public boolean createResume(Resume resume);
+	public void createResume(Resume resume);
 }

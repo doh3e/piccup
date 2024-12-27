@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.TrainingDao;
+import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Training;
 
 @Service
@@ -33,7 +34,25 @@ public class TrainingServiceImpl implements TrainingService {
 		return result == 1;
 	}
 
-    // 교육 수정
+	// 교육 리스트 추가
+	@Transactional
+	@Override
+	public void createTrainingList(List<Training> trainings, int resumeId) {
+		int result = 0;
+		try {
+			for (Training training : trainings) {
+				training.setResumeId(resumeId);
+				if (trainingDao.insertTraining(training) == 1) result += 1;
+			}
+			if (result != trainings.size()) {
+				throw new RuntimeException("create TrainingList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }
+	}
+
+	// 교육 수정
 	@Transactional
 	@Override
 	public boolean updateTraining(Training training) {
@@ -48,5 +67,6 @@ public class TrainingServiceImpl implements TrainingService {
 		int result = trainingDao.deleteTraining(trainingId);
 		return result == 1;
 	}
+
 
 }

@@ -1,9 +1,8 @@
 package com.ssafy.piccup.model.dto.resume;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
-import jakarta.validation.constraints.NotNull;
+import org.springframework.web.multipart.MultipartFile;
 
 public class PersonalInfo {
 	private int infoId;
@@ -23,9 +22,21 @@ public class PersonalInfo {
 	private String hobby;
 	private String specialty;
 
-	
+	 // 파일 필드 추가 - 이력서 생성용
+    private transient MultipartFile file;
+    
 	public PersonalInfo() {
 	}
+	
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+	
 
 	public int getInfoId() {
 		return infoId;
@@ -153,6 +164,15 @@ public class PersonalInfo {
 
 	public void setSpecialty(String specialty) {
 		this.specialty = specialty;
+	}
+
+	@Override
+	public String toString() {
+		return "PersonalInfo [infoId=" + infoId + ", resumeId=" + resumeId + ", username=" + username + ", birthDate="
+				+ birthDate + ", gender=" + gender + ", email=" + email + ", homePhone=" + homePhone + ", mobilePhone="
+				+ mobilePhone + ", address=" + address + ", addressDetail=" + addressDetail + ", postalCode="
+				+ postalCode + ", profileImgPath=" + profileImgPath + ", profileImgName=" + profileImgName + ", degree="
+				+ degree + ", hobby=" + hobby + ", specialty=" + specialty + "]";
 	}
 
 }

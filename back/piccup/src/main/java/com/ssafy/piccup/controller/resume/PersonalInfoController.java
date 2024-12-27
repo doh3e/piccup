@@ -54,8 +54,7 @@ public class PersonalInfoController {
 	@PostMapping("")
 	public ResponseEntity<?> writePersonal(
 			@ModelAttribute PersonalInfo personalInfo,
-			@RequestParam(value = "file", required = false) MultipartFile file
-			) {
+			@RequestParam(value = "file", required = false) MultipartFile file) {
 		
 		// 파일 존재하면, 업로드
 		if (file != null) {

@@ -13,9 +13,13 @@ public interface CertificationService {
     // 자격증 추가
     public boolean createCertification(Certification certification);
 
+    // 자격증 리스트 추가
+    public void createCertificationList(List<Certification> certifications, int resumeId);
+
     // 자격증 수정
     public boolean updateCertification(Certification certification);
 
     // 자격증 삭제
     public boolean deleteCertification(int certId);
+
 }

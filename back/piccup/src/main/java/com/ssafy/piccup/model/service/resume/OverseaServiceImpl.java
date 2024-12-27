@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.OverseaDao;
+import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Oversea;
 
 @Service
@@ -33,7 +34,25 @@ public class OverseaServiceImpl implements OverseaService {
 		return result == 1;
 	}
 
-    // 해외경험 수정
+	// 해외경험 리스트 추가
+	@Transactional
+	@Override
+	public void createOverseaList(List<Oversea> overseas, int resumeId) {
+		int result = 0;
+		try {
+			for (Oversea oversea : overseas) {
+				oversea.setResumeId(resumeId);
+				if (overseaDao.insertOversea(oversea) == 1) result += 1;
+			}
+			if (result != overseas.size()) {
+				throw new RuntimeException("create OverseaList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }
+	}
+
+	// 해외경험 수정
 	@Transactional
 	@Override
 	public boolean updateOversea(Oversea oversea) {

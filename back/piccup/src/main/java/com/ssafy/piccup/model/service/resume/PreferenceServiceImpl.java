@@ -1,11 +1,5 @@
 package com.ssafy.piccup.model.service.resume;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,9 +24,14 @@ public class PreferenceServiceImpl implements PreferenceService {
     // 취업우대 추가
 	@Transactional
 	@Override
-	public boolean createPreference(Preference preference) {
-		int result = preferenceDao.insertPreference(preference);
-		return result == 1;
+	public void createPreference(Preference preference) {
+		try {
+			if (preferenceDao.insertPreference(preference) != 1) {
+				throw new RuntimeException("create Preference 불가");
+			}
+		} catch (Exception e) {
+		    throw e;
+		}
 	}
 
     // 취업우대 수정

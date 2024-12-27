@@ -12,10 +12,14 @@ public interface AwardService {
 
     // 수상내역 추가
     public boolean createAward(Award award);
+    
+    // 수상내역 리스트 추가
+    public void createAwardList(List<Award> awards, int resumeId);
 
     // 수상내역 수정
     public boolean updateAward(Award award);
 
     // 수상내역 삭제
     public boolean deleteAward(int awardId);
+
 }

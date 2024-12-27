@@ -11,10 +11,10 @@
         WHERE resume_id = #{resumeId};
     </select>
 
-    <!-- 경력 저장 -->
+    <!-- 경력 저장 - 파일별도 -->
     <insert id="insertWorkExp" parameterType="WorkExp" keyProperty="expId" useGeneratedKeys="true">
-        INSERT INTO work_exp (resume_id, company, department, start_date, end_date, is_current, position, salary, description, exp_file_name, exp_file_path)
-        VALUES (#{resumeId}, #{company}, #{department}, #{startDate}, #{endDate}, #{isCurrent}, #{position}, #{salary}, #{description}, #{expFileName}, #{expFilePath});
+        INSERT INTO work_exp (resume_id, company, department, start_date, end_date, is_current, position, salary, description)
+        VALUES (#{resumeId}, #{company}, #{department}, #{startDate}, #{endDate}, #{isCurrent}, #{position}, #{salary}, #{description});
     </insert>
 
     <!-- 경력 수정 -->

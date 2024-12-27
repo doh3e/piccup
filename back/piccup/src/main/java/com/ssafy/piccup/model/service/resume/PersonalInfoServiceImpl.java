@@ -44,9 +44,15 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	}
 	
 	// 인적사항 추가
+//	@Transactional
+//	@Override
+//	public boolean createPersonal(PersonalInfo personalInfo, MultipartFile file) {
+//		int result = personalInfoDao.insertPersonal(personalInfo);
+//		return result == 1;
+//	}
 	@Transactional
 	@Override
-	public boolean createPersonal(PersonalInfo personalInfo, MultipartFile file) {
+	public boolean createPersonal(PersonalInfo personalInfo) {
 		int result = personalInfoDao.insertPersonal(personalInfo);
 		return result == 1;
 	}

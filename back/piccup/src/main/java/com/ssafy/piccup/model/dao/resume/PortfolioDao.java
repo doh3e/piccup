@@ -9,7 +9,7 @@ public interface PortfolioDao {
 	// 포트폴리오 전체 조회
     public List<Portfolio> selectAllPort(int resumeId);
 
-    // 포트폴리오 저장
+    // 포트폴리오 저장 - 파일 별도
     public int insertPort(Portfolio portfolio);
 
     // 포트폴리오 수정

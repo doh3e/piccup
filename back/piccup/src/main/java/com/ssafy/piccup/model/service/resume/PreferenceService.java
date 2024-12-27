@@ -7,11 +7,11 @@ import com.ssafy.piccup.model.dto.resume.Preference;
 
 public interface PreferenceService {
 	
-	// 취업우대 조회
+	// 취업우대 조회 (resume기반)
     public Preference readPreferenceByResume(int resumeId);
 
     // 취업우대 추가
-    public boolean createPreference(Preference preference);
+    public void createPreference(Preference preference);
 
     // 취업우대 수정
     public boolean updatePreference(Preference preference);

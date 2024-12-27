@@ -8,11 +8,13 @@ import java.util.UUID;
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.data.relational.core.sql.UpdateBuilder.UpdateWhereAndOr;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dao.resume.WorkExpDao;
+import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Language;
 import com.ssafy.piccup.model.dto.resume.Portfolio;
 import com.ssafy.piccup.model.dto.resume.WorkExp;
@@ -41,6 +43,24 @@ public class WorkExpServiceImpl implements WorkExpService {
 	public boolean createWorkExp(WorkExp workExp, MultipartFile file) {
 		int result = workExpDao.insertWorkExp(workExp);
 		return result == 1;
+	}
+
+	// 경력 리스트 추가 - 파일 별도
+	@Transactional
+	@Override
+	public void createWorkExpList(List<WorkExp> workExps, int resumeId) {
+		int result = 0;
+		try {
+			for (WorkExp workExp : workExps) {
+				workExp.setResumeId(resumeId);
+				if (workExpDao.insertWorkExp(workExp) == 1) result += 1;
+			}
+			if (result != workExps.size()) {
+				throw new RuntimeException("create WorkExpList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }		
 	}
 
     // 경력 수정

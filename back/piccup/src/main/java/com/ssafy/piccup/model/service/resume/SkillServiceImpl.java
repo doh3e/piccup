@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.SkillDao;
+import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Skill;
 import com.ssafy.piccup.model.dto.resume.Training;
 
@@ -33,8 +34,26 @@ public class SkillServiceImpl implements SkillService {
 		int result = skillDao.insertSkill(skill);
 		return result == 1;
 	}
+	
+	// 스킬 리스트 추가
+	@Transactional
+	@Override
+	public void createSkillList(List<Skill> skills, int resumeId) {
+		int result = 0;
+		try {
+			for (Skill skill : skills) {
+				skill.setResumeId(resumeId);
+				if (skillDao.insertSkill(skill) == 1) result += 1;
+			}
+			if (result != skills.size()) {
+				throw new RuntimeException("create SkillList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }
+	}
 
-    // 스킬 수정
+	// 스킬 수정
 	@Transactional
 	@Override
 	public boolean updateSkill(Skill skill) {
@@ -49,5 +68,6 @@ public class SkillServiceImpl implements SkillService {
 		int result = skillDao.deleteSkill(skillId);
 		return result == 1;
 	}
+
 
 }

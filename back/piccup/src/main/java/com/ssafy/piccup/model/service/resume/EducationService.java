@@ -16,6 +16,9 @@ public interface EducationService {
     // 학력 추가
     public boolean createEducation(Education education, MultipartFile file);
 
+    // 학력 리스트 추가
+    public void createEducationList(List<Education> educations, int resumeId);
+
     // 학력 수정
     public boolean updateEducation(Education education, MultipartFile file);
 
@@ -24,4 +27,5 @@ public interface EducationService {
     
     // 성적증명서 추가
     public boolean uploadFile(Education education, MultipartFile file);
+
 }

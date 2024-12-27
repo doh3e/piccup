@@ -13,9 +13,13 @@ public interface TrainingService {
     // 교육 추가
     public boolean createTraining(Training training);
 
+    // 교육 리스트 추가
+    public void createTrainingList(List<Training> trainings, int resumeId);
+
     // 교육 수정
     public boolean updateTraining(Training training);
 
     // 교육 삭제
     public boolean deleteTraining(int trainingId);
+
 }

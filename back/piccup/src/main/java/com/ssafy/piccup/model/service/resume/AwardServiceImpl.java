@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.AwardDao;
+import com.ssafy.piccup.model.dto.resume.Activity;
 import com.ssafy.piccup.model.dto.resume.Award;
 
 @Service
@@ -31,6 +32,24 @@ public class AwardServiceImpl implements AwardService {
 	public boolean createAward(Award award) {
 		int result = awardDao.insertAward(award);
 		return result == 1;
+	}
+	
+	// 수상내역 리스트 추가
+	@Transactional
+	@Override
+	public void createAwardList(List<Award> awards, int resumeId) {
+		int result = 0;
+		try {
+			for (Award award : awards) {
+				award.setResumeId(resumeId);
+				if (awardDao.insertAward(award) == 1) result += 1;
+			}
+			if (result != awards.size()) {
+				throw new RuntimeException("create AwardList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }
 	}
 
     // 수상내역 수정

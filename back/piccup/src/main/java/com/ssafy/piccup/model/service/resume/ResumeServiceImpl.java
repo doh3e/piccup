@@ -25,9 +25,16 @@ public class ResumeServiceImpl implements ResumeService {
 	// 이력서 생성
 	@Transactional
 	@Override
-	public boolean createResume(Resume resume) {
-		int result = resumeDao.insertResume(resume);
-		return result == 1;
+	public void createResume(Resume resume) {
+		int result = 0;
+		try {
+	        result = resumeDao.insertResume(resume);
+	        if (result != 1) {
+	            throw new RuntimeException("createResume 불가");
+	        }
+	    } catch (Exception e) {
+	        throw e;
+	    }
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.ProjectDao;
+import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Project;
 import com.ssafy.piccup.model.dto.resume.Training;
 
@@ -34,7 +35,25 @@ public class ProjectServiceImpl implements ProjectService {
 		return result == 1;
 	}
 
-    // 프로젝트 수정
+	// 프로젝트 리스트 추가
+	@Transactional
+	@Override
+	public void createProjectList(List<Project> projects, int resumeId) {
+		int result = 0;
+		try {
+			for (Project project : projects) {
+				project.setResumeId(resumeId);
+				if (projectDao.insertProject(project) == 1) result += 1;
+			}
+			if (result != projects.size()) {
+				throw new RuntimeException("create ProjectList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }		
+	}
+
+	// 프로젝트 수정
 	@Transactional
 	@Override
 	public boolean updateProject(Project project) {

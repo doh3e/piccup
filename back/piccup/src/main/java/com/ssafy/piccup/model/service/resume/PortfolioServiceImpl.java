@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.piccup.model.dao.resume.PortfolioDao;
+import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Portfolio;
 import com.ssafy.piccup.model.dto.resume.Training;
 
@@ -40,6 +41,24 @@ public class PortfolioServiceImpl implements PortfolioService{
 	public boolean createPort(Portfolio portfolio, MultipartFile file) {
 		int result = portfolioDao.insertPort(portfolio);
 		return result == 1;
+	}
+
+	// 포트폴리오 리스트 추가 - 파일별도
+	@Transactional
+	@Override
+	public void createPortfolioList(List<Portfolio> portfolios, int resumeId) {
+		int result = 0;
+		try {
+			for (Portfolio portfolio : portfolios) {
+				portfolio.setResumeId(resumeId);
+				if (portfolioDao.insertPort(portfolio) == 1) result += 1;
+			}
+			if (result != portfolios.size()) {
+				throw new RuntimeException("create PortfolioList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }
 	}
 
 	// 포트폴리오 수정
