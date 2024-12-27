@@ -7,4 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @MapperScan(basePackages = "com.ssafy.piccup.model.dao")
 public class DBConfig {
 
+
 }
+
+
+
+
