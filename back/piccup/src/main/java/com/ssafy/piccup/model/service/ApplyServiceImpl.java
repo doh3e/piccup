@@ -40,8 +40,8 @@ public class ApplyServiceImpl implements ApplyService {
 
 	@Override
 	public boolean updateApply(Apply apply) {
-		// TODO Auto-generated method stub
-		return false;
+		int isUpdated = applyDao.updateApply(apply);
+		return isUpdated == 1;
 	}
 	
 
