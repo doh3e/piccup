@@ -60,30 +60,32 @@ public class JwtUtil {
 	}
 	
 	public boolean checkToken(String token) {
+		
 		try {
 			// Json Web Signature : 서버에서 인증을 근거로 인증 정보를 서버의 private key 서명 한 것을 토큰화 한 것
 			// setSigningKey: JWS 서명 검증을 위한 secret key 세팅
 			// parseClaimsJws : 파싱하여 원본 jws 만들기
-			
+
 //			Jws<Claims> claims = Jwts.parser().setSigningKey(this.generateKey()).parseClaimsJws(token); // 이전버전
+			
 			Jws<Claims> claims = Jwts.parserBuilder()
                     .setSigningKey(this.generateKey()) // Signing key 설정
                     .build()
                     .parseClaimsJws(token); // JWT 파싱 및 검증
-
+			
 			// Claims는 Map 구현체 형태
 //			log.debug("claims: {}", claims);
 			return true; // 정상토큰
 		} catch (ExpiredJwtException e) {
 			    System.err.println("토큰이 만료되었습니다: " + e.getMessage());
-			    return false;
+		        throw e; // Exception을 던져서 Filter에서 처리
 		} catch (SignatureException e) {
 			System.out.println("잘못된 서명입니다.: " + e.getMessage());
-			return false;
+			throw e;
 		} catch (Exception e) {
+			System.out.println("JWT 유틸 에러 발생: " + e.getMessage());
 //			log.error(e.getMessage());
-			System.out.println(e.getMessage());
-			return false; // 비정상토큰
+			throw e; // 비정상토큰
 		}
 	}
 	

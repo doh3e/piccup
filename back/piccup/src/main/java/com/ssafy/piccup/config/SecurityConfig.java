@@ -11,6 +11,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.ssafy.piccup.filter.JwtAuthenticationFilter;
 import com.ssafy.piccup.util.JwtUtil;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Configuration
 public class SecurityConfig {
 	private final JwtUtil jwtUtil;
@@ -34,6 +36,8 @@ public class SecurityConfig {
 	    return http.build();
 	}
 	
+
+	  
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
