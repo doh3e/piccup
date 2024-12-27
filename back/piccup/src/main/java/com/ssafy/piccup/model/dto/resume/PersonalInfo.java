@@ -4,11 +4,14 @@ import java.time.LocalDate;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.validation.constraints.Pattern;
+
 public class PersonalInfo {
 	private int infoId;
 	private int resumeId;
 	private String username;
 	private LocalDate birthDate;
+	@Pattern(regexp = "남|여|미지정")
 	private String gender = "미지정";
 	private String email;
 	private String homePhone;
@@ -18,6 +21,7 @@ public class PersonalInfo {
 	private int postalCode;
 	private String profileImgPath = "profile_images/default.png";
 	private String profileImgName = "default.png";
+	@Pattern(regexp = "미지정|중등교육이수|학사|석사|박사")
 	private String degree = "미지정";
 	private String hobby;
 	private String specialty;

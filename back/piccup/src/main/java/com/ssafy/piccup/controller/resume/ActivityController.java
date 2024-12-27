@@ -31,11 +31,11 @@ public class ActivityController {
 	}
 
 	// 전체 조회
-	@GetMapping("")
-	public ResponseEntity<List<Activity>> listActivity(Model model) {
-		List<Activity> activitys = activityService.readActivityList();
-		return new ResponseEntity<>(activitys, HttpStatus.OK);
-	}
+//	@GetMapping("")
+//	public ResponseEntity<List<Activity>> listActivity(Model model) {
+//		List<Activity> activitys = activityService.readActivityList();
+//		return new ResponseEntity<>(activitys, HttpStatus.OK);
+//	}
 
 	// 생성
 	@PostMapping("")

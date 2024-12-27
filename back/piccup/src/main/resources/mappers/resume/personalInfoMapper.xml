@@ -19,11 +19,19 @@
         WHERE info_id = #{infoId};
     </select>
 
-    <!-- 인적사항 저장 -->
+    <!-- 인적사항 저장 - 파일별도 -->
     <insert id="insertPersonal" parameterType="PersonalInfo" keyProperty="infoId" useGeneratedKeys="true">
         INSERT INTO personal_info (resume_id, username, birth_date, gender, email, home_phone, mobile_phone, address, address_detail, postal_code, degree, hobby, specialty)
         VALUES (#{resumeId}, #{username}, #{birthDate}, #{gender}, #{email}, #{homePhone}, #{mobilePhone}, #{address}, #{addressDetail}, #{postalCode}, #{degree},  #{hobby}, #{specialty});
     </insert>
+
+	<!-- 인적사항 수정 - 파일 -->
+    <update id="updatePersonalFile" parameterType="PersonalInfo">
+        UPDATE personal_info
+        SET profile_img_path = #{profileImgPath},
+        	profile_img_name = #{profileImgName}
+        WHERE info_id = #{infoId};
+    </update>
 
     <!-- 인적사항 수정 -->
     <update id="updatePersonal" parameterType="PersonalInfo">
