@@ -172,6 +172,7 @@ public class ResumeController {
 	        serviceMap.put(resumeRequest.getOverseas(), id -> overseaService.createOverseaList(resumeRequest.getOverseas(), id));
 	        serviceMap.put(resumeRequest.getPapers(), id -> paperService.createPaperList(resumeRequest.getPapers(), id));
 	        serviceMap.put(resumeRequest.getPatents(), id -> patentService.createPatentList(resumeRequest.getPatents(), id));
+	        serviceMap.put(resumeRequest.getPortfolios(), id -> portfolioService.createPortfolioList(resumeRequest.getPortfolios(), id));
 	        serviceMap.put(resumeRequest.getProjects(), id -> projectService.createProjectList(resumeRequest.getProjects(), id));
 	        serviceMap.put(resumeRequest.getSkills(), id -> skillService.createSkillList(resumeRequest.getSkills(), id));
 	        serviceMap.put(resumeRequest.getTrainings(), id -> trainingService.createTrainingList(resumeRequest.getTrainings(), id));
