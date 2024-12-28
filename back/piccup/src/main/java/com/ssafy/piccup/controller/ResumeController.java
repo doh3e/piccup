@@ -130,7 +130,7 @@ public class ResumeController {
 				/* 이력서가 있는 경우 */
 				int resumeId = resume.getResumeId();
 				ResumeSimple resumeSimple = new ResumeSimple();
-				resumeSimple.setResumeId(resumeId);
+				resumeSimple.setResumeId(resumeId);	
 				resumeSimple.setUserId(userId);
 				resumeSimple.setUpdatedAt(resume.getUpdatedAt());
 				
@@ -192,7 +192,7 @@ public class ResumeController {
             });
             return ResponseEntity.badRequest().body(errors);
         }
-        System.out.println(bindingResult.hasErrors());
+//        System.out.println(bindingResult.hasErrors());
 		
 		// 현재 인증 정보에서 userId 추출 가져오기
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 현재 인증정보
@@ -288,8 +288,6 @@ public class ResumeController {
 	    	Resume resume = resumeService.findByUserId(userId);
 	        int resumeId = resume.getResumeId();
 	        
-	        System.out.println("현재유저 " + userId + " resumeId: " + resumeId);
-	        if (workFile == null) System.out.println("없");
 	        // 파일 업로드
         	personalInfoService.uploadFile(resumeId, personalFile); // 프로필 사진
         	fileService.uploadPortFile(resumeId, portFile); 		// 포트폴리오 파일
