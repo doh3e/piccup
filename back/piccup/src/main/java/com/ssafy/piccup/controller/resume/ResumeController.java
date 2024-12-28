@@ -145,7 +145,12 @@ public class ResumeController {
 		        resultMap.put("skills", skillService.readSkillList(resumeId));
 		        resultMap.put("trainings", trainingService.readTrainingList(resumeId));
 		        resultMap.put("workExperiences", workExpService.readWorkExpList(resumeId));
+		        Map<String, Object> fileDetail = new HashMap<>();
+		        fileDetail.put("eduFile", fileService.readEduFile(resumeId));
+		        fileDetail.put("portFiles", fileService.readPortFileList(resumeId));
+		        fileDetail.put("workFile", fileService.readWorkFile(resumeId));
 		        
+		        resultMap.put("files", fileDetail);
 		        // 빈 객체 설정 (null -> {})
 		        if (resultMap.get("personalInfo") == null) {
 		            resultMap.put("personalInfo", new HashMap<>());

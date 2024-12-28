@@ -38,8 +38,6 @@ public class Education {
 	@JsonProperty("isQe")
 	private boolean isQe;
 	private Year qeYear;
-	private String transcriptFileName;
-	private String transcriptFilePath;
 	
 	public Education() {
 	}
@@ -156,20 +154,4 @@ public class Education {
 		this.qeYear = qeYear;
 	}
 
-	public String getTranscriptFileName() {
-		return transcriptFileName;
-	}
-
-	public void setTranscriptFileName(String transcriptFileName) {
-		this.transcriptFileName = transcriptFileName;
-	}
-
-	public String getTranscriptFilePath() {
-		return transcriptFilePath;
-	}
-
-	public void setTranscriptFilePath(String transcriptFilePath) {
-		this.transcriptFilePath = transcriptFilePath;
-	}
-	
 }

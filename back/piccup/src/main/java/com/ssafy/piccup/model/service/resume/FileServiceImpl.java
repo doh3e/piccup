@@ -2,6 +2,7 @@ package com.ssafy.piccup.model.service.resume;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.core.io.Resource;
@@ -24,9 +25,8 @@ public class FileServiceImpl implements FileService {
 		this.resourceLoader = resourceLoader;
 	}
 	
-	// 성적증명서
-	
-	// - 추가
+	// 삽입
+	// - 성적증명서 삽입
 	@Transactional
 	@Override
 	public void uploadEduFile(int resumeId, MultipartFile file) {
@@ -65,9 +65,7 @@ public class FileServiceImpl implements FileService {
  		}
  	}
 
-	// 포트폴리오
-	
-	// - 추가
+	// - 포트폴리오 삽입
 	@Transactional
 	@Override
     public void uploadPortFile(int resumeId, MultipartFile file) {
@@ -107,9 +105,7 @@ public class FileServiceImpl implements FileService {
  		}
  	}
 	
-	// 경력증명서
-	
-	// - 추가
+	// - 경력증명서 삽입
 	@Transactional
 	@Override
 	public void uploadWorkFile(int resumeId, MultipartFile file) {
@@ -146,6 +142,74 @@ public class FileServiceImpl implements FileService {
 			throw new RuntimeException("경력증명서 파일 입출력 오류 발생 : " + e.getMessage(), e);
 		} catch (Exception e) {
 			throw new RuntimeException("경력증명서 업로드 실패 : "+ e.getMessage(), e);
+		}
+	}
+	
+	// 조회
+	
+	// - 성적증명서 조회
+	@Override
+	public FileDto readEduFile(int resumeId) {
+		try {
+	        // 데이터 조회
+	        FileDto fileDto = fileDao.selectEduFile(resumeId);
+
+	        // 결과가 null인 경우 처리
+	        if (fileDto == null) {
+	            throw new RuntimeException("성적증명서 정보를 찾을 수 없습니다. resumeId: " + resumeId);
+	        }
+	        return fileDto;
+	    } catch (RuntimeException e) {
+	        System.err.println("성적증명서 조회 런타임 예외 발생: " + e.getMessage());
+	        throw e;
+	    } catch (Exception e) {
+	        // 일반 예외 처리
+	        System.err.println("알 수 없는 오류 발생: " + e.getMessage());
+        	throw new RuntimeException("교육 파일 정보를 가져오는 중 오류가 발생했습니다.", e);
+	    }
+	}
+	
+	// - 포트폴리오 조회
+	@Override
+	public List<FileDto> readPortFileList(int resumeId) {
+		try {
+	        // 데이터 조회
+	        List<FileDto> fileDtoList = fileDao.selectPortFileList(resumeId);
+
+	        // 결과가 null인 경우 처리
+	        if (fileDtoList == null) {
+	            throw new RuntimeException("포트폴리오 파일 정보를 찾을 수 없습니다. resumeId: " + resumeId);
+	        }
+	        return fileDtoList;
+	    } catch (RuntimeException e) {
+	        System.err.println("포트폴리오 파일 조회 런타임 예외 발생: " + e.getMessage());
+	        throw e;
+	    } catch (Exception e) {
+	        // 일반 예외 처리
+	        System.err.println("알 수 없는 오류 발생: " + e.getMessage());
+        	throw new RuntimeException("포트폴리오 파일 정보를 가져오는 중 오류가 발생했습니다.", e);
+	    }
+	}
+
+	// - 경력증명서 조회
+	@Override
+	public FileDto readWorkFile(int resumeId) {
+		try {
+	        // 데이터 조회
+	        FileDto fileDto = fileDao.selectWorkFile(resumeId);
+
+	        // 결과가 null인 경우 처리
+	        if (fileDto == null) {
+	            throw new RuntimeException("경력증명서 정보를 찾을 수 없습니다. resumeId: " + resumeId);
+	        }
+	        return fileDto;
+	    } catch (RuntimeException e) {
+	        System.err.println("경력증명서 조회 런타임 예외 발생: " + e.getMessage());
+	        throw e;
+	    } catch (Exception e) {
+	        // 일반 예외 처리
+	        System.err.println("알 수 없는 오류 발생: " + e.getMessage());
+        	throw new RuntimeException("경력증명서 정보를 가져오는 중 오류가 발생했습니다.", e);
 		}
 	}
 	

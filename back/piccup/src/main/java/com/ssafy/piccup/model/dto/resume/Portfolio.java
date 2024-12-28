@@ -5,9 +5,6 @@ public class Portfolio {
 	private int portId;
 	private int resumeId; // 외래키
 	private String portUrl;
-	private String portFileName;
-	private String portFilePath;
-	
 	
 	public Portfolio() {
 	}
@@ -40,26 +37,6 @@ public class Portfolio {
 
 	public void setPortUrl(String portUrl) {
 		this.portUrl = portUrl;
-	}
-
-
-	public String getPortFileName() {
-		return portFileName;
-	}
-
-
-	public void setPortFileName(String portFileName) {
-		this.portFileName = portFileName;
-	}
-
-
-	public String getPortFilePath() {
-		return portFilePath;
-	}
-
-
-	public void setPortFilePath(String portFilePath) {
-		this.portFilePath = portFilePath;
 	}
 	
 }

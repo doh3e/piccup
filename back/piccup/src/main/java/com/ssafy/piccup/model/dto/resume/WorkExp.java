@@ -21,8 +21,6 @@ public class WorkExp {
 	private String position;
 	private int salary;
 	private String description;
-	private String expFileName;
-	private String expFilePath;
 	
 	public WorkExp() {
 	}
@@ -107,20 +105,4 @@ public class WorkExp {
 		this.description = description;
 	}
 
-	public String getExpFileName() {
-		return expFileName;
-	}
-
-	public void setExpFileName(String expFileName) {
-		this.expFileName = expFileName;
-	}
-
-	public String getExpFilePath() {
-		return expFilePath;
-	}
-
-	public void setExpFilePath(String expFilePath) {
-		this.expFilePath = expFilePath;
-	}
-	
 }

@@ -21,5 +21,35 @@
     	INSERT INTO file (resume_id, work_file_name, work_file_path)
     	VALUES (#{resumeId}, #{workFileName}, #{workFilePath});
     </insert>
-
+    
+    <!-- 성적증명서 조회 -->
+   	<select id="selectEduFile" resultType="FileDto">
+   		SELECT edu_file_name, edu_file_path
+   		FROM file
+   		WHERE 	resume_id = #{resumeId}
+   				AND edu_file_name IS NOT NULL
+      			AND edu_file_path IS NOT NULL
+   		ORDER BY updated_at ASC
+   		LIMIT 1;
+   	</select>
+    
+    <!-- 포트폴리오 조회 -->
+    <select id="selectPortFileList" resultType="FileDto">
+   		SELECT port_file_name, port_file_path
+   		FROM file
+   		WHERE 	resume_id = #{resumeId}
+   				AND port_file_name IS NOT NULL
+      			AND port_file_path IS NOT NULL;
+   	</select>
+   	
+    <!-- 경력증명서 조회 -->
+	<select id="selectWorkFile" resultType="FileDto">
+   		SELECT work_file_name, work_file_path
+   		FROM file
+   		WHERE 	resume_id = #{resumeId}
+   				AND work_file_name IS NOT NULL
+      			AND work_file_path IS NOT NULL
+   		ORDER BY updated_at ASC
+   		LIMIT 1;
+   	</select>
 </mapper>
