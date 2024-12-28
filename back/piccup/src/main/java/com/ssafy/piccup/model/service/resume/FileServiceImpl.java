@@ -2,6 +2,7 @@ package com.ssafy.piccup.model.service.resume;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -151,14 +152,7 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public FileDto readEduFile(int resumeId) {
 		try {
-	        // 데이터 조회
-	        FileDto fileDto = fileDao.selectEduFile(resumeId);
-
-	        // 결과가 null인 경우 처리
-	        if (fileDto == null) {
-	            throw new RuntimeException("성적증명서 정보를 찾을 수 없습니다. resumeId: " + resumeId);
-	        }
-	        return fileDto;
+	        return fileDao.selectEduFile(resumeId);
 	    } catch (RuntimeException e) {
 	        System.err.println("성적증명서 조회 런타임 예외 발생: " + e.getMessage());
 	        throw e;
@@ -173,14 +167,7 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public List<FileDto> readPortFileList(int resumeId) {
 		try {
-	        // 데이터 조회
-	        List<FileDto> fileDtoList = fileDao.selectPortFileList(resumeId);
-
-	        // 결과가 null인 경우 처리
-	        if (fileDtoList == null) {
-	            throw new RuntimeException("포트폴리오 파일 정보를 찾을 수 없습니다. resumeId: " + resumeId);
-	        }
-	        return fileDtoList;
+	        return fileDao.selectPortFileList(resumeId);
 	    } catch (RuntimeException e) {
 	        System.err.println("포트폴리오 파일 조회 런타임 예외 발생: " + e.getMessage());
 	        throw e;
@@ -195,14 +182,7 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public FileDto readWorkFile(int resumeId) {
 		try {
-	        // 데이터 조회
-	        FileDto fileDto = fileDao.selectWorkFile(resumeId);
-
-	        // 결과가 null인 경우 처리
-	        if (fileDto == null) {
-	            throw new RuntimeException("경력증명서 정보를 찾을 수 없습니다. resumeId: " + resumeId);
-	        }
-	        return fileDto;
+	        return fileDao.selectWorkFile(resumeId);
 	    } catch (RuntimeException e) {
 	        System.err.println("경력증명서 조회 런타임 예외 발생: " + e.getMessage());
 	        throw e;

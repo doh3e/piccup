@@ -2,11 +2,20 @@ package com.ssafy.piccup.model.dto.resume;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+
 public class Award {
 	private int awardId;
 	private int resumeId; // 외래키
+	@NotBlank(message = "수상명은 필수입니다. (Not Blank)")
+	@NotNull(message = "수상명은 필수입니다. (Not Null)")
 	private String awardName;
+	@NotBlank(message = "수상기관은 필수입니다. (Not Blank)")
+	@NotNull(message = "수상기관은 필수입니다. (Not Null)")
 	private String awardOrganization;
+	@PastOrPresent(message = "수여일은 미래일 수 없습니다.")
 	private LocalDate awardDate;
 	private String description;
 	

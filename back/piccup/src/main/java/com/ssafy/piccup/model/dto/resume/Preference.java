@@ -15,7 +15,7 @@ public class Preference {
 	@JsonProperty("isDisabled")
 	private boolean isDisabled = false;
 	@NotNull
-    @Pattern(regexp = "중증|경증|1급|2급|3급|4급|5급|6급|해당없음", message = "장애 등급은 중증|경증|1급|2급|3급|4급|5급|6급|해당없음 중 하나여야 합니다.")
+    @Pattern(regexp = "중증|경증|1급|2급|3급|4급|5급|6급|해당없음", message = "장애 등급은 중증, 경증, 1급, 2급, 3급, 4급, 5급, 6급, 해당없음 중 하나여야 합니다.")
 	private String disLevel = "해당없음";
 	@NotNull
     @Pattern(regexp = "군필|미필|면제|비대상|해당없음", message = "군필 여부는 군필, 미필, 면제, 비대상, 해당없음 중 하나여야 합니다.")

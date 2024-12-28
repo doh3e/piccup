@@ -2,15 +2,18 @@ package com.ssafy.piccup.model.dto.resume;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 
 public class Language {
 	private int languageId;
 	private int resumeId; // 외래키
-    @NotNull(message = "언어명은 필수입니다.")
+	@NotBlank(message = "언어명은 필수입니다. (Not Blank)")
+    @NotNull(message = "언어명은 필수입니다. (Not Null")
 	private String languageName;
-    @NotNull(message = "시험명은 필수입니다.")
+	@NotBlank(message = "언어명은 필수입니다. (Not Blank)")
+    @NotNull(message = "시험명은 필수입니다. (Not Null)")
 	private String testName;
 	private String score;
     @PastOrPresent(message = "취득 날짜는 미래일 수 없습니다.")

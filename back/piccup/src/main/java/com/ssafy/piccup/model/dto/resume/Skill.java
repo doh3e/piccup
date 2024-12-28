@@ -1,12 +1,14 @@
 package com.ssafy.piccup.model.dto.resume;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public class Skill {
 	private int skillId;
 	private int resumeId; // 외래키
-    @NotNull(message = "스킬 이름은 필수입니다.")
+	@NotBlank(message = "스킬 이름은 필수입니다. (Not Blank)")
+    @NotNull(message = "스킬 이름은 필수입니다. (Not Null)")
 	private String skillName;
     @NotNull
     @Pattern(regexp = "미지정|초급|중급|고급|전문가", message = "스킬 레벨은 '미지정', '초급', '중급', '고급', '전문가' 중 하나여야 합니다.")

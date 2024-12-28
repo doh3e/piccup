@@ -24,6 +24,7 @@ import com.ssafy.piccup.JwtAuthenticationToken;
 import com.ssafy.piccup.model.dto.resume.PersonalInfo;
 import com.ssafy.piccup.model.dto.resume.Preference;
 import com.ssafy.piccup.model.dto.resume.Resume;
+import com.ssafy.piccup.model.dto.resume.ResumeSimple;
 import com.ssafy.piccup.model.service.resume.ActivityService;
 import com.ssafy.piccup.model.service.resume.AwardService;
 import com.ssafy.piccup.model.service.resume.CertificationService;
@@ -128,9 +129,13 @@ public class ResumeController {
 			} else {
 				/* 이력서가 있는 경우 */
 				int resumeId = resume.getResumeId();
-
+				ResumeSimple resumeSimple = new ResumeSimple();
+				resumeSimple.setResumeId(resumeId);
+				resumeSimple.setUserId(userId);
+				resumeSimple.setUpdatedAt(resume.getUpdatedAt());
+				
 				// 데이터 조회
-				resultMap.put("resume", resume);
+				resultMap.put("resume", resumeSimple);
 				resultMap.put("activities", activityService.readActivityList(resumeId));
 		        resultMap.put("awards", awardService.readAwardList(resumeId));
 		        resultMap.put("personalInfo", personalInfoService.readPersonalByResume(resumeId));
@@ -150,15 +155,20 @@ public class ResumeController {
 		        fileDetail.put("eduFile", fileService.readEduFile(resumeId));
 		        fileDetail.put("portFiles", fileService.readPortFileList(resumeId));
 		        fileDetail.put("workFile", fileService.readWorkFile(resumeId));
-		        
-		        resultMap.put("files", fileDetail);
 		        // 빈 객체 설정 (null -> {})
 		        if (resultMap.get("personalInfo") == null) {
-		            resultMap.put("personalInfo", new HashMap<>());
+		        	resultMap.put("personalInfo", new HashMap<>());
 		        }
 		        if (resultMap.get("preference") == null) {
 		        	resultMap.put("preference", new HashMap<>());
 		        }
+		        if (fileDetail.get("eduFile") == null) {
+		        	fileDetail.put("eduFile", new HashMap<>());
+		        }
+		        if (fileDetail.get("workFile") == null ) {
+		        	fileDetail.put("workFile", new HashMap<>());
+		        }
+		        resultMap.put("files", fileDetail);
 
 				// 응답 데이터 구성
 				status = HttpStatus.OK;

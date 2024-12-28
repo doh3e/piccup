@@ -4,21 +4,23 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class WorkExp {
 	private int expId;
 	private int resumeId; // 외래키
-	@NotBlank
-    @NotNull(message = "기관 이름은 필수입니다.")
+	@NotBlank(message = "기관 이름은 필수입니다. (Not Blank)")
+    @NotNull(message = "기관 이름은 필수입니다. (Not Null)")
 	private String company;
 	private String department;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	@JsonProperty("isCurrent")
-	private boolean isCurrent;
+	private boolean isCurrent = false;
 	private String position;
+	@Min(value = 0, message = "연봉은 0 이상이어야합니다.")
 	private int salary;
 	private String description;
 	

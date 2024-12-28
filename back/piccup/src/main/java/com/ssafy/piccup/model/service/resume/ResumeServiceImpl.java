@@ -16,7 +16,7 @@ public class ResumeServiceImpl implements ResumeService {
 		this.resumeDao = resumeDao;
 	}
 	
-	// 이력서 조회
+	// 이력서 조회 (user기반)
 	@Override
 	public Resume findByUserId(int userId) {
 		return resumeDao.selectResumeByUser(userId);
@@ -31,7 +31,7 @@ public class ResumeServiceImpl implements ResumeService {
 			Resume existingResume = resumeDao.selectResumeByUser(resume.getUserId());
 			// 기존 Resume 삭제
 			if (existingResume != null) {
-				resumeDao.deleteResumeByUser(existingResume.getResumeId());
+				resumeDao.deleteResumeByUser(existingResume.getUserId());
 			}
 
 			// 새로운 Resume 생성
