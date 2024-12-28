@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.FileDao">
+
+	<!-- 성적증명서 추가 -->
+	<insert id="insertEduFile" parameterType="FileDto" keyProperty="fileId" useGeneratedKeys="true">
+    	INSERT INTO file (resume_id, edu_file_name, edu_file_path)
+    	VALUES (#{resumeId}, #{eduFileName}, #{eduFilePath});
+    </insert>
+	
+    <!-- 포트폴리오 파일 추가 -->
+    <insert id="insertPortFile" parameterType="FileDto" keyProperty="fileId" useGeneratedKeys="true">
+    	INSERT INTO file (resume_id, port_file_name, port_file_path)
+    	VALUES (#{resumeId}, #{portFileName}, #{portFilePath});
+    </insert>
+	
+    <!-- 경력증명서 추가 -->
+    <insert id="insertWorkFile" parameterType="FileDto" keyProperty="fileId" useGeneratedKeys="true">
+    	INSERT INTO file (resume_id, work_file_name, work_file_path)
+    	VALUES (#{resumeId}, #{workFileName}, #{workFilePath});
+    </insert>
+
+</mapper>

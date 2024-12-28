@@ -22,8 +22,5 @@ public interface PortfolioService {
 
     // 포트폴리오 삭제
     public boolean deletePort(int portId);
-    
-    // 포트폴리오 파일 추가
-    public boolean uploadFile(Portfolio portfolio, MultipartFile file);
 
 }

@@ -18,6 +18,4 @@ public interface PortfolioDao {
     // 포트폴리오 삭제
     public int deletePort(int portId); // 실제 테이블에서 건드려지는 개수 반환 (1개 삭제 -> 1 or 0)
 
-    // 포트폴리오 사진 저장
-	public void insertFile(Portfolio portfolio);
 }

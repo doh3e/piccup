@@ -16,6 +16,7 @@ public class PersonalInfo {
 	private LocalDate birthDate;
     @Pattern(regexp = "남|여|미지정", message = "성별은 '남', '여', '미지정' 중 하나여야 합니다.")
 	private String gender = "미지정";
+    @NotNull(message = "이메일은 필수입니다.")
     @Email(message = "이메일 형식이 올바르지 않습니다.")
 	private String email;
     @Pattern(regexp = "^(\\d{2,4})-(\\d{3,4})-(\\d{4})$", message = "homePhone 형식이 올바르지 않습니다.")

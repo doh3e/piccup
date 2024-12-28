@@ -25,18 +25,12 @@
         VALUES (#{resumeId}, #{username}, #{birthDate}, #{gender}, #{email}, #{homePhone}, #{mobilePhone}, #{address}, #{addressDetail}, #{postalCode}, #{degree},  #{hobby}, #{specialty});
     </insert>
 
-    <!-- 인적사항 저장 - 사진만 -->
-    <insert id="insertPersonalFile" parameterType="PersonalInfo" keyProperty="infoId" useGeneratedKeys="true">
-        INSERT INTO personal_info (resume_id, profile_img_path, profile_img_name)
-        VALUES (#{resumeId}, #{profileImgPath}, #{profileImgName});
-    </insert>
-
-	<!-- 인적사항 수정 - 파일 -->
+	<!-- 인적사항 수정 - 사진만 -->
     <update id="updatePersonalFile" parameterType="PersonalInfo">
         UPDATE personal_info
         SET profile_img_path = #{profileImgPath},
         	profile_img_name = #{profileImgName}
-        WHERE info_id = #{infoId};
+        WHERE resume_id = #{resumeId};
     </update>
 
     <!-- 인적사항 수정 -->

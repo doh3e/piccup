@@ -11,19 +11,17 @@
         WHERE resume_id = #{resumeId};
     </select>
 
-    <!-- 포트폴리오 저장 - 파일 별도 -->
+    <!-- 포트폴리오 추가 - 파일 별도 -->
     <insert id="insertPort" parameterType="Portfolio" keyProperty="portId" useGeneratedKeys="true">
         INSERT INTO portfolio (resume_id, port_url)
         VALUES (#{resumeId}, #{portUrl});
     </insert>
-
+    
     <!-- 포트폴리오 수정 -->
     <update id="updatePort" parameterType="Portfolio">
         UPDATE portfolio
         SET resume_id = #{resumeId},
             port_url = #{portUrl},
-            port_file_name = #{portFileName},
-            port_file_path = #{portFilePath}
         WHERE port_id = #{portId};
     </update>
 

@@ -12,7 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +27,7 @@ import com.ssafy.piccup.model.service.resume.ActivityService;
 import com.ssafy.piccup.model.service.resume.AwardService;
 import com.ssafy.piccup.model.service.resume.CertificationService;
 import com.ssafy.piccup.model.service.resume.EducationService;
+import com.ssafy.piccup.model.service.resume.FileService;
 import com.ssafy.piccup.model.service.resume.LanguageService;
 import com.ssafy.piccup.model.service.resume.OverseaService;
 import com.ssafy.piccup.model.service.resume.PaperService;
@@ -65,12 +65,14 @@ public class ResumeController {
 	private final SkillService skillService;
 	private final TrainingService trainingService;
 	private final WorkExpService workExpService;
+	private final FileService fileService;
 	
 	public ResumeController(
 			ActivityService activityService,
 			AwardService awardService,
 			CertificationService certificationService,
 			EducationService educationService,
+			FileService fileService,
 			LanguageService languageService,
 			OverseaService overseaService,
 			PaperService paperService,
@@ -87,6 +89,7 @@ public class ResumeController {
 		this.awardService = awardService;
 		this.certificationService = certificationService;
 		this.educationService = educationService;
+		this.fileService = fileService;
 		this.languageService = languageService;
 		this.overseaService = overseaService;
 		this.paperService = paperService;
@@ -165,7 +168,7 @@ public class ResumeController {
 	// 생성 (json)
 	@PostMapping("")
 	public ResponseEntity<?> writeResume(@Valid @RequestBody Resume resumeRequest, BindingResult bindingResult) {
-		  // 유효성 검증 오류 처리
+		// 유효성 검증 오류 처리
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
             bindingResult.getFieldErrors().forEach(error -> {
@@ -174,14 +177,6 @@ public class ResumeController {
             return ResponseEntity.badRequest().body(errors);
         }
         System.out.println(bindingResult.hasErrors());
-        
-//		if (bindingResult.hasErrors()) {
-//	        // 유효성 검증 실패 시 오류 메시지 반환
-//	        Map<String, String> errors = new HashMap<>();
-//	        bindingResult.getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
-//	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
-//	    }
-		
 		
 		// 현재 인증 정보에서 userId 추출 가져오기
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 현재 인증정보
@@ -258,7 +253,10 @@ public class ResumeController {
 	// 생성 (form-data)
 	@PostMapping("/files")
 	public ResponseEntity<?> writeResumeFile(
-			@RequestParam(value = "personalFile", required = false) MultipartFile personalFile) {
+			@RequestParam(value = "personalFile", required = false) MultipartFile personalFile,
+			@RequestParam(value = "portFile", required = false) MultipartFile portFile,
+			@RequestParam(value="eduFile", required = false) MultipartFile eduFile,
+			@RequestParam(value="workFile", required = false) MultipartFile workFile) {
 		
 		// 현재 인증 정보에서 userId 추출 가져오기
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 현재 인증정보
@@ -274,21 +272,22 @@ public class ResumeController {
 	    	Resume resume = resumeService.findByUserId(userId);
 	        int resumeId = resume.getResumeId();
 	        
-	        System.out.println("현재유저 " + userId);
-	        System.out.println(resumeId);
-	        
-	        // 파일이 존재하면 업로드
-        	personalInfoService.uploadFile(resumeId, personalFile);
+	        System.out.println("현재유저 " + userId + " resumeId: " + resumeId);
+	        if (workFile == null) System.out.println("없");
+	        // 파일 업로드
+        	personalInfoService.uploadFile(resumeId, personalFile); // 프로필 사진
+        	fileService.uploadPortFile(resumeId, portFile); 		// 포트폴리오 파일
+        	fileService.uploadEduFile(resumeId, eduFile); 			// 성적증명서
+        	fileService.uploadWorkFile(resumeId, workFile); 		// 경력증명서
         	
 	        // 응답 데이터
-	        resultMap.put("message", "이력서 파일 업로드 성공하였습니다.");
+	        resultMap.put("message", "이력서 내 파일 저장 성공하였습니다.");
 	        status = HttpStatus.CREATED;
-
 	    }
 	    catch (RuntimeException e) {
 	    	resultMap.put("message", e.getMessage());
 	        resultMap.put("detail", e.getCause() != null ? e.getCause().getMessage() : ""); // 상세 원인
-	        status = HttpStatus.BAD_REQUEST;
+	        status = HttpStatus.INTERNAL_SERVER_ERROR;
 	        
         } catch (Exception e) {
 	        resultMap.put("message", "Resume File 생성 실패: " + e.getMessage());
@@ -297,24 +296,4 @@ public class ResumeController {
 	    }
 	    return new ResponseEntity<>(resultMap, status);
     }
-//		public ResponseEntity<?> writePersonal(
-//				@ModelAttribute PersonalInfo personalInfo,
-//				@RequestParam(value = "file", required = false) MultipartFile file) {
-//			
-//			// 파일 존재하면, 업로드
-//			if (file != null) {
-//				boolean isFileUploaded = personalInfoService.uploadFile(personalInfo, file);
-//				if (!isFileUploaded) {
-//					return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("파일 업로드를 실패하였습니다.");
-//				}			
-//			}
-//			
-//			// DB저장
-//			boolean isCreated = personalInfoService.createPersonal(personalInfo, file);
-//			if (isCreated) {
-//				return new ResponseEntity<PersonalInfo>(personalInfo, HttpStatus.CREATED);
-//			}
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("인적사항 등록을 실패하였습니다.");
-//		}
-//		
 }
