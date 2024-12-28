@@ -1,4 +1,4 @@
-package com.ssafy.piccup.controller.resume;
+package com.ssafy.piccup.controller;
 
 
 import java.util.HashMap;

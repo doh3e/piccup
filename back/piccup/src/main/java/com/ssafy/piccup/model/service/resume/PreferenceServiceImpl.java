@@ -33,21 +33,4 @@ public class PreferenceServiceImpl implements PreferenceService {
 		    throw e;
 		}
 	}
-
-    // 취업우대 수정
-	@Transactional
-	@Override
-	public boolean updatePreference(Preference preference) {
-		int result = preferenceDao.updatePreference(preference);
-		return result == 1;
-	}
-
-    // 취업우대 삭제
-	@Transactional
-	@Override
-	public boolean deletePreference(int preferenceId) {
-		int result = preferenceDao.deletePreference(preferenceId);
-		return result == 1;
-	}
-
 }

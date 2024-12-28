@@ -39,21 +39,6 @@ public class JwtUtil {
 		return create(userId, email, "refresh-token", refreshTokenExpireTime);
 	}	
 	
-	// 키 생성 - 이전방식	
-//	private byte[] generateKey() {
-//		byte[] key = null;
-//		try {
-//			// 	charset 설정 안하면 -> 사용자 플랫폼의 기본 인코딩 설정으로 인코딩 됨
-//			key = salt.getBytes("UTF-8");
-//		} catch (UnsupportedEncodingException e) {
-//			if(log.isInfoEnabled()) {
-//				e.printStackTrace();
-//			}else {
-//				log.error("Making JWT Key Error ::: {}", e.getMessage());
-//			}
-//		}
-//		return key;
-//	}
 	// 키 생성
 	private SecretKey generateKey() {
 		return Keys.hmacShaKeyFor(salt.getBytes(StandardCharsets.UTF_8));
@@ -66,8 +51,6 @@ public class JwtUtil {
 			// setSigningKey: JWS 서명 검증을 위한 secret key 세팅
 			// parseClaimsJws : 파싱하여 원본 jws 만들기
 
-//			Jws<Claims> claims = Jwts.parser().setSigningKey(this.generateKey()).parseClaimsJws(token); // 이전버전
-			
 			Jws<Claims> claims = Jwts.parserBuilder()
                     .setSigningKey(this.generateKey()) // Signing key 설정
                     .build()
@@ -89,35 +72,32 @@ public class JwtUtil {
 		}
 	}
 	
-	// Token 발급
-	// 	- key: Claim에 셋팅될 key값
-	// 	- value: Claim에 셋팅될 data값
-	//  - subject: payload에 sub의 value로 들어갈 subject값
-	//  - expire: 토큰 유효기간 설정값
-	
-	//  - jwt 토큰의 구성 : header _ payload _ signature
+	/*
+	 *  Token 발급
+	 *  - key: Claim에 셋팅될 key값
+	 *  - value: Claim에 셋팅될 data값
+	 *  - subject: payload에 sub의 value로 들어갈 subject값
+	 *  - expire: 토큰 유효기간 설정값
+	 *  
+	 *  jwt 토큰의 구성
+	 *  - header / payload / signature
+	 *  */
 	private String create(int userId, String email, String subject, long expireTime) {
-		// payloa설정 : 생성일 (IssuedAt), 유효기간 (Expiration), 토큰제목 (Subject), 데이터 (Claim)
+		// payloa설정
+		// - 생성일 (IssuedAt), 유효기간 (Expiration), 토큰제목 (Subject), 데이터 (Claim)
 		Claims claims = Jwts.claims()
 				.setSubject(subject)
 				.setIssuedAt(new Date())
 				.setExpiration(new Date(System.currentTimeMillis() + expireTime));
-		
 		claims.put("email", email);
 		claims.put("userId", userId);
 		
-		// jwt생성
-		// 이전버전
-//		String jwt = Jwts.builder()
-//				.setHeaderParam("typ", "JWT")
-//				.setClaims(claims)
-//				.signWith(SignatureAlgorithm.HS256, this.generateKey())
-//				.compact(); // 직렬화
+		// 토큰생성
 		String jwt = Jwts.builder()
-		        .setHeaderParam("typ", "JWT") // 헤더 설정
-		        .setClaims(claims) // 페이로드 설정
-                .signWith(generateKey(), SignatureAlgorithm.HS256) // SecretKey 사용
-		        .compact(); // JWT 직렬화
+		        .setHeaderParam("typ", "JWT") 						// 헤더 설정
+		        .setClaims(claims) 									// 페이로드 설정
+                .signWith(generateKey(), SignatureAlgorithm.HS256) 	// SecretKey 사용
+		        .compact(); 										// JWT 직렬화
 		
 		return jwt;
 	}

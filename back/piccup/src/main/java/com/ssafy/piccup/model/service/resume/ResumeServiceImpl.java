@@ -48,9 +48,7 @@ public class ResumeServiceImpl implements ResumeService {
 	@Override
 	public void deleteResumeByUser(int userId) {
 		try {
-			if (resumeDao.deleteResumeByUser(userId) != (1 | 0)) {
-				throw new RuntimeException("deleteResume 실패");
-			}
+			resumeDao.deleteResumeByUser(userId);
 		} catch (Exception e) {
 			throw new RuntimeException("deleteResume 과정에서 오류 발생: "+ e.getMessage(), e);
 		}

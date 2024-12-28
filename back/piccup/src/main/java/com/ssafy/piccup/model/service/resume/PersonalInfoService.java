@@ -11,18 +11,9 @@ public interface PersonalInfoService {
 	// 인적사항 조회 (resume기반)
     public PersonalInfo readPersonalByResume(int resumeId);
 
-    // 특정 인적사항 조회
-    public PersonalInfo readPersonal(int infoId);
-
     // 인적사항 생성 - 사진 별도
     public boolean createPersonal(PersonalInfo personalInfo);
     
-    // 인적사항 수정 - 전체
-    public boolean updatePersonal(PersonalInfo personalInfo, MultipartFile file);
-    
     // 인적사항 생성 or 수정 - 사진만
     public void uploadFile(int resumeId, MultipartFile file);
-
-    // 인적사항 삭제
-    public boolean deletePersonal(int infoId);
 }

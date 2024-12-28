@@ -6,15 +6,9 @@ import com.ssafy.piccup.model.dto.resume.Oversea;
 
 public interface OverseaDao {
 	
-	// 해외경험 전체 조회
+	// 해외경험 조회 (resume 기반)
     public List<Oversea> selectAllOverseas(int resumeId);
 
     // 해외경험 추가
     public int insertOversea(Oversea oversea);
-
-    // 해외경험 수정
-    public int updateOversea(Oversea oversea);
-
-    // 해외경험 삭제
-    public int deleteOversea(int overseaId);
 }

@@ -4,7 +4,7 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.EducationDao">
 
-	<!-- 학력 전체 조회 -->
+	<!-- 학력 조회 (resume기반) -->
     <select id="selectAllEducation" resultType="Education">
         SELECT *
         FROM education
@@ -16,28 +16,4 @@
         INSERT INTO education (resume_id, school_type, school_name, major, start_date, end_date, status, is_transfer, gpa, major_gpa, gpa_scale, is_qe, qe_year)
         VALUES (#{resumeId}, #{schoolType}, #{schoolName}, #{major}, #{startDate}, #{endDate}, #{status}, #{isTransfer}, #{gpa}, #{majorGpa}, #{gpaScale}, #{isQe}, #{qeYear});
     </insert>
-
-    <!-- 학력 수정 -->
-    <update id="updateEducation" parameterType="Education">
-        UPDATE education
-        SET school_type = #{schoolType},
-            school_name = #{schoolName},
-            major = #{major},
-            start_date = #{startDate},
-            end_date = #{endDate},
-            status = #{status},
-            is_transfer = #{isTransfer},
-            gpa = #{gpa},
-            major_gpa = #{majorGpa},
-            gpa_scale = #{gpaScale},
-            is_qe = #{isQe},
-            qe_year = #{qeYear},
-        WHERE edu_id = #{eduId};
-    </update>
-
-    <!-- 학력 삭제 -->
-    <delete id="deleteEducation" parameterType="int">
-        DELETE FROM education
-        WHERE edu_id = #{eduId};
-    </delete>
 </mapper>

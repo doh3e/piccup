@@ -19,19 +19,11 @@ public class PortfolioServiceImpl implements PortfolioService{
     	this.portfolioDao = portfolioDao;
     }
 
-    // 포트폴리오 전체 조회
+    // 포트폴리오 조회 (resume 기반)
 	@Override
 	public List<Portfolio> readPortList(int resumeId) {
 		List<Portfolio> portfolioList = portfolioDao.selectAllPort(resumeId);
 		return portfolioList.isEmpty() ? new ArrayList<Portfolio>() : portfolioList;
-	}
-
-	// 포트폴리오 추가
-	@Transactional
-	@Override
-	public boolean createPort(Portfolio portfolio, MultipartFile file) {
-		int result = portfolioDao.insertPort(portfolio);
-		return result == 1;
 	}
 
 	// 포트폴리오 리스트 추가 - 파일별도
@@ -50,21 +42,5 @@ public class PortfolioServiceImpl implements PortfolioService{
         } catch (Exception e) {
         	throw e;
         }
-	}
-	
-	// 포트폴리오 수정
-	@Transactional
-	@Override
-	public boolean updatePort(Portfolio portfolio, MultipartFile file) {
-		int result = portfolioDao.updatePort(portfolio);
-		return result == 1;
-	}
-
-	// 포트폴리오 삭제
-	@Transactional
-	@Override
-	public boolean deletePort(int portId) {
-		int result = portfolioDao.deletePort(portId);
-		return result == 1;
 	}
 }

@@ -1,4 +1,4 @@
-package com.ssafy.piccup.controller.user;
+package com.ssafy.piccup.controller;
 
 import java.util.HashMap;
 import java.util.List;

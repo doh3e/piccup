@@ -6,16 +6,9 @@ import com.ssafy.piccup.model.dto.resume.Portfolio;
 
 public interface PortfolioDao {
 
-	// 포트폴리오 전체 조회
+	// 포트폴리오 조회 (resume 기반)
     public List<Portfolio> selectAllPort(int resumeId);
 
     // 포트폴리오 저장 - 파일 별도
     public int insertPort(Portfolio portfolio);
-
-    // 포트폴리오 수정
-    public int updatePort(Portfolio portfolio);
-
-    // 포트폴리오 삭제
-    public int deletePort(int portId); // 실제 테이블에서 건드려지는 개수 반환 (1개 삭제 -> 1 or 0)
-
 }

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.piccup.model.dao.resume.ProjectDao;
-import com.ssafy.piccup.model.dto.resume.Award;
 import com.ssafy.piccup.model.dto.resume.Project;
-import com.ssafy.piccup.model.dto.resume.Training;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -20,19 +18,11 @@ public class ProjectServiceImpl implements ProjectService {
 		this.projectDao = ProjectDao;
 	}
 	
-	// 프로젝트 전체 조회
+	// 프로젝트 조회 (resume 기반)
 	@Override
 	public List<Project> readProjectList(int resumeId) {
 		List<Project> projectList = projectDao.selectAllProjects(resumeId);
 		return projectList.isEmpty() ? new ArrayList<Project>() : projectList;
-	}
-
-    // 프로젝트 추가
-	@Transactional
-	@Override
-	public boolean createProject(Project project) {
-		int result = projectDao.insertProject(project);
-		return result == 1;
 	}
 
 	// 프로젝트 리스트 추가
@@ -52,21 +42,4 @@ public class ProjectServiceImpl implements ProjectService {
         	throw e;
         }		
 	}
-
-	// 프로젝트 수정
-	@Transactional
-	@Override
-	public boolean updateProject(Project project) {
-		int result = projectDao.updateProject(project);
-		return result == 1;
-	}
-
-    // 프로젝트 삭제
-	@Transactional
-	@Override
-	public boolean deleteProject(int projectId) {
-		int result = projectDao.deleteProject(projectId);
-		return result == 1;
-	}
-
 }

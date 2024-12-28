@@ -6,15 +6,9 @@ import com.ssafy.piccup.model.dto.resume.Certification;
 
 public interface CertificationDao {
 	
-	// 자격증 전체 조회
+	// 자격증 조회 (resume 기반)
     public List<Certification> selectAllCertifications(int resumeId);
 
     // 자격증 추가
     public int insertCertification(Certification certification);
-
-    // 자격증 수정
-    public int updateCertification(Certification certification);
-
-    // 자격증 삭제
-    public int deleteCertification(int certId);
 }

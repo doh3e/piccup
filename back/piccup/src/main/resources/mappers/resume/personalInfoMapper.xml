@@ -4,19 +4,12 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.PersonalInfoDao">
 
-	<!-- 로그인 유저의 인적사항 전체 조회 -->
+	<!-- 인적사항 조회 (resume기반) -->
     <select id="selectPersonalByResume" resultType="PersonalInfo">
         SELECT *
         FROM personal_info
         WHERE resume_id = #{resumeId}
         LIMIT 1;
-    </select>
-
-    <!-- 특정 인적사항 조회 -->
-    <select id="selectOnePersonal" parameterType="int" resultType="PersonalInfo">
-        SELECT *
-        FROM personal_info
-        WHERE info_id = #{infoId};
     </select>
 
     <!-- 인적사항 저장 - 사진별도 -->
@@ -32,31 +25,4 @@
         	profile_img_name = #{profileImgName}
         WHERE resume_id = #{resumeId};
     </update>
-
-    <!-- 인적사항 수정 -->
-    <update id="updatePersonal" parameterType="PersonalInfo">
-        UPDATE personal_info
-        SET resume_id = #{resumeId},
-            username = #{username},
-            birth_date = #{birthDate},
-            gender = #{gender},
-            email = #{email},
-            home_phone = #{homePhone},
-            mobile_phone = #{mobilePhone},
-            address = #{address},
-            address_detail = #{addressDetail},
-            postal_code = #{postalCode},
-            degree = #{degree},
-            profile_img_path = #{profileImgPath},
-            profile_img_name = #{profileImgName},
-            hobby = #{hobby},
-            specialty = #{specialty}
-        WHERE info_id = #{infoId};
-    </update>
-
-    <!-- 인적사항 삭제 -->
-    <delete id="deletePersonal" parameterType="int">
-        DELETE FROM personal_info
-        WHERE info_id = #{infoId};
-    </delete>
 </mapper>
