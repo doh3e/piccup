@@ -31,7 +31,7 @@ public class Resume {
 	@Valid
     private transient List<Training> trainings;
 	@Valid
-    private transient List<WorkExp> workExp;
+    private transient List<WorkExp> workExperiences;
 	@Valid
     private transient List<Education> educations;
 	@Valid
@@ -120,12 +120,12 @@ public class Resume {
 		this.trainings = trainings;
 	}
 
-	public List<WorkExp> getWorkExp() {
-		return workExp;
+	public List<WorkExp> getWorkExperiences() {
+		return workExperiences;
 	}
 
-	public void setWorkExp(List<WorkExp> workExp) {
-		this.workExp = workExp;
+	public void setWorkExperiences(List<WorkExp> workExperiences) {
+		this.workExperiences = workExperiences;
 	}
 
 	public List<Education> getEducations() {

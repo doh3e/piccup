@@ -15,19 +15,14 @@ public class Preference {
 	@JsonProperty("isDisabled")
 	private boolean isDisabled = false;
 	@NotNull
-    @Pattern(regexp = "중증|경증|1급|2급|3급|4급|5급|6급|해당없음", message = "장애 등급은 지정된 값 중 하나여야 합니다.")
+    @Pattern(regexp = "중증|경증|1급|2급|3급|4급|5급|6급|해당없음", message = "장애 등급은 중증|경증|1급|2급|3급|4급|5급|6급|해당없음 중 하나여야 합니다.")
 	private String disLevel = "해당없음";
 	@NotNull
-    @Pattern(regexp = "군필|미필|면제|비대상|해당없음", message = "군필 여부는 지정된 값 중 하나여야 합니다.")
+    @Pattern(regexp = "군필|미필|면제|비대상|해당없음", message = "군필 여부는 군필, 미필, 면제, 비대상, 해당없음 중 하나여야 합니다.")
 	private String military = "해당없음";
     @NotNull
 	@JsonProperty("isAgree")
 	private boolean isAgree = false;
-//
-//	dis_level 		VARCHAR(10) DEFAULT '해당없음' CHECK (dis_level IN ('중증', '경증', '1급', '2급', '3급', '4급', '5급', '6급', '해당없음')),
-//	military 		VARCHAR(10) DEFAULT '해당없음' CHECK (military IN ('군필', '미필', '면제', '비대상', '해당없음')),
-//	is_agree 		BOOLEAN 	NOT NULL DEFAULT FALSE,
-//	
 	
 	public Preference() {
 	}

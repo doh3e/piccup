@@ -215,7 +215,7 @@ public class ResumeController {
 	        serviceMap.put(resumeRequest.getProjects(), id -> projectService.createProjectList(resumeRequest.getProjects(), id));
 	        serviceMap.put(resumeRequest.getSkills(), id -> skillService.createSkillList(resumeRequest.getSkills(), id));
 	        serviceMap.put(resumeRequest.getTrainings(), id -> trainingService.createTrainingList(resumeRequest.getTrainings(), id));
-	        serviceMap.put(resumeRequest.getWorkExp(), id -> workExpService.createWorkExpList(resumeRequest.getWorkExp(), id));
+	        serviceMap.put(resumeRequest.getWorkExperiences(), id -> workExpService.createWorkExpList(resumeRequest.getWorkExperiences(), id));
 	        // - 반복문으로 처리
 	        for (Map.Entry<List<?>, Consumer<Integer>> entry : serviceMap.entrySet()) {
 	            List<?> entityList = entry.getKey();
@@ -258,7 +258,7 @@ public class ResumeController {
 	// 생성 (form-data)
 	@PostMapping("/files")
 	public ResponseEntity<?> writeResumeFile(
-			@ModelAttribute PersonalInfo personalInfo, @RequestParam(value = "personalFile", required = false) MultipartFile personalFile) {
+			@RequestParam(value = "personalFile", required = false) MultipartFile personalFile) {
 		
 		// 현재 인증 정보에서 userId 추출 가져오기
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 현재 인증정보
@@ -270,12 +270,15 @@ public class ResumeController {
 	    HttpStatus status = HttpStatus.ACCEPTED;
 
 	    try {
+	    	
 	    	Resume resume = resumeService.findByUserId(userId);
 	        int resumeId = resume.getResumeId();
+	        
+	        System.out.println("현재유저 " + userId);
 	        System.out.println(resumeId);
+	        
 	        // 파일이 존재하면 업로드
-//        	personalInfo.setResumeId(resumeId);
-//        	personalInfoService.uploadFile(personalInfo, personalFile);
+        	personalInfoService.uploadFile(resumeId, personalFile);
         	
 	        // 응답 데이터
 	        resultMap.put("message", "이력서 파일 업로드 성공하였습니다.");

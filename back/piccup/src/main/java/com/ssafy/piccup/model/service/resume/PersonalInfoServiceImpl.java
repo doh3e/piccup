@@ -77,35 +77,51 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	// 사진 추가
 	@Transactional
 	@Override
-	public void uploadFile(PersonalInfo personalInfo, MultipartFile file) {
+	public void uploadFile(int resumeId, MultipartFile file) {
 		// 파일이 존재할 때 처리
 			try {
 				if (file != null && file.getSize() > 0) {
-					// 실제 파일이름 생성
+					
+					// 파일변환
+					// - 실제 파일이름 생성
 					String profileImgName = file.getOriginalFilename(); 
 					
-					// 확장자 추출
+					// - 확장자 추출
 		            String fileExtension = "";
 		            if (profileImgName != null && profileImgName.contains(".")) {
 		                fileExtension = profileImgName.substring(profileImgName.lastIndexOf("."));
 		            }
-		            // 고유한 파일 이름 생성 (UUID + 확장자)
+		            // - 고유한 파일 이름 생성 (UUID + 확장자)
 		            String profileImgPath = UUID.randomUUID().toString() + fileExtension;
-					
-					personalInfo.setProfileImgName(profileImgName);
-					personalInfo.setProfileImgPath(profileImgPath);
-					
-					Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
-					file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
-					
-					if (personalInfoDao.updatePersonalFile(personalInfo) != 1) {
-						throw new RuntimeException(" upload Profile Image 실패");
+
+		            // 인적사항 존재하면 수정, 없다면 생성
+		            PersonalInfo personalInfo = personalInfoDao.selectPersonalByResume(resumeId);
+		            if (personalInfo == null) {
+		            	personalInfo = new PersonalInfo();
+
+		            	personalInfo.setProfileImgName(profileImgName);
+		            	personalInfo.setProfileImgPath(profileImgPath);
+		            	Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
+		            	file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
+		            	
+		            	if (personalInfoDao.insertPersonalFile(personalInfo) != 1) {
+		            		throw new RuntimeException("upload Profile Image 실패" );
+		            	}
+					} else {
+						personalInfo.setProfileImgName(profileImgName);
+						personalInfo.setProfileImgPath(profileImgPath);
+						Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
+						file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
+
+						if (personalInfoDao.updatePersonalFile(personalInfo) != 1) {
+							throw new RuntimeException(" upload Profile Image 실패");
+						}
 					}
 				}
 			} catch (IOException e) {
 		        throw new RuntimeException("파일 처리 중 오류 발생", e);
 		    } catch (Exception e) {
-		        throw new RuntimeException("프로필 이미지 업로드 중 알 수 없는 오류 발생", e);
+		        throw new RuntimeException("프로필 이미지 업로드 중 알 수 없는 오류 발생 : "+ e.getMessage(), e);
 			}
 	}
 }

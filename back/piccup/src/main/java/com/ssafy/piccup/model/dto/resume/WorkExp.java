@@ -4,9 +4,14 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class WorkExp {
 	private int expId;
 	private int resumeId; // 외래키
+	@NotBlank
+    @NotNull(message = "기관 이름은 필수입니다.")
 	private String company;
 	private String department;
 	private LocalDate startDate;
