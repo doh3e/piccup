@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
@@ -14,28 +13,28 @@ public class PersonalInfo {
 	private int resumeId;
 	private String username;
 	private LocalDate birthDate;
-    @Pattern(regexp = "남|여|미지정", message = "성별은 '남', '여', '미지정' 중 하나여야 합니다.")
+	@Pattern(regexp = "남|여|미지정", message = "성별은 '남', '여', '미지정' 중 하나여야 합니다.")
 	private String gender = "미지정";
-    @NotNull(message = "이메일은 필수입니다.")
-    @Email(message = "이메일 형식이 올바르지 않습니다.")
+	@NotNull(message = "이메일은 필수입니다.")
+	@Email(message = "이메일 형식이 올바르지 않습니다.")
 	private String email;
-    @Pattern(regexp = "^(\\d{2,4})-(\\d{3,4})-(\\d{4})$", message = "homePhone 형식이 올바르지 않습니다.")
+	@Pattern(regexp = "^(\\d{2,4})-(\\d{3,4})-(\\d{4})$", message = "homePhone 형식이 올바르지 않습니다.")
 	private String homePhone;
-    @Pattern(regexp = "^(\\d{2,4})-(\\d{3,4})-(\\d{4})$", message = "mobilePhone 형식이 올바르지 않습니다.")
+	@Pattern(regexp = "^(\\d{2,4})-(\\d{3,4})-(\\d{4})$", message = "mobilePhone 형식이 올바르지 않습니다.")
 	private String mobilePhone;
 	private String address;
 	private String addressDetail;
 	private int postalCode;
 	private String profileImgPath = "profile_images/default.png";
 	private String profileImgName = "default.png";
-    @NotNull(message = "학위는 필수입니다.")
-    @Pattern(regexp = "미지정|중등교육이수|학사|석사|박사", message = "학위는 '미지정', '중등교육이수', '학사', '석사', '박사' 중 하나여야 합니다.")
+	@NotNull(message = "학위는 필수입니다.")
+	@Pattern(regexp = "미지정|중등교육이수|학사|석사|박사", message = "학위는 '미지정', '중등교육이수', '학사', '석사', '박사' 중 하나여야 합니다.")
 	private String degree = "미지정";
 	private String hobby;
 	private String specialty;
 
-	 // 파일 필드 추가 - 이력서 생성용
-    private transient MultipartFile file;
+	// 파일 필드 추가 - 이력서 생성용
+	private transient MultipartFile file;
     
 	public PersonalInfo() {
 	}

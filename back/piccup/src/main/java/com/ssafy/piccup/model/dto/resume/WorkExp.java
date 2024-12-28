@@ -12,7 +12,7 @@ public class WorkExp {
 	private int expId;
 	private int resumeId; // 외래키
 	@NotBlank(message = "기관 이름은 필수입니다. (Not Blank)")
-    @NotNull(message = "기관 이름은 필수입니다. (Not Null)")
+	@NotNull(message = "기관 이름은 필수입니다. (Not Null)")
 	private String company;
 	private String department;
 	private LocalDate startDate;

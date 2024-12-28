@@ -10,14 +10,14 @@ public class Training {
 	private int trainingId;
 	private int resumeId; // 외래키
 	@NotBlank(message = "교육 이름은 필수입니다. (Not Blank)")
-    @NotNull(message = "교육 이름은 필수입니다. (Not Null)")
+	@NotNull(message = "교육 이름은 필수입니다. (Not Null)")
 	private String trainingName;
 	@NotBlank(message = "교육 기관은 필수입니다. (Not Blank)")
-    @NotNull(message = "교육 기관은 필수입니다. (Not Null")
+	@NotNull(message = "교육 기관은 필수입니다. (Not Null")
 	private String institution;
-    @PastOrPresent(message = "교육 시작 날짜는 미래날짜일 수 없습니다.")
+	@PastOrPresent(message = "교육 시작 날짜는 미래날짜일 수 없습니다.")
 	private LocalDate startDate;
-    @PastOrPresent(message = "교육 종료 날짜는 미래날짜일 수 없습니다.")
+	@PastOrPresent(message = "교육 종료 날짜는 미래날짜일 수 없습니다.")
 	private LocalDate endDate;
 	private String description;
 	

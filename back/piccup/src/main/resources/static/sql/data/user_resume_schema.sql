@@ -1,5 +1,6 @@
 /*
-	 데이터 생성
+	 resume에 필요한 데이터 생성
+	 - resume, resume하위, user
 */ 
 
 -- 유저 테이블 데이터 삽입

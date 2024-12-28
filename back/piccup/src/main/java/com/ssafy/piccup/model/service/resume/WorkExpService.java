@@ -2,8 +2,6 @@ package com.ssafy.piccup.model.service.resume;
 
 import java.util.List;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import com.ssafy.piccup.model.dto.resume.WorkExp;
 
 

@@ -10,11 +10,11 @@ import jakarta.validation.constraints.Pattern;
 public class Activity {
 	private int actId;
 	private int resumeId; // 외래키
-    @Pattern(regexp = "아르바이트|동아리|자원봉사|교내활동|기타", message = "활동구분은 아르바이트, 동아리, 자원봉사, 교내활동, 기타 중 하나여야 합니다.")
+  @Pattern(regexp = "아르바이트|동아리|자원봉사|교내활동|기타", message = "활동구분은 아르바이트, 동아리, 자원봉사, 교내활동, 기타 중 하나여야 합니다.")
 	private String actType = "기타";
 	@NotBlank(message = "활동명은 필수입니다. (Not Blank)")
 	@NotNull(message = "활동명은 필수입니다. (Not Null")
-    private String title;
+  private String title;
 	@PastOrPresent(message = "활동시작일은 미래일 수 없습니다.")
 	private LocalDate startDate;
 	@PastOrPresent(message = "활동종료일은 미래일 수 없습니다.")

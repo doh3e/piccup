@@ -6,7 +6,6 @@ import java.time.Year;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,17 +16,17 @@ import jakarta.validation.constraints.Pattern;
 public class Education {
 	private int eduId;
 	private int resumeId; // 외래키
-    @Pattern(regexp = "선택안함|고등학교|대학\\(2,3년\\)|대학교\\(4년\\)|대학원", message = "학교 유형은 선택안함, 고등학교, 대학(2,3년), 대학교(4년), 대학원 중 하나여야 합니다.")
+	@Pattern(regexp = "선택안함|고등학교|대학\\(2,3년\\)|대학교\\(4년\\)|대학원", message = "학교 유형은 선택안함, 고등학교, 대학(2,3년), 대학교(4년), 대학원 중 하나여야 합니다.")
 	private String schoolType = "선택안함";
 	@NotBlank(message = "학교 이름은 필수입니다. (Not Blank)")
-    @NotNull(message = "학교 이름은 필수입니다. (Not Null)")
+	@NotNull(message = "학교 이름은 필수입니다. (Not Null)")
 	private String schoolName;
 	private String major;
-    @Past(message = "입학 날짜는 과거여야 합니다.")
+	@Past(message = "입학 날짜는 과거여야 합니다.")
 	private LocalDate startDate;
-    @PastOrPresent(message = "졸업 날짜는 미래일 수 없습니다.")
+	@PastOrPresent(message = "졸업 날짜는 미래일 수 없습니다.")
 	private LocalDate endDate;
-    @Pattern(regexp = "선택안함|졸업|졸업예정|재학 중|중퇴|수료|휴학", message = "학업 상태는 선택안함, 졸업, 졸업예정, 재학 중, 중퇴, 수료, 휴학 중 하나여야 합니다.")
+	@Pattern(regexp = "선택안함|졸업|졸업예정|재학 중|중퇴|수료|휴학", message = "학업 상태는 선택안함, 졸업, 졸업예정, 재학 중, 중퇴, 수료, 휴학 중 하나여야 합니다.")
 	private String status = "선택안함";
 	@JsonProperty("isTransfer")
 	private boolean isTransfer = false;
