@@ -22,6 +22,7 @@ import com.ssafy.piccup.model.dto.CoverLetter;
 import com.ssafy.piccup.model.service.CoverLetterService;
 
 @RestController
+@RequestMapping("/coverletters")
 public class CoverLetterController {
 	private CoverLetterService coverLetterService;
 	
@@ -29,15 +30,15 @@ public class CoverLetterController {
 		this.coverLetterService = coverLetterService;
 	}
 	
-	@GetMapping("/coverletters")
-	public ResponseEntity<List<CoverLetter>> test() {
+	@GetMapping("")
+	public ResponseEntity<List<CoverLetter>> read() {
 		
 		List<CoverLetter> letters = coverLetterService.getCoverLetterList();
 		return new ResponseEntity<>(letters, HttpStatus.OK);		
 	}
 	
-	@GetMapping("/coverletters/{cover_id}")
-	public ResponseEntity<CoverLetter> test2(@PathVariable("cover_id")int cover_id) {
+	@GetMapping("/{cover_id}")
+	public ResponseEntity<CoverLetter> detail(@PathVariable("cover_id")int cover_id) {
 		
 		CoverLetter letter = coverLetterService.viewCoverLetter(cover_id);
 		if (letter != null) {
@@ -48,7 +49,7 @@ public class CoverLetterController {
 		}
 	}
 	
-	@PostMapping("/coverletters")
+	@PostMapping("")
 	public ResponseEntity<CoverLetter> create(@RequestBody CoverLetter letter) {
 		coverLetterService.addCoverLetter(letter);
 		if (letter != null) {
@@ -59,12 +60,10 @@ public class CoverLetterController {
 		
 	}
 	
-	@PutMapping("/coverletters/{cover_id}")
+	@PutMapping("/{cover_id}")
 	public ResponseEntity<?> update(@PathVariable("cover_id")int coverId, @RequestBody CoverLetter letter) {
 		CoverLetter temp = coverLetterService.viewCoverLetter(coverId);
 		letter.setCoverId(coverId);
-//		letter.setApplyId(temp.getApplyId());
-		
 		
 		boolean isUpdated = coverLetterService.modifyCoverLetter(letter);
 		
@@ -75,7 +74,7 @@ public class CoverLetterController {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed");
 	}
 	
-	@DeleteMapping("/coverletters/{cover_id}")
+	@DeleteMapping("/{cover_id}")
 	public ResponseEntity<String> delete(@PathVariable("cover_id")int cover_id) {
 		coverLetterService.removeCoverLetter(cover_id);
 		return ResponseEntity.status(HttpStatus.OK).build();
