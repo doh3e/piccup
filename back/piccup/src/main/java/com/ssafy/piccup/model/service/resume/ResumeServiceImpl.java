@@ -19,22 +19,27 @@ public class ResumeServiceImpl implements ResumeService {
 	// 이력서 조회
 	@Override
 	public Resume findByUserId(int userId) {
-		return resumeDao.selectResume(userId);
+		return resumeDao.selectResumeByUser(userId);
 	}
 	
 	// 이력서 생성
 	@Transactional
 	@Override
 	public void createResume(Resume resume) {
-		int result = 0;
 		try {
-	        result = resumeDao.insertResume(resume);
-	        if (result != 1) {
-	            throw new RuntimeException("createResume 불가");
+			// 기존 Resume 존재 여부 확인
+			Resume existingResume = resumeDao.selectResumeByUser(resume.getUserId());
+			// 기존 Resume 삭제
+			if (existingResume != null) {
+				resumeDao.deleteResumeByUser(existingResume.getResumeId());
+			}
+
+			// 새로운 Resume 생성
+			if (resumeDao.insertResume(resume) != 1) {
+				throw new RuntimeException("createResume 실패");
 	        }
 	    } catch (Exception e) {
-	        throw e;
+	    	throw new RuntimeException("createResume 과정에서 오류 발생: " + e.getMessage(), e);
 	    }
 	}
-
 }

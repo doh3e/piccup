@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -170,7 +171,7 @@ public class ResumeController {
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 	
-	// 생성 (json)
+	// 생성 (json, 삭제 후 생성)
 	@PostMapping("")
 	public ResponseEntity<?> writeResume(@Valid @RequestBody Resume resumeRequest, BindingResult bindingResult) {
 		// 유효성 검증 오류 처리
@@ -301,4 +302,5 @@ public class ResumeController {
 	    }
 	    return new ResponseEntity<>(resultMap, status);
     }
+	
 }
