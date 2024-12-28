@@ -10,4 +10,7 @@ public interface ResumeService {
 	
 	// 이력서 생성
 	public void createResume(Resume resume);
+	
+	// 이력서 삭제
+	public void deleteResumeByUser(int userId);
 }

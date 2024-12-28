@@ -11,9 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -302,5 +302,37 @@ public class ResumeController {
 	    }
 	    return new ResponseEntity<>(resultMap, status);
     }
+	
+	// 삭제
+	@DeleteMapping("")
+	public ResponseEntity<?> removeResume(){
+
+		// 현재 인증 정보에서 userId 추출 가져오기
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 현재 인증정보
+        JwtAuthenticationToken jwtAuth = (JwtAuthenticationToken) authentication; 				// 토큰
+        int userId = jwtAuth.getUserId();
+		        
+		// 응답 데이터 구성
+		Map<String, Object> resultMap = new HashMap<>();
+	    HttpStatus status = HttpStatus.ACCEPTED;
+	    
+	    try {
+		    // 요청한 유저의 이력서 삭제
+		    resumeService.deleteResumeByUser(userId);
+	        // 응답 데이터
+	        resultMap.put("message", "이력서 삭제 성공하였습니다.");
+	        status = HttpStatus.CREATED;
+	        
+	    } catch (RuntimeException e) {
+	    	resultMap.put("message", e.getMessage());
+	        resultMap.put("detail", e.getCause() != null ? e.getCause().getMessage() : ""); // 상세 원인
+	        status = HttpStatus.INTERNAL_SERVER_ERROR;
+        } catch (Exception e) {
+	        resultMap.put("message", "Resume File 생성 실패: " + e.getMessage());
+	        resultMap.put("detail", e.getCause() != null ? e.getCause().getMessage() : "");
+	        status = HttpStatus.INTERNAL_SERVER_ERROR;
+	    }
+	    return new ResponseEntity<>(resultMap, status);
+	}
 	
 }

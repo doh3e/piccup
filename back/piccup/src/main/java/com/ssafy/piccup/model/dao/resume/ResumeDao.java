@@ -11,10 +11,5 @@ public interface ResumeDao {
 	public int insertResume(Resume resume);
 	
 	// 이력서 삭제
-	public void deleteResumeByUser(int resumeId);
-	// -----
-	
-	
-	// 이력서 수정
-	public void updateResume(Resume resume);
+	public int deleteResumeByUser(int resumeId);
 }
