@@ -5,12 +5,14 @@
     <main class="flex-grow mt-12">
       <router-view></router-view>
     </main>
+    <Footer />
   </div>
 </template>
 
 <script setup>
 import { RouterView } from 'vue-router'
 import Header from '@/components/Main/Header.vue'
+import Footer from '@/components/Main/Footer.vue'
 </script>
 
 <style>
