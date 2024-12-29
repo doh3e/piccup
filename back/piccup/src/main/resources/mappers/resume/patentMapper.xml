@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.PatentDao">
+
+	<!-- 특허 조회 (resume기반) -->
+    <select id="selectAllPatents" resultType="Patent">
+        SELECT *
+        FROM patent
+        WHERE resume_id = #{resumeId};
+    </select>
+
+    <!-- 특허 저장 -->
+    <insert id="insertPatent" parameterType="Patent" keyProperty="patentId" useGeneratedKeys="true">
+        INSERT INTO patent (resume_id, patent_title, inventor, patent_code, description)
+        VALUES (#{resumeId}, #{patentTitle}, #{inventor}, #{patentCode}, #{description});
+    </insert>
+</mapper>

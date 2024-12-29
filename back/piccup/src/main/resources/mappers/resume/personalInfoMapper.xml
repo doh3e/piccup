@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.PersonalInfoDao">
+
+	<!-- 인적사항 조회 (resume기반) -->
+    <select id="selectPersonalByResume" resultType="PersonalInfo">
+        SELECT *
+        FROM personal_info
+        WHERE resume_id = #{resumeId}
+        LIMIT 1;
+    </select>
+
+    <!-- 인적사항 저장 - 사진별도 -->
+    <insert id="insertPersonal" parameterType="PersonalInfo" keyProperty="infoId" useGeneratedKeys="true">
+        INSERT INTO personal_info (resume_id, username, birth_date, gender, email, home_phone, mobile_phone, address, address_detail, postal_code, degree, hobby, specialty)
+        VALUES (#{resumeId}, #{username}, #{birthDate}, #{gender}, #{email}, #{homePhone}, #{mobilePhone}, #{address}, #{addressDetail}, #{postalCode}, #{degree},  #{hobby}, #{specialty});
+    </insert>
+
+	<!-- 인적사항 수정 - 사진만 -->
+    <update id="updatePersonalFile" parameterType="PersonalInfo">
+        UPDATE personal_info
+        SET profile_img_path = #{profileImgPath},
+        	profile_img_name = #{profileImgName}
+        WHERE resume_id = #{resumeId};
+    </update>
+</mapper>
