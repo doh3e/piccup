@@ -5,7 +5,7 @@ import java.util.List;
 import com.ssafy.piccup.model.dto.Apply;
 
 public interface ApplyService {
-	public List<Apply> getApplyList();
+	public List<Apply> getApplyListByUserId(int userId);
 	
 	public Apply viewApply(int id);
 	

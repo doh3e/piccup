@@ -6,7 +6,7 @@ import com.ssafy.piccup.model.dto.Apply;
 
 
 public interface ApplyDao {
-	public List<Apply> selectAll();
+	public List<Apply> selectAll(int userId);
 	
 	public Apply selectOne(int applyId);
 	

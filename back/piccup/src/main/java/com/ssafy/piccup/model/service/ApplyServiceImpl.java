@@ -15,9 +15,9 @@ public class ApplyServiceImpl implements ApplyService {
 		this.applyDao = applyDao;
 	}
 	@Override
-	public List<Apply> getApplyList() {
+	public List<Apply> getApplyListByUserId(int userId) {
 		// TODO Auto-generated method stub
-		return applyDao.selectAll();
+		return applyDao.selectAll(userId);
 	}
 
 	@Override
@@ -43,6 +43,7 @@ public class ApplyServiceImpl implements ApplyService {
 		int isUpdated = applyDao.updateApply(apply);
 		return isUpdated == 1;
 	}
+
 	
 
 }

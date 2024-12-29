@@ -5,7 +5,7 @@ import java.util.List;
 import com.ssafy.piccup.model.dto.CoverLetter;
 
 public interface CoverLetterService {
-	public List<CoverLetter> getCoverLetterList();
+	public List<CoverLetter> getCoverLetterListByUserId(int userId);
 	
 	public CoverLetter viewCoverLetter(int id);
 	

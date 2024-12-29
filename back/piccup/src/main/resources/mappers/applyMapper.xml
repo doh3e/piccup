@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.ApplyDao">
-  <resultMap id="applyCoverLetterSetResultMap" type="Apply">
+  <resultMap id="applyAllSetResultMap" type="Apply">
   	<id property="applyId" column="apply_id"/>
   	<result property="userId" column="user_id"/>
     <result property="companyName" column="company_name"/>
@@ -21,16 +21,42 @@
       <result property="coverTitle" column="cover_title"/>
       <result property="coverContent" column="cover_content"/>
     </collection>
+    <collection property="schedule" ofType="ApplySchedule" notNullColumn="schedule_id">
+      <id property="scheduleId" column="schedule_id"/>
+      <result property="applyId" column="apply_id"/>
+      <result property="startDate" column="start_date"/>
+      <result property="endDate" column="end_date"/>
+    </collection>
+    <collection property="status" ofType="ApplyStatus" notNullColumn="status_id">
+      <id property="statusId" column="status_id"/>
+      <result property="applyId" column="apply_id"/>
+      <result property="currentStatus" column="current_status"/>
+      <result property="is_progressing" column="isProgressing"/>
+    </collection>
+    <collection property="feedback" ofType="ApplyFeedback" notNullColumn="feedback_id">
+      <id property="feedbackId" column="feedback_id"/>
+      <result property="applyId" column="apply_id"/>
+      <result property="userId" column="user_id"/>
+      <result property="feedbackStatus" column="feedback_status"/>
+      <result property="content" column="content"/>
+    </collection>
   </resultMap>
   
-  <select id="selectAll" resultMap="applyCoverLetterSetResultMap">
-    select a.*, c.* from apply a
+  <select id="selectAll" resultMap="applyAllSetResultMap" parameterType="int">
+    select a.*, c.*, sc.*, st.*, fb.* from apply a
     left join cover_letter c on a.apply_id = c.apply_id
+    left join apply_schedule sc on a.apply_id = sc.apply_id
+    left join apply_status st on a.apply_id = st.apply_id
+    left join apply_feedback fb on a.apply_id = fb.apply_id
+    where a.user_id = #{userId}
   </select>
   
-  <select id="selectOne" resultMap="applyCoverLetterSetResultMap" parameterType="int">
-  	select a.*, c.* from apply a
-  	left join cover_letter c on a.apply_id = c.apply_id
+  <select id="selectOne" resultMap="applyAllSetResultMap" parameterType="int">
+  	select a.*, c.*, sc.*, st.*, fb.* from apply a
+    left join cover_letter c on a.apply_id = c.apply_id
+    left join apply_schedule sc on a.apply_id = sc.apply_id
+    left join apply_status st on a.apply_id = st.apply_id
+    left join apply_feedback fb on a.apply_id = fb.apply_id
   	where a.apply_id=#{applyId};
   </select>
   
@@ -48,7 +74,7 @@
   
   <update id="updateApply" parameterType="Apply">
   	UPDATE apply
-  	SET user_id = #{userId}, company_name = #{companyName},
+  	SET company_name = #{companyName},
   	company_size = #{companySize}, job = #{job}, industry = #{industry}
   	WHERE apply_id = #{applyId};
   </update>

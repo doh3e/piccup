@@ -3,8 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.CoverLetterDao">
-  <select id="selectAll" resultType="CoverLetter">
+  <select id="selectAll" resultType="CoverLetter" parameterType="int">
     select * from cover_letter
+    where user_id = #{userId}
   </select>
   
   <select id="selectOne" resultType="CoverLetter" parameterType="int">
@@ -23,7 +24,7 @@
   
   <update id="updateCoverLetter" parameterType="CoverLetter">
   	UPDATE cover_letter
-  	SET apply_id = #{applyId}, user_id = #{userId}, category = #{category},
+  	SET apply_id = #{applyId}, category = #{category},
   	cover_title = #{coverTitle}, cover_content = #{coverContent}
   	WHERE cover_id = #{coverId};
   </update>

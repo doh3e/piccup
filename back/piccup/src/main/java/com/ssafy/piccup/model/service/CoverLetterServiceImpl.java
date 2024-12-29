@@ -16,9 +16,9 @@ public class CoverLetterServiceImpl implements CoverLetterService {
 	}
 	
 	@Override
-	public List<CoverLetter> getCoverLetterList() {
+	public List<CoverLetter> getCoverLetterListByUserId(int userId) {
 		// TODO Auto-generated method stub
-		return coverLetterDao.selectAll();
+		return coverLetterDao.selectAll(userId);
 	}
 
 	@Override

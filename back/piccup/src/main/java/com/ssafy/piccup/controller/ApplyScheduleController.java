@@ -12,7 +12,7 @@ import com.ssafy.piccup.model.service.ApplyScheduleService;
 
 
 @RestController
-@RequestMapping("applys/schedules")
+@RequestMapping("applys/schedule")
 public class ApplyScheduleController {
 	private final ApplyScheduleService applyScheduleService;
 	

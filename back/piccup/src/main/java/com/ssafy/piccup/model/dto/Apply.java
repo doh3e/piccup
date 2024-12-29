@@ -15,6 +15,9 @@ public class Apply {
     private LocalDateTime createdAt;   // created_at
     
     private List<CoverLetter> coverLetters = new ArrayList<>();
+    private ApplySchedule schedule;
+    private ApplyStatus status;
+    private ApplyFeedback feedback;
     
     public Apply() {
 	   
@@ -91,9 +94,28 @@ public class Apply {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+	
 
 	
 
+	public ApplyStatus getStatus() {
+		return status;
+	}
+	public void setStatus(ApplyStatus status) {
+		this.status = status;
+	}
+	public ApplyFeedback getFeedback() {
+		return feedback;
+	}
+	public void setFeedback(ApplyFeedback feedback) {
+		this.feedback = feedback;
+	}
+	public ApplySchedule getSchedule() {
+		return schedule;
+	}
+	public void setSchedule(ApplySchedule schedule) {
+		this.schedule = schedule;
+	}
 	public List<CoverLetter> getCoverLetters() {
 		return coverLetters;
 	}
