@@ -1,0 +1,17 @@
+/*
+	스키마 초기세팅
+*/
+
+-- DROP DATABASE IF EXISTS piccup;
+-- CREATE DATABASE piccup DEFAULT CHARACTER SET utf8mb4;
+
+-- 이력서 테이블 생성 (1:1)
+DROP TABLE IF EXISTS resume;
+CREATE TABLE resume (
+	resume_id 	INT 		NOT NULL AUTO_INCREMENT,
+	user_id 	INT			NOT NULL UNIQUE,
+	updated_at 	TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    PRIMARY KEY (resume_id),
+    CONSTRAINT resume_user_fk FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;

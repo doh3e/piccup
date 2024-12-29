@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.PreferenceDao">
+
+	<!-- 취업우대 조회 (resume기반) -->
+    <select id="selectPreferenceByResume" resultType="Preference">
+        SELECT *
+        FROM preference
+        WHERE resume_id = #{resumeId}
+        LIMIT 1;
+    </select>
+
+    <!-- 취업우대 저장 -->
+    <insert id="insertPreference" parameterType="Preference" keyProperty="preId" useGeneratedKeys="true">
+        INSERT INTO preference (resume_id, is_veteran, is_protected, is_disabled, dis_level, military, is_agree)
+        VALUES (#{resumeId}, #{isVeteran}, #{isProtected}, #{isDisabled}, #{disLevel}, #{military}, #{isAgree});
+    </insert>
+</mapper>

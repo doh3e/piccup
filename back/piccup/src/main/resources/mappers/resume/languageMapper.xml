@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.LanguageDao">
+
+	<!-- 어학 조회 (resume기반) -->
+    <select id="selectAllLanguages" resultType="Language">
+        SELECT *
+        FROM language
+        WHERE resume_id = #{resumeId};
+    </select>
+
+    <!-- 어학 저장 -->
+    <insert id="insertLanguage" parameterType="Language" keyProperty="languageId" useGeneratedKeys="true">
+        INSERT INTO language (resume_id, language_name, test_name, score, obtained_date, cert_code)
+        VALUES (#{resumeId}, #{languageName}, #{testName}, #{score}, #{obtainedDate}, #{certCode});
+    </insert>
+</mapper>

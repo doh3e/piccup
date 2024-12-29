@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.PaperDao">
+
+	<!-- 논문 조회 (resume기반) -->
+    <select id="selectAllPapers" resultType="Paper">
+        SELECT *
+        FROM paper
+        WHERE resume_id = #{resumeId};
+    </select>
+
+    <!-- 논문 저장 -->
+    <insert id="insertPaper" parameterType="Paper" keyProperty="paperId" useGeneratedKeys="true">
+        INSERT INTO paper (resume_id,paper_title, journal, published_date, description)
+        VALUES (#{resumeId}, #{paperTitle}, #{journal}, #{publishedDate}, #{description});
+    </insert>
+</mapper>
