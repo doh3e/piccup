@@ -4,10 +4,12 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.PreferenceDao">
 
-	<!-- 취업우대 전체 조회 -->
-    <select id="selectAllPreferences" resultType="Preference">
+	<!-- 취업우대 조회 (resume기반) -->
+    <select id="selectPreferenceByResume" resultType="Preference">
         SELECT *
-        FROM preference;
+        FROM preference
+        WHERE resume_id = #{resumeId}
+        LIMIT 1;
     </select>
 
     <!-- 취업우대 저장 -->
@@ -15,21 +17,4 @@
         INSERT INTO preference (resume_id, is_veteran, is_protected, is_disabled, dis_level, military, is_agree)
         VALUES (#{resumeId}, #{isVeteran}, #{isProtected}, #{isDisabled}, #{disLevel}, #{military}, #{isAgree});
     </insert>
-
-    <!-- 취업우대 수정 -->
-    <update id="updatePreference" parameterType="Preference">
-        UPDATE preference
-        SET is_veteran = #{isVeteran},
-            is_protected = #{isProtected},
-            is_disabled = #{isDisabled},
-            dis_level = #{disLevel},
-            military = #{military}
-        WHERE pre_id = #{preId};
-    </update>
-
-    <!-- 취업우대 삭제 -->
-    <delete id="deletePreference" parameterType="int">
-        DELETE FROM preference
-        WHERE pre_id = #{preId};
-    </delete>
 </mapper>

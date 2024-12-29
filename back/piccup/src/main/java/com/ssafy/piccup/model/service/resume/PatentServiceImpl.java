@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -17,34 +18,28 @@ public class PatentServiceImpl implements PatentService {
 		this.patentDao = PatentDao;
 	}
 	
-	// 논문 전체 조회
+	// 특허 조회 (resume 기반)
 	@Override
-	public List<Patent> readPatentList() {
-		return patentDao.selectAllPatents();
+	public List<Patent> readPatentList(int resumeId) {
+		List<Patent> patentList = patentDao.selectAllPatents(resumeId);
+		return patentList.isEmpty() ? new ArrayList<Patent>() : patentList;
 	}
 
-    // 논문 추가
+	// 특허 리스트 추가
 	@Transactional
 	@Override
-	public boolean createPatent(Patent patent) {
-		int result = patentDao.insertPatent(patent);
-		return result == 1;
+	public void createPatentList(List<Patent> patents, int resumeId) {
+		int result = 0;
+		try {
+			for (Patent patent : patents) {
+				patent.setResumeId(resumeId);
+				if (patentDao.insertPatent(patent) == 1) result += 1;
+			}
+			if (result != patents.size()) {
+				throw new RuntimeException("create PatentList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }
 	}
-
-    // 논문 수정
-	@Transactional
-	@Override
-	public boolean updatePatent(Patent patent) {
-		int result = patentDao.updatePatent(patent);
-		return result == 1;
-	}
-
-    // 논문 삭제
-	@Transactional
-	@Override
-	public boolean deletePatent(int patentId) {
-		int result = patentDao.deletePatent(patentId);
-		return result == 1;
-	}
-
 }

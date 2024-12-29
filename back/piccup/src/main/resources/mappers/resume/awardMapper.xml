@@ -4,10 +4,11 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.AwardDao">
 
-	<!-- 수상내역 전체 조회 -->
+	<!-- 수상내역 조회 (resume기반) -->
     <select id="selectAllAwards" resultType="Award">
         SELECT *
-        FROM award;
+        FROM award
+        WHERE resume_id = #{resumeId};
     </select>
 
     <!-- 수상내역 저장 -->
@@ -15,20 +16,4 @@
         INSERT INTO award (resume_id,award_name, award_organization, award_date, description)
         VALUES (#{resumeId}, #{awardName}, #{awardOrganization}, #{awardDate}, #{description});
     </insert>
-
-    <!-- 수상내역 수정 -->
-    <update id="updateAward" parameterType="Award">
-        UPDATE award
-        SET award_name = #{awardName},
-            award_organization = #{awardOrganization},
-            award_date = #{awardDate},
-            description = #{description}
-        WHERE award_id = #{awardId};
-    </update>
-
-    <!-- 수상내역 삭제 -->
-    <delete id="deleteAward" parameterType="int">
-        DELETE FROM award
-        WHERE award_id = #{awardId};
-    </delete>
 </mapper>

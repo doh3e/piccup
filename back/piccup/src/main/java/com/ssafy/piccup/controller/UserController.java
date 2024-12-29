@@ -1,4 +1,4 @@
-package com.ssafy.piccup.controller.user;
+package com.ssafy.piccup.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -84,8 +84,6 @@ public class UserController {
 	public ResponseEntity<Map<String, Object>> login(@RequestBody User user) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		HttpStatus status = HttpStatus.ACCEPTED;
-		System.out.println(user.getEmail());
-		System.out.println(user.getPassword());
 
 		try {
 			User loginUser = userService.login(user.getEmail(), user.getPassword());

@@ -1,5 +1,6 @@
 package com.ssafy.piccup.model.service.resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -17,34 +18,28 @@ public class SkillServiceImpl implements SkillService {
 		this.skillDao = SkillDao;
 	}
 	
-	// 스킬 전체 조회
+	// 스킬 조회 (resume 기반)
 	@Override
-	public List<Skill> readSkillList() {
-		return skillDao.selectAllSkills();
+	public List<Skill> readSkillList(int resumeId) {
+		List<Skill> skillList = skillDao.selectAllSkills(resumeId);
+		return skillList.isEmpty() ? new ArrayList<Skill>() : skillList;
 	}
 
-    // 스킬 추가
+	// 스킬 리스트 추가
 	@Transactional
 	@Override
-	public boolean createSkill(Skill skill) {
-		int result = skillDao.insertSkill(skill);
-		return result == 1;
+	public void createSkillList(List<Skill> skills, int resumeId) {
+		int result = 0;
+		try {
+			for (Skill skill : skills) {
+				skill.setResumeId(resumeId);
+				if (skillDao.insertSkill(skill) == 1) result += 1;
+			}
+			if (result != skills.size()) {
+				throw new RuntimeException("create SkillList 불가");
+			}
+        } catch (Exception e) {
+        	throw e;
+        }
 	}
-
-    // 스킬 수정
-	@Transactional
-	@Override
-	public boolean updateSkill(Skill skill) {
-		int result = skillDao.updateSkill(skill);
-		return result == 1;
-	}
-
-    // 스킬 삭제
-	@Transactional
-	@Override
-	public boolean deleteSkill(int skillId) {
-		int result = skillDao.deleteSkill(skillId);
-		return result == 1;
-	}
-
 }

@@ -6,15 +6,9 @@ import com.ssafy.piccup.model.dto.resume.Patent;
 
 public interface PatentDao {
 	
-	// 특허 전체 조회
-    public List<Patent> selectAllPatents();
+	// 특허 조회 (resume 기반)
+    public List<Patent> selectAllPatents(int resumeId);
 
     // 특허 추가
     public int insertPatent(Patent patent);
-
-    // 특허 수정
-    public int updatePatent(Patent patent);
-
-    // 특허 삭제
-    public int deletePatent(int patentId);
 }

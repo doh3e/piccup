@@ -4,10 +4,11 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.ProjectDao">
 
-	<!-- 프로젝트 전체 조회 -->
+	<!-- 프로젝트 조회 (resume기반) -->
     <select id="selectAllProjects" resultType="Project">
         SELECT *
-        FROM project;
+        FROM project
+        WHERE resume_id = #{resumeId};
     </select>
 
     <!-- 프로젝트 저장 -->
@@ -15,21 +16,4 @@
         INSERT INTO project (resume_id, project_name, role, start_date, end_date, description)
         VALUES (#{resumeId}, #{projectName}, #{role}, #{startDate}, #{endDate}, #{description});
     </insert>
-
-    <!-- 프로젝트 수정 -->
-    <update id="updateProject" parameterType="Project">
-        UPDATE project
-        SET project_name = #{projectName},
-            role = #{role},
-            start_date = #{startDate},
-            end_date = #{endDate},
-            description = #{description}
-        WHERE project_id = #{projectId};
-    </update>
-
-    <!-- 프로젝트 삭제 -->
-    <delete id="deleteProject" parameterType="int">
-        DELETE FROM project
-        WHERE project_id = #{projectId};
-    </delete>
 </mapper>

@@ -4,10 +4,11 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.piccup.model.dao.resume.LanguageDao">
 
-	<!-- 어학 전체 조회 -->
+	<!-- 어학 조회 (resume기반) -->
     <select id="selectAllLanguages" resultType="Language">
         SELECT *
-        FROM language;
+        FROM language
+        WHERE resume_id = #{resumeId};
     </select>
 
     <!-- 어학 저장 -->
@@ -15,21 +16,4 @@
         INSERT INTO language (resume_id, language_name, test_name, score, obtained_date, cert_code)
         VALUES (#{resumeId}, #{languageName}, #{testName}, #{score}, #{obtainedDate}, #{certCode});
     </insert>
-
-    <!-- 어학 수정 -->
-    <update id="updateLanguage" parameterType="Language">
-        UPDATE language
-        SET language_name = #{languageName},
-            test_name = #{testName},
-            score = #{score},
-            obtained_date = #{obtainedDate},
-            cert_code = #{certCode}
-        WHERE language_id = #{languageId};
-    </update>
-
-    <!-- 어학 삭제 -->
-    <delete id="deleteLanguage" parameterType="int">
-        DELETE FROM language
-        WHERE language_id = #{languageId};
-    </delete>
 </mapper>
