@@ -1,9 +1,12 @@
-package com.ssafy.piccup.model.service;
+package com.ssafy.piccup.model.service.coverletter;
 
 import java.util.List;
 
-import com.ssafy.piccup.model.dto.ApplySchedule;
+import org.springframework.stereotype.Service;
 
+import com.ssafy.piccup.model.dto.coverletter.ApplySchedule;
+
+@Service
 public interface ApplyScheduleService {
 	public List<ApplySchedule> getApplySchduleList();
 	

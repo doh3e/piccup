@@ -1,9 +1,12 @@
-package com.ssafy.piccup.model.service;
+package com.ssafy.piccup.model.service.coverletter;
 
 import java.util.List;
 
-import com.ssafy.piccup.model.dto.CoverLetter;
+import org.springframework.stereotype.Service;
 
+import com.ssafy.piccup.model.dto.coverletter.CoverLetter;
+
+@Service
 public interface CoverLetterService {
 	public List<CoverLetter> getCoverLetterListByUserId(int userId);
 	

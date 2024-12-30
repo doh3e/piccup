@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.JwtAuthenticationToken;
-import com.ssafy.piccup.model.dto.CoverLetter;
-import com.ssafy.piccup.model.service.CoverLetterService;
+import com.ssafy.piccup.model.dto.coverletter.CoverLetter;
+import com.ssafy.piccup.model.service.coverletter.CoverLetterService;
 import com.ssafy.piccup.util.JwtUtil;
 
 @RestController

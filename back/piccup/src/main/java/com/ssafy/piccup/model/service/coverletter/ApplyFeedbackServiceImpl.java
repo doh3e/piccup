@@ -1,11 +1,11 @@
-package com.ssafy.piccup.model.service;
+package com.ssafy.piccup.model.service.coverletter;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ssafy.piccup.model.dao.ApplyFeedbackDao;
-import com.ssafy.piccup.model.dto.ApplyFeedback;
+import com.ssafy.piccup.model.dao.coverletter.ApplyFeedbackDao;
+import com.ssafy.piccup.model.dto.coverletter.ApplyFeedback;
 
 @Service
 public class ApplyFeedbackServiceImpl implements ApplyFeedbackService {

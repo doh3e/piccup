@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.ssafy.piccup.model.dto.ApplyFeedback;
-import com.ssafy.piccup.model.service.ApplyFeedbackService;
+import com.ssafy.piccup.model.dto.coverletter.ApplyFeedback;
+import com.ssafy.piccup.model.service.coverletter.ApplyFeedbackService;
 
 
 @RestController

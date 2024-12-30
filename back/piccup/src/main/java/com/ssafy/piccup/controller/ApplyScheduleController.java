@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.ssafy.piccup.model.dto.ApplySchedule;
-import com.ssafy.piccup.model.service.ApplyScheduleService;
+import com.ssafy.piccup.model.dto.coverletter.ApplySchedule;
+import com.ssafy.piccup.model.service.coverletter.ApplyScheduleService;
 
 
 @RestController

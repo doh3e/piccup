@@ -1,11 +1,11 @@
-package com.ssafy.piccup.model.service;
+package com.ssafy.piccup.model.service.coverletter;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ssafy.piccup.model.dao.ApplyScheduleDao;
-import com.ssafy.piccup.model.dto.ApplySchedule;
+import com.ssafy.piccup.model.dao.coverletter.ApplyScheduleDao;
+import com.ssafy.piccup.model.dto.coverletter.ApplySchedule;
 
 @Service
 public class ApplyScheduleServiceImpl implements ApplyScheduleService{

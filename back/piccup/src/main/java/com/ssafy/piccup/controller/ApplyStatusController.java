@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.piccup.model.dto.ApplySchedule;
-import com.ssafy.piccup.model.dto.ApplyStatus;
-import com.ssafy.piccup.model.service.ApplyStatusService;
+import com.ssafy.piccup.model.dto.coverletter.ApplySchedule;
+import com.ssafy.piccup.model.dto.coverletter.ApplyStatus;
+import com.ssafy.piccup.model.service.coverletter.ApplyStatusService;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 

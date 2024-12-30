@@ -14,7 +14,8 @@ CREATE TABLE user (
   password VARCHAR(255) NOT NULL,
   profile_img VARCHAR(255),
   mobile_phone VARCHAR(20),
-  created_at DATE NOT NULL DEFAULT (CURRENT_DATE)
+  created_at DATE NOT NULL DEFAULT (CURRENT_DATE),
+  token VARCHAR(1000)
 );
 
 /* (자소서파트) 지원정보 apply */
