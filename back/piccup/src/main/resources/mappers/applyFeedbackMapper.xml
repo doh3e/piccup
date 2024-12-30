@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.ApplyFeedbackDao">
+  
+  
+  <select id="selectAll" resultType="ApplyFeedback">
+    select * from apply_feedback
+  </select>
+  
+  <select id="selectOne" resultType="ApplyFeedback" parameterType="int">
+  	select * from apply_feedback
+  	where feedback_id = #{feedbackId}
+  </select>
+  
+  <insert id="insertApplyFeedback" parameterType="ApplyFeedback" keyProperty="feedbackId" useGeneratedKeys="true">
+  	INSERT INTO apply_feedback (apply_id, user_id, feedback_status, content)
+  	VALUES (#{applyId}, #{userId}, #{feedbackStatus}, #{content});
+  </insert>
+  
+  <delete id="deleteApplyFeedback" parameterType="int">
+  	DELETE FROM apply_feedback
+  	WHERE feedback_id = #{feedbackId};
+  </delete>
+  
+  <update id="updateApplyFeedback" parameterType="ApplyFeedback">
+  	UPDATE apply_feedback
+  	SET apply_id = #{applyId}, feedback_status = #{feedbackStatus},
+  	content = #{content}
+  	WHERE feedback_id = #{feedbackId};
+  </update>
+</mapper>
