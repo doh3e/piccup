@@ -2,6 +2,24 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssafy.piccup.model.dao.CalendarDao">
+<mapper namespace="com.ssafy.piccup.model.dao.mydata.CalendarDao">
+
+	<select id="selectAllUserSchedule"
+		resultType="com.ssafy.piccup.model.dto.mydata.Schedule">
+		SELECT schedule_id, user_id, schedule_name, start_at, end_at, importance
+		FROM my_schedule
+		WHERE user_id = #{userId};
+	</select>
+
+
+
+	<insert id="insertSchedule"
+		parameterType="com.ssafy.piccup.model.dto.mydata.Schedule">
+		INSERT INTO my_schedule (user_id, schedule_name,
+		start_at, end_at, importance)
+		VALUES (#{user_id}, #{schedule_name},
+		#{start_at}, #{end_at},
+		#{importance});
+	</insert>
 
 </mapper>
