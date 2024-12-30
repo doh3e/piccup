@@ -1,4 +1,4 @@
-package com.ssafy.piccup.model.dto;
+package com.ssafy.piccup.model.dto.coverletter;
 
 
 public class ApplyFeedback {

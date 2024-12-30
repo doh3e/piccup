@@ -1,11 +1,11 @@
-package com.ssafy.piccup.model.service;
+package com.ssafy.piccup.model.service.coverletter;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ssafy.piccup.model.dao.CoverLetterDao;
-import com.ssafy.piccup.model.dto.CoverLetter;
+import com.ssafy.piccup.model.dao.coverletter.CoverLetterDao;
+import com.ssafy.piccup.model.dto.coverletter.CoverLetter;
 
 @Service
 public class CoverLetterServiceImpl implements CoverLetterService {

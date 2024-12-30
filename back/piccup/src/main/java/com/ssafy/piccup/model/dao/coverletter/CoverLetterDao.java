@@ -1,8 +1,8 @@
-package com.ssafy.piccup.model.dao;
+package com.ssafy.piccup.model.dao.coverletter;
 
 import java.util.List;
 
-import com.ssafy.piccup.model.dto.CoverLetter;
+import com.ssafy.piccup.model.dto.coverletter.CoverLetter;
 
 
 
