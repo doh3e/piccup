@@ -18,7 +18,7 @@
 	</select>
 
     <!-- email 유저 조회 -->
-	<select id="selectOne" resultType="User" parameterType="String">
+	<select id="selectOneByEmail" resultType="User" parameterType="String">
 		SELECT * FROM user
 		WHERE email = #{email};
 	</select>
