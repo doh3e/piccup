@@ -13,9 +13,15 @@ public interface UserService {
 	
 	// 회원가입
 	public boolean signup(User user);
+
+	// 회원 탈퇴
+	public void deleteUser(String email);
 	
 	// 로그인
 	public User login(String email, String password);
+
+	// 로그아웃
+	public boolean logout(String email);
 	
 	// 토큰저장
 	public void saveRefreshToken(int userId, String refreshToken);

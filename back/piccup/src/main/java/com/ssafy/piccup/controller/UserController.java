@@ -4,14 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.model.dto.user.User;
@@ -43,7 +46,7 @@ public class UserController {
 		return new ResponseEntity<List<User>>( HttpStatus.OK);
 	}
 	
-	// 사용자 정보 보회
+	// 사용자 정보 조회
 	@GetMapping("/info/{userId}")
 	public ResponseEntity<Map<String, Object>> getInfo(
 			@PathVariable("userId") int userId,
@@ -73,10 +76,18 @@ public class UserController {
 	// 사용자 회원가입 (토큰 미부여)
 	@PostMapping("/signup")
 	public ResponseEntity<String> signup(@RequestBody User user) {
-		if (userService.signup(user)) {
-			return ResponseEntity.status(HttpStatus.CREATED).body("회원가입에 성공하였습니다.");
+		// if (userService.signup(user)) {
+		// 	return ResponseEntity.status(HttpStatus.CREATED).body("회원가입에 성공하였습니다.");
+		// }
+		// return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원가입에 실패하였습니다.");
+		try {
+			userService.signup(user);
+			return ResponseEntity.ok("회원가입 성공");
+		} catch (DataIntegrityViolationException e) {
+			return ResponseEntity.ok("이미 존재하는 계정");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unexpected error occurred during signup");
 		}
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원가입에 실패하였습니다.");
 	}
 	
 	// 로그인
@@ -116,11 +127,23 @@ public class UserController {
 	}
 	
 	// 로그아웃
+	// 미완성
 	@PostMapping("/logout")
-	public String postMethodName(@RequestBody String entity) {
-		//TODO: process POST request
+	public ResponseEntity<String> logout(@RequestParam String email) {
+		if (userService.logout(email)) {
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body("토큰 삭제 성공");
+		}
 		
-		return entity;
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("실패");
 	}
 	
+	// 회원 탈퇴
+	@DeleteMapping("/delete")
+	public ResponseEntity<String> delete(@RequestBody User user) {
+		if (userService.login(user.getEmail(), user.getPassword()) != null) {
+			userService.deleteUser(user.getEmail());
+			return ResponseEntity.status(HttpStatus.OK).body("탈퇴 완료");
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("탈퇴 실패");
+	}
 }
