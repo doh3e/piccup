@@ -17,18 +17,37 @@
 		WHERE user_id = #{userId};
 	</select>
 
+    <!-- email 유저 조회 -->
+	<select id="selectOne" resultType="User" parameterType="String">
+		SELECT * FROM user
+		WHERE email = #{email};
+	</select>
+
 	<!-- 로그인 -->
     <select id="selectOne" resultType="User">
         SELECT *
         FROM user
         WHERE email = #{email} AND password = #{password};
     </select>
+
+    <!-- 로그아웃 시 토큰 삭제 -->
+    <update id="deleteToken" parameterType="User">
+        UPDATE user
+        SET refresh_token = NULL
+        WHERE email = #{email};    	
+    </update>
     
     <!-- 회원가입 -->
     <insert id="insertUser" parameterType="User" keyProperty="userId" useGeneratedKeys="true">
     	INSERT INTO user (`email`, nickname, password, mobile_phone)
     	VALUES (#{email}, #{nickname}, #{password}, #{mobilePhone});
     </insert>
+
+    <!-- 유저 탈퇴 -->
+	<delete id="deleteUser" parameterType="String">	
+		DELETE FROM user
+		WHERE email = #{email};
+	</delete>
    
    <!-- 토큰저장 -->
    <update id="updateToken" parameterType="User">
