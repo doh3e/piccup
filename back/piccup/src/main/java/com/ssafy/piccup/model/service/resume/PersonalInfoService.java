@@ -1,0 +1,19 @@
+package com.ssafy.piccup.model.service.resume;
+
+
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ssafy.piccup.model.dto.resume.PersonalInfo;
+
+public interface PersonalInfoService {
+	
+	// 인적사항 조회 (resume기반)
+    public PersonalInfo readPersonalByResume(int resumeId);
+
+    // 인적사항 생성 - 사진 별도
+    public boolean createPersonal(PersonalInfo personalInfo);
+    
+    // 인적사항 생성 or 수정 - 사진만
+    public void uploadFile(int resumeId, MultipartFile file);
+}

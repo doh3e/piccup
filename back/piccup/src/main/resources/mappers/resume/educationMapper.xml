@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.EducationDao">
+
+	<!-- 학력 조회 (resume기반) -->
+    <select id="selectAllEducation" resultType="Education">
+        SELECT *
+        FROM education
+        WHERE resume_id = #{resumeId};
+    </select>
+
+    <!-- 학력 저장 -->
+    <insert id="insertEducation" parameterType="Education" keyProperty="eduId" useGeneratedKeys="true">
+        INSERT INTO education (resume_id, school_type, school_name, major, start_date, end_date, status, is_transfer, gpa, major_gpa, gpa_scale, is_qe, qe_year)
+        VALUES (#{resumeId}, #{schoolType}, #{schoolName}, #{major}, #{startDate}, #{endDate}, #{status}, #{isTransfer}, #{gpa}, #{majorGpa}, #{gpaScale}, #{isQe}, #{qeYear});
+    </insert>
+</mapper>

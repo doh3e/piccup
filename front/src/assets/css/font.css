@@ -1,0 +1,54 @@
+/* ================== 고딕 ================== */
+
+/* Noto Sans KR*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yesteryear&display=swap');
+
+@font-face {
+    font-family: "NotoSansKR";
+    font-weight: 100;
+    src: url('@/assets/fonts/NotoSansKR-Thin.woff') format('woff');
+}
+@font-face {
+    font-family: "NotoSansKR";
+    font-weight: 200;
+    src: url('@/assets/fonts/NotoSansKR-ExtraLight.woff') format('woff');
+}
+@font-face {
+    font-family: "NotoSansKR";
+    font-weight: 300;
+    src: url('@/assets/fonts/NotoSansKR-Light.woff') format('woff');
+}
+@font-face {
+    font-family: "NotoSansKR";
+    font-weight: 400;
+    src: url('@/assets/fonts/NotoSansKR-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: "NotoSansKR";
+    font-weight: 500;
+    src: url('@/assets/fonts/NotoSansKR-Medium.woff') format('woff'),
+    	/* ttf파일 추가시 */
+    	 url('@/assets/fonts/NotoSansKR-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: "NotoSansKR";
+    font-weight: 600;
+    src: url('@/assets/fonts/NotoSansKR-SemiBold.woff') format('woff');
+}
+@font-face {
+    font-family: "NotoSansKR";
+    font-weight: 700;
+    src: url('@/assets/fonts/NotoSansKR-Bold.woff') format('woff');
+}
+@font-face {
+    font-family: "NotoSansKR";
+    font-weight: 800;
+    src: url('@/assets/fonts/NotoSansKR-ExtraBold.woff') format('woff');
+}
+@font-face {
+    font-family: "NotoSansKR";
+    font-weight: 900;
+    src: url('@/assets/fonts/NotoSansKR-Black.woff') format('woff');
+}

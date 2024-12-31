@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.CertificationDao">
+
+	<!-- 자격증 조회 (resume기반) -->
+    <select id="selectAllCertifications" resultType="Certification">
+        SELECT *
+        FROM certification
+        WHERE resume_id = #{resumeId};
+    </select>
+
+    <!-- 자격증 저장 -->
+    <insert id="insertCertification" parameterType="Certification" keyProperty="certId" useGeneratedKeys="true">
+        INSERT INTO certification (resume_id, cert_name, publisher, obtained_date, cert_code)
+        VALUES (#{resumeId}, #{certName}, #{publisher}, #{obtainedDate}, #{certCode});
+    </insert>
+</mapper>
