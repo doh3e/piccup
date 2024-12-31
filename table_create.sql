@@ -370,8 +370,3 @@ CREATE TABLE education (
   CONSTRAINT edu_resume_fk FOREIGN KEY (resume_id) REFERENCES resume(resume_id) ON DELETE CASCADE,
   PRIMARY KEY (edu_id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
-
-
-
-
-

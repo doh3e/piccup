@@ -5,7 +5,7 @@
 -- 유저 더미 데이터
 INSERT INTO user (email, nickname, password, mobile_phone)
 VALUES
-    ('kimssafy@example.com', '김싸피', '$2b$12$bz6J/EASpXJeq2jn9vyvpOE80bNgax7Wm.dG9XPfYQemG9dIzMpZy', '010-1234-5678'),
+	('kimssafy@example.com', '김싸피', '$2b$12$bz6J/EASpXJeq2jn9vyvpOE80bNgax7Wm.dG9XPfYQemG9dIzMpZy', '010-1234-5678'),
     ('parkssafy@example.com', '박싸피', '$2b$12$bz6J/EASpXJeq2jn9vyvpOE80bNgax7Wm.dG9XPfYQemG9dIzMpZy', '010-9876-5432'),
     ('leessafy@example.com', '이싸피', '$2b$12$bz6J/EASpXJeq2jn9vyvpOE80bNgax7Wm.dG9XPfYQemG9dIzMpZy', '010-5678-1234'),
     ('jungssafy@example.com', '정싸피', '$2b$12$bz6J/EASpXJeq2jn9vyvpOE80bNgax7Wm.dG9XPfYQemG9dIzMpZy', '010-4321-8765'),
