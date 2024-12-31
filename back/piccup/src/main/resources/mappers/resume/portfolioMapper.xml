@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.PortfolioDao">
+
+	<!-- 포트폴리오 조회 (resume기반) -->
+    <select id="selectAllPort" resultType="Portfolio">
+        SELECT *
+        FROM portfolio
+        WHERE resume_id = #{resumeId};
+    </select>
+
+    <!-- 포트폴리오 추가 - 파일 별도 -->
+    <insert id="insertPort" parameterType="Portfolio" keyProperty="portId" useGeneratedKeys="true">
+        INSERT INTO portfolio (resume_id, port_url)
+        VALUES (#{resumeId}, #{portUrl});
+    </insert>
+</mapper>

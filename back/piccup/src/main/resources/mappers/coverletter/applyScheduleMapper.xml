@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.coverletter.ApplyScheduleDao">
+  
+  
+  <select id="selectAll" resultType="ApplySchedule">
+    select * from apply_schedule
+  </select>
+  
+  <select id="selectOne" resultType="ApplySchedule" parameterType="int">
+  	select * from apply_schedule
+  	where schedule_id = #{scheduleId}
+  </select>
+  
+  <insert id="insertApplySchedule" parameterType="ApplySchedule" keyProperty="scheduleId" useGeneratedKeys="true">
+  	INSERT INTO apply_schedule (apply_id, start_date, end_date)
+  	VALUES (#{applyId}, #{startDate}, #{endDate});
+  </insert>
+  
+  <delete id="deleteApplySchedule" parameterType="int">
+  	DELETE FROM apply_schedule
+  	WHERE schedule_id = #{scheduleId};
+  </delete>
+  
+  <update id="updateApplySchedule" parameterType="ApplySchedule">
+  	UPDATE apply_schedule
+  	SET apply_id = #{applyId}, start_date = #{startDate},
+  	end_date = #{endDate}
+  	WHERE schedule_id = #{scheduleId};
+  </update>
+</mapper>

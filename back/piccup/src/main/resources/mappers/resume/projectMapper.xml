@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.resume.ProjectDao">
+
+	<!-- 프로젝트 조회 (resume기반) -->
+    <select id="selectAllProjects" resultType="Project">
+        SELECT *
+        FROM project
+        WHERE resume_id = #{resumeId};
+    </select>
+
+    <!-- 프로젝트 저장 -->
+    <insert id="insertProject" parameterType="Project" keyProperty="projectId" useGeneratedKeys="true">
+        INSERT INTO project (resume_id, project_name, role, start_date, end_date, description)
+        VALUES (#{resumeId}, #{projectName}, #{role}, #{startDate}, #{endDate}, #{description});
+    </insert>
+</mapper>
