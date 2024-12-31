@@ -1,5 +1,4 @@
 <template>
-
   <div class="min-h-screen flex flex-col bg-gray-50">
     <Header />
     <main class="flex-grow mt-12">
@@ -14,7 +13,6 @@ import Header from '@/components/Main/Header.vue'
 </script>
 
 <style>
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
