@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.coverletter.ApplyStatusDao">
+  
+  
+  <select id="selectAll" resultType="ApplyStatus">
+    select * from apply_status
+  </select>
+  
+  <select id="selectOne" resultType="ApplyStatus" parameterType="int">
+  	select * from apply_status
+  	where status_id = #{statusId}
+  </select>
+  
+  <insert id="insertApplyStatus" parameterType="ApplyStatus" keyProperty="statusId" useGeneratedKeys="true">
+  	INSERT INTO apply_status (apply_id, is_progressing, current_status)
+  	VALUES (#{applyId}, #{isProgressing}, #{currentStatus});
+  </insert>
+  
+  <delete id="deleteApplyStatus" parameterType="int">
+  	DELETE FROM apply_status
+  	WHERE status_id = #{statusId};
+  </delete>
+  
+  <update id="updateApplyStatus" parameterType="ApplyStatus">
+  	UPDATE apply_status
+  	SET apply_id = #{applyId}, is_progressing = #{isProgressing},
+  	current_status = #{currentStatus}
+  	WHERE status_id = #{statusId};
+  </update>
+</mapper>

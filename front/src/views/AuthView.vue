@@ -64,7 +64,7 @@
               />
               <button
                 type="button"
-                @click="togglePasswordVisibility"
+                @click="togglePasswordVisibility('password')"
                 class="absolute inset-y-0 right-0 pr-3 flex items-center"
               >
                 <svg
@@ -106,15 +106,49 @@
             >
               비밀번호 확인
             </label>
-            <div class="mt-1">
+            <div class="mt-1 relative">
               <input
                 id="confirmPassword"
                 name="confirmPassword"
-                type="password"
+                :type="showConfirmPassword ? 'text' : 'password'"
                 required
                 v-model="confirmPassword"
                 class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
               />
+              <button
+                type="button"
+                @click="togglePasswordVisibility('confirmPassword')"
+                class="absolute inset-y-0 right-0 pr-3 flex items-center"
+              >
+                <svg
+                  class="h-5 w-5 text-gray-400"
+                  :class="{ 'text-primary': showConfirmPassword }"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    v-if="showConfirmPassword"
+                    d="M10 12a2 2 0 100-4 2 2 0 000 4z"
+                  />
+                  <path
+                    v-if="showConfirmPassword"
+                    fill-rule="evenodd"
+                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                    clip-rule="evenodd"
+                  />
+                  <path
+                    v-if="!showConfirmPassword"
+                    fill-rule="evenodd"
+                    d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z"
+                    clip-rule="evenodd"
+                  />
+                  <path
+                    v-if="!showConfirmPassword"
+                    d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -142,8 +176,7 @@
           <div>
             <button
               type="submit"
-              class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-[#4ade80] hover:bg-gray-50"
-            >
+              class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-[#4ade80] hover:bg-gray-50">
               {{ isSignUp ? "회원가입" : "로그인" }}
             </button>
           </div>
@@ -226,9 +259,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { onMounted } from "vue";
-import { useRouter } from 'vue-router'; 
+import { ref, onMounted, watch } from "vue";
+import { useAuthStore } from "@/stores/auth";
+import { useRouter, useRoute } from "vue-router";
+
+const authStore = useAuthStore();
+const router = useRouter();
+const route = useRoute();
 
 const users = ref([]);
 const isSignUp = ref(false);
@@ -237,17 +274,21 @@ const password = ref("");
 const confirmPassword = ref("");
 const rememberMe = ref(false);
 const emailError = ref("");
-const router = useRouter();
-
-const routeToMainPage = () => {
-  router.push('/'); 
-};
+const showPassword = ref(false);
+const showConfirmPassword = ref(false);
 
 onMounted(() => {
   const storedUsers = localStorage.getItem("users");
   if (storedUsers) {
     users.value = JSON.parse(storedUsers);
   }
+  
+  // Check if the signup query parameter is present
+  isSignUp.value = route.query.signup === 'true';
+});
+
+watch(() => route.query.signup, (newValue) => {
+  isSignUp.value = newValue === 'true';
 });
 
 const addUser = (newUser) => {
@@ -289,33 +330,31 @@ const handleSubmit = () => {
     alert("회원가입이 완료되었습니다.");
     toggleAuthMode();
   } else {
-    // 로그인 로직
+    // Login logic
     const user = users.value.find(
       (u) => u.email === email.value && u.password === password.value
     );
     if (user) {
-      routeToMainPage(); // 메인 페이지로 이동하는 함수 호출
+      authStore.login(user);
+      router.push("/");
     } else {
       alert("이메일 혹은 비밀번호가 틀립니다.");
     }
   }
 };
 
-const handleConfirm = () => {
-  // Implement confirmation logic here
-  console.log("Confirm clicked");
-};
-
-const showPassword = ref(false);
-
-const togglePasswordVisibility = () => {
-  showPassword.value = !showPassword.value;
+const togglePasswordVisibility = (field) => {
+  if (field === 'password') {
+    showPassword.value = !showPassword.value;
+  } else if (field === 'confirmPassword') {
+    showConfirmPassword.value = !showConfirmPassword.value;
+  }
 };
 </script>
 
 <style scoped>
-/* You can add any additional scoped styles here if needed */
 .text-red-600 {
   color: #dc2626;
 }
 </style>
+
