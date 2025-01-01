@@ -130,7 +130,6 @@ public class UserController {
 	}
 	
 	// 로그아웃
-	// 미완성
 	@PostMapping("/logout")
 	public ResponseEntity<Map<String, Object>> logout(@RequestHeader("Authorization") String token) {
 		Map<String, Object> resultMap = new HashMap<>();
@@ -148,11 +147,9 @@ public class UserController {
 			}
 
 			String userEmail = jwtAuth.getName();
-			// System.out.println(userName);
 			// token = token.replace("Bearer", "");
-			// System.out.println(token);
 			// String userEmail = jwtUtil.getUserEmail(token);
-			System.out.println(userEmail);
+			// System.out.println(userEmail);
 
 			// 토큰 삭제
 			boolean logoutinfo = userService.logout(userEmail);
