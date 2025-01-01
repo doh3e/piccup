@@ -18,7 +18,7 @@
 	</select>
 
     <!-- email 유저 조회 -->
-	<select id="selectOne" resultType="User" parameterType="String">
+	<select id="selectOneByEmail" resultType="User" parameterType="String">
 		SELECT * FROM user
 		WHERE email = #{email};
 	</select>
@@ -39,8 +39,8 @@
     
     <!-- 회원가입 -->
     <insert id="insertUser" parameterType="User" keyProperty="userId" useGeneratedKeys="true">
-    	INSERT INTO user (`email`, nickname, password, mobile_phone)
-    	VALUES (#{email}, #{nickname}, #{password}, #{mobilePhone});
+    	INSERT INTO user (`email`, nickname, password, profile_img, mobile_phone)
+    	VALUES (#{email}, #{nickname}, #{password}, #{profileImg}, #{mobilePhone});
     </insert>
 
     <!-- 유저 탈퇴 -->
@@ -55,4 +55,5 @@
         SET token = #{token}
         WHERE user_id = #{userId};
     </update>
+
 </mapper>

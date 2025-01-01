@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.piccup.model.dao.mydata.CalendarDao">
+
+	<resultMap id="ScheduleResultMap"
+		type="com.ssafy.piccup.model.dto.mydata.Schedule">
+		<result property="scheduleId" column="schedule_id" />
+		<result property="userId" column="user_id" />
+		<result property="scheduleName" column="schedule_name" />
+		<result property="startAt" column="start_at" />
+		<result property="endAt" column="end_at" />
+		<result property="importance" column="importance" />
+	</resultMap>
+
+	<select id="selectAllUserSchedule"
+		resultType="com.ssafy.piccup.model.dto.mydata.Schedule">
+		SELECT schedule_id, user_id, schedule_name, start_at,
+		end_at, importance
+		FROM my_schedule
+		WHERE user_id = #{userId};
+	</select>
+
+	<insert id="insertSchedule"
+		parameterType="com.ssafy.piccup.model.dto.mydata.Schedule">
+		INSERT INTO my_schedule (user_id, schedule_name,
+		start_at, end_at, importance)
+		VALUES (#{userId}, #{scheduleName},
+		#{startAt}, #{endAt},
+		#{importance});
+	</insert>
+
+	<select id="selectOneScheduleById"
+		resultType="com.ssafy.piccup.model.dto.mydata.Schedule">
+		SELECT schedule_id, user_id, schedule_name, start_at,
+		end_at, importance
+		FROM my_schedule
+		WHERE schedule_id = #{scheduleId};
+	</select>
+
+	<update id="updateSchedule"
+		parameterType="com.ssafy.piccup.model.dto.mydata.Schedule">
+		UPDATE my_schedule
+		SET
+		schedule_name = #{scheduleName},
+		start_at = #{startAt},
+		end_at = #{endAt},
+		importance = #{importance}
+		WHERE schedule_id = #{scheduleId}
+		AND user_id = #{userId};
+	</update>
+
+	<select id="selectAllApplySchedules"
+		resultType="com.ssafy.piccup.model.dto.mydata.ApplyCalendarSchedule">
+		SELECT
+		a.apply_id,
+		a.user_id,
+		a.company_name,
+		s.status_id,
+		s.is_progressing,
+		s.current_status,
+		sch.schedule_id,
+		sch.start_date,
+		sch.end_date
+		FROM apply a
+		LEFT JOIN apply_status s ON a.apply_id =
+		s.apply_id
+		LEFT JOIN apply_schedule sch ON a.apply_id = sch.apply_id
+		WHERE a.user_id = #{userId};
+	</select>
+
+	<select id="selectApplyScheduleById"
+		resultType="com.ssafy.piccup.model.dto.mydata.ApplyCalendarSchedule">
+		SELECT
+		a.apply_id,
+		a.user_id,
+		a.company_name,
+		a.company_size,
+		a.job,
+		a.industry,
+		a.created_at,
+		a.updated_at,
+		s.status_id,
+		s.is_progressing,
+		s.current_status,
+		sch.schedule_id,
+		sch.start_date,
+		sch.end_date
+		FROM apply a
+		LEFT JOIN apply_status s ON a.apply_id = s.apply_id
+		LEFT JOIN apply_schedule sch ON a.apply_id = sch.apply_id
+		WHERE a.apply_id = #{applyId} AND a.user_id = #{userId};
+	</select>
+
+
+
+</mapper>

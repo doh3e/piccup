@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssafy.piccup.JwtAuthenticationToken;
 import com.ssafy.piccup.model.dto.user.User;
 import com.ssafy.piccup.model.service.user.UserService;
 import com.ssafy.piccup.util.JwtUtil;
@@ -127,14 +130,45 @@ public class UserController {
 	}
 	
 	// 로그아웃
-	// 미완성
 	@PostMapping("/logout")
-	public ResponseEntity<String> logout(@RequestParam String email) {
-		if (userService.logout(email)) {
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body("토큰 삭제 성공");
+	public ResponseEntity<Map<String, Object>> logout(@RequestHeader("Authorization") String token) {
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.OK;
+
+		try {
+			// 인증 정보
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			JwtAuthenticationToken jwtAuth = (JwtAuthenticationToken) authentication;
+
+			if (authentication == null || !authentication.isAuthenticated()) {
+				resultMap.put("message", "인증되지 않은 사용자입니다.");
+				status = HttpStatus.UNAUTHORIZED;
+				return new ResponseEntity<>(resultMap, status);
+			}
+
+			String userEmail = jwtAuth.getName();
+			// token = token.replace("Bearer", "");
+			// String userEmail = jwtUtil.getUserEmail(token);
+			// System.out.println(userEmail);
+
+			// 토큰 삭제
+			boolean logoutinfo = userService.logout(userEmail);
+			if (logoutinfo == false) {
+				resultMap.put("message", "사용자 토큰이 삭제되지 않았습니다.");
+				status = HttpStatus.INTERNAL_SERVER_ERROR;
+				return new ResponseEntity<>(resultMap, status);
+			}
+
+			// 인증 정보 제거
+			SecurityContextHolder.clearContext();
+
+			resultMap.put("message", "로그아웃 되었습니다.");
+
+		} catch (Exception e) {
+			resultMap.put("message", "로그아웃 중 오류가 발생했습니다.");
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
 		}
-		
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("실패");
+		return new ResponseEntity<>(resultMap, status);
 	}
 	
 	// 회원 탈퇴
