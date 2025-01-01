@@ -9,20 +9,17 @@
         <Features :features="features" v-intersection-animate />
         <Companies :companies="companies" v-intersection-animate />
       </main>
-      <Footer />
     </template>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import Header from '@/components/Main/Header.vue'
 import Hero from '@/components/Main/Hero.vue'
 import JobSearch from '@/components/Main/JobSearch.vue'
 import PopularJobs from '@/components/Main/PopularJobs.vue'
 import Features from '@/components/Main/Features.vue'
 import Companies from '@/components/Main/Companies.vue'
-import Footer from '@/components/Main/Footer.vue'
 import LoadingView from '@/views/LoadingView.vue'
 
 const navItems = ['홈', '채용정보', '이력서', '기업리뷰', '커리어 성장']

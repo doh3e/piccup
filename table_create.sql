@@ -14,12 +14,13 @@ CREATE TABLE user (
   password VARCHAR(255) NOT NULL,
   profile_img VARCHAR(255),
   mobile_phone VARCHAR(20),
-  created_at DATE NOT NULL DEFAULT (CURRENT_DATE)
+  created_at DATE NOT NULL DEFAULT (CURRENT_DATE),
+  token VARCHAR(1000)
 );
 
 /* (자소서파트) 지원정보 apply */
 CREATE TABLE apply (
-  appy_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  apply_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
   company_name VARCHAR(100),
   company_size VARCHAR(50),
@@ -35,33 +36,33 @@ CREATE TABLE apply (
 /* (자소서, 마이데이터 파트) 전형단계 apply_status */
 CREATE TABLE apply_status (
   status_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  appy_id INT NOT NULL,
+  apply_id INT NOT NULL,
   is_progressing BOOLEAN NOT NULL DEFAULT TRUE,
   current_status VARCHAR(50) NOT NULL DEFAULT '미정',
-  FOREIGN KEY (appy_id) REFERENCES apply(appy_id) ON DELETE CASCADE,
+  FOREIGN KEY (apply_id) REFERENCES apply(apply_id) ON DELETE CASCADE,
   CHECK (current_status IN ('서류', '인적성', '코딩테스트', '면접', '최종합격', '미정'))
 );
 
 /* (자소서, 마이데이터 파트) 접수일정 apply_schedule */
 CREATE TABLE apply_schedule (
   schedule_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  appy_id INT NOT NULL,
+  apply_id INT NOT NULL,
   start_date DATETIME,
   end_date DATETIME,
-  FOREIGN KEY (appy_id) REFERENCES apply(appy_id) ON DELETE CASCADE
+  FOREIGN KEY (apply_id) REFERENCES apply(apply_id) ON DELETE CASCADE
 );
 
 /* (자소서) 항목 테이블 */
 CREATE TABLE cover_letter (
   cover_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  appy_id INT NOT NULL,
+  apply_id INT NOT NULL,
   user_id INT NOT NULL,
   category VARCHAR(100),
   cover_title VARCHAR(255) NOT NULL,
   cover_content TEXT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (appy_id) REFERENCES apply(appy_id) ON DELETE CASCADE,
+  FOREIGN KEY (apply_id) REFERENCES apply(apply_id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
   CHECK (category IN ('성공경험', '실패', '지원동기', '역량', '기타'))
 );
@@ -69,13 +70,13 @@ CREATE TABLE cover_letter (
 /* (마이데이터) 피드백 테이블 */
 CREATE TABLE apply_feedback (
   feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  appy_id INT,
+  apply_id INT,
   user_id INT NOT NULL,
   feedback_status VARCHAR(50) NOT NULL DEFAULT '미정',
   content TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (appy_id) REFERENCES apply(appy_id) ON DELETE SET NULL,
+  FOREIGN KEY (apply_id) REFERENCES apply(apply_id) ON DELETE SET NULL,
   FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
   CHECK (feedback_status IN ('서류', '인적성', '코딩테스트', '면접', '최종합격', '미정'))
 );
@@ -369,8 +370,3 @@ CREATE TABLE education (
   CONSTRAINT edu_resume_fk FOREIGN KEY (resume_id) REFERENCES resume(resume_id) ON DELETE CASCADE,
   PRIMARY KEY (edu_id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
-
-
-
-
-
