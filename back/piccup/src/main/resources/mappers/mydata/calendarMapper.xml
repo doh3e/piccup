@@ -93,6 +93,4 @@
 		WHERE a.apply_id = #{applyId} AND a.user_id = #{userId};
 	</select>
 
-
-
 </mapper>
