@@ -49,15 +49,22 @@ const getRouteForItem = (item) => {
       return '/resume';
     case '홈':
       return '/';
+    case '자기소개서 작성':
+      return '/cover-letter';
     default:
       return '#' + item;
   }
 };
 
-const handleLogout = () => {
-  authStore.logout();
-  router.push('/');
-};
+const handleLogout = async () => {
+  const result = await authStore.logout();
+  if (result.success) {
+    alert(result.message);
+    router.push('/');
+  } else {
+    alert(result.message);
+  }
+}
 
 onMounted(() => {
   authStore.checkAuth();

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '@/views/MainView.vue'
 import MydataView from '@/views/MydataView.vue'
+import CoverLetterView from '@/views/CoverLetterView.vue'
 import ResumeView from '@/views/ResumeView.vue'
 import FAQView from '@/views/FAQView.vue'
 import AuthView from '@/views/AuthView.vue'
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/auth',
       name: 'auth',
       component: AuthView
+    },
+    {
+      path: '/cover-letter',
+      name: 'CoverLetter',
+      component: CoverLetterView
     },
   ],
 })

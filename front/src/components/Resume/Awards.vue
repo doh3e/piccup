@@ -20,7 +20,7 @@
               수상명 <span class="text-red-500">*</span>
             </label>
             <input
-              v-model="award.name"
+              v-model="award.awardName"
               type="text"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
               required
@@ -33,7 +33,7 @@
               수여기관
             </label>
             <input
-              v-model="award.organization"
+              v-model="award.awardOrganization"
               type="text"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
             />
@@ -45,7 +45,7 @@
               수상연도
             </label>
             <input
-              v-model="award.year"
+              v-model="award.awardDate"
               type="text"
               placeholder="YYYY"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
@@ -121,9 +121,9 @@
     emits: ['update:data'],
     setup(props, { emit }) {
       const localData = ref(props.data && props.data.length > 0 ? props.data : [{
-        name: '',
-        organization: '',
-        year: '',
+        awardName: '',
+        awardOrganization: '',
+        awardDate: '',
         description: ''
       }])
   

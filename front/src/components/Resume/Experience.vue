@@ -10,7 +10,7 @@
             회사명 <span class="text-red-500">*</span>
           </label>
           <input
-            v-model="exp.companyName"
+            v-model="exp.company"
             type="text"
             class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
             required
@@ -71,28 +71,26 @@
             <label class="block text-sm font-medium text-gray-700 mb-1">
               직급/직책
             </label>
-            <select
-              v-model="exp.position"
-              class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
-            >
-              <option value="">선택하기</option>
-              <option value="사원">사원</option>
-              <option value="대리">대리</option>
-              <option value="과장">과장</option>
-              <option value="차장">차장</option>
-              <option value="부장">부장</option>
-            </select>
+            <input
+            v-model="exp.position"
+            type="text"
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
+           />
           </div>
           <div class="flex-1">
             <label class="block text-sm font-medium text-gray-700 mb-1">
               연봉
             </label>
+            <div class="flex items-center">
+
             <input
               v-model="exp.salary"
               type="text"
               placeholder="만원"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
             />
+            <span class="ml-2 whitespace-nowrap">만원</span>
+            </div>
           </div>
         </div>
       </div>
@@ -229,16 +227,16 @@ export default {
   emits: ['update:data'],
   setup(props, { emit }) {
     const localData = ref(props.data && props.data.length > 0 ? props.data : [{
-      companyName: '',
+      company: '',
       department: '',
       startDate: '',
       endDate: '',
-      isCurrent: false,
       position: '',
-      salary: '',
+      salary: 0,
+      isCurrent: false,
       description: '',
-      tags: [],
-      documents: []
+      // tags: [],
+      // documents: []
     }])
 
     const showDeleteModal = ref(false)
@@ -248,7 +246,7 @@ export default {
 
     const addExperience = () => {
       localData.value.push({
-        companyName: '',
+        company: '',
         department: '',
         startDate: '',
         endDate: '',

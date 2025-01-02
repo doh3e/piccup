@@ -20,15 +20,14 @@
               활동구분 <span class="text-red-500">*</span>
             </label>
             <select
-              v-model="activity.type"
+              v-model="activity.actType"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
               required
             >
-              <option value="">선택하기</option>
-              <option value="인턴">인턴</option>
-              <option value="대외활동">대외활동</option>
+              <option value="아르바이트">아르바이트</option>
+              <option value="교내활동">교내활동</option>
               <option value="동아리">동아리</option>
-              <option value="봉사활동">봉사활동</option>
+              <option value="자원봉사">봉사활동</option>
               <option value="기타">기타</option>
             </select>
           </div>
@@ -39,7 +38,7 @@
               회사/기관/단체명 <span class="text-red-500">*</span>
             </label>
             <input
-              v-model="activity.organization"
+              v-model="activity.title"
               type="text"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
               required
@@ -142,13 +141,14 @@
     emits: ['update:data'],
     setup(props, { emit }) {
       const localData = ref(props.data && props.data.length > 0 ? props.data : [{
-        type: '',
-        organization: '',
+        actType: '기타',
+        title: '',
         startDate: '',
         endDate: '',
         description: ''
       }])
-  
+
+
       const showDeleteModal = ref(false)
   
       const addActivity = () => {
