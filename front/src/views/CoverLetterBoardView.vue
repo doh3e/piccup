@@ -161,24 +161,13 @@ onMounted(async () => {
 const fetchCoverLetters = async () => {
   try {
     isLoading.value = true;
-    // Simulating API call to fetch cover letters for the logged-in user
-    const userId = localStorage.getItem("userId");
-    if (!userId) {
-      console.error("User not logged in");
-      router.push("/auth");
-      return;
-    }
-
-    // Simulated API call
-    const response = await fetch(`/api/cover-letters?userId=${userId}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch cover letters");
-    }
+    const response = await fetch('/api/coverletters');
+    if (!response.ok) throw new Error('Failed to fetch cover letters');
     const data = await response.json();
     coverLetters.value = data;
   } catch (error) {
-    console.error("Failed to fetch cover letters:", error);
-    errorMessage.value = "작성된 자기소개서를 불러오지 못했습니다.";
+    console.error('Failed to fetch cover letters:', error);
+    errorMessage.value = '아직 이력서를 작성하지 않으셨어요! 이력서를 작성하러 가볼까요?';
   } finally {
     isLoading.value = false;
   }
