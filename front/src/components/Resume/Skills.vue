@@ -62,7 +62,8 @@ export default {
         } else if (localData.value.includes(trimmedSkill)) {
           errorMessage.value = "이미 등록된 스킬입니다."
         } else {
-          localData.value.push(trimmedSkill)
+
+          localData.value.push({skillName: trimmedSkill, skillLevel:'미지정'})
           newSkill.value = ''
           errorMessage.value = ''
           updateData()

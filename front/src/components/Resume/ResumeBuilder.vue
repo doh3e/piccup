@@ -52,7 +52,7 @@ export default {
   setup(props, { emit }) {
     const getSectionComponent = (sectionId) => {
       const componentMap = {
-        personalInfo: 'PersonalInfo',
+        personalInfos: 'PersonalInfo',
         desiredJob: 'DesiredJob',
         skills: 'Skills',
         educations: 'AcademicAbility',
@@ -60,7 +60,7 @@ export default {
         activities: 'InternExtraActivities',
         trainings: 'Educations',
         certifications: 'Certifications',
-        portfolio: 'Portfolio',
+        portfolios: 'Portfolio',
         awards: 'Awards',
       }
       return componentMap[sectionId]
