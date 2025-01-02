@@ -52,7 +52,13 @@ import { useAuthStore } from "@/stores/auth";
 const router = useRouter();
 const authStore = useAuthStore();
 
-const navItems = ["홈", "이력서", "자기소개서 작성", "자기소개서 목록"];
+const navItems = [
+  "홈",
+  "이력서",
+  "자기소개서 작성",
+  "자기소개서 목록",
+  "고객센터",
+];
 
 const navigateHome = () => {
   router.push("/");
@@ -72,6 +78,8 @@ const getRouteForItem = (item) => {
       return "/cover-letter";
     case "자기소개서 목록":
       return "/board";
+    case "고객센터":
+      return "/FAQ";
     default:
       return "#" + item;
   }
