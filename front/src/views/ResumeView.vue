@@ -7,9 +7,9 @@
     />
 
     <!-- Main Content -->
-    <div class="flex-1 p-6 pt-16 overflow-y-auto">
+    <div class="flex-1 p-6 overflow-y-auto">
       <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold text-[#006B40] mb-6">Resume Builder</h1>
+        <h1 class="text-3xl font-bold text-[#006B40] mb-6">이력서 수정</h1>
         <PersonalInfo
           :data="resumeStore.resumeData?.personalInfo"
         />
@@ -23,27 +23,15 @@
         />
         <div class="mt-6 flex justify-end space-x-4">
           <button
-            @click="togglePreview"
-            class="px-4 py-2 bg-[#8CD196] text-[#006B40] rounded hover:bg-opacity-90 transition"
-          >
-            {{ isPreviewMode ? 'Edit Resume' : 'Preview Resume' }}
-          </button>
-          <button
             @click="saveResume"
             class="px-4 py-2 bg-[#006B40] text-white rounded hover:bg-opacity-90 transition"
           >
-            Save Resume
+            저장
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Preview Mode -->
-    <PreviewMode
-      v-if="isPreviewMode"
-      :resumeData="resumeData"
-      @close="togglePreview"
-    />
   </div>
 </template>
 
@@ -52,7 +40,6 @@ import { ref, reactive, onMounted } from 'vue'
 import { useResumeStore } from '@/stores/resume'
 import Sidebar from '@/components/Resume/Sidebar.vue'
 import ResumeBuilder from '@/components/Resume/ResumeBuilder.vue'
-import PreviewMode from '@/components/Resume/PreviewMode.vue'
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
 import axios from 'axios'
 
@@ -60,7 +47,6 @@ export default {
   components: {
     Sidebar,
     ResumeBuilder,
-    PreviewMode,
     PersonalInfo
   },
   setup() {
@@ -93,8 +79,6 @@ export default {
       awards: [],
       portfolio: [],
     })
-
-    const isPreviewMode = ref(false)
 
     const toggleSection = (sectionId) => {
       const section = resumeSections.find(s => s.id === sectionId)
@@ -163,10 +147,8 @@ export default {
       resumeStore,
       resumeSections,
       resumeData,
-      isPreviewMode,
       toggleSection,
       updateResumeData,
-      togglePreview,
       saveResume,
       updateResumeData
       // updatePersonalInfo,
