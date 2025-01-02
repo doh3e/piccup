@@ -106,6 +106,7 @@ public class UserController {
 		HttpStatus status = HttpStatus.ACCEPTED;
 
 		try {
+			System.out.println("로그인 요청 : "+ user.getEmail() + user.getPassword());
 			User loginUser = userService.login(user.getEmail(), user.getPassword());
 			System.out.println("반환된 유저"+loginUser);
 			if(loginUser != null) {

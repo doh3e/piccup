@@ -52,6 +52,7 @@ import Sidebar from '@/components/Resume/Sidebar.vue'
 import ResumeBuilder from '@/components/Resume/ResumeBuilder.vue'
 import PreviewMode from '@/components/Resume/PreviewMode.vue'
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
+import axios from 'axios'
 
 export default {
   components: {
@@ -107,10 +108,41 @@ export default {
       isPreviewMode.value = !isPreviewMode.value
     }
 
-    const saveResume = () => {
-      console.log('Saving resume:', resumeData)
-      alert('Resume saved successfully!')
+    // resume 저장 
+    const saveResume = async () => {
+      try{
+        const response = await axios.post('http://localhost:8080/api/v1/resume',
+          resumeData,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          }
+        )
+        console.log('Saving resume:', resumeData)
+        alert('Resume saved successfully!')
+        console.log('Saved data: ', response.data)
+      } catch(err){
+        console.log('Error saving resume: ', err)
+      }
     }
+
+    // resume 조회 
+    const loadResume = async () => {
+      try{
+        const response = await axios.get('http://localhost/api/v1/resume', {
+          headers:{
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        })
+        Object.assign(resumeData, response.data)
+      } catch (err){
+        console.error(err)
+      }
+    }
+
+    loadResume()
 
     const updatePersonalInfo = (newData) => {
       resumeData.personalInfo = newData

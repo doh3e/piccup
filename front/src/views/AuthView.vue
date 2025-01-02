@@ -293,7 +293,7 @@ watch(() => route.query.signup, (newValue) => {
 
 const addUser = (newUser) => {
   users.value.push(newUser);
-  localStorage.setItem("users", JSON.stringify(users.value));
+  // localStorage.setItem("users", JSON.stringify(users.value));
 };
 
 const toggleAuthMode = () => {
@@ -316,29 +316,27 @@ const validateEmail = () => {
   }
 };
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   if (isSignUp.value) {
     if (!validateEmail()) {
-      return; // 이메일이 중복되면 회원가입 로직 중단
+      return; // 회원가입 로직 중단
     }
     if (password.value !== confirmPassword.value) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
-    const newUser = { email: email.value, password: password.value };
-    addUser(newUser);
-    alert("회원가입이 완료되었습니다.");
-    toggleAuthMode();
   } else {
     // Login logic
-    const user = users.value.find(
-      (u) => u.email === email.value && u.password === password.value
-    );
-    if (user) {
-      authStore.login(user);
-      router.push("/");
+    console.log(email.value, password.value)
+    const result = await authStore.login(email.value, password.value);
+    if (result.success) {
+      alert(result.message);
+      const newUser = { email: email.value, password: password.value };
+      addUser(newUser);
+      toggleAuthMode();
+      router.push('/');
     } else {
-      alert("이메일 혹은 비밀번호가 틀립니다.");
+      alert(result.message);
     }
   }
 };
