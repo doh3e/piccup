@@ -20,7 +20,7 @@
               교육명 <span class="text-red-500">*</span>
             </label>
             <input
-              v-model="education.name"
+              v-model="education.trainingName"
               type="text"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
               required
@@ -142,13 +142,12 @@
     emits: ['update:data'],
     setup(props, { emit }) {
       const localData = ref(props.data && props.data.length > 0 ? props.data : [{
-        name: '',
+        trainingName: '',
         institution: '',
         startDate: '',
         endDate: '',
         description: ''
       }])
-  
       const showDeleteModal = ref(false)
   
       const addEducation = () => {
