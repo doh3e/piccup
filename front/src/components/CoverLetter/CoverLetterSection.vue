@@ -11,7 +11,7 @@
       <div class="flex justify-end mt-4">
         <button 
           @click="$emit('save')"
-          class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition duration-300"
+          class="bg-secondary text-black px-4 py-2 rounded-md hover:bg-opacity-90 transition duration-300"
         >
           저장
         </button>

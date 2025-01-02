@@ -16,8 +16,9 @@
         </nav>
         
         <div class="flex items-center space-x-4">
-          <button @click="navigateToAuth" class="btn btn-outline">로그인</button>
-          <button class="btn btn-primary">회원가입</button>
+          <button v-if="!authStore.isLoggedIn" @click="navigateToAuth(true)" class="btn btn-primary">회원가입</button>
+          <button v-if="!authStore.isLoggedIn" @click="navigateToAuth(false)" class="btn btn-outline">로그인</button>
+          <button v-else @click="handleLogout" class="btn btn-outline">로그아웃</button>
         </div>
       </div>
     </div>
@@ -25,17 +26,21 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 
 const router = useRouter();
+const authStore = useAuthStore();
+
 const navItems = ['홈', '채용정보', '이력서', '기업리뷰', '자기소개서 작성'];
 
 const navigateHome = () => {
   router.push('/');
 };
 
-const navigateToAuth = () => {
-  router.push('/auth');
+const navigateToAuth = (isSignUp) => {
+  router.push({ path: '/auth', query: { signup: isSignUp } });
 };
 
 const getRouteForItem = (item) => {
@@ -50,6 +55,15 @@ const getRouteForItem = (item) => {
       return '#' + item;
   }
 };
+
+const handleLogout = () => {
+  authStore.logout();
+  router.push('/');
+};
+
+onMounted(() => {
+  authStore.checkAuth();
+});
 </script>
 
 <style scoped>
@@ -80,3 +94,4 @@ const getRouteForItem = (item) => {
   background-color: #005030;
 }
 </style>
+
