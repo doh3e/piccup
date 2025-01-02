@@ -7,9 +7,9 @@
     />
 
     <!-- Main Content -->
-    <div class="flex-1 p-6 pt-16 overflow-y-auto">
+    <div class="flex-1 p-6 overflow-y-auto">
       <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold text-[#006B40] mb-6">Resume Builder</h1>
+        <h1 class="text-3xl font-bold text-[#006B40] mb-6">이력서 수정</h1>
         <PersonalInfo
           :data="resumeData.personalInfo"
           @update:data="updatePersonalInfo"
@@ -22,27 +22,15 @@
         />
         <div class="mt-6 flex justify-end space-x-4">
           <button
-            @click="togglePreview"
-            class="px-4 py-2 bg-[#8CD196] text-[#006B40] rounded hover:bg-opacity-90 transition"
-          >
-            {{ isPreviewMode ? 'Edit Resume' : 'Preview Resume' }}
-          </button>
-          <button
             @click="saveResume"
             class="px-4 py-2 bg-[#006B40] text-white rounded hover:bg-opacity-90 transition"
           >
-            Save Resume
+            저장
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Preview Mode -->
-    <PreviewMode
-      v-if="isPreviewMode"
-      :resumeData="resumeData"
-      @close="togglePreview"
-    />
   </div>
 </template>
 
@@ -50,14 +38,12 @@
 import { ref, reactive } from 'vue'
 import Sidebar from '@/components/Resume/Sidebar.vue'
 import ResumeBuilder from '@/components/Resume/ResumeBuilder.vue'
-import PreviewMode from '@/components/Resume/PreviewMode.vue'
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
 
 export default {
   components: {
     Sidebar,
     ResumeBuilder,
-    PreviewMode,
     PersonalInfo
   },
   setup() {
@@ -90,8 +76,6 @@ export default {
       portfolio: [],
     })
 
-    const isPreviewMode = ref(false)
-
     const toggleSection = (sectionId) => {
       const section = resumeSections.find(s => s.id === sectionId)
       if (section) {
@@ -103,13 +87,9 @@ export default {
       Object.assign(resumeData, newData)
     }
 
-    const togglePreview = () => {
-      isPreviewMode.value = !isPreviewMode.value
-    }
-
     const saveResume = () => {
       console.log('Saving resume:', resumeData)
-      alert('Resume saved successfully!')
+      alert('성공적으로 저장되었습니다! :)')
     }
 
     const updatePersonalInfo = (newData) => {
@@ -119,10 +99,8 @@ export default {
     return {
       resumeSections,
       resumeData,
-      isPreviewMode,
       toggleSection,
       updateResumeData,
-      togglePreview,
       saveResume,
       updatePersonalInfo
     }

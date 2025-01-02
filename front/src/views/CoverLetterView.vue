@@ -1,11 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto">
-      <h1 class="text-3xl font-bold text-center text-primary mb-8">자기소개서 작성</h1>
-
+  <div class="min-h-screen bg-gray-50 px-4 sm:px-6 lg:px-8">
+    <div>
+      <h1 class="text-3xl font-bold text-center text-primary mb-8 text-[#006B40]">자기소개서 작성</h1>
       <div class="flex space-x-8">
         <!-- Resume Tab View -->
-        <div class="w-1/2">
+        <div class="w-1/3">
           <div v-if="resumeData.length > 0">
             <ResumeTabView />
           </div>
@@ -13,7 +12,7 @@
             <p class="text-lg mb-4">아직 이력서를 작성하지 않으셨어요! 이력서를 작성하러 가볼까요?</p>
             <router-link 
               to="/resume" 
-              class="inline-block bg-primary text-white px-6 py-2 rounded-md hover:bg-opacity-90 transition duration-300"
+              class="inline-block bg-primary text-green-500 px-6 py-2 rounded-md hover:bg-opacity-90 transition duration-300"
             >
               이력서 작성하기
             </router-link>
@@ -21,7 +20,7 @@
         </div>
 
         <!-- Cover Letter Tabs -->
-        <div class="w-1/2">
+        <div class="w-2/3">
           <div class="bg-white p-6 rounded-lg shadow-md">
             <input
               v-model="coverLetterTitle"
@@ -55,7 +54,7 @@
               <div class="flex justify-end">
                 <button 
                   type="submit" 
-                  class="bg-primary text-green-500 px-8 py-3 rounded-md hover:bg-opacity-90 transition duration-300"
+                  class="bg-primary text-[#006B40] px-8 py-3 rounded-md hover:bg-opacity-90 transition duration-300 border border-gray-300"
                 >
                   전체 저장
                 </button>
@@ -136,7 +135,7 @@ const updateSection = (sectionId, content) => {
 
 const saveSection = async (sectionId) => {
   try {
-    const response = await fetch(`/api/coverletter/${sectionId}`, {
+    const response = await fetch(`/api/v1/coverletter/${sectionId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
