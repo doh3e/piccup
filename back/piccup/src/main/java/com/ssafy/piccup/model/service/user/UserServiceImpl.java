@@ -56,13 +56,9 @@ public class UserServiceImpl implements UserService {
 	// 로그인
 	@Override
 	public User login(String email, String password) {
-		// return userDao.selectOne(email, password);
 		User user = userDao.selectOneByEmail(email);
-		// System.out.println(password);
-		// System.out.println(user.getPassword());
-		if (passwordEncoder.matches(password, user.getPassword())) {
+		if (user != null && passwordEncoder.matches(password, user.getPassword()))
 			return user;
-		}
 		return null;
 	}
 

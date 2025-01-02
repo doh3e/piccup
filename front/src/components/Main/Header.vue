@@ -56,10 +56,15 @@ const getRouteForItem = (item) => {
   }
 };
 
-const handleLogout = () => {
-  authStore.logout();
-  router.push('/');
-};
+const handleLogout = async () => {
+  const result = await authStore.logout();
+  if (result.success) {
+    alert(result.message);
+    router.push('/');
+  } else {
+    alert(result.message);
+  }
+}
 
 onMounted(() => {
   authStore.checkAuth();

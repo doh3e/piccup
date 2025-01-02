@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { computed } from 'vue'
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
 import DesiredJob from '@/components/Resume/DesiredJob.vue'
 import Skills from '@/components/Resume/Skills.vue'
@@ -53,15 +52,15 @@ export default {
   setup(props, { emit }) {
     const getSectionComponent = (sectionId) => {
       const componentMap = {
-        personalInfo: 'PersonalInfo',
+        personalInfos: 'PersonalInfo',
         desiredJob: 'DesiredJob',
         skills: 'Skills',
-        academicAbility: 'AcademicAbility',
-        experience: 'Experience',
-        internships: 'InternExtraActivities',
-        training: 'Educations',
+        educations: 'AcademicAbility',
+        workExperiences: 'Experience',
+        activities: 'InternExtraActivities',
+        trainings: 'Educations',
         certifications: 'Certifications',
-        portfolio: 'Portfolio',
+        portfolios: 'Portfolio',
         awards: 'Awards',
       }
       return componentMap[sectionId]

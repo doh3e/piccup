@@ -23,7 +23,7 @@
             </label>
             <div class="relative">
               <input
-                v-model="qualification.name"
+                v-model="qualification.certName"
                 type="text"
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50 pr-10"
                 required
@@ -42,7 +42,7 @@
               발행처
             </label>
             <input
-              v-model="qualification.issuer"
+              v-model="qualification.publisher"
               type="text"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
             />
@@ -54,7 +54,7 @@
               취득월
             </label>
             <input
-              v-model="qualification.acquisitionDate"
+              v-model="qualification.obtainedDate"
               type="text"
               placeholder="YYYY.MM"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
@@ -117,18 +117,20 @@
     emits: ['update:data'],
     setup(props, { emit }) {
       const localData = ref(props.data && props.data.length > 0 ? props.data : [{
-        name: '',
-        issuer: '',
-        acquisitionDate: ''
+        certName: '',
+        publisher: '',
+        obtainedDate: '',
+        certCode: '',
       }])
   
       const showDeleteModal = ref(false)
   
       const addQualification = () => {
         localData.value.push({
-          name: '',
-          issuer: '',
-          acquisitionDate: ''
+          certName: '',
+          publisher: '',
+          obtainedDate: '',
+          certCode: '',
         })
         updateData()
       }
