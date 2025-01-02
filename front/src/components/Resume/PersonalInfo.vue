@@ -13,7 +13,7 @@
             <span class="text-red-500 ml-0.5">*</span>
           </label>
           <input
-            v-model="localData.name"
+            v-model="localData.username"
             type="text"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
             @input="updateData"
@@ -45,8 +45,9 @@
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
             @change="updateData"
           >
-            <option value="남자">남자</option>
-            <option value="여자">여자</option>
+            <option value="남">남자</option>
+            <option value="여">여자</option>
+            <option value="미지정">미지정</option>
           </select>
         </div>
 
@@ -71,7 +72,7 @@
             <span class="text-red-500 ml-0.5">*</span>
           </label>
           <input
-            v-model="localData.phone"
+            v-model="localData.mobilePhone"
             type="tel"
             placeholder="010-0000-0000"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
@@ -101,7 +102,7 @@
         </div>
         <div>
           <input
-            v-model="localData.detailAddress"
+            v-model="localData.addressDetail"
             type="text"
             placeholder="상세주소"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
@@ -212,7 +213,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, watch } from "vue";
 
 const props = defineProps({
   data: {
@@ -223,18 +224,7 @@ const props = defineProps({
 
 const emit = defineEmits(["update:data"]);
 
-
-const localData = ref({
-  name: '',
-  birthDate: '',
-  gender: '남자',
-  email: '',
-  phone: '',
-  address: '',
-  detailAddress: '',
-  photo: '',
-  ...props.data
-});
+const localData = ref({...props.data });
 
 const fileInput = ref(null);
 const showAddressModal = ref(false);
@@ -334,9 +324,9 @@ const openAddressSearch = () => {
 watch(
   () => props.data,
   (newData) => {
-    localData.value = { ...localData.value, ...newData };
+    localData.value = { ...localData.value, ...newData,};
   },
-  { deep: true }
+  { deep: true, immediate: true }
 );
 </script>
 

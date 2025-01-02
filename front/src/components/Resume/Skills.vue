@@ -27,7 +27,7 @@
         <h3 class="text-lg font-semibold mb-2">등록된 스킬:</h3>
         <ul class="space-y-2">
           <li v-for="(skill, index) in localData" :key="index" class="flex items-center justify-between bg-gray-100 px-3 py-2 rounded-md">
-            <span>{{ skill }}</span>
+            <span>{{ skill.skillName }} / {{ skill.skillLevel }}</span>
             <button
               @click="removeSkill(index)"
               class="text-red-500 hover:text-red-700"

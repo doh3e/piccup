@@ -6,8 +6,8 @@ import axios from "axios";
 const apiAuth = axios.create({
   baseURL: "/api/v1",
   timeout: 5000, // 제한시간
-
 })
+
 // 2. 인증x
 const api = axios.create({
   baseURL: "/api/v1",

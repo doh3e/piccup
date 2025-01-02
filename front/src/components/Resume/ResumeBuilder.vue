@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { computed } from 'vue'
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
 import DesiredJob from '@/components/Resume/DesiredJob.vue'
 import Skills from '@/components/Resume/Skills.vue'
@@ -56,7 +55,7 @@ export default {
         personalInfo: 'PersonalInfo',
         desiredJob: 'DesiredJob',
         skills: 'Skills',
-        academicAbility: 'AcademicAbility',
+        educations: 'AcademicAbility',
         experience: 'Experience',
         internships: 'InternExtraActivities',
         training: 'Educations',

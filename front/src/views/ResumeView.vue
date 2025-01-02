@@ -11,13 +11,13 @@
       <div class="max-w-4xl mx-auto">
         <h1 class="text-3xl font-bold text-[#006B40] mb-6">Resume Builder</h1>
         <PersonalInfo
-          :data="resumeData.personalInfo"
+          :data="resumeStore.resumeData?.personalInfo"
           @update:data="updatePersonalInfo"
         />
         <ResumeBuilder
           class="section-margin"
           :sections="resumeSections"
-          :resumeData="resumeData"
+          :resumeData="resumeStore.resumeData"
           @update:resumeData="updateResumeData"
         />
         <div class="mt-6 flex justify-end space-x-4">
@@ -47,7 +47,8 @@
 </template>
 
 <script>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+import { useResumeStore } from '@/stores/resume'
 import Sidebar from '@/components/Resume/Sidebar.vue'
 import ResumeBuilder from '@/components/Resume/ResumeBuilder.vue'
 import PreviewMode from '@/components/Resume/PreviewMode.vue'
@@ -62,10 +63,16 @@ export default {
     PersonalInfo
   },
   setup() {
+    const resumeStore = useResumeStore()
+
+    onMounted(() => {
+      resumeStore.readResume(); // 데이터 가져오기
+    })
+
     const resumeSections = reactive([
       { id: 'desiredJob', name: '희망 직무', isActive: true },
       { id: 'skills', name: '스킬', isActive: true },
-      { id: 'academicAbility', name: '학력', isActive: true },
+      { id: 'educations', name: '학력', isActive: true },
       { id: 'experience', name: '경력', isActive: true },
       { id: 'internships', name: '인턴 및 대외 활동', isActive: false },
       { id: 'training', name: '교육 이수', isActive: false },
@@ -75,11 +82,6 @@ export default {
     ])
 
     const resumeData = reactive({
-      personalInfo: {
-        name: '',
-        email: '',
-        phone: '',
-      },
       desiredJob: '',
       skills: [],
       academicAbility: [],
@@ -129,26 +131,28 @@ export default {
     }
 
     // resume 조회 
-    const loadResume = async () => {
-      try{
-        const response = await axios.get('http://localhost/api/v1/resume', {
-          headers:{
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        })
-        Object.assign(resumeData, response.data)
-      } catch (err){
-        console.error(err)
-      }
-    }
 
-    loadResume()
+    // const loadResume = async () => {
+    //   try{
+    //     const response = await axios.get('http://localhost/api/v1/resume', {
+    //       headers:{
+    //         Authorization: `Bearer ${localStorage.getItem('token')}`,
+    //       },
+    //     })
+    //     Object.assign(resumeData, response.data)
+    //   } catch (err){
+    //     console.error(err)
+    //   }
+    // }
+
+    // loadResume()
 
     const updatePersonalInfo = (newData) => {
       resumeData.personalInfo = newData
     }
 
     return {
+      resumeStore,
       resumeSections,
       resumeData,
       isPreviewMode,
