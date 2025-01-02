@@ -30,10 +30,11 @@ CREATE TABLE `user` (
   `profile_img` varchar(255) DEFAULT NULL,
   `mobile_phone` varchar(20) DEFAULT NULL,
   `created_at` date NOT NULL DEFAULT (curdate()),
+  'token' varchar(255),
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `nickname` (`nickname`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
