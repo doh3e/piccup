@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `apply`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `apply` (
-  `appy_id` int NOT NULL AUTO_INCREMENT,
+  `apply_id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
   `company_name` varchar(100) DEFAULT NULL,
   `company_size` varchar(50) DEFAULT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE `apply` (
   `industry` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`appy_id`),
+  PRIMARY KEY (`apply_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `apply_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
   CONSTRAINT `apply_chk_1` CHECK ((`company_size` in (_utf8mb4'대기업',_utf8mb4'중견기업',_utf8mb4'중소기업',_utf8mb4'스타트업',_utf8mb4'공기업',_utf8mb4'공공기관',_utf8mb4'기타'))),

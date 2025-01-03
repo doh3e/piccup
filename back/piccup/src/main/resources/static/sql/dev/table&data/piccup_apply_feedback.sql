@@ -24,16 +24,16 @@ DROP TABLE IF EXISTS `apply_feedback`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `apply_feedback` (
   `feedback_id` int NOT NULL AUTO_INCREMENT,
-  `appy_id` int DEFAULT NULL,
+  `apply_id` int DEFAULT NULL,
   `user_id` int NOT NULL,
   `feedback_status` varchar(50) NOT NULL DEFAULT '미정',
   `content` text,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`feedback_id`),
-  KEY `appy_id` (`appy_id`),
+  KEY `apply_id` (`apply_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `apply_feedback_ibfk_1` FOREIGN KEY (`appy_id`) REFERENCES `apply` (`appy_id`) ON DELETE SET NULL,
+  CONSTRAINT `apply_feedback_ibfk_1` FOREIGN KEY (`apply_id`) REFERENCES `apply` (`apply_id`) ON DELETE SET NULL,
   CONSTRAINT `apply_feedback_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
   CONSTRAINT `apply_feedback_chk_1` CHECK ((`feedback_status` in (_utf8mb4'서류',_utf8mb4'인적성',_utf8mb4'코딩테스트',_utf8mb4'면접',_utf8mb4'최종합격',_utf8mb4'미정')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

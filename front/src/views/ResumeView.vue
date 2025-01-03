@@ -54,7 +54,6 @@ export default {
     })
 
     const resumeSections = reactive([
-      { id: 'desiredJob', name: '희망 직무', isActive: true },
       { id: 'skills', name: '스킬', isActive: true },
       { id: 'educations', name: '학력', isActive: true },
       { id: 'workExperiences', name: '경력', isActive: true },
@@ -67,7 +66,6 @@ export default {
 
     const resumeData = reactive({
       personalInfo: {},
-      desiredJob: '',
       skills: [],
       academicAbility: [],
       experience: [],
