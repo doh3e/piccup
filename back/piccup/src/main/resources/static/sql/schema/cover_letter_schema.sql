@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `cover_letter`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cover_letter` (
   `cover_id` int NOT NULL AUTO_INCREMENT,
-  `appy_id` int NOT NULL,
+  `apply_id` int NOT NULL,
   `user_id` int NOT NULL,
   `category` varchar(100) DEFAULT NULL,
   `cover_title` varchar(255) NOT NULL,
@@ -32,9 +32,9 @@ CREATE TABLE `cover_letter` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cover_id`),
-  KEY `appy_id` (`appy_id`),
+  KEY `apply_id` (`apply_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `cover_letter_ibfk_1` FOREIGN KEY (`appy_id`) REFERENCES `apply` (`appy_id`) ON DELETE CASCADE,
+  CONSTRAINT `cover_letter_ibfk_1` FOREIGN KEY (`apply_id`) REFERENCES `apply` (`apply_id`) ON DELETE CASCADE,
   CONSTRAINT `cover_letter_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
   CONSTRAINT `cover_letter_chk_1` CHECK ((`category` in (_utf8mb4'성장과정',_utf8mb4'성격',_utf8mb4'지원동기',_utf8mb4'입사 후 포부',_utf8mb4'기타')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
