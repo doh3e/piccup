@@ -1,10 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#F8F8F8] flex">
     <!-- Sidebar -->
-    <Sidebar
-      :sections="resumeSections"
-      @toggle-section="toggleSection"
-    />
+    <Sidebar :sections="resumeSections" @toggle-section="toggleSection" />
 
     <!-- Main Content -->
     <div class="flex-1 p-6 overflow-y-auto">
@@ -31,7 +28,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -43,11 +39,12 @@ import ResumeBuilder from '@/components/Resume/ResumeBuilder.vue'
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
 import axios from 'axios'
 
+
 export default {
   components: {
     Sidebar,
     ResumeBuilder,
-    PersonalInfo
+    PersonalInfo,
   },
   setup() {
     const resumeStore = useResumeStore()
@@ -73,32 +70,19 @@ export default {
       skills: [],
       academicAbility: [],
       experience: [],
-      internships: [], 
+      internships: [],
       training: [],
       certifications: [],
       awards: [],
       portfolio: [],
-    })
+    });
 
     const toggleSection = (sectionId) => {
-      const section = resumeSections.find(s => s.id === sectionId)
+      const section = resumeSections.find((s) => s.id === sectionId);
       if (section) {
-        section.isActive = !section.isActive
+        section.isActive = !section.isActive;
       }
-    }
-
-
-
-    // const updatePersonalInfo = (newData) => {
-    //   resumeData.personalInfo = newData
-    //   trackChanges("personalInfo", newData)
-    // }
-
-    // const updateSectionData = (sectionId, newData) => {
-    //   resumeData[sectionId] = newData;
-    //   trackChanges(sectionId, newData);
-    // }
-
+    };
 
     const togglePreview = () => {
       isPreviewMode.value = !isPreviewMode.value
@@ -159,11 +143,10 @@ export default {
 </script>
 
 <style>
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 .section-margin {
   margin-top: 2rem;
 }
 </style>
-

@@ -4,15 +4,15 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <img src="/icons/piccup-logo-white.png" alt="PICCUP" class="h-8 w-auto mb-4" />
-          <p class="text-sm text-gray-400">&copy; 2023 PICCUP. All rights reserved.</p>
+          <p class="text-sm text-gray-400">&copy; 2025 PICCUP. All rights reserved.</p>
         </div>
         <div>
           <h4 class="text-lg font-bold mb-4">서비스</h4>
           <ul class="space-y-2">
             <li><router-link to="/resume" class="text-gray-400 hover:text-white transition-colors">이력서</router-link></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">자기소개서 작성</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">기업 리뷰</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">커리어 성장</a></li>
+            <li><router-link to="/cover-letter" class="text-gray-400 hover:text-white transition-colors">자기소개서 작성</router-link></li>
+            <li><router-link to="/board" class="text-gray-400 hover:text-white transition-colors">자기소개서 목록</router-link></li>
+            <li><router-link to="/mydata" class="text-gray-400 hover:text-white transition-colors">채용달력</router-link></li>
           </ul>
         </div>
         <div>
