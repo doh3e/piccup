@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import { authAxios, publicAxios } from '@/utils/axios'
+// import { authAxios, publicAxios } from '@/utils/axios'
 import '@/assets/css/tailwind.css'
 import '@/assets/css/normalize.css'
 import '@/assets/css/base.css'
@@ -21,5 +21,5 @@ app.use(router)
 app.mount('#app')
 
 // Axios 인스턴스를 전역에 추가
-app.config.globalProperties.$authAxios = authAxios
-app.config.globalProperties.$publicAxios = publicAxios
+// app.config.globalProperties.$authAxios = authAxios
+// app.config.globalProperties.$publicAxios = publicAxios

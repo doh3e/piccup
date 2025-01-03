@@ -27,11 +27,11 @@
       </div>
   
       <!-- URL List -->
-      <div v-if="localData.urls.length > 0" class="mt-6">
+      <div v-if="localData.length > 0" class="mt-6">
         <h3 class="text-lg font-semibold mb-3">등록된 URL</h3>
         <ul class="space-y-2">
-          <li v-for="(url, index) in localData.urls" :key="index" class="flex items-center justify-between bg-gray-50 p-3 rounded-md">
-            <a :href="url" target="_blank" class="text-[#006B40] hover:underline">{{ url }}</a>
+          <li v-for="(url, index) in localData" :key="index" class="flex items-center justify-between bg-gray-50 p-3 rounded-md">
+            <a :href="url" target="_blank" class="text-[#006B40] hover:underline">{{ url.portUrl }}</a>
             <button @click="removeUrl(index)" class="text-red-500 hover:text-red-700">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -42,10 +42,10 @@
       </div>
   
       <!-- File List -->
-      <div v-if="localData.files.length > 0" class="mt-6">
+      <!-- <div v-if="localDataFile.value.files.length > 0" class="mt-6">
         <h3 class="text-lg font-semibold mb-3">등록된 파일</h3>
         <ul class="space-y-2">
-          <li v-for="(file, index) in localData.files" :key="index" class="flex items-center justify-between bg-gray-50 p-3 rounded-md">
+          <li v-for="(file, index) in localDataFile.files" :key="index" class="flex items-center justify-between bg-gray-50 p-3 rounded-md">
             <span>{{ file.name }}</span>
             <button @click="removeFile(index)" class="text-red-500 hover:text-red-700">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -54,7 +54,7 @@
             </button>
           </li>
         </ul>
-      </div>
+      </div> -->
   
       <!-- URL Modal -->
       <div v-if="showUrlModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -91,7 +91,7 @@
       </div>
   
       <!-- File Modal -->
-      <div v-if="showFileModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <!-- <div v-if="showFileModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
           <div class="flex justify-between items-center mb-4">
             <h3 class="text-lg font-bold">포트폴리오 파일 추가</h3>
@@ -138,7 +138,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </template>
   
@@ -151,12 +151,20 @@
     },
     emits: ['update:data'],
     setup(props, { emit }) {
-      const localData = ref({
-        urls: [],
-        files: [],
-        ...(props.data || {})
-      })
-  
+      // const localData = ref({
+      //   urls: [],
+      //   files: [],
+      //   ...(props.data || {})
+      // })
+      const localData = ref(props.data && props.data.length > 0 ? props.data : [{
+        portUrl: '',
+      }])
+      // const localData = ref({
+      //   urls: [props.data && props.data.length > 0 ? props.data : [{ portUrl: '',}]],
+      //   files: [],
+      //   ...(props.data || {})
+      // })
+      // const localDataFile = ref([])
       const showUrlModal = ref(false)
       const showFileModal = ref(false)
       const newUrl = ref('')
@@ -185,14 +193,14 @@
   
       const addUrl = () => {
         if (newUrl.value.trim()) {
-          localData.value.urls.push(newUrl.value.trim())
+          localData.value.push(newUrl.value.trim())
           updateData()
           closeUrlModal()
         }
       }
   
       const removeUrl = (index) => {
-        localData.value.urls.splice(index, 1)
+        localData.value.splice(index, 1)
         updateData()
       }
   
@@ -216,7 +224,7 @@
   
       const addFile = () => {
         if (selectedFile.value) {
-          localData.value.files.push({
+          localDataFile.value.push({
             name: selectedFile.value.name,
             file: selectedFile.value
           })
@@ -224,23 +232,23 @@
           closeFileModal()
         }
       }
-  
+
       const removeFile = (index) => {
-        localData.value.files.splice(index, 1)
+        localDataFile.value.splice(index, 1)
         updateData()
       }
   
       const updateData = () => {
-        emit('update:data', localData.value)
+        emit('update:data', { 
+          urls: localData.value,
+          files: localDataFile.value
+        })
       }
   
       watch(() => props.data, (newData) => {
         if (newData) {
-          localData.value = {
-            urls: [],
-            files: [],
-            ...newData
-          }
+          localData.value = newData.urls || [];
+          localDataFile.value = newData.files || [];
         }
       }, { deep: true })
   

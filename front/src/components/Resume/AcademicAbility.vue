@@ -14,6 +14,7 @@
             v-model="edu.schoolType"
             class="w-1/3 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
           >
+            <option value="선택안함">선택안함</option>
             <option value="대학교(4년)">대학교(4년)</option>
             <option value="대학교(2년)">대학교(2년)</option>
             <option value="고등학교">고등학교</option>
@@ -106,7 +107,7 @@
           />
           <span>/</span>
           <select
-            v-model="edu.maxGpa"
+            v-model="edu.gpaScale"
             class="w-20 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
           >
             <option value="4.5">4.5</option>
@@ -187,14 +188,14 @@ export default {
         ? props.data
         : [
             {
-              schoolType: "대학교(4년)",
+              schoolType: "선택안함",
               schoolName: "",
               startDate: "",
               endDate: "",
-              status: "졸업",
+              status: "선택안함",
               major: "",
               gpa: "",
-              maxGpa: "4.5",
+              gpaScale: 4.5,
             },
           ]
     );
@@ -210,7 +211,7 @@ export default {
         status: "졸업",
         major: "",
         gpa: "",
-        maxGpa: "4.5",
+        gpaScale: 4.5,
       });
       updateData();
     };
@@ -222,7 +223,7 @@ export default {
           ...lastSchool,
           major: "",
           gpa: "",
-          maxGpa: "4.5",
+          gpaScale:4.5,
         });
         updateData();
       }
