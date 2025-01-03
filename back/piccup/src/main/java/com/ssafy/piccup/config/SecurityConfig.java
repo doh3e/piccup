@@ -7,9 +7,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.ssafy.piccup.filter.JwtAuthenticationFilter;
 import com.ssafy.piccup.util.JwtUtil;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 public class SecurityConfig {
@@ -31,6 +34,12 @@ public class SecurityConfig {
 	      
           // JwtAuthenticationFilter를 UsernamePasswordAuthenticationFilter 이전에 추가
 	      .addFilterBefore(new JwtAuthenticationFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
+
+		  // 로그아웃 설정
+//		  .logout((logout) -> logout
+//	    		  .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+//	    		  .logoutSuccessHandler((requeust, response, authentication) -> response.setStatus(HttpServletResponse.SC_OK))
+//	    		  .invalidateHttpSession(true));
 	    return http.build();
 	}
 	

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // 인증이 필요한 Axios 인스턴스
 const authAxios = axios.create({
-  baseURL: 'http://localhost:8080/api/v1',
+  baseURL: 'api/v1',
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
     'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ authAxios.interceptors.request.use(config => {
 
 // 인증이 필요하지 않은 Axios 인스턴스
 const publicAxios = axios.create({
-  baseURL: 'http://localhost:8080/api/v1',
+  baseURL: '/api/v1',
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
     'Content-Type': 'application/json',
