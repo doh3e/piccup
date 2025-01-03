@@ -177,93 +177,85 @@
             </svg>
             <span class="mt-2 text-sm text-gray-500">사진변경</span>
           </div>
-          <div v-if="localData.profileImgPath">
-            {{ localData.profileImgName }}
-            
-            <p>
-             {{localData.profileImgPath}}
-            </p>
-              <img
-              :src="'http://localhost:8080/images/'+localData.profileImgPath"
-              class="w-full h-full object-cover rounded-lg"
-              alt="Profile photo00000"
-              />
-              <img
-              :src="getPhotoUrl(localData.profileImgPath)"
-              class="w-full h-full object-cover rounded-lg"
-              :alt="localData.profileImgName"
-              />
-
-              <img
-              :src="previewUrl"
-              class="w-full h-full object-cover rounded-lg"
-                alt="Profile photo3"
-              />
-              <!--
-              <img
-              :style="{ backgroundImage: `url(/profile_images/${localData.profileImgPath})` }"
-              class="w-full h-full object-cover rounded-lg"
-                alt="Profile photo4"
-              />
-              <img
-              :src="`http://localhost:8080/profile_images/${localData.profileImgPath}`"
-              class="w-full h-full object-cover rounded-lg"
-                alt="Profile photo5"
-              />
-
-              <img :src="'/profile_images/'+localData.profileImgPath" alt="올린 이미지" /> <br /> -->
-
           <input
-          ref="fileInput"
+            ref="fileInput"
             type="file"
             accept="image/*"
             class="hidden"
             @change="handleFileUpload"
           />
-          <button
-            @click="removePhoto"
-            class="absolute top-12 right-1 -mt-2 -mr-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-          >
-            <svg
+          <div v-if="previewUrl || localData.profileImgPath">
+              <img
+              :src="previewUrl ? previewUrl : getPhotoUrl(localData.profileImgPath)"
+              class="w-full h-full object-cover rounded-lg"
+              :alt="previewUrl ? '사진 미리보기' : localData.profileImgName"
+              />
+              <button
+              @click="removePhoto"
+              class="absolute top-10 right-1 -mt-2 -mr-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              >
+              <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"
               viewBox="0 0 20 20"
               fill="currentColor"
-            >
+              >
               <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
+              fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"
               />
             </svg>
           </button>
         </div>
-
+</div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup>
 import { ref, watch } from "vue";
+import { useResumeStore } from "@/stores/resume";
+
 
 const props = defineProps({
   data: {
     type: Object,
-    required: true,
+    required: false,
   },
 });
 
+const resumeStore = useResumeStore();
+const localData = ref({
+  ...{
+      infoId: null,
+      resumeId: null,
+      username: '',
+      birthDate: '',
+      gender: '미지정',
+      email: '',
+      homePhone: '',
+      mobilePhone: '',
+      address: '',
+      addressDetail: '',
+      postalCode : null,
+      profileImgPath : '',
+      profileImgName : '',
+      degree : '미지정',
+      hobby : '', 
+      specialty : '',
+    },
+  ...props.data });
+
+const fileInput = ref(null);
+const previewUrl = ref(null); // 사진 미리보기 URL
 const emit = defineEmits(["update:data"]);
 
-const localData = ref({...props.data });
 
-const fileInput = ref(null);/////////////
 // 사진 UUID를 기반으로 URL 생성
-const getPhotoUrl = (photoUuid) => `http://localhost:8080/api/v1/resume/profile_images/${photoUuid}`;
+const getPhotoUrl = (photoUuid) => `http://localhost:8080/api/v1/resume/view/profile_images/${photoUuid}`;
 
-const showAddressModal = ref(false);
 const errors = ref({
   email: "",
   gender: "",
@@ -272,9 +264,6 @@ const errors = ref({
   degree: "",
   birthDate: "",
 });
-
-const previewUrl = ref(null); // 미리보기 URL/////////////////
-
 
 const updateData = () => {
   emit("update:data", localData.value);
@@ -353,7 +342,7 @@ watch(
   }
 );
 
-//생년월일 유효성 검사
+// 생년월일 유효성 검사
 watch(
   () => localData.value.birthDate,
   (newBirthDate) => {
@@ -374,35 +363,21 @@ const triggerFileInput = () => {
 };
 
 
-import { useResumeStore } from "@/stores/resume";
-const resumeStore = useResumeStore();
-
 const handleFileUpload = (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    // const reader = new FileReader();
-    // reader.onload = (e) => {
-    //   localData.value.photo = e.target.result;
-    //   updateData();
-    // };
-    // reader.readAsDataURL(file);
-
-    const fileExtension = file.name.split(".").pop().toLowerCase();
-    file.value = file;
-    previewUrl.value = URL.createObjectURL(file);
-
-    // localData.value.profileImgName = file.name;
-    // localData.value.profileImgPath = URL.createObjectURL(file);
-
-    resumeStore.personalFile = file.value
+  const uploadedFile = event.target.files[0];
+  if (uploadedFile) {
+    previewUrl.value = URL.createObjectURL(uploadedFile);
+    console.log("previewUrl ", previewUrl.value);
+    console.log("uploadedFile ", uploadedFile);
+    resumeStore.personalFile = uploadedFile
   }
-
-
 };
 
 const removePhoto = () => {
-  localData.value.profileImgName = "";
-  localData.value.profileImgPath = "";
+  localData.value.profileImgName = ""
+  localData.value.profileImgPath = ""
+  resumeStore.personalFile = null
+  previewUrl.value = ""
   updateData();
 };
 

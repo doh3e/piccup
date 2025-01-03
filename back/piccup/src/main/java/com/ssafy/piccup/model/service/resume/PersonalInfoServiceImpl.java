@@ -71,9 +71,6 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 								personalInfo.setProfileImgName(profileImgName);
 								personalInfo.setProfileImgPath(profileImgPath);
 								Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
-//								// 절대경로
-//								System.out.println(resource.getURI().getPath());
-//
 //								
 								file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
 								

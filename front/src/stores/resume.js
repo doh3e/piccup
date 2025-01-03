@@ -66,6 +66,9 @@ export const useResumeStore = defineStore('resume', () => {
     try{
       const response = await apiAuth.get('/resume')
       resumeData.value = response.data
+
+      console.log('resume 조회 성공: ', response.data)
+      console.log('resumeData.value : ', resumeData.value)
     } catch (err){
       console.error('Resume 조회 실패: ', err)
       err.value = '이력서 정보를 불러오기 실패'
@@ -81,7 +84,7 @@ export const useResumeStore = defineStore('resume', () => {
 
     const formData = new FormData();
     formData.append('personalFile', personalFile.value || null);
-
+    
     isLoading.value = true;
     error.value = null;
     
@@ -91,7 +94,6 @@ export const useResumeStore = defineStore('resume', () => {
           'Content-Type': 'application/json',
         },
       })
-
 
       await apiAuth.post('/resume/files', formData, {
         headers: {

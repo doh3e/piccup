@@ -352,7 +352,7 @@ public class ResumeController {
 	
 	
 	// 파일 조회
-	@GetMapping("/file/{fileDir}/{fileUuid}")
+	@GetMapping("/view/{fileDir}/{fileUuid}")
 	public ResponseEntity<?> getFile(@PathVariable String fileDir, @PathVariable String fileUuid) throws IOException {
 		File file = null;
 

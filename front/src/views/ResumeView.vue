@@ -53,7 +53,6 @@ export default {
     })
 
     const resumeSections = reactive([
-      { id: 'desiredJob', name: '희망 직무', isActive: true },
       { id: 'skills', name: '스킬', isActive: true },
       { id: 'educations', name: '학력', isActive: true },
       { id: 'workExperiences', name: '경력', isActive: true },
@@ -74,8 +73,6 @@ export default {
     // resume 수정
     const updatePersonalInfo = (newData) => {
       resumeStore.resumeData.personalInfo = newData
-      resumeStore.resumeFileData.personalFile = newData.file
-      console.log("resumeStore.resumeData.personalInfo : ", resumeStore.resumeData.personalInfo)
     }
     const updateSectionData = (sectionId, newData) => {
       resumeStore.resumeData[sectionId] = newData;
