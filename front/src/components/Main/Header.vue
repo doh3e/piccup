@@ -33,7 +33,7 @@ import { useAuthStore } from '@/stores/auth';
 const router = useRouter();
 const authStore = useAuthStore();
 
-const navItems = ['홈', '채용정보', '이력서', '기업리뷰', '자기소개서 작성'];
+const navItems = ['홈', '채용정보', '이력서', '기업리뷰', '자기소개서 작성', '마이데이터'];
 
 const navigateHome = () => {
   router.push('/');
@@ -51,6 +51,8 @@ const getRouteForItem = (item) => {
       return '/';
     case '자기소개서 작성':
       return '/cover-letter';
+    case '마이데이터':
+      return '/mydata';
     default:
       return '#' + item;
   }

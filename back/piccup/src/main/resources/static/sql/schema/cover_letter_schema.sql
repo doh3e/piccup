@@ -36,7 +36,7 @@ CREATE TABLE `cover_letter` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `cover_letter_ibfk_1` FOREIGN KEY (`appy_id`) REFERENCES `apply` (`appy_id`) ON DELETE CASCADE,
   CONSTRAINT `cover_letter_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
-  CONSTRAINT `cover_letter_chk_1` CHECK ((`category` in (_utf8mb4'성공경험',_utf8mb4'실패',_utf8mb4'지원동기',_utf8mb4'역량',_utf8mb4'기타')))
+  CONSTRAINT `cover_letter_chk_1` CHECK ((`category` in (_utf8mb4'성장과정',_utf8mb4'성격',_utf8mb4'지원동기',_utf8mb4'입사 후 포부',_utf8mb4'기타')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
