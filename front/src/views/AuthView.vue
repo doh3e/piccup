@@ -330,7 +330,6 @@ const handleSubmit = async () => {
     console.log(email.value, password.value)
     const result = await authStore.login(email.value, password.value);
     if (result.success) {
-      alert(result.message);
       const newUser = { email: email.value, password: password.value };
       addUser(newUser);
       toggleAuthMode();

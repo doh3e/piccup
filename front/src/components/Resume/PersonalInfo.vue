@@ -113,9 +113,8 @@
 
       <!-- Right Column - Photo Upload -->
       <div class="flex justify-center items-start">
-        <div class="w-40 h-40 relative">
+        <div class="w-40 h-10 relative">
           <div
-            v-if="!localData.photo"
             class="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-[#006B40]"
             @click="triggerFileInput"
           >
@@ -133,25 +132,54 @@
                 d="M12 4v16m8-8H4"
               />
             </svg>
-            <span class="mt-2 text-sm text-gray-500">사진추가</span>
+            <span class="mt-2 text-sm text-gray-500">사진변경</span>
           </div>
-          <img
-            v-else
-            :src="localData.photo"
-            class="w-full h-full object-cover rounded-lg"
-            alt="Profile photo"
-          />
+          <div v-if="localData.profileImgPath">
+            {{ localData.profileImgName }}
+            
+            <p>
+             {{localData.profileImgPath}}
+            </p>
+              <img
+              :src="'http://localhost:8080/images/'+localData.profileImgPath"
+              class="w-full h-full object-cover rounded-lg"
+              alt="Profile photo00000"
+              />
+              <img
+              :src="getPhotoUrl(localData.profileImgPath)"
+              class="w-full h-full object-cover rounded-lg"
+              :alt="localData.profileImgName"
+              />
+
+              <img
+              :src="previewUrl"
+              class="w-full h-full object-cover rounded-lg"
+                alt="Profile photo3"
+              />
+              <!--
+              <img
+              :style="{ backgroundImage: `url(/profile_images/${localData.profileImgPath})` }"
+              class="w-full h-full object-cover rounded-lg"
+                alt="Profile photo4"
+              />
+              <img
+              :src="`http://localhost:8080/profile_images/${localData.profileImgPath}`"
+              class="w-full h-full object-cover rounded-lg"
+                alt="Profile photo5"
+              />
+
+              <img :src="'/profile_images/'+localData.profileImgPath" alt="올린 이미지" /> <br /> -->
+
           <input
-            ref="fileInput"
+          ref="fileInput"
             type="file"
             accept="image/*"
             class="hidden"
             @change="handleFileUpload"
           />
           <button
-            v-if="localData.photo"
             @click="removePhoto"
-            class="absolute top-0 right-0 -mt-2 -mr-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            class="absolute top-12 right-1 -mt-2 -mr-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -166,6 +194,8 @@
               />
             </svg>
           </button>
+        </div>
+
         </div>
       </div>
     </div>
@@ -226,8 +256,14 @@ const emit = defineEmits(["update:data"]);
 
 const localData = ref({...props.data });
 
-const fileInput = ref(null);
+const fileInput = ref(null);/////////////
+// 사진 UUID를 기반으로 URL 생성
+const getPhotoUrl = (photoUuid) => `http://localhost:8080/api/v1/resume/profile_images/${photoUuid}`;
+
 const showAddressModal = ref(false);
+
+const previewUrl = ref(null); // 미리보기 URL/////////////////
+
 
 const updateData = () => {
   emit("update:data", localData.value);
@@ -246,20 +282,36 @@ const triggerFileInput = () => {
   fileInput.value.click();
 };
 
+
+import { useResumeStore } from "@/stores/resume";
+const resumeStore = useResumeStore();
+
 const handleFileUpload = (event) => {
   const file = event.target.files[0];
   if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      localData.value.photo = e.target.result;
-      updateData();
-    };
-    reader.readAsDataURL(file);
+    // const reader = new FileReader();
+    // reader.onload = (e) => {
+    //   localData.value.photo = e.target.result;
+    //   updateData();
+    // };
+    // reader.readAsDataURL(file);
+
+    const fileExtension = file.name.split(".").pop().toLowerCase();
+    file.value = file;
+    previewUrl.value = URL.createObjectURL(file);
+
+    // localData.value.profileImgName = file.name;
+    // localData.value.profileImgPath = URL.createObjectURL(file);
+
+    resumeStore.personalFile = file.value
   }
+
+
 };
 
 const removePhoto = () => {
-  localData.value.photo = "";
+  localData.value.profileImgName = "";
+  localData.value.profileImgPath = "";
   updateData();
 };
 
@@ -328,6 +380,7 @@ watch(
   },
   { deep: true, immediate: true }
 );
+
 </script>
 
 <style scoped>

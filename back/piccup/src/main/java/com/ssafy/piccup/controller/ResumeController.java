@@ -1,18 +1,25 @@
 package com.ssafy.piccup.controller;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -343,4 +350,41 @@ public class ResumeController {
 	    return new ResponseEntity<>(resultMap, status);
 	}
 	
+	
+	// 파일 조회
+	@GetMapping("/profile_images/{fileUuid}")
+	public ResponseEntity<?> getFile(@PathVariable String fileUuid) throws IOException {
+
+		
+		File file = personalInfoService.getProfile(fileUuid);
+		if (file == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(0);
+		}
+
+		InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+		String fileName = file.getName();
+		String extension = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
+
+		MediaType mediaType;
+		switch (extension) {
+		case "jpg":
+		case "jpeg":
+			mediaType = MediaType.IMAGE_JPEG;
+			break;
+		case "png":
+			mediaType = MediaType.IMAGE_PNG;
+			break;
+		case "webp":
+			mediaType = MediaType.valueOf("image/webp");
+			break;
+		default:
+			mediaType = MediaType.APPLICATION_OCTET_STREAM; // 기본값: 바이너리 파일
+		}
+
+		return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=" + file.getName()) // inline으로
+																													// 변경
+				.contentType(mediaType) // 이미지의 경우 적절한 MIME 타입 사용 (예: JPEG, PNG 등)
+				.contentLength(file.length()).body(resource);
+	}
+
 }

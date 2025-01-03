@@ -28,7 +28,7 @@ public class SecurityConfig {
 	      .cors(cors -> cors.configure(http)) // CORS 설정 활성화
 	      .csrf(csrf -> csrf.disable())       // CSRF 비활성화
 	      .authorizeHttpRequests(authorize -> authorize
-	    		  .requestMatchers("/user/signup", "/user/login").permitAll()
+	    		  .requestMatchers("/user/signup", "/user/login", "/resume/profile_images/**").permitAll()
 	    		  .anyRequest().authenticated()
 		  )
 	      

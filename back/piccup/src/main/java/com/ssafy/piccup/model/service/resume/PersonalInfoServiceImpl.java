@@ -2,6 +2,8 @@ package com.ssafy.piccup.model.service.resume;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -69,6 +71,10 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 								personalInfo.setProfileImgName(profileImgName);
 								personalInfo.setProfileImgPath(profileImgPath);
 								Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
+//								// 절대경로
+//								System.out.println(resource.getURI().getPath());
+//
+//								
 								file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
 								
 								if (personalInfoDao.updatePersonalFile(personalInfo) != 1) {
@@ -81,5 +87,15 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 				} catch (Exception e) {
 						throw new RuntimeException("프로필 이미지 업로드 실패 : "+ e.getMessage(), e);
 			}
+		}
+
+	    // 인적사항 파일조회 
+		@Override
+		public File getProfile(String Uuid) throws IOException {
+			
+			Resource resource = resourceLoader.getResource("classpath:/static/profile_images/" + Uuid);
+			if (!resource.exists())
+				return null; // 파일 없는 경우 
+			return resource.getFile(); // File 객체반환
 		}
 	}

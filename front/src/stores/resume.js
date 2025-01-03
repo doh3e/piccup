@@ -3,6 +3,9 @@ import { defineStore } from 'pinia'
 import { apiAuth, api } from '@/api'
 
 export const useResumeStore = defineStore('resume', () => {
+  // 이력서 데이터
+  const personalFile = ref(null)
+
   const resumeData = ref({
     resumeId: null,
     userId: null,
@@ -50,7 +53,7 @@ export const useResumeStore = defineStore('resume', () => {
     trainings: [],
     workExperiences: [],
 
-}) // 이력서 데이터
+})
 
   const isLoading = ref(false) // 로딩 상태
   const error = ref(null) // 에러 메세지
@@ -63,7 +66,6 @@ export const useResumeStore = defineStore('resume', () => {
     try{
       const response = await apiAuth.get('/resume')
       resumeData.value = response.data
-      console.log(resumeData.value.educations, "here")
     } catch (err){
       console.error('Resume 조회 실패: ', err)
       err.value = '이력서 정보를 불러오기 실패'
@@ -75,16 +77,28 @@ export const useResumeStore = defineStore('resume', () => {
 
   // resume 저장
   async function saveResume() {
-    console.log('[debug] resume 저장요청 데이터 :', resumeData.value);
+    console.log('[debug] resume 저장요청 데이터 - personalFile.value :', personalFile.value);
+
+    const formData = new FormData();
+    formData.append('personalFile', personalFile.value || null);
+
     isLoading.value = true;
     error.value = null;
-
+    
     try {
       await apiAuth.post('/resume', resumeData.value, {
         headers: {
           'Content-Type': 'application/json',
         },
       })
+
+
+      await apiAuth.post('/resume/files', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+
       return true // 성공
     } catch (err) {
       console.error('Resume 저장 실패: ', err);
@@ -94,6 +108,5 @@ export const useResumeStore = defineStore('resume', () => {
       isLoading.value = false;
     }
   }
-
-  return { resumeData, isLoading, error, readResume, saveResume }
+  return { resumeData, isLoading, error, readResume, saveResume, personalFile }
 })

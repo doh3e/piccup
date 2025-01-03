@@ -16,7 +16,7 @@
           >
             <option value="선택안함">선택안함</option>
             <option value="대학교(4년)">대학교(4년)</option>
-            <option value="대학교(2년)">대학교(2년)</option>
+            <option value="대학(2,3년)">대학(2,3년)</option>
             <option value="고등학교">고등학교</option>
           </select>
           <div class="relative flex-1">

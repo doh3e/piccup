@@ -17,7 +17,6 @@ public interface FileService {
 	// - 조회 (1개만 반환)
 	public FileDto readEduFile(int resumeId);
 	
-	
 	// 포트폴리오
     
 	// - 추가
