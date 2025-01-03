@@ -73,5 +73,27 @@ export const useResumeStore = defineStore('resume', () => {
     }
   }
 
-  return { resumeData, isLoading, error, readResume }
+  // resume 저장
+  async function saveResume() {
+    console.log('[debug] resume 저장요청 데이터 :', resumeData.value);
+    isLoading.value = true;
+    error.value = null;
+
+    try {
+      await apiAuth.post('/resume', resumeData.value, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      return true // 성공
+    } catch (err) {
+      console.error('Resume 저장 실패: ', err);
+      error.value = '이력서 저장 실패';
+      return false // 실패
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  return { resumeData, isLoading, error, readResume, saveResume }
 })

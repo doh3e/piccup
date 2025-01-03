@@ -2,8 +2,13 @@
   <header class="bg-white shadow-sm">
     <div class="container mx-auto px-4 py-3">
       <div class="flex justify-between items-center">
-        <img src="/icons/piccup-logo-white.png" alt="PICCUP" class="h-8 w-auto cursor-pointer" @click="navigateHome" />
-        
+        <img
+          src="/icons/piccup-logo-white.png"
+          alt="PICCUP"
+          class="h-8 w-auto cursor-pointer"
+          @click="navigateHome"
+        />
+
         <nav class="hidden md:flex space-x-6">
           <router-link
             v-for="item in navItems"
@@ -14,11 +19,25 @@
             {{ item }}
           </router-link>
         </nav>
-        
+
         <div class="flex items-center space-x-4">
-          <button v-if="!authStore.isLoggedIn" @click="navigateToAuth(true)" class="btn btn-primary">회원가입</button>
-          <button v-if="!authStore.isLoggedIn" @click="navigateToAuth(false)" class="btn btn-outline">로그인</button>
-          <button v-else @click="handleLogout" class="btn btn-outline">로그아웃</button>
+          <button
+            v-if="!authStore.isLoggedIn"
+            @click="navigateToAuth(true)"
+            class="btn btn-primary"
+          >
+            회원가입
+          </button>
+          <button
+            v-if="!authStore.isLoggedIn"
+            @click="navigateToAuth(false)"
+            class="btn btn-outline"
+          >
+            로그인
+          </button>
+          <button v-else @click="handleLogout" class="btn btn-outline">
+            로그아웃
+          </button>
         </div>
       </div>
     </div>
@@ -26,35 +45,47 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { useAuthStore } from '@/stores/auth';
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 
 const router = useRouter();
 const authStore = useAuthStore();
 
-const navItems = ['홈', '채용정보', '이력서', '기업리뷰', '자기소개서 작성', '마이데이터'];
+
+const navItems = [
+  "홈",
+  "이력서",
+  "자기소개서 작성",
+  "자기소개서 목록",
+  "고객센터",
+  "마이데이터",
+];
 
 const navigateHome = () => {
-  router.push('/');
+  router.push("/");
 };
 
 const navigateToAuth = (isSignUp) => {
-  router.push({ path: '/auth', query: { signup: isSignUp } });
+  router.push({ path: "/auth", query: { signup: isSignUp } });
 };
 
 const getRouteForItem = (item) => {
   switch (item) {
-    case '이력서':
-      return '/resume';
-    case '홈':
-      return '/';
-    case '자기소개서 작성':
-      return '/cover-letter';
+    case "이력서":
+      return "/resume";
+    case "홈":
+      return "/";
+    case "자기소개서 작성":
+      return "/cover-letter";
+    case "자기소개서 목록":
+      return "/board";
     case '마이데이터':
       return '/mydata';
+    case "고객센터":
+      return "/FAQ";
     default:
-      return '#' + item;
+      return "#" + item;
   }
 };
 
@@ -83,17 +114,17 @@ onMounted(() => {
 }
 
 .btn-outline {
-  border: 2px solid #006B40;
-  color: #006B40;
+  border: 2px solid #006b40;
+  color: #006b40;
 }
 
 .btn-outline:hover {
-  background-color: #006B40;
+  background-color: #006b40;
   color: white;
 }
 
 .btn-primary {
-  background-color: #006B40;
+  background-color: #006b40;
   color: white;
 }
 
@@ -101,4 +132,3 @@ onMounted(() => {
   background-color: #005030;
 }
 </style>
-
