@@ -72,13 +72,13 @@ CREATE TABLE apply_feedback (
   feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   apply_id INT,
   user_id INT NOT NULL,
-  feedback_status VARCHAR(50) NOT NULL DEFAULT '미정',
+  feedback_status VARCHAR(50) NOT NULL DEFAULT '미지정',
   content TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (apply_id) REFERENCES apply(apply_id) ON DELETE SET NULL,
   FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
-  CHECK (feedback_status IN ('서류', '인적성', '코딩테스트', '면접', '최종합격', '미정'))
+  CHECK (feedback_status IN ('서류', '인적성', '코딩테스트', '면접', '최종합격', '미지정'))
 );
 
 /* (마이데이터 캘린더) 일정 입력 */
