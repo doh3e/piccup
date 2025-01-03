@@ -1,6 +1,8 @@
 package com.ssafy.piccup.model.service.resume;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -30,5 +32,8 @@ public interface FileService {
     public void uploadWorkFile(int resumeId, MultipartFile file);
     // - 조회 (1개만 반환)
     public FileDto readWorkFile(int resumeId);
+
+    // 실제 파일 출력
+    public File readFile(String fileUuid, String fileDir) throws IOException;
 
 }

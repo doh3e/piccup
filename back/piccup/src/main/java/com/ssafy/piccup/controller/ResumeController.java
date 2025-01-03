@@ -352,11 +352,18 @@ public class ResumeController {
 	
 	
 	// 파일 조회
-	@GetMapping("/profile_images/{fileUuid}")
-	public ResponseEntity<?> getFile(@PathVariable String fileUuid) throws IOException {
+	@GetMapping("/file/{fileDir}/{fileUuid}")
+	public ResponseEntity<?> getFile(@PathVariable String fileDir, @PathVariable String fileUuid) throws IOException {
+		File file = null;
 
+		// 특정 디렉터리 처리
+		if (fileDir.equals("profile_images")) {
+			file = personalInfoService.readFile(fileUuid);
+		}
+		else {
+			file = fileService.readFile(fileUuid, fileDir);
+		}
 		
-		File file = personalInfoService.getProfile(fileUuid);
 		if (file == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(0);
 		}
@@ -365,6 +372,7 @@ public class ResumeController {
 		String fileName = file.getName();
 		String extension = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
 
+	    // 확장자에 따른 MediaType 매핑
 		MediaType mediaType;
 		switch (extension) {
 		case "jpg":
@@ -377,14 +385,35 @@ public class ResumeController {
 		case "webp":
 			mediaType = MediaType.valueOf("image/webp");
 			break;
+		case "gif":
+            mediaType = MediaType.IMAGE_GIF;
+            break;
+        case "bmp":
+            mediaType = MediaType.valueOf("image/bmp");
+            break;
+        case "svg":
+            mediaType = MediaType.valueOf("image/svg+xml");
+            break;
+        case "pdf":
+            mediaType = MediaType.APPLICATION_PDF;
+            break;
+        case "txt":
+            mediaType = MediaType.TEXT_PLAIN;
+            break;
+        case "htm":
+            mediaType = MediaType.TEXT_HTML;
+            break;
+        case "mp4":
+            mediaType = MediaType.valueOf("video/mp4");
+            break;
 		default:
 			mediaType = MediaType.APPLICATION_OCTET_STREAM; // 기본값: 바이너리 파일
 		}
 
-		return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=" + file.getName()) // inline으로
-																													// 변경
-				.contentType(mediaType) // 이미지의 경우 적절한 MIME 타입 사용 (예: JPEG, PNG 등)
-				.contentLength(file.length()).body(resource);
+	    return ResponseEntity.ok()
+	            .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=" + file.getName()) // inline으로 설정
+	            .contentType(mediaType) // MIME 타입 설정
+	            .contentLength(file.length())
+	            .body(resource);
 	}
-
 }

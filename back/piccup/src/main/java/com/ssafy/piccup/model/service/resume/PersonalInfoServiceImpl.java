@@ -91,9 +91,8 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 
 	    // 인적사항 파일조회 
 		@Override
-		public File getProfile(String Uuid) throws IOException {
-			
-			Resource resource = resourceLoader.getResource("classpath:/static/profile_images/" + Uuid);
+		public File readFile(String fileUuid) throws IOException {
+			Resource resource = resourceLoader.getResource("classpath:/static/profile_images/" + fileUuid);
 			if (!resource.exists())
 				return null; // 파일 없는 경우 
 			return resource.getFile(); // File 객체반환

@@ -21,6 +21,6 @@ public interface PersonalInfoService {
     public void uploadFile(int resumeId, MultipartFile file);
     
     // 인적사항 파일조회 
-    public File getProfile(String Uuid) throws IOException;
+    public File readFile(String fileUuid) throws IOException;
 
 }
