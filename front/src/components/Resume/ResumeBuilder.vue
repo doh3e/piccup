@@ -14,7 +14,6 @@
 
 <script>
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
-import DesiredJob from '@/components/Resume/DesiredJob.vue'
 import Skills from '@/components/Resume/Skills.vue'
 import AcademicAbility from '@/components/Resume/AcademicAbility.vue'
 import Experience from '@/components/Resume/Experience.vue'
@@ -28,7 +27,6 @@ export default {
   name: 'ResumeBuilder',
   components: {
     PersonalInfo,
-    DesiredJob,
     Skills,
     AcademicAbility,
     Experience,
@@ -53,7 +51,6 @@ export default {
     const getSectionComponent = (sectionId) => {
       const componentMap = {
         personalInfos: 'PersonalInfo',
-        desiredJob: 'DesiredJob',
         skills: 'Skills',
         educations: 'AcademicAbility',
         workExperiences: 'Experience',
