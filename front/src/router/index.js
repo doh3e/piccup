@@ -6,6 +6,7 @@ import CoverLetterView from '@/views/CoverLetterView.vue'
 import ResumeView from '@/views/ResumeView.vue'
 import FAQView from '@/views/FAQView.vue'
 import AuthView from '@/views/AuthView.vue'
+import CoverLetterBoardView from '@/views/CoverLetterBoardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/cover-letter',
       name: 'CoverLetter',
       component: CoverLetterView
+    },
+    {
+      path: '/board',
+      name: 'CoverLetterBoard',
+      component: CoverLetterBoardView
     },
   ],
 })

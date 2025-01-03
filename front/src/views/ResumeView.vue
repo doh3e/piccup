@@ -1,10 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#F8F8F8] flex">
     <!-- Sidebar -->
-    <Sidebar
-      :sections="resumeSections"
-      @toggle-section="toggleSection"
-    />
+    <Sidebar :sections="resumeSections" @toggle-section="toggleSection" />
 
     <!-- Main Content -->
     <div class="flex-1 p-6 overflow-y-auto">
@@ -31,7 +28,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -42,11 +38,12 @@ import Sidebar from '@/components/Resume/Sidebar.vue'
 import ResumeBuilder from '@/components/Resume/ResumeBuilder.vue'
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
 
+
 export default {
   components: {
     Sidebar,
     ResumeBuilder,
-    PersonalInfo
+    PersonalInfo,
   },
   setup() {
     const resumeStore = useResumeStore()
@@ -68,9 +65,9 @@ export default {
     ])
 
     const toggleSection = (sectionId) => {
-      const section = resumeSections.find(s => s.id === sectionId)
+      const section = resumeSections.find((s) => s.id === sectionId);
       if (section) {
-        section.isActive = !section.isActive
+        section.isActive = !section.isActive;
       }
     }
     
@@ -104,11 +101,10 @@ export default {
 </script>
 
 <style>
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 .section-margin {
   margin-top: 2rem;
 }
 </style>
-
