@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
 import DesiredJob from '@/components/Resume/DesiredJob.vue'
 import Skills from '@/components/Resume/Skills.vue'
 import AcademicAbility from '@/components/Resume/AcademicAbility.vue'
@@ -27,7 +26,6 @@ import Awards from '@/components/Resume/Awards.vue'
 export default {
   name: 'ResumeBuilder',
   components: {
-    PersonalInfo,
     DesiredJob,
     Skills,
     AcademicAbility,
@@ -52,7 +50,6 @@ export default {
   setup(props, { emit }) {
     const getSectionComponent = (sectionId) => {
       const componentMap = {
-        personalInfos: 'PersonalInfo',
         desiredJob: 'DesiredJob',
         skills: 'Skills',
         educations: 'AcademicAbility',

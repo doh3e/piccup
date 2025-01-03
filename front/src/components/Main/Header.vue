@@ -14,7 +14,7 @@
             {{ item }}
           </router-link>
         </nav>
-        
+
         <div class="flex items-center space-x-4">
           <button v-if="!authStore.isLoggedIn" @click="navigateToAuth(true)" class="btn btn-primary">회원가입</button>
           <button v-if="!authStore.isLoggedIn" @click="navigateToAuth(false)" class="btn btn-outline">로그인</button>

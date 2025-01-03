@@ -12,8 +12,8 @@
         <h1 class="text-3xl font-bold text-[#006B40] mb-6">이력서 수정</h1>
         <PersonalInfo
           :data="resumeStore.resumeData?.personalInfo"
+          @update:data="updatePersonalInfo"
         />
-        <!-- @update:data="updatePersonalInfo" -->
 
         <ResumeBuilder
           class="section-margin"
@@ -69,6 +69,7 @@ export default {
     ])
 
     const resumeData = reactive({
+      personalInfo: {},
       desiredJob: '',
       skills: [],
       academicAbility: [],
@@ -86,73 +87,31 @@ export default {
         section.isActive = !section.isActive
       }
     }
-
-
-
-    // const updatePersonalInfo = (newData) => {
-    //   resumeData.personalInfo = newData
-    //   trackChanges("personalInfo", newData)
-    // }
-
-    // const updateSectionData = (sectionId, newData) => {
-    //   resumeData[sectionId] = newData;
-    //   trackChanges(sectionId, newData);
-    // }
-
-
-    const togglePreview = () => {
-      isPreviewMode.value = !isPreviewMode.value
-    }
-
-    // resume 저장 
-    const modifiedData = ref({})
-    const trackChanges = (sectionId, newData) => {
-      modifiedData.value[sectionId] = newData
-    }
-
-    const updateResumeData = (newData) => {
-      // Object.assign(resumeData, newData)
-      resumeData[sectionId] = newData;
-      trackChanges(sectionId, newData);
-    }
-
     
-    const saveResume = async () => {
-      try{
-        console.log("새 데이터: modifiedData", modifiedData.value)
-        console.log("새 데이터: resumeData", resumeData.value)
-        const response = await axios.post('http://localhost:8080/api/v1/resume',
-          modifiedData.value,
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
-          }
-        )
-        console.log("Saved data: ", response.data);
-        // console.log('Saving resume:', resumeData)
-        // alert('Resume saved successfully!')
-        // console.log('Saved data: ', response.data)
-         // 변경 데이터 초기화  
-        modifiedData.value = {};
-      } catch(err){
-        console.log('Error saving resume: ', err)
-      }
+    // resume 수정
+    const updatePersonalInfo = (newData) => {
+      resumeStore.resumeData.personalInfo = newData; // Store 데이터를 직접 수정
+    }
+    
+    const updateSectionData = (sectionId, newData) => {
+      resumeStore.resumeData[sectionId] = newData;
     }
 
-
+    // resume 저장
+    const saveResume = async () => {
+      const success = resumeStore.saveResume()
+      if (success) { alert('저장 성공하였습니다.') }
+      else { alert('저장 실패하였습니다.') }
+    }
 
     return {
       resumeStore,
       resumeSections,
       resumeData,
       toggleSection,
-      updateResumeData,
-      saveResume,
-      updateResumeData
-      // updatePersonalInfo,
-      // updateSectionData
+      updatePersonalInfo,
+      updateSectionData,
+      saveResume
     }
   }
 }
