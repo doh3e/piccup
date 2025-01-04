@@ -2,6 +2,70 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssafy.piccup.model.dao.mydata.DashBoardDao">
+<mapper
+	namespace="com.ssafy.piccup.model.dao.mydata.DashBoardDao">
+
+	<select id="selectDashBoardData"
+		resultType="com.ssafy.piccup.model.dto.mydata.DashBoard">
+		SELECT
+		a.user_id AS userId,
+		a.apply_id AS applyId,
+		a.company_name AS companyName,
+		a.company_size AS companySize,
+		a.job AS job,
+		a.industry AS industry,
+
+		a_s.is_progressing AS isProgressing,
+		COALESCE(a_s.current_status, '미지정') AS currentStatus
+
+		FROM
+		apply a
+		JOIN
+		apply_status a_s ON a.apply_id = a_s.apply_id
+		WHERE
+		a.user_id = #{userId};
+	</select>
+
+	<select id="selectNumberData"
+		resultType="com.ssafy.piccup.model.dto.mydata.DashBoardNumberData">
+
+		SELECT
+		COUNT(*) AS allApplies,
+
+		SUM(CASE WHEN
+		a_s.is_progressing = TRUE THEN 1 ELSE 0 END) AS
+		progressingApplies,
+
+		SUM(CASE WHEN a_s.is_progressing = FALSE THEN 1 ELSE 0 END) AS
+		endApplies,
+
+		SUM(CASE WHEN a_s.is_progressing = FALSE AND
+		a_s.current_status = '서류' THEN 1
+		ELSE 0 END) AS seotal,
+
+		SUM(CASE WHEN
+		a_s.is_progressing = FALSE AND a_s.current_status IN
+		('인적성', '코딩테스트')
+		THEN 1 ELSE 0 END) AS seohap,
+
+		SUM(CASE WHEN a_s.is_progressing = FALSE
+		AND a_s.current_status = '면접' THEN 1
+		ELSE 0 END) AS joongdohap,
+
+		SUM(CASE WHEN a_s.is_progressing = FALSE AND a_s.current_status =
+		'최종합격' THEN
+		1 ELSE 0 END) AS finalhap
+
+		FROM
+		apply_status a_s
+		JOIN
+		apply a ON
+		a_s.apply_id = a.apply_id
+		JOIN
+		apply_schedule a_sc ON a.apply_id =
+		a_sc.apply_id
+		WHERE
+		a.user_id = #{userId};
+	</select>
 
 </mapper>
