@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -165,6 +166,44 @@ public class MydataController {
 		} catch (Exception e) {
 			resultMap.clear();
 			resultMap.put("message", "스케줄 수정 중 오류 발생: " + e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+
+		return new ResponseEntity<>(resultMap, status);
+	}
+	
+	// 스케줄 삭제
+	@DeleteMapping("/calendar/{scheduleId}")
+	public ResponseEntity<?> deleteSchedule(@PathVariable int scheduleId) {
+
+		// 현재 인증 정보에서 user id 가져오기
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof JwtAuthenticationToken)) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "인증 정보가 올바르지 않습니다."));
+		}
+
+		JwtAuthenticationToken jwtAuth = (JwtAuthenticationToken) authentication;
+		int userId = jwtAuth.getUserId();
+
+		// 반환 데이터
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.OK;
+
+		try {
+			// 스케줄이 해당 사용자 소유인지 확인
+			Schedule existingSchedule = calendarService.getScheduleById(scheduleId);
+			if (existingSchedule == null || existingSchedule.getUserId() != userId) {
+				resultMap.put("message", "삭제 권한이 없습니다.");
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(resultMap);
+			}
+			
+			calendarService.deleteScheduleById(scheduleId);
+
+
+			resultMap.put("message", "delete success");
+		} catch (Exception e) {
+			resultMap.clear();
+			resultMap.put("message", "스케줄 삭제 중 오류 발생: " + e.getMessage());
 			status = HttpStatus.INTERNAL_SERVER_ERROR;
 		}
 
