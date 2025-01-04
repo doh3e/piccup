@@ -293,10 +293,10 @@ watch(() => route.query.signup, (newValue) => {
 
 const addUser = (newUser) => {
   users.value.push(newUser);
-  // localStorage.setItem("users", JSON.stringify(users.value));
 };
 
 const toggleAuthMode = () => {
+  
   isSignUp.value = !isSignUp.value;
   email.value = "";
   password.value = "";
@@ -330,11 +330,10 @@ const handleSubmit = async () => {
     console.log(email.value, password.value)
     const result = await authStore.login(email.value, password.value);
     if (result.success) {
-      alert(result.message);
-      const newUser = { email: email.value, password: password.value };
-      addUser(newUser);
-      toggleAuthMode();
-      router.push('/');
+      const newUser = { email: email.value };
+      addUser(newUser)
+      toggleAuthMode()
+      router.push('/')
     } else {
       alert(result.message);
     }
