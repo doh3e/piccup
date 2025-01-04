@@ -76,10 +76,14 @@ export default {
     }
     const updateSectionData = (sectionId, newData) => {
       resumeStore.resumeData[sectionId] = newData;
+      console.log("반영시점 resumeStore.resumeData", resumeStore.resumeData)
     }
 
     // resume 저장
     const saveResume = async () => {
+
+      console.log("저장시점 resumeStore.resumeData", resumeStore.resumeData)
+
       const success = await resumeStore.saveResume()
       if (success) { alert('저장 성공하였습니다.') }
       else { alert('저장 실패하였습니다.') }

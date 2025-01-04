@@ -229,8 +229,6 @@ const props = defineProps({
 const resumeStore = useResumeStore();
 const localData = ref({
   ...{
-      infoId: null,
-      resumeId: null,
       username: '',
       birthDate: '',
       gender: '미지정',
@@ -246,7 +244,8 @@ const localData = ref({
       hobby : '', 
       specialty : '',
     },
-  ...props.data });
+  ...(props.data || {} ),
+  })
 
 const fileInput = ref(null);
 const previewUrl = ref(null); // 사진 미리보기 URL
@@ -255,6 +254,10 @@ const emit = defineEmits(["update:data"]);
 
 // 사진 UUID를 기반으로 URL 생성
 const getPhotoUrl = (photoUuid) => `http://localhost:8080/api/v1/resume/view/profile_images/${photoUuid}`;
+// personalInfo 사진 : resume/view/profile_images/{uuid}
+// educations 성적증명서 : resume/view/educations_files/{uuid}
+// workExperiences 경력증명서 : resume/view/work_files/{uuid}
+// portfolios 포트폴리오 : resume/view/portfolio_files/{uuid}
 
 const errors = ref({
   email: "",
@@ -268,6 +271,10 @@ const errors = ref({
 const updateData = () => {
   emit("update:data", localData.value);
 };
+
+watch (() => localStorage.getItem("email"), (newEmail) => {
+  localData.value.email = newEmail
+})
 
 // 이메일 유효성 검사
 watch(

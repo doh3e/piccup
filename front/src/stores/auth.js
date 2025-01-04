@@ -6,6 +6,11 @@ export const useAuthStore = defineStore('auth', () => {
   const user = ref(null)
   const isLoggedIn = ref(false)
 
+  if(localStorage.getItem('token')) {
+    isLoggedIn.value = true
+  }
+  
+
   async function login(email, password) {
       try {
         console.log(email, password)
@@ -14,8 +19,9 @@ export const useAuthStore = defineStore('auth', () => {
         })
         
         const token = response.data["refresh-token"]
-        localStorage.setItem("token", token) // 토큰저장
         user.value = { email }; // 사용자 정보 저장
+        localStorage.setItem("users", JSON.stringify(user.value)); // 사용자 정보 저장
+        localStorage.setItem("token", token) // 토큰저장
         isLoggedIn.value = true;
         return { success: true, message: "로그인이 완료되었습니다." };
       } catch (err) {
@@ -31,7 +37,8 @@ export const useAuthStore = defineStore('auth', () => {
   async function logout() {
     try {
       await apiAuth.post("/user/logout")
-      localStorage.removeItem("token");
+      localStorage.removeItem("token")
+      localStorage.removeItem("email")
       user.value = null;
       isLoggedIn.value = false;
       return { success: true, message: "로그아웃이 완료되었습니다." };
@@ -51,10 +58,8 @@ export const useAuthStore = defineStore('auth', () => {
   function checkAuth() {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      // user.value = JSON.parse(storedUser);
+      user.value = JSON.parse(storedUser);
       isLoggedIn.value = true;
-    } else {
-      isLoggedIn.value = false;
     }
   }
   

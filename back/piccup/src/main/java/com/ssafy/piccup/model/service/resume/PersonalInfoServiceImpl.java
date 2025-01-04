@@ -55,28 +55,28 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 					// - 실제 파일이름 생성
 					String profileImgName = file.getOriginalFilename(); 
 					// - 확장자 추출
-								String fileExtension = "";
-								if (profileImgName != null && profileImgName.contains(".")) {
-										fileExtension = profileImgName.substring(profileImgName.lastIndexOf("."));
-								}
-								// - 고유한 파일 이름 생성 (UUID + 확장자)
-								String profileImgPath = UUID.randomUUID().toString() + fileExtension;
+					String fileExtension = "";
+					if (profileImgName != null && profileImgName.contains(".")) {
+							fileExtension = profileImgName.substring(profileImgName.lastIndexOf("."));
+					}
+					// - 고유한 파일 이름 생성 (UUID + 확장자)
+					String profileImgPath = UUID.randomUUID().toString() + fileExtension;
 
-								// 인적사항 존재하면 수정, 없다면 필수필드 에러 발생
-								PersonalInfo personalInfo = personalInfoDao.selectPersonalByResume(resumeId);
-								if (personalInfo == null) {
-									throw new RuntimeException("생성된 인적사항이 없습니다. 필수 필드(email, degree)를 포함하여 인적사항을 생성해야 합니다.");
-								}
-								
-								personalInfo.setProfileImgName(profileImgName);
-								personalInfo.setProfileImgPath(profileImgPath);
-								Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
+					// 인적사항 존재하면 수정, 없다면 필수필드 에러 발생
+					PersonalInfo personalInfo = personalInfoDao.selectPersonalByResume(resumeId);
+					if (personalInfo == null) {
+						throw new RuntimeException("생성된 인적사항이 없습니다. 필수 필드(email, degree)를 포함하여 인적사항을 생성해야 합니다.");
+					}
+						
+					personalInfo.setProfileImgName(profileImgName);
+					personalInfo.setProfileImgPath(profileImgPath);
+					Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
 //								
-								file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
-								
-								if (personalInfoDao.updatePersonalFile(personalInfo) != 1) {
-									throw new RuntimeException(" upload Profile Image 실패 : ");
-								}
+					file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
+					
+					if (personalInfoDao.updatePersonalFile(personalInfo) != 1) {
+						throw new RuntimeException(" upload Profile Image 실패 : ");
+					}
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

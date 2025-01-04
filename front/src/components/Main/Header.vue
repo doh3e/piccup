@@ -22,14 +22,14 @@
 
         <div class="flex items-center space-x-4">
           <button
-            v-if="!authStore.isLoggedIn"
+            v-if="!isLoggedIn"
             @click="navigateToAuth(true)"
             class="btn btn-primary"
           >
             회원가입
           </button>
           <button
-            v-if="!authStore.isLoggedIn"
+            v-if="!isLoggedIn"
             @click="navigateToAuth(false)"
             class="btn btn-outline"
           >
@@ -45,7 +45,7 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 
@@ -95,9 +95,21 @@ const handleLogout = async () => {
   }
 }
 
+const isLoggedIn = ref(authStore.isLoggedIn)
 onMounted(() => {
   authStore.checkAuth();
+  isLoggedIn.value = authStore.isLoggedIn;
+  console.log("isLoggedIn mount", isLoggedIn.value)  
 });
+
+watch(
+  () => authStore.isLoggedIn,
+  (newStatus) => {
+    isLoggedIn.value = newStatus
+    console.log("isLoggedIn", isLoggedIn.value)  
+  }
+
+);
 </script>
 
 <style scoped>
