@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.piccup.JwtAuthenticationToken;
 import com.ssafy.piccup.model.dto.mydata.ApplyCalendarSchedule;
+import com.ssafy.piccup.model.dto.mydata.DashBoard;
+import com.ssafy.piccup.model.dto.mydata.DashBoardNumberData;
 import com.ssafy.piccup.model.dto.mydata.Schedule;
 import com.ssafy.piccup.model.service.mydata.CalendarService;
 import com.ssafy.piccup.model.service.mydata.DashBoardService;
@@ -222,6 +224,38 @@ public class MydataController {
 			status = HttpStatus.INTERNAL_SERVER_ERROR;
 		}
 
+		return new ResponseEntity<>(resultMap, status);
+	}
+	
+	// 나의 데이터 한 눈에 확인하기
+	@GetMapping("/dashboard")
+	public ResponseEntity<?> getDashBoard() {
+		// 현재 인증 정보에서 user id 가져오기
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof JwtAuthenticationToken)) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "인증 정보가 올바르지 않습니다."));
+		}
+
+		JwtAuthenticationToken jwtAuth = (JwtAuthenticationToken) authentication;
+		int userId = jwtAuth.getUserId();
+
+		// 반환 데이터
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.OK;
+		
+		try {
+			
+			List<DashBoard> dashboard = dashBoardService.getDashBoard(userId);
+			DashBoardNumberData dashBoardNumberData = dashBoardService.getDashBoardNumberData(userId);
+			
+		    resultMap.put("dashboard", dashboard);
+		    resultMap.put("summary", dashBoardNumberData);
+			
+		} catch (Exception e) {
+			resultMap.put("message", "대시보드 데이터 생성 중 오류 발생: " + e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;			
+		}
+		
 		return new ResponseEntity<>(resultMap, status);
 	}
 
