@@ -16,7 +16,7 @@
           class="section-margin"
           :sections="resumeSections"
           :resumeData="resumeStore.resumeData"
-          @update:resumeData="updateResumeData"
+          @update:resumeData="updateSectionData"
         />
         <div class="mt-6 flex justify-end space-x-4">
           <button
@@ -37,7 +37,6 @@ import { useResumeStore } from '@/stores/resume'
 import Sidebar from '@/components/Resume/Sidebar.vue'
 import ResumeBuilder from '@/components/Resume/ResumeBuilder.vue'
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
-import axios from 'axios'
 
 
 export default {
@@ -64,18 +63,6 @@ export default {
       { id: 'portfolios', name: '포트폴리오', isActive: false },
     ])
 
-    const resumeData = reactive({
-      personalInfo: {},
-      skills: [],
-      academicAbility: [],
-      experience: [],
-      internships: [],
-      training: [],
-      certifications: [],
-      awards: [],
-      portfolio: [],
-    });
-
     const toggleSection = (sectionId) => {
       const section = resumeSections.find((s) => s.id === sectionId);
       if (section) {
@@ -85,16 +72,19 @@ export default {
     
     // resume 수정
     const updatePersonalInfo = (newData) => {
-      resumeStore.resumeData.personalInfo = newData; // Store 데이터를 직접 수정
+      resumeStore.resumeData.personalInfo = newData
     }
-    
     const updateSectionData = (sectionId, newData) => {
       resumeStore.resumeData[sectionId] = newData;
+      console.log("반영시점 resumeStore.resumeData", resumeStore.resumeData)
     }
 
     // resume 저장
     const saveResume = async () => {
-      const success = resumeStore.saveResume()
+
+      console.log("저장시점 resumeStore.resumeData", resumeStore.resumeData)
+
+      const success = await resumeStore.saveResume()
       if (success) { alert('저장 성공하였습니다.') }
       else { alert('저장 실패하였습니다.') }
     }
@@ -102,7 +92,6 @@ export default {
     return {
       resumeStore,
       resumeSections,
-      resumeData,
       toggleSection,
       updatePersonalInfo,
       updateSectionData,

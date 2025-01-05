@@ -25,8 +25,8 @@ public class PersonalInfo {
 	private String address;
 	private String addressDetail;
 	private int postalCode;
-	private String profileImgPath = "profile_images/default.png";
-	private String profileImgName = "default.png";
+	private String profileImgPath;
+	private String profileImgName;
 	@NotNull(message = "학위는 필수입니다.")
 	@Pattern(regexp = "미지정|중등교육이수|학사|석사|박사", message = "학위는 '미지정', '중등교육이수', '학사', '석사', '박사' 중 하나여야 합니다.")
 	private String degree = "미지정";

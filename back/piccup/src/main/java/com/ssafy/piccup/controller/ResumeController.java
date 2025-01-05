@@ -1,18 +1,25 @@
 package com.ssafy.piccup.controller;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -343,4 +350,70 @@ public class ResumeController {
 	    return new ResponseEntity<>(resultMap, status);
 	}
 	
+	
+	// 파일 조회
+	@GetMapping("/view/{fileDir}/{fileUuid}")
+	public ResponseEntity<?> getFile(@PathVariable String fileDir, @PathVariable String fileUuid) throws IOException {
+		File file = null;
+
+		// 특정 디렉터리 처리
+		if (fileDir.equals("profile_images")) {
+			file = personalInfoService.readFile(fileUuid);
+		}
+		else {
+			file = fileService.readFile(fileUuid, fileDir);
+		}
+		
+		if (file == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(0);
+		}
+
+		InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+		String fileName = file.getName();
+		String extension = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
+
+	    // 확장자에 따른 MediaType 매핑
+		MediaType mediaType;
+		switch (extension) {
+		case "jpg":
+		case "jpeg":
+			mediaType = MediaType.IMAGE_JPEG;
+			break;
+		case "png":
+			mediaType = MediaType.IMAGE_PNG;
+			break;
+		case "webp":
+			mediaType = MediaType.valueOf("image/webp");
+			break;
+		case "gif":
+            mediaType = MediaType.IMAGE_GIF;
+            break;
+        case "bmp":
+            mediaType = MediaType.valueOf("image/bmp");
+            break;
+        case "svg":
+            mediaType = MediaType.valueOf("image/svg+xml");
+            break;
+        case "pdf":
+            mediaType = MediaType.APPLICATION_PDF;
+            break;
+        case "txt":
+            mediaType = MediaType.TEXT_PLAIN;
+            break;
+        case "htm":
+            mediaType = MediaType.TEXT_HTML;
+            break;
+        case "mp4":
+            mediaType = MediaType.valueOf("video/mp4");
+            break;
+		default:
+			mediaType = MediaType.APPLICATION_OCTET_STREAM; // 기본값: 바이너리 파일
+		}
+
+	    return ResponseEntity.ok()
+	            .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=" + file.getName()) // inline으로 설정
+	            .contentType(mediaType) // MIME 타입 설정
+	            .contentLength(file.length())
+	            .body(resource);
+	}
 }

@@ -156,9 +156,8 @@
 
       <!-- Right Column - Photo Upload -->
       <div class="flex justify-center items-start">
-        <div class="w-40 h-40 relative">
+        <div class="w-40 h-10 relative">
           <div
-            v-if="!localData.profileImgPath"
             class="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-[#006B40]"
             @click="triggerFileInput"
           >
@@ -176,14 +175,8 @@
                 d="M12 4v16m8-8H4"
               />
             </svg>
-            <span class="mt-2 text-sm text-gray-500">사진추가</span>
+            <span class="mt-2 text-sm text-gray-500">사진변경</span>
           </div>
-          <img
-            v-else
-            :src="localData.profileImgPath"
-            class="w-full h-full object-cover rounded-lg"
-            alt="Profile photo"
-          />
           <input
             ref="fileInput"
             type="file"
@@ -191,43 +184,81 @@
             class="hidden"
             @change="handleFileUpload"
           />
-          <button
-            v-if="localData.profileImgPath"
-            @click="removePhoto"
-            class="absolute top-0 right-0 -mt-2 -mr-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-          >
-            <svg
+          <div v-if="previewUrl || localData.profileImgPath">
+              <img
+              :src="previewUrl ? previewUrl : getPhotoUrl(localData.profileImgPath)"
+              class="w-full h-full object-cover rounded-lg"
+              :alt="previewUrl ? '사진 미리보기' : localData.profileImgName"
+              />
+              <button
+              @click="removePhoto"
+              class="absolute top-10 right-1 -mt-2 -mr-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              >
+              <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"
               viewBox="0 0 20 20"
               fill="currentColor"
-            >
+              >
               <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
+              fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"
               />
             </svg>
           </button>
         </div>
+</div>
+        </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup>
 import { ref, watch } from "vue";
+import { useResumeStore } from "@/stores/resume";
+
 
 const props = defineProps({
   data: {
     type: Object,
-    required: true,
+    required: false,
   },
 });
 
-const emit = defineEmits(["update:data"]);
-const localData = ref({ ...props.data });
+const resumeStore = useResumeStore();
+const localData = ref({
+  ...{
+      username: '',
+      birthDate: '',
+      gender: '미지정',
+      email: '',
+      homePhone: '',
+      mobilePhone: '',
+      address: '',
+      addressDetail: '',
+      postalCode : null,
+      profileImgPath : '',
+      profileImgName : '',
+      degree : '미지정',
+      hobby : '', 
+      specialty : '',
+    },
+  ...(props.data || {} ),
+  })
+
 const fileInput = ref(null);
+const previewUrl = ref(null); // 사진 미리보기 URL
+const emit = defineEmits(["update:data"]);
+
+
+// 사진 UUID를 기반으로 URL 생성
+const getPhotoUrl = (photoUuid) => `http://localhost:8080/api/v1/resume/view/profile_images/${photoUuid}`;
+// personalInfo 사진 : resume/view/profile_images/{uuid}
+// educations 성적증명서 : resume/view/educations_files/{uuid}
+// workExperiences 경력증명서 : resume/view/work_files/{uuid}
+// portfolios 포트폴리오 : resume/view/portfolio_files/{uuid}
+
 const errors = ref({
   email: "",
   gender: "",
@@ -240,6 +271,10 @@ const errors = ref({
 const updateData = () => {
   emit("update:data", localData.value);
 };
+
+watch (() => localStorage.getItem("email"), (newEmail) => {
+  localData.value.email = newEmail
+})
 
 // 이메일 유효성 검사
 watch(
@@ -314,7 +349,7 @@ watch(
   }
 );
 
-//생년월일 유효성 검사
+// 생년월일 유효성 검사
 watch(
   () => localData.value.birthDate,
   (newBirthDate) => {
@@ -334,20 +369,22 @@ const triggerFileInput = () => {
   fileInput.value.click();
 };
 
+
 const handleFileUpload = (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      localData.value.profileImgPath = e.target.result;
-      updateData();
-    };
-    reader.readAsDataURL(file);
+  const uploadedFile = event.target.files[0];
+  if (uploadedFile) {
+    previewUrl.value = URL.createObjectURL(uploadedFile);
+    console.log("previewUrl ", previewUrl.value);
+    console.log("uploadedFile ", uploadedFile);
+    resumeStore.personalFile = uploadedFile
   }
 };
 
 const removePhoto = () => {
-  localData.value.profileImgPath = "";
+  localData.value.profileImgName = ""
+  localData.value.profileImgPath = ""
+  resumeStore.personalFile = null
+  previewUrl.value = ""
   updateData();
 };
 
@@ -369,4 +406,5 @@ watch(
   },
   { deep: true, immediate: true }
 );
+
 </script>

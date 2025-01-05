@@ -2,6 +2,8 @@ package com.ssafy.piccup.model.service.resume;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -53,27 +55,28 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 					// - 실제 파일이름 생성
 					String profileImgName = file.getOriginalFilename(); 
 					// - 확장자 추출
-								String fileExtension = "";
-								if (profileImgName != null && profileImgName.contains(".")) {
-										fileExtension = profileImgName.substring(profileImgName.lastIndexOf("."));
-								}
-								// - 고유한 파일 이름 생성 (UUID + 확장자)
-								String profileImgPath = UUID.randomUUID().toString() + fileExtension;
+					String fileExtension = "";
+					if (profileImgName != null && profileImgName.contains(".")) {
+							fileExtension = profileImgName.substring(profileImgName.lastIndexOf("."));
+					}
+					// - 고유한 파일 이름 생성 (UUID + 확장자)
+					String profileImgPath = UUID.randomUUID().toString() + fileExtension;
 
-								// 인적사항 존재하면 수정, 없다면 필수필드 에러 발생
-								PersonalInfo personalInfo = personalInfoDao.selectPersonalByResume(resumeId);
-								if (personalInfo == null) {
-									throw new RuntimeException("생성된 인적사항이 없습니다. 필수 필드(email, degree)를 포함하여 인적사항을 생성해야 합니다.");
-								}
-								
-								personalInfo.setProfileImgName(profileImgName);
-								personalInfo.setProfileImgPath(profileImgPath);
-								Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
-								file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
-								
-								if (personalInfoDao.updatePersonalFile(personalInfo) != 1) {
-									throw new RuntimeException(" upload Profile Image 실패 : ");
-								}
+					// 인적사항 존재하면 수정, 없다면 필수필드 에러 발생
+					PersonalInfo personalInfo = personalInfoDao.selectPersonalByResume(resumeId);
+					if (personalInfo == null) {
+						throw new RuntimeException("생성된 인적사항이 없습니다. 필수 필드(email, degree)를 포함하여 인적사항을 생성해야 합니다.");
+					}
+						
+					personalInfo.setProfileImgName(profileImgName);
+					personalInfo.setProfileImgPath(profileImgPath);
+					Resource resource = resourceLoader.getResource("classpath:/static/profile_images");
+//								
+					file.transferTo(new File(resource.getFile(), profileImgPath)); // 파일저장
+					
+					if (personalInfoDao.updatePersonalFile(personalInfo) != 1) {
+						throw new RuntimeException(" upload Profile Image 실패 : ");
+					}
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -81,5 +84,14 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 				} catch (Exception e) {
 						throw new RuntimeException("프로필 이미지 업로드 실패 : "+ e.getMessage(), e);
 			}
+		}
+
+	    // 인적사항 파일조회 
+		@Override
+		public File readFile(String fileUuid) throws IOException {
+			Resource resource = resourceLoader.getResource("classpath:/static/profile_images/" + fileUuid);
+			if (!resource.exists())
+				return null; // 파일 없는 경우 
+			return resource.getFile(); // File 객체반환
 		}
 	}
