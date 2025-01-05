@@ -27,11 +27,11 @@ public class Schedule {
 	private String scheduleName; // 스케줄명
 
 	@NotNull(message = "시작 시간은 필수입니다.")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime startAt; // 일정 시작 시간
 
 	@NotNull(message = "종료 시간은 필수입니다.")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime endAt; // 일정 종료 시간
 
 	private int importance;
