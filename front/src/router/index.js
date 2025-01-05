@@ -7,6 +7,7 @@ import ResumeView from '@/views/ResumeView.vue'
 import FAQView from '@/views/FAQView.vue'
 import AuthView from '@/views/AuthView.vue'
 import CoverLetterBoardView from '@/views/CoverLetterBoardView.vue'
+import ResumePreviewView from '@/views/ResumePreviewView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,6 +47,11 @@ const router = createRouter({
       name: 'CoverLetterBoard',
       component: CoverLetterBoardView
     },
+    {
+      path: "/resume-preview",
+      name: "ResumePreview",
+      component: ResumePreviewView,
+    }    
   ],
 })
 

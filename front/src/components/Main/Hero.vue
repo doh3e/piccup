@@ -51,7 +51,7 @@ const slides = [
     title: "전문적인 이력서를 작성하세요",
     description: "당신의 경력을 돋보이게 만들어 줄 맞춤형 이력서 템플릿",
     buttonText: "이력서 작성하기",
-    action: "/resume",
+    action: "/resume-preview",
   },
   {
     id: 2,
