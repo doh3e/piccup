@@ -39,8 +39,122 @@ CREATE TABLE `user` (
 --     PRIMARY KEY (user_id)
 -- ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
+
+/* (자소서, 마이데이터 파트) 접수일정 apply_schedule */
+CREATE TABLE apply_schedule (
+  schedule_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  apply_id INT NOT NULL,
+  start_date DATETIME,
+  end_date DATETIME,
+  FOREIGN KEY (apply_id) REFERENCES apply(apply_id) ON DELETE CASCADE
+);
+
+/* (자소서) 항목 테이블 */
+CREATE TABLE cover_letter (
+  cover_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  apply_id INT NOT NULL,
+  user_id INT NOT NULL,
+  category VARCHAR(100),
+  cover_title VARCHAR(255) NOT NULL,
+  cover_content TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (apply_id) REFERENCES apply(apply_id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
+  CHECK (category IN ('성장과정', '성격', '지원동기', '입사 후 포부', '기타'))
+);
+
+/* (마이데이터) 피드백 테이블 */
+CREATE TABLE apply_feedback (
+  feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  apply_id INT,
+  user_id INT NOT NULL,
+  feedback_status VARCHAR(50) NOT NULL DEFAULT '미지정',
+  content TEXT,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (apply_id) REFERENCES apply(apply_id) ON DELETE SET NULL,
+  FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
+  CHECK (feedback_status IN ('서류', '인적성', '코딩테스트', '면접', '최종합격', '미지정'))
+);
+
+/* (마이데이터 캘린더) 일정 입력 */
+CREATE TABLE my_schedule (
+  schedule_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  schedule_name VARCHAR(50) NOT NULL,
+  start_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  end_at DATETIME NOT NULL DEFAULT (CONCAT(CURRENT_DATE, ' 23:59:59')),
+  importance INT NOT NULL DEFAULT 2
+);
+
+/* (헬프데스크) 공지 */
+CREATE TABLE notice (
+  notice_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  content TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+/* (헬프데스크) 문의 */
+CREATE TABLE support (
+  support_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  content TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE
+);
+
+/* 사람인 API용 DB */
+CREATE TABLE job_position (
+  job_position_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  job_url VARCHAR(500) NOT NULL,
+  is_active BOOLEAN NOT NULL,
+  company_href VARCHAR(500),
+  company_name VARCHAR(255) NOT NULL,
+  position_title VARCHAR(255) NOT NULL,
+  industry_code VARCHAR(50) NOT NULL,
+  industry_name VARCHAR(255),
+  location_code VARCHAR(255),
+  location_name VARCHAR(255),
+  job_type_code VARCHAR(50),
+  job_type_name VARCHAR(100),
+  job_mid_code VARCHAR(50),
+  job_mid_name VARCHAR(100),
+  job_code_code VARCHAR(50),
+  job_code_name VARCHAR(100),
+  experience_level_code INT,
+  experience_level_min INT,
+  experience_level_max INT,
+  experience_level_name VARCHAR(100),
+  education_code VARCHAR(50),
+  education_name VARCHAR(100),
+  job_id VARCHAR(20) NOT NULL,
+  posting_timestamp BIGINT NOT NULL,
+  posting_date DATETIME,
+  modification_timestamp BIGINT NOT NULL,
+  opening_timestamp BIGINT NOT NULL,
+  expiration_timestamp BIGINT NOT NULL,
+  expiration_date DATETIME,
+  close_type_code VARCHAR(50),
+  close_type_name VARCHAR(100),
+  keyword VARCHAR(255),
+  read_count VARCHAR(50),
+  apply_count VARCHAR(50),
+  salary_code VARCHAR(50),
+  salary_name VARCHAR(100)
+);
+
+/* (이력서) 이력서 테이블 모음 */
+
+-- 이력서 테이블 생성
+
 -- 이력서 테이블 생성 (1:1)
 DROP TABLE IF EXISTS resume;
+
 CREATE TABLE resume (
 	resume_id 	INT 		NOT NULL AUTO_INCREMENT,
 	user_id 	INT			NOT NULL UNIQUE,

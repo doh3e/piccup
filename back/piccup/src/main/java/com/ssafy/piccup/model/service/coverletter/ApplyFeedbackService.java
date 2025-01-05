@@ -8,7 +8,7 @@ import com.ssafy.piccup.model.dto.coverletter.ApplyFeedback;
 
 @Service
 public interface ApplyFeedbackService {
-	public List<ApplyFeedback> getApplyFeedbackList();
+	public List<ApplyFeedback> getApplyFeedbackList(int userId);
 	
 	public ApplyFeedback viewApplyFeedback(int feedbackId);
 	
