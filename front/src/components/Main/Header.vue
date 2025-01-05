@@ -73,7 +73,7 @@ const navigateToAuth = (isSignUp) => {
 const getRouteForItem = (item) => {
   switch (item) {
     case "이력서":
-      return "/resume";
+      return "/resume-preview";
     case "홈":
       return "/";
     case "자기소개서 작성":
