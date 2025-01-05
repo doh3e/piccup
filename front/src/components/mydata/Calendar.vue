@@ -1,29 +1,21 @@
 <template>
-  <div class="content">
-    <div class="container-fluid h-100 d-flex justify-content-center align-items-center">
-      <div class="row w-75">
-        <div class="col-12">
-          <div class="card cal">
-            <div class="card-body p-3">
-              <div id="calendar" class="calendar-size" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="flex justify-center items-center w-full h-full">
+    <div id="calendar" class="w-full h-[60vh] p-4 bg-white rounded-lg shadow"></div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, watchEffect, ref } from 'vue';
+import { onMounted, watchEffect } from 'vue';
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { apiAuth } from '@/api/index.js';
 
-const events = ref([]); // FullCalendar에서 사용하는 이벤트 배열
-const mySchedules = ref([]); // 개인 스케줄
-const myApplySchedules = ref([]); // 취업 일정 스케줄
+const props = defineProps({
+  events: {
+    type: Array,
+    required: true, // 부모 컴포넌트에서 반드시 전달해야 함
+  },
+});
 
 const initCalendar = () => {
   const calendarEl = document.getElementById('calendar');
@@ -41,7 +33,11 @@ const initCalendar = () => {
     },
     editable: true,
     droppable: true,
-    events: events.value, // 초기 이벤트 데이터
+    events: props.events,
+    eventBorderColor: 'transparent',
+    eventContent: function(info) {
+      return { html: `<span style="overflow: hidden;">${info.event.title}</span>` };
+    },
     dateClick(info) {
       console.log('Date clicked:', info.dateStr);
     },
@@ -52,95 +48,18 @@ const initCalendar = () => {
 
   calendar.render();
 
+  // events가 변경되면 FullCalendar 업데이트
   watchEffect(() => {
     calendar.removeAllEvents();
-    calendar.addEventSource(events.value);
+    calendar.addEventSource(props.events);
   });
 };
 
-// 개인 스케줄 로드
-const loadMySchedules = async () => {
-  try {
-    const response = await apiAuth.get('/mydata/calendar');
-    const schedules = response.data.schedules;
-
-    mySchedules.value = schedules.map(schedule => {
-      let backgroundColor = '#6c757d';
-      let textColor = '#FFFFFF';
-
-      if (schedule.importance === 3) {
-        backgroundColor = '#006B40';
-      } else if (schedule.importance === 2) {
-        backgroundColor = '#8CD196';
-      }
-
-      const startDate = schedule.startAt.split(' ')[0];
-      const endDate = schedule.endAt.split(' ')[0];
-
-      return {
-        title: schedule.scheduleName,
-        start: startDate,
-        end: endDate,
-        color: backgroundColor,
-        textColor: textColor,
-      };
-    });
-  } catch (error) {
-    console.error('Failed to load personal schedules:', error);
-  }
-};
-
-// 취업 스케줄 로드
-const loadMyApplySchedules = async () => {
-  try {
-    const response = await apiAuth.get('/mydata/applyschedule');
-    console.log(response.data.applySchedules)
-    const schedules = response.data.applySchedules;
-
-    myApplySchedules.value = schedules.map(schedule => {
-      let backgroundColor = '#007BFF';
-      let textColor = '#FFFFFF';
-
-      if (schedule.progressing) {
-        backgroundColor = '#E35454'
-      } else if (!schedule.progressing) {
-        backgroundColor = '#FFDCDC'
-        textColor = '#000000'
-      }
-
-      const startDate = schedule.startDate.split(' ')[0];
-      const endDate = schedule.endDate.split(' ')[0];
-
-      return {
-        title: `${schedule.companyName} (${schedule.currentStatus})`,
-        start: startDate,
-        end: endDate,
-        color: backgroundColor,
-        textColor: textColor,
-      };
-    });
-  } catch (error) {
-    console.error('Failed to load application schedules:', error);
-  }
-};
-
-// 모든 스케줄 로드 후 events에 합치기
-const loadAllSchedules = async () => {
-  await Promise.all([loadMySchedules(), loadMyApplySchedules()]);
-  events.value = [...mySchedules.value, ...myApplySchedules.value]; // 두 스케줄을 합침
-};
-
-onMounted(async () => {
-  await loadAllSchedules();
-  initCalendar();
-});
+onMounted(initCalendar);
 </script>
 
-
 <style scoped>
-.calendar-size {
-  width: 100%;
-  height: 60%;
-  margin: 0 auto;
-}
+
+
+
 </style>
