@@ -51,6 +51,11 @@
 		AND user_id = #{userId};
 	</update>
 
+	<delete id="deleteSchedule">
+		DELETE FROM my_schedule
+		WHERE schedule_id = #{scheduleId};
+	</delete>
+
 	<select id="selectAllApplySchedules"
 		resultType="com.ssafy.piccup.model.dto.mydata.ApplyCalendarSchedule">
 		SELECT
@@ -61,13 +66,14 @@
 		s.is_progressing,
 		s.current_status,
 		sch.schedule_id,
-		sch.start_date,
-		sch.end_date
+		COALESCE(sch.start_date, '1970-01-01 00:00:00') AS start_date,
+		COALESCE(sch.end_date, '1970-01-01 00:00:00') AS end_date
 		FROM apply a
-		LEFT JOIN apply_status s ON a.apply_id =
-		s.apply_id
-		LEFT JOIN apply_schedule sch ON a.apply_id = sch.apply_id
-		WHERE a.user_id = #{userId};
+		LEFT JOIN apply_status s ON a.apply_id = s.apply_id
+		LEFT JOIN
+		apply_schedule sch ON a.apply_id = sch.apply_id
+		WHERE a.user_id =
+		#{userId};
 	</select>
 
 	<select id="selectApplyScheduleById"
@@ -88,11 +94,10 @@
 		sch.start_date,
 		sch.end_date
 		FROM apply a
-		LEFT JOIN apply_status s ON a.apply_id = s.apply_id
+		LEFT JOIN apply_status s ON a.apply_id =
+		s.apply_id
 		LEFT JOIN apply_schedule sch ON a.apply_id = sch.apply_id
 		WHERE a.apply_id = #{applyId} AND a.user_id = #{userId};
 	</select>
-
-
 
 </mapper>

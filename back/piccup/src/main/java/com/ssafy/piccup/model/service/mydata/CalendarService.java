@@ -21,4 +21,6 @@ public interface CalendarService {
 	public List<ApplyCalendarSchedule> getAllApplySchedules(int userId);
 
 	public ApplyCalendarSchedule getApplyScheduleById(int applyId, int userId);
+
+	public void deleteScheduleById(int scheduleId);
 }

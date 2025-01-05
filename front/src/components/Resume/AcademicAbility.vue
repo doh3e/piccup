@@ -1,11 +1,10 @@
 <template>
   <div class="bg-white p-6 rounded-lg shadow">
     <h2 class="text-2xl font-bold text-[#006B40] mb-6">학력</h2>
-
     <div
       v-for="(edu, index) in localData"
       :key="index"
-      class="mb-8 pb-6 border-b border-gray-200"
+      class="mb-8 border-b border-gray-200"
     >
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <!-- School Type and Name -->
@@ -15,9 +14,10 @@
             class="w-1/3 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
           >
             <option value="선택안함">선택안함</option>
-            <option value="대학교(4년)">대학교(4년)</option>
-            <option value="대학교(2년)">대학교(2년)</option>
             <option value="고등학교">고등학교</option>
+            <option value="대학(2,3년)">대학(2,3년)</option>
+            <option value="대학교(4년)">대학교(4년)</option>
+            <option value="대학원">대학원</option>
           </select>
           <div class="relative flex-1">
             <input
@@ -26,48 +26,46 @@
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50 pr-10"
               placeholder="학교명"
             />
-            <button
-              class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
+            <p v-if="errors.schoolName" class="text-red-500 text-sm mt-1">
+              {{ errors.schoolName }}
+            </p>
           </div>
         </div>
 
         <!-- Period and Status -->
         <div class="flex items-center space-x-2">
-          <input
-            v-model="edu.startDate"
-            type="text"
-            placeholder="YYYY.MM"
-            class="w-24 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
-          />
+          <div class="flex flex-col">
+            <input
+              v-model="edu.startDate"
+              type="date"
+              class="w-32 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
+            />
+            <p v-if="errors.startDate" class="text-red-500 text-sm mt-1">
+              {{ errors.startDate }}
+            </p>
+          </div>
           <span>-</span>
-          <input
-            v-model="edu.endDate"
-            type="text"
-            placeholder="YYYY.MM"
-            class="w-24 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
-          />
+          <div class="flex flex-col">
+            <input
+              v-model="edu.endDate"
+              type="date"
+              class="w-32 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
+            />
+            <p v-if="errors.endDate" class="text-red-500 text-sm mt-1">
+              {{ errors.endDate }}
+            </p>
+          </div>
           <select
             v-model="edu.status"
-            class="w-24 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
+            class="w-32 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
           >
+            <option value="선택안함">선택안함</option>
             <option value="졸업">졸업</option>
-            <option value="재학중">재학중</option>
-            <option value="휴학중">휴학중</option>
+            <option value="졸업예정">졸업예정</option>
+            <option value="재학 중">재학 중</option>
             <option value="중퇴">중퇴</option>
+            <option value="수료">수료</option>
+            <option value="휴학">휴학</option>
           </select>
         </div>
 
@@ -76,44 +74,38 @@
           <input
             v-model="edu.major"
             type="text"
-            class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50 pr-10"
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
             placeholder="전공"
           />
-          <button
-            class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </button>
         </div>
 
         <!-- GPA -->
         <div class="flex items-center space-x-2">
           <input
             v-model="edu.gpa"
-            type="text"
+            type="number"
+            step="0.01"
+            min="0"
             placeholder="학점"
-            class="w-20 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
+            class="w-24 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
           />
+          <p v-if="errors.gpa" class="text-red-500 text-sm mt-1">
+            {{ errors.gpa }}
+          </p>
           <span>/</span>
-          <select
-            v-model="edu.gpaScale"
-            class="w-20 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
-          >
-            <option value="4.5">4.5</option>
-            <option value="4.3">4.3</option>
-            <option value="4.0">4.0</option>
-          </select>
+          <div class="flex flex-col">
+            <input
+              v-model="edu.gpaScale"
+              type="number"
+              step="0.01"
+              min="0"
+              placeholder="만점"
+              class="w-24 rounded-md border-gray-300 shadow-sm focus:border-[#006B40] focus:ring focus:ring-[#8CD196] focus:ring-opacity-50"
+            />
+            <p v-if="errors.gpaScale" class="text-red-500 text-sm mt-1">
+              {{ errors.gpaScale }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -196,37 +188,158 @@ export default {
               major: "",
               gpa: "",
               gpaScale: 4.5,
+              isTransfer: false,
+              isQe: false,
+              qeYear: null,
             },
           ]
     );
 
     const showDeleteModal = ref(false);
+    const errors = ref({
+      schoolType: "",
+      schoolName: "",
+      startDate: "",
+      endDate: "",
+      status: "",
+      gpa: "",
+      gpaScale: "",
+    });
 
-    const addEducation = () => {
-      localData.value.push({
-        schoolType: "대학교(4년)",
+    // 에러 초기화 함수
+    const resetErrors = () => {
+      errors.value = {
+        schoolType: "",
         schoolName: "",
         startDate: "",
         endDate: "",
-        status: "졸업",
+        status: "",
+        gpa: "",
+        gpaScale: "",
+      };
+    };
+
+    // 학교 유형 및 이름 검사
+    watch(
+      () => localData.value,
+      (newData) => {
+        resetErrors();
+
+        newData.forEach((edu) => {
+          // 학교 유형 검사
+          if (
+            ![
+              "선택안함",
+              "고등학교",
+              "대학(2,3년)",
+              "대학교(4년)",
+              "대학원",
+            ].includes(edu.schoolType)
+          ) {
+            errors.value.schoolType =
+              "학교 유형은 선택안함, 고등학교, 대학(2,3년), 대학교(4년), 대학원 중 하나여야 합니다.";
+          }
+
+          // 학교 이름 검사
+          if (!edu.schoolName.trim()) {
+            errors.value.schoolName = "학교 이름은 필수입니다.";
+          }
+        });
+      },
+      { deep: true }
+    );
+
+    watch(
+      () => localData.value.map((edu) => edu.startDate),
+      (newStartDates) => {
+        newStartDates.forEach((startDate, index) => {
+          if (startDate) {
+            const date = new Date(startDate);
+            const today = new Date();
+
+            if (!isNaN(date.getTime()) && date > today) {
+              errors.value.startDate = "입학 날짜는 과거여야 합니다.";
+            } else {
+              errors.value.startDate = "";
+            }
+          }
+        });
+      },
+      { deep: true }
+    );
+
+    watch(
+      () => localData.value.map((edu) => edu.endDate),
+      (newEndDates) => {
+        newEndDates.forEach((endDate, index) => {
+          if (endDate) {
+            const date = new Date(endDate);
+            const today = new Date();
+            const startDate = new Date(localData.value[index].startDate);
+
+            if (!isNaN(date.getTime())) {
+              if (date > today) {
+                errors.value.endDate = "졸업 날짜는 미래일 수 없습니다.";
+              } else if (startDate && date < startDate) {
+                errors.value.endDate = "종료일이 시작일보다 빠를 수 없습니다.";
+              } else {
+                errors.value.endDate = "";
+              }
+            }
+          }
+        });
+      },
+      { deep: true }
+    );
+
+    // GPA와 Scale 검사를 위한 개별 watch 함수
+    watch(
+      () =>
+        localData.value.map((edu) => ({ gpa: edu.gpa, scale: edu.gpaScale })),
+      (newValues) => {
+        newValues.forEach(({ gpa, scale }) => {
+          const gpaValue = parseFloat(gpa);
+          const scaleValue = parseFloat(scale);
+
+          // GPA 검사
+          if (gpa !== "") {
+            if (gpaValue < 0) {
+              errors.value.gpa = "GPA는 0 이상이어야 합니다.";
+            } else if (gpaValue > scaleValue) {
+              errors.value.gpa = `학점이 ${scaleValue}보다 클 수 없습니다`;
+            } else {
+              errors.value.gpa = "";
+            }
+          }
+
+          // Scale 검사
+          if (scale !== "") {
+            if (scaleValue <= 0) {
+              errors.value.gpaScale = "GPA Scale은 0보다 커야 합니다.";
+            } else {
+              errors.value.gpaScale = "";
+            }
+          }
+        });
+      },
+      { deep: true }
+    );
+
+    const addEducation = () => {
+      localData.value.push({
+        schoolType: "선택안함",
+        schoolName: "",
+        startDate: "",
+        endDate: "",
+        status: "선택안함",
         major: "",
         gpa: "",
         gpaScale: 4.5,
+        isTransfer: false,
+        isQe: false,
+        qeYear: null,
       });
       updateData();
-    };
-
-    const addSameSchool = () => {
-      if (localData.value.length > 0) {
-        const lastSchool = localData.value[localData.value.length - 1];
-        localData.value.push({
-          ...lastSchool,
-          major: "",
-          gpa: "",
-          gpaScale:4.5,
-        });
-        updateData();
-      }
     };
 
     const confirmDelete = () => {
@@ -258,8 +371,8 @@ export default {
     return {
       localData,
       showDeleteModal,
+      errors,
       addEducation,
-      addSameSchool,
       confirmDelete,
       deleteLastEducation,
     };
