@@ -4,10 +4,10 @@
     <template v-else>
       <main class="flex-grow mt-24">
         <Hero />
-        <JobSearch v-intersection-animate />
-        <PopularJobs :jobs="popularJobs" v-intersection-animate />
+        <!-- <JobSearch v-intersection-animate /> -->
+        <!-- <PopularJobs :jobs="popularJobs" v-intersection-animate /> -->
         <Features :features="features" v-intersection-animate />
-        <Companies :companies="companies" v-intersection-animate />
+        <!-- <Companies :companies="companies" v-intersection-animate /> -->
       </main>
     </template>
   </div>
@@ -16,13 +16,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Hero from '@/components/Main/Hero.vue'
-import JobSearch from '@/components/Main/JobSearch.vue'
-import PopularJobs from '@/components/Main/PopularJobs.vue'
+// import JobSearch from '@/components/Main/JobSearch.vue'
+// import PopularJobs from '@/components/Main/PopularJobs.vue'
 import Features from '@/components/Main/Features.vue'
-import Companies from '@/components/Main/Companies.vue'
+// import Companies from '@/components/Main/Companies.vue'
 import LoadingView from '@/views/LoadingView.vue'
-
-const navItems = ['홈', '채용정보', '이력서', '기업리뷰', '커리어 성장']
 
 const features = [
   { title: '맞춤 채용 추천', description: 'AI 기반으로 개인화된 채용 정보를 제공합니다', icon: 'ai' },
@@ -31,20 +29,20 @@ const features = [
   { title: '커리어 성장', description: '다양한 교육 컨텐츠로 역량을 키우세요', icon: 'growth' },
 ]
 
-const popularJobs = [
-  { id: 1, title: '프론트엔드 개발자', company: '테크 솔루션즈', location: '서울', salary: '6000만원', icon: 'computer' },
-  { id: 2, title: '마케팅 매니저', company: '브랜드 인사이트', location: '부산', salary: '5000만원', icon: 'megaphone' },
-  { id: 3, title: '데이터 분석가', company: '데이터 마인드', location: '대전', salary: '5500만원', icon: 'chart' },
-]
+// const popularJobs = [
+//   { id: 1, title: '프론트엔드 개발자', company: '테크 솔루션즈', location: '서울', salary: '6000만원', icon: 'computer' },
+//   { id: 2, title: '마케팅 매니저', company: '브랜드 인사이트', location: '부산', salary: '5000만원', icon: 'megaphone' },
+//   { id: 3, title: '데이터 분석가', company: '데이터 마인드', location: '대전', salary: '5500만원', icon: 'chart' },
+// ]
 
-const companies = [
-  { name: '삼성전자', logo: 'samsung.png' },
-  { name: 'LG전자', logo: 'lg.png' },
-  { name: '네이버', logo: 'naver.png' },
-  { name: '카카오', logo: 'kakao.png' },
-  { name: 'SK하이닉스', logo: 'sk-hynix.png' },
-  { name: '현대자동차', logo: 'hyundai.png' },
-]
+// const companies = [
+//   { name: '삼성전자', logo: 'samsung.png' },
+//   { name: 'LG전자', logo: 'lg.png' },
+//   { name: '네이버', logo: 'naver.png' },
+//   { name: '카카오', logo: 'kakao.png' },
+//   { name: 'SK하이닉스', logo: 'sk-hynix.png' },
+//   { name: '현대자동차', logo: 'hyundai.png' },
+// ]
 
 // Custom directive for intersection observer animations
 const vIntersectionAnimate = {

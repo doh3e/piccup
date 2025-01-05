@@ -1,7 +1,7 @@
 <template>
-  <footer class="bg-gray-900 text-white py-12">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+  <footer class="bg-gray-900 text-white">
+    <div class="container mx-auto py-8 md:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-1">
         <div>
           <img src="/icons/piccup-logo-white.png" alt="PICCUP" class="h-8 w-auto mb-4" />
           <p class="text-sm text-gray-400">&copy; 2025 PICCUP. All rights reserved.</p>
