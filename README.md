@@ -1,7 +1,6 @@
 # 프로젝트 개요
-[로고가 들어갈 예정]
-
-취업준비생들을 위한 이력서, 자소서 관리 서비스: Piccup
+[로고가 들어갈 예정]  
+취업준비생들을 위한 이력서, 자소서 관리 서비스: __Piccup__
 
 ---
 ## 목차
@@ -13,12 +12,22 @@
 3-3. [주요 기능](#주요-기능)
 ---
 # 서비스 소개
-Piccup은 취업준비생들을 대상으로 취업에 도움이 될 수 있는 서비스를 제공합니다.  
-이력서 작성 시 필요한 정보 정리하여 손쉽게 이력서 작성에 도움을 줍니다.  
-자기소개서 문항들을 정리하고 추가하여 기업마다 필요한 항목들을 찾아보며 사용할 수 있도록 해줍니다.  
-지원 접수 정보 조회하고 일정을 관리할 수 있는 캘린더를 제공합니다.  
-전형 단계에 대해 한눈에 볼 수 있도록 하여 효율적으로 취업 준비를 해나가도록 합니다.  
-취업 준비생들의 미래를 응원하는 마음으로 서비스를 만듭니다.  
+<table>
+  <tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/master/back/piccup/src/main/resources/static/work_files/default.png" width="900px;" alt=""/>
+      <!-- <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/master/back/piccup/src/main/resources/static/work_files/default.png" width="150px;" alt=""/> -->
+    </td>
+    <td>
+      <p><b>Piccup</b>은 취업준비생들을 대상으로 취업에 도움이 될 수 있는 서비스를 제공합니다.
+      이력서 작성 시 필요한 정보 정리하여 손쉽게 이력서 작성에 도움을 줍니다.
+      자기소개서 문항들을 정리하고 추가하여 기업마다 필요한 항목들을 찾아보며 사용할 수 있도록 해줍니다.
+      지원 접수 정보 조회하고 일정을 관리할 수 있는 캘린더를 제공합니다.
+      전형 단계에 대해 한눈에 볼 수 있도록 하여 효율적으로 취업 준비를 해나가도록 합니다.
+      취업 준비생들의 미래를 응원하는 마음으로 서비스를 만듭니다.  </p>
+    </td>
+  </tr>
+</table>
 
 ---
 # 프로젝트 기간
@@ -30,38 +39,84 @@ Piccup은 취업준비생들을 대상으로 취업에 도움이 될 수 있는 
   <tr>
     <td align="center">
       <a href="https://github.com/doh3e">
-        <img src="" width="150px;" alt=""/>
-        <br/><sub><b>정지은</b><br></sub>
+        <img src="https://avatars.githubusercontent.com/u/151860111?v=4" width="150px;" alt=""/>
+        <br/><sub><b>정지은 (팀장)</b><br></sub>
       </a>
       <p></p>
+      <ul align="left">
+        <li>
+          GitHub 관리
+        </li>
+        <li>
+          취준데이터(마이페이지) 백엔드
+        </li>
+        <li>
+          프론트엔드
+        </li>
+      </ul>
     </td>
     <td align="center">
       <a href="https://github.com/KSAhh">
-        <img src="" width="150px;" alt=""/>
+        <img src="https://avatars.githubusercontent.com/u/66674138?v=4" width="150px;" alt=""/>
         <br/><sub><b>김수아</b><br></sub>
       </a>
-      <p></p>
+      <p></p> 
+      <ul align="left">
+        <li>
+          ERD 설계
+        </li>
+        <li>
+          이력서 관리 백엔드
+        </li>
+        <li>
+          GitHub naming 관리
+        </li>
+      </ul>
     </td>
     <td align="center">
       <a href="https://github.com/SOOYON1122">
-        <img src="" width="150px;" alt=""/>
+        <img src="https://avatars.githubusercontent.com/u/175371015?s=400&u=d73959db6eb79273347d82a801027c0b0654d160&v=4" width="150px;" alt=""/>
         <br/><sub><b>박수연</b><br></sub>
       </a>
       <p></p>
+      <ul align="left">
+        <li>
+          회원 백엔드
+        </li>
+        <li>
+          api 명세서 작성 
+        </li>
+      </ul>
     </td>
     <td align="center">
       <a href="https://github.com/bobobo7git">
-        <img src="" width="150px;" alt=""/>
+        <img src="https://avatars.githubusercontent.com/u/121767620?v=4" width="150px;" alt=""/>
         <br/><sub><b>유보형</b><br></sub>
       </a>
       <p></p>
+      <ul align="left">
+        <li>
+          자소서 관리 백엔드
+        </li>
+        <li>
+          //
+        </li>
+      </ul>
     </td>
     <td align="center">
       <a href="https://github.com/Geon72">
-        <img src="" width="150px;" alt=""/>
+        <img src="https://avatars.githubusercontent.com/u/174584847?v=4" width="150px;" alt=""/>
         <br/><sub><b>허건</b><br></sub>
       </a>
       <p></p>
+      <ul align="left">
+        <li>
+          프론트엔드
+        </li>
+        <li>
+          UI 설계 
+        </li>
+      </ul>
     </td>
   </tr>
 </table>
@@ -266,6 +321,127 @@ $ Run As - Spring Boot App
 ```
 ---
 ## 주요 기능
+<details>
+  <summary><b>상세 API 명세서 확인</b></summary>
+  <details>
+  <summary>1. 회원가입</summary>
+    <div>
+      <b>Request</b>
+      <table align="center">
+        <tr align="center">
+          <td>메서드</td>
+          <td>요청 url</td>
+        </tr>
+        <tr align="center">
+          <td>POST</td>
+          <td>http://localhost:8080/api/v1/user/signup</td>
+        </tr>
+      </table>
+      <b>Request Body</b><br/>
+      <pre>
+        {
+          "email": "test1@example.com",
+          "password": "password1234",
+          "nickname": "별명1",
+          "profileImg": "",
+          "mobilePhone": "010-1234-5678" 
+        }
+      </pre>
+      <b>Response</b>
+      <pre>
+        회원가입 성공
+      </pre>
+    </div>
+  </details>
+  
+  <details>
+    <summary>2. 로그인</summary>
+    <div>
+      <b>Request</b>
+      <table align="center">
+        <tr align="center">
+          <td>메서드</td>
+          <td>요청 url</td>
+        </tr>
+        <tr align="center">
+          <td>POST</td>
+          <td>http://localhost:8080/api/v1/user/login</td>
+        </tr>
+      </table>
+      <b>Request Body</b><br/>
+      <pre>
+        {
+          "email": "test1@example.com",
+          "password": "password1234"
+        }
+      </pre>
+      <b>Response</b>
+      <pre>
+        {
+          "refresh-token": "[refresh token]",
+          "access-token": "[access token]"
+        }
+      </pre>
+      <b>Response Elements</b>
+      <table align="center">
+        <tr align="center">
+          <td>필드</td>
+          <td>타입</td>
+          <td>설명</td>
+        </tr>
+        <tr align="center">
+          <td>refresh-token</td>
+          <td>String</td>
+          <td>refresh 토큰<br/>이후 작업에 header에 작성 필요</td>
+        </tr>
+        <tr align="center">
+          <td>access-token</td>
+          <td>String</td>
+          <td>access 토큰</td>
+        </tr>
+      </table>
+    </div>
+  </details>
 
+  <details>
+    <summary>3. 이력서</summary>
+    <div>
+    </div>
+  </details>
+
+  <details>
+    <summary>4. 자기소개서</summary>
+    <div>
+    </div>
+  </details>
+
+  <details>
+    <summary>5. 내 취준데이터</summary>
+    <div>
+    </div>
+  </details>
+</details>
+
+### 1. 회원 가입 및 로그인
+- 이메일을 아이디로 회원가입합니다.
+- 프로필 사진과 전화번호를 선택적으로 기입할 수 있습니다.
+- 회원가입 시 등록한 이메일과 비밀번호로 로그인합니다.
+### 2. 이력서 관리
+- 이력서를 직접 작성할 수 있습니다.
+  - 추가하고 싶은 문항을 직접 추가, 삭제 가능합니다.
+- 직접 작성한 이력서를 조회하고 수정, 삭제할 수 있습니다.
+### 3. 자소서 관리
+- 자기소개서를 직접 작성할 수 있습니다.
+  - 문항을 직접 추가하고 삭제할 수 있습니다.
+- 직접 작성한 이력서를 조회하고 수정, 삭제할 수 있습니다.
+### 4. 마이 페이지
+- 내 일정을 입력하고 수정, 삭제할 수 있습니다.
+  - 일정은 캘린더를 통해 한눈에 확인할 수 있습니다.
+- 취업 현황과 관련된 정보를 입력하고 수정, 삭제할 수 있습니다.
+  - 단계별 합불 현황과 전형 진행 중의 피드백을 스스로 남길 수 있습니다.
+- 내가 지원한 회사에 대한 정보(직무별 / 기업별)를 제공합니다.
+### 5. 헬프 데스크
+- 서비스 공지사항과 문의 게시판을 제공합니다.
+  - 문의 사항을 조회하고 직접 작성하여 문의를 남길 수 있습니다.
 ---
 ## 이슈 관리
