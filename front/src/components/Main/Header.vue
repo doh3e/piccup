@@ -22,14 +22,14 @@
 
         <div class="flex items-center space-x-4">
           <button
-            v-if="!authStore.isLoggedIn"
+            v-if="!isLoggedIn"
             @click="navigateToAuth(true)"
             class="btn btn-primary"
           >
             회원가입
           </button>
           <button
-            v-if="!authStore.isLoggedIn"
+            v-if="!isLoggedIn"
             @click="navigateToAuth(false)"
             class="btn btn-outline"
           >
@@ -45,12 +45,13 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 
 const router = useRouter();
 const authStore = useAuthStore();
+
 
 const navItems = [
   "홈",
@@ -58,6 +59,7 @@ const navItems = [
   "자기소개서 작성",
   "자기소개서 목록",
   "고객센터",
+  "마이데이터",
 ];
 
 const navigateHome = () => {
@@ -78,6 +80,8 @@ const getRouteForItem = (item) => {
       return "/cover-letter";
     case "자기소개서 목록":
       return "/board";
+    case '마이데이터':
+      return '/mydata';
     case "고객센터":
       return "/FAQ";
     default:
@@ -95,9 +99,21 @@ const handleLogout = async () => {
   }
 }
 
+const isLoggedIn = ref(authStore.isLoggedIn)
 onMounted(() => {
   authStore.checkAuth();
+  isLoggedIn.value = authStore.isLoggedIn;
+  console.log("isLoggedIn mount", isLoggedIn.value)  
 });
+
+watch(
+  () => authStore.isLoggedIn,
+  (newStatus) => {
+    isLoggedIn.value = newStatus
+    console.log("isLoggedIn", isLoggedIn.value)  
+  }
+
+);
 </script>
 
 <style scoped>
