@@ -16,8 +16,8 @@ public class ApplyFeedbackServiceImpl implements ApplyFeedbackService {
 	}
 
 	@Override
-	public List<ApplyFeedback> getApplyFeedbackList() {
-		return applyFeedbackDao.selectAll();
+	public List<ApplyFeedback> getApplyFeedbackList(int userId) {
+		return applyFeedbackDao.selectAll(userId);
 	}
 
 	@Override

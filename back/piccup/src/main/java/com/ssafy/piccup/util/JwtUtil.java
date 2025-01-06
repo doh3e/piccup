@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.crypto.SecretKey;
 
-import org.eclipse.tags.shaded.org.apache.xalan.xsltc.cmdline.getopt.GetOpt;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

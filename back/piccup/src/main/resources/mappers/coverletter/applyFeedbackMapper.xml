@@ -5,8 +5,9 @@
 <mapper namespace="com.ssafy.piccup.model.dao.coverletter.ApplyFeedbackDao">
   
   
-  <select id="selectAll" resultType="ApplyFeedback">
+  <select id="selectAll" resultType="ApplyFeedback" parameterType="int">
     select * from apply_feedback
+    where user_id=#{userId}
   </select>
   
   <select id="selectOne" resultType="ApplyFeedback" parameterType="int">

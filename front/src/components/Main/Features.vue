@@ -1,11 +1,27 @@
 <template>
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold mb-12 text-center text-primary">PICCUP의 특징</h2>
+      <h2 class="text-3xl font-bold mb-12 text-center text-primary">
+        원 클릭 PICCUP 사용
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div v-for="feature in features" :key="feature.title" class="text-center p-6 bg-white rounded-lg shadow-md">
-          <img :src="`/icons/${feature.icon}.svg`" :alt="feature.title" class="h-16 w-16 mx-auto mb-4" />
-          <h3 class="text-xl font-bold mb-2 text-primary">{{ feature.title }}</h3>
+        <div
+          v-for="feature in features"
+          :key="feature.title"
+          class="text-center p-6 bg-white rounded-lg shadow-md"
+        >
+          <div class="icon-container h-16 w-16 mx-auto mb-4">
+            <img
+              :src="`/src/assets/icons/${feature.icon}.gif`"
+              :class="['feature-icon', `icon-${feature.icon}`]"
+              :alt="feature.title"
+              @mouseenter="playGif"
+              @mouseleave="pauseGif"
+            />
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-primary">
+            {{ feature.title }}
+          </h3>
           <p class="text-gray-600 mb-4">{{ feature.description }}</p>
           <button class="btn btn-primary">자세히 보기</button>
         </div>
@@ -15,15 +31,51 @@
 </template>
 
 <script setup>
+const playGif = (event) => {
+  event.target.style.animationPlayState = "running";
+};
+
+const pauseGif = (event) => {
+  event.target.style.animationPlayState = "paused";
+};
+
 const features = [
-  { title: '맞춤 채용 추천', description: 'AI 기반으로 개인화된 채용 정보를 제공합니다', icon: 'ai' },
-  { title: '원클릭 지원', description: '간편한 지원 프로세스로 빠르게 지원하세요', icon: 'click' },
-  { title: '기업 연봉 정보', description: '실제 직원들의 연봉 정보를 확인하세요', icon: 'money' },
-  { title: '커리어 성장', description: '다양한 교육 컨텐츠로 역량을 키우세요', icon: 'growth' },
-]
+  {
+    title: "이력서 작성",
+    description: "맞춤형 템플릿으로 전문적인 이력서를 쉽게 작성하세요",
+    icon: "resume",
+  },
+  {
+    title: "자기소개서 작성",
+    description: "이력서 기반으로 쉽게 자기소개서를 만들어보세요",
+    icon: "coverletter",
+  },
+  {
+    title: "자기소개서 목록",
+    description: "작성한 자기소개서를 한눈에 보고 기업별로 관리하세요",
+    icon: "board",
+  },
+  {
+    title: "채용 달력",
+    description: "채용 일정과 마감일을 놓치지 않도록 체계적으로 관리해요",
+    icon: "calendar",
+  },
+];
 </script>
 
 <style scoped>
+.feature-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation-play-state: paused;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .btn-primary {
   background-color: var(--primary-color);
   color: white;
@@ -38,4 +90,3 @@ const features = [
   background-color: var(--secondary-color);
 }
 </style>
-
