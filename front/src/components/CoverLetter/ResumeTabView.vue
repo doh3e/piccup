@@ -30,7 +30,6 @@
 <script setup>
 import { ref } from 'vue';
 import PersonalInfo from '@/components/Resume/PersonalInfo.vue'
-import DesiredJob from '@/components/Resume/DesiredJob.vue'
 import Skills from '@/components/Resume/Skills.vue'
 import AcademicAbility from '@/components/Resume/AcademicAbility.vue'
 import Experience from '@/components/Resume/Experience.vue'
@@ -42,7 +41,6 @@ import Awards from '@/components/Resume/Awards.vue'
 
 const resumeComponents = [
   { name: '개인 정보', component: PersonalInfo },
-  { name: '희망 직무', component: DesiredJob },
   { name: '스킬', component: Skills },
   { name: '학력', component: AcademicAbility },
   { name: '경력', component: Experience },

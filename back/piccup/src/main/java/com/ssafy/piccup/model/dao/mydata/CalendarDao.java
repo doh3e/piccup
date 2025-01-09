@@ -19,9 +19,13 @@ public interface CalendarDao {
 	// 스케줄 수정하기
 	public void updateSchedule(Schedule schedule);
 
+	// 스케줄 삭제하기
+	public void deleteSchedule(int scheduleId);
+	
 	// 지원 스케줄 전체 조회
 	public List<ApplyCalendarSchedule> selectAllApplySchedules(int userId);
 
 	// 지원 스케줄 상세 조회
 	public ApplyCalendarSchedule selectOneApplyScheduleById(int applyId, int userId);
+
 }
