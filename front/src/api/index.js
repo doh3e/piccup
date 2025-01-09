@@ -4,7 +4,7 @@ import axios from "axios";
 // axios 인스턴스 생성
 // 1. Auth 인증/인가
 const apiAuth = axios.create({
-  baseURL: "/api/v1",
+  baseURL: "http://localhost:8080/api/v1",
   timeout: 5000, // 제한시간
 })
 

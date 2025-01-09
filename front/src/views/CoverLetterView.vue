@@ -8,8 +8,8 @@
       </h1>
       <div class="flex space-x-8">
         <!-- Resume Tab View -->
-        <div class="w-1/3">
-          <div v-if="resumeData.length > 0">
+        <div class="w-1/2">
+          <div v-if="isResumeExist">
             <ResumeTabView />
           </div>
           <div v-else class="bg-white p-6 rounded-lg shadow-md text-center">
@@ -26,7 +26,7 @@
         </div>
 
         <!-- Cover Letter Tabs -->
-        <div class="w-2/3">
+        <div class="w-1/2">
           <div class="bg-white p-6 rounded-lg shadow-md">
             <input
               v-model="coverLetterTitle"
@@ -81,11 +81,14 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { apiAuth } from "@/api/index.js";
+import { useAuthStore } from "@/stores/auth";
 import ResumeTabView from "@/components/CoverLetter/ResumeTabView.vue";
 import CoverLetterSection from "@/components/CoverLetter/CoverLetterSection.vue";
 
 const router = useRouter();
-const resumeData = ref([]);
+const resumeData = ref({});
+const isResumeExist = ref(false);
 const coverLetterData = ref({});
 const currentSection = ref("motivation");
 const coverLetterTitle = ref("");
@@ -101,49 +104,35 @@ const coverLetterSections = [
 ];
 
 onMounted(async () => {
-  const isLoggedIn = checkUserAuthentication();
-  if (!isLoggedIn) {
-    router.push("/auth");
-    return;
-  }
-
-  await fetchResumeData();
-  await fetchCoverLetterData();
+  fetchResumeData();
+  fetchCoverLetterData();
 });
-
-const checkUserAuthentication = () => {
-  const token = localStorage.getItem("authToken");
-  return !!token;
-};
 
 const fetchResumeData = async () => {
   try {
-    const response = await fetch("/api/resume");
-    if (!response.ok) throw new Error("Failed to fetch resume data");
-    const data = await response.json();
-    resumeData.value = [
-      {
-        id: 1,
-        title: data.personalInfo.name + "의 이력서",
-        data: data,
-      },
-    ];
+    const response = await apiAuth.get('/resume');
+    console.log("Resume API 응답:", response.data);
+    const data = response.data.resume;
+    if (data) {
+      resumeData.value = data;
+      isResumeExist.value = true;
+    }
   } catch (error) {
-    console.error("Failed to fetch resume data:", error);
-    resumeData.value = [];
+    console.error('이력서 생성 중 에러:', error);
   }
 };
 
 const fetchCoverLetterData = async () => {
   try {
-    const response = await fetch("/api/coverletter");
-    const data = await response.json();
+    const response = await apiAuth.get("/coverletters");
+    const data = response.data.coverletter;
     coverLetterData.value = data.sections;
     coverLetterTitle.value = data.title || "";
+
   } catch (error) {
-    console.error("Failed to fetch cover letter data:", error);
+    console.error('기존 자소서 생성 중 에러:', error);
     coverLetterData.value = {};
-    coverLetterTitle.value = "";
+    coverLetterTitle.value = ""
   }
 };
 
@@ -153,11 +142,7 @@ const updateSection = (sectionId, content) => {
 
 const saveSection = async (sectionId) => {
   try {
-    const response = await fetch(`/api/v1/coverletter/${sectionId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const response = await apiAuth.post(`coverletters/${sectionId}`, {
       body: JSON.stringify({ content: coverLetterData.value[sectionId] }),
     });
     if (!response.ok) throw new Error("Failed to save section");
@@ -170,8 +155,7 @@ const saveSection = async (sectionId) => {
 
 const saveCoverLetter = async () => {
   try {
-    const response = await fetch("/api/coverletter", {
-      method: "POST",
+    const response = await apiAuth.post("/coverletters", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -190,7 +174,6 @@ const saveCoverLetter = async () => {
 </script>
 
 <style scoped>
-/* 필요한 경우 추가 스타일 */
 .overflow-x-auto {
   scrollbar-width: thin;
   scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
