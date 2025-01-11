@@ -11,8 +11,8 @@
 2. [팀원 소개](#팀원-소개)
 3. [프로젝트 설계 및 구성](#프로젝트-설계-및-구성)  
    3-1. [ERD 및 구조](#데이터베이스-erd)  
-   3-2. [사용 기술](#⚒-사용-기술)  
-   3-3. [주요 기능](#⚙-주요-기능)  
+   3-2. [사용 기술](#사용-기술)  
+   3-3. [주요 기능](#주요-기능)  
    3-4. [이슈 관리](#이슈-관리)
 
 ---
@@ -48,36 +48,36 @@
 
 <table align="center">
   <tr>
-    <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/151860111?v=4" width="150px;" alt=""/>
+    <td align="center" width="20%;">
+      <img src="https://avatars.githubusercontent.com/u/151860111?v=4" alt=""/>
       <br/><sub><b>정지은 (팀장)</b><br></sub>
       <a href="https://github.com/doh3e">
         <p>GITHUB</p>
       </a>
     </td>
-    <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/66674138?v=4" width="150px;" alt=""/>
+    <td align="center" width="20%;">
+      <img src="https://avatars.githubusercontent.com/u/66674138?v=4" alt=""/>
       <br/><sub><b>김수아</b><br></sub>
       <a href="https://github.com/KSAhh">
         <p>GITHUB</p> 
       </a>
     </td>
-    <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/175371015?s=400&u=d73959db6eb79273347d82a801027c0b0654d160&v=4" width="150px;" alt=""/>
+    <td align="center" width="20%;">
+      <img src="https://avatars.githubusercontent.com/u/175371015?s=400&u=d73959db6eb79273347d82a801027c0b0654d160&v=4" alt=""/>
       <br/><sub><b>박수연</b><br></sub>
       <a href="https://github.com/SOOYON1122">
         <p>GITHUB</p>
       </a>
     </td>
-    <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/121767620?v=4" width="150px;" alt=""/>
+    <td align="center" width="20%;">
+      <img src="https://avatars.githubusercontent.com/u/121767620?v=4" alt=""/>
       <br/><sub><b>유보형</b><br></sub>
       <a href="https://github.com/bobobo7git">
         <p>GITHUB</p>
       </a>
     </td>
-    <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/174584847?v=4" width="150px;" alt=""/>
+    <td align="center" width="20%;">
+      <img src="https://avatars.githubusercontent.com/u/174584847?v=4" alt=""/>
       <br/><sub><b>허건</b><br></sub>
       <a href="https://github.com/Geon72">
         <p>GITHUB</p>
@@ -117,7 +117,7 @@
 
 ## 기획
 
-<span style="font-size:18px; color:#006B46"><b>평균 취업 준비 기간 약 1년, 취업 준비에 체계적인 관리 서비스가 필요하다!</b></span>
+<span style="font-size:18px;"><b>평균 취업 준비 기간 약 1년, 취업 준비에 체계적인 관리 서비스가 필요하다!</b></span>
 
 **Piccup** 은 기업마다 다른 자기소개서 문항들, 이력서 요소들, 그리고 중구난방의 채용 일정들에 이리저리 치이는 취업 준비생들의 입장에서 시작했습니다.
 자주 쓰이는 자기소개서 문항들을 보기 좋게 정리해놓고 싶다거나, 지원 직무 별 필요한 이력 사항들을 미리 작성해놓고 싶다는 마음은 취업 준비생들의 마음 한켠에 자리잡고 있을 것입니다.
@@ -269,9 +269,9 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 
 ---
 
-## ⚒ 사용 기술
+## 사용 기술
 
-### 백엔드
+### BackEnd
 
 <div>
   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
@@ -282,7 +282,7 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 - Spring Boot 3.3.x (maven)
   <!-- [![My Skills](https://skillicons.dev/icons?i=java,spring&theme=light)](https://skillicons.dev) -->
 
-### 프론트엔드
+### FrontEnd
 
 <div>
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
@@ -321,7 +321,7 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 <div>
   <img src="https://img.shields.io/badge/Windows%2010-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white">
   <img src="https://img.shields.io/badge/Windows%2011-%230079d6.svg?style=for-the-badge&logo=Windows%2011&logoColor=white">
-  <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0">
+  <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0"><br/>
   <img src="https://img.shields.io/badge/vscode-0065A9?style=for-the-badge&logo=vscode&logoColor=white">
   <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
@@ -361,7 +361,7 @@ $ Run As - Spring Boot App
 
 ---
 
-## ⚙ 주요 기능
+## 주요 기능
 
 <details>
   <summary><b>⛓ 상세 API 명세서 확인</b></summary>
@@ -370,12 +370,12 @@ $ Run As - Spring Boot App
     <div>
       <b>Request</b>
       <table align="center">
-        <tr align="center" style="background-color:#EBEBEB">
+        <tr align="center">
           <td>메서드</td>
           <td>요청 url</td>
         </tr>
         <tr align="center">
-          <td style="color:orange;">POST</td>
+          <td>POST</td>
           <td>http://localhost:8080/api/v1/user/signup</td>
         </tr>
       </table>
@@ -401,12 +401,12 @@ $ Run As - Spring Boot App
     <div>
       <b>Login Request</b>
       <table align="center">
-        <tr align="center" style="background-color:#EBEBEB">
+        <tr align="center">
           <td>메서드</td>
           <td>요청 url</td>
         </tr>
         <tr align="center">
-          <td style="color:orange;">POST</td>
+          <td>POST</td>
           <td>http://localhost:8080/api/v1/user/login</td>
         </tr>
       </table>
@@ -426,7 +426,7 @@ $ Run As - Spring Boot App
       </pre>
       <b>Login Response Elements</b>
       <table align="center">
-        <tr align="center" style="background-color:#EBEBEB">
+        <tr align="center">
           <td>필드</td>
           <td>타입</td>
           <td>설명</td>
@@ -445,18 +445,18 @@ $ Run As - Spring Boot App
       <hr/>
       <b>Logout Request</b>
       <table align="center">
-        <tr align="center" style="background-color:#EBEBEB">
+        <tr align="center">
           <td>메서드</td>
           <td>요청 url</td>
         </tr>
         <tr align="center">
-          <td style="color:orange;">POST</td>
+          <td>POST</td>
           <td>http://localhost:8080/api/v1/user/logout</td>
         </tr>
       </table>
       <b>Logout Request Header</b><br/>
       <table align="center">
-        <tr align="center" style="background-color:#EBEBEB">
+        <tr align="center">
           <td>파라미터</td>
           <td>타입</td>
           <td>필수 여부</td>
@@ -485,18 +485,18 @@ $ Run As - Spring Boot App
     <summary><b>3-1. 조회</b></summary>
     <b>Request</b>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>메서드</td>
         <td>요청 url</td>
       </tr>
       <tr align="center">
-        <td style="color:green;">GET</td>
+        <td>GET</td>
         <td>http://localhost:8080/api/v1/resume</td>
       </tr>
     </table>
     <b>Request Header</b><br/>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>파라미터</td>
         <td>타입</td>
         <td>필수 여부</td>
@@ -741,7 +741,7 @@ $ Run As - Spring Boot App
     <summary><b>Response Elements</b></summary>
     <div>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>1.</td>
         <td>필드</td>
         <td>타입</td>
@@ -871,7 +871,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>2.</td>
         <td>필드</td>
         <td>타입</td>
@@ -923,7 +923,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>3.</td>
         <td>필드</td>
         <td>타입</td>
@@ -975,7 +975,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>4.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1033,7 +1033,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>5.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1061,7 +1061,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>6.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1113,7 +1113,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>7.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1183,7 +1183,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>8.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1277,7 +1277,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>9.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1323,7 +1323,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>10.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1369,7 +1369,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>11.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1415,7 +1415,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>12.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1491,7 +1491,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>13.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1537,7 +1537,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>14.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1583,7 +1583,7 @@ $ Run As - Spring Boot App
       </div>
       <div>
       <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>15.</td>
         <td>필드</td>
         <td>타입</td>
@@ -1670,18 +1670,18 @@ $ Run As - Spring Boot App
     <summary><b>3-2. 이력서 생성</b></summary>
     <b>Request</b>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>메서드</td>
         <td>요청 url</td>
       </tr>
       <tr align="center">
-        <td style="color:orange;">POST</td>
+        <td>POST</td>
         <td>http://localhost:8080/api/v1/resume</td>
       </tr>
     </table>
     <b>Request Header</b><br/>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>파라미터</td>
         <td>타입</td>
         <td>필수 여부</td>
@@ -1859,18 +1859,18 @@ $ Run As - Spring Boot App
   <summary><b>3-3. 이력서 파일 등록</b></summary>
     <b>Request</b>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>메서드</td>
         <td>요청 url</td>
       </tr>
       <tr align="center">
-        <td style="color:orange;">POST</td>
+        <td>POST</td>
         <td>http://localhost:8080/api/v1/resume/files</td>
       </tr>
     </table>
     <b>Request Header</b><br/>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>파라미터</td>
         <td>타입</td>
         <td>필수 여부</td>
@@ -1887,7 +1887,7 @@ $ Run As - Spring Boot App
     </table>
     <b>Request Body</b><br/>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>Key</td>
         <td>타입</td>
         <td>Value</td>
@@ -1930,18 +1930,18 @@ $ Run As - Spring Boot App
   <summary><b>3-4. 이력서 삭제</b></summary>
     <b>Request</b>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>메서드</td>
         <td>요청 url</td>
       </tr>
       <tr align="center">
-        <td style="color:red;">DELETE</td>
+        <td>DELETE</td>
         <td>http://localhost:8080/api/v1/resume</td>
       </tr>
     </table>
     <b>Request Header</b><br/>
     <table align="center">
-      <tr align="center" style="background-color:#EBEBEB">
+      <tr align="center">
         <td>파라미터</td>
         <td>타입</td>
         <td>필수 여부</td>
