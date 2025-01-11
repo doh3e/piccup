@@ -2006,8 +2006,8 @@ $ Run As - Spring Boot App
 
 <table>
   <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/resume.gif" width="100px;" alt=""/> 
+    <td width="30%">
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/resume.gif" alt=""/> 
     </td>
     <td>
       <ul>
@@ -2023,8 +2023,8 @@ $ Run As - Spring Boot App
 
 <table>
   <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/coverletter.gif" width="100px;" alt=""/> 
+    <td width="30%">
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/coverletter.gif" alt=""/> 
     </td>
     <td>
       <ul>
@@ -2035,8 +2035,8 @@ $ Run As - Spring Boot App
     </td>
   </tr>
   <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/board.gif" width="100px;" alt=""/> 
+    <td width="30%">
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/board.gif" alt=""/> 
     </td>
     <td>
       <ul>
@@ -2052,8 +2052,8 @@ $ Run As - Spring Boot App
 
 <table>
   <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/calendar.gif" width="100px;" alt=""/>  
+    <td style="width:30%;">
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/calendar.gif" alt=""/>  
     </td>
     <td>
       <ul>
