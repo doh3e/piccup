@@ -740,12 +740,12 @@ $ Run As - Spring Boot App
     <details>
     <summary><b>Response Elements</b></summary>
     <div>
-    <table align="center">
+    <table align="center" width="100%">
       <tr align="center">
-        <td>1.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">1.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -870,12 +870,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>2.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">2.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -922,12 +922,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>3.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">3.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -974,12 +974,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>4.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">4.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1032,12 +1032,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>5.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">5.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1060,12 +1060,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>6.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">6.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1112,12 +1112,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>7.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">7.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1182,12 +1182,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>8.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">8.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1276,12 +1276,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>9.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">9.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1322,12 +1322,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>10.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">10.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1368,12 +1368,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>11.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">11.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1414,12 +1414,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>12.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">12.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1490,12 +1490,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>13.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">13.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1536,12 +1536,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>14.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">14.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
@@ -1582,12 +1582,12 @@ $ Run As - Spring Boot App
       </table>
       </div>
       <div>
-      <table align="center">
+      <table align="center" width="100%">
       <tr align="center">
-        <td>15.</td>
-        <td>필드</td>
-        <td>타입</td>
-        <td>설명</td>
+        <td width="10%">15.</td>
+        <td width="30%">필드</td>
+        <td width="30%">타입</td>
+        <td width="30%">설명</td>
       </tr>
       <tr align="center">
         <td></td>
