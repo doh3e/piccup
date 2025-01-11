@@ -1,17 +1,23 @@
 # 프로젝트 개요
+
 [로고가 들어갈 예정]  
-취업준비생들을 위한 이력서, 자소서 관리 서비스: __Piccup__
+취업준비생들을 위한 이력서, 자소서 관리 서비스: **Piccup**
 
 ---
+
 ## 목차
+
 1. [서비스 소개](#서비스-소개)
 2. [팀원 소개](#팀원-소개)
 3. [프로젝트 설계 및 구성](#프로젝트-설계-및-구성)  
-3-1. [ERD 및 구조](#데이터베이스-erd)  
-3-2. [사용 기술](#사용-기술)  
-3-3. [주요 기능](#주요-기능)
+   3-1. [ERD 및 구조](#데이터베이스-erd)  
+   3-2. [사용 기술](#사용-기술)  
+   3-3. [주요 기능](#주요-기능)
+
 ---
+
 # 서비스 소개
+
 <table>
   <tr>
     <td>
@@ -30,11 +36,15 @@
 </table>
 
 ---
+
 # 프로젝트 기간
+
 2024.12.16 ~ 2025.01.05
 
 ---
+
 # 팀원 소개
+
 <table align="center">
   <tr>
     <td align="center">
@@ -99,7 +109,7 @@
           자소서 관리 백엔드
         </li>
         <li>
-          //
+          더미 데이터 만들기
         </li>
       </ul>
     </td>
@@ -122,24 +132,32 @@
 </table>
 
 ---
-# 프로젝트 설계 및 구성
-## 기획
-평균 취업 준비 기간 약 1년, 취업 준비에 체계적인 관리 서비스가 필요하다!  
-  
-__Piccup__ 은 기업마다 다른 자기소개서 문항들, 이력서 요소들, 그리고 중구난방의 채용 일정들에 이리저리 치이는 취업 준비생들의 입장에서 시작했습니다. 
-자주 쓰이는 자기소개서 문항들을 보기 좋게 정리해놓고 싶다거나, 지원 직무 별 필요한 이력 사항들을 미리 작성해놓고 싶다는 마음은 취업 준비생들의 마음 한켠에 자리잡고 있을 것입니다.  
 
-  
-Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소해줄 수 있도록 취준 관리 프로젝트를 기획하여 탄생했습니니다. 
-뒤죽박죽인 채용 일정을 한눈에 정리하고 전형 단계를 확인해볼 수 있는 기능과 더불어, 자기소개서와 이력서를 정리하여 필요할 때마다다 꺼내볼 수 있는 기능을 제공하는 
+# 프로젝트 설계 및 구성
+
+## 기획
+
+평균 취업 준비 기간 약 1년, 취업 준비에 체계적인 관리 서비스가 필요하다!
+
+**Piccup** 은 기업마다 다른 자기소개서 문항들, 이력서 요소들, 그리고 중구난방의 채용 일정들에 이리저리 치이는 취업 준비생들의 입장에서 시작했습니다.
+자주 쓰이는 자기소개서 문항들을 보기 좋게 정리해놓고 싶다거나, 지원 직무 별 필요한 이력 사항들을 미리 작성해놓고 싶다는 마음은 취업 준비생들의 마음 한켠에 자리잡고 있을 것입니다.
+
+Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소해줄 수 있도록 취준 관리 프로젝트를 기획하여 탄생했습니니다.
+뒤죽박죽인 채용 일정을 한눈에 정리하고 전형 단계를 확인해볼 수 있는 기능과 더불어, 자기소개서와 이력서를 정리하여 필요할 때마다다 꺼내볼 수 있는 기능을 제공하는
 취업 준비생들에게 필요한 편리 서비스입니다.
 
 ---
+
 ## 데이터베이스 ERD
 
+<img src="https://github.com/user-attachments/assets/0a7625d1-60f2-42dc-803d-92283dc8888d" width=";" alt=""/>
+
 ---
+
 ## 디렉터리 구조
+
 ### Back
+
 ```
 📦piccup
  ┣ 📂.mvn
@@ -182,9 +200,10 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
  ┃ ┃ ┃ ┃ ┗ 📂work_files             // 마스코트 이미지
  ┃ ┃ ┃ ┗ 📜application.properties   // 서버, my batis, jwt 인증 설정
  ┗ 📜pom.xml                        // 의존성 관리
- ```
+```
 
 ### Front
+
 ```
 📦front
  ┣ 📂public/icons           // 아이콘
@@ -266,15 +285,20 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
  ┣ 📜README.md
  ┣ 📜tailwind.config.js
  ┗ 📜vite.config.js
- ```
+```
+
 ---
+
 ## 사용 기술
+
 ### 백엔드
+
 - JAVA (JDK 17)
 - Spring Boot 3.3.x (maven)  
-[![My Skills](https://skillicons.dev/icons?i=java,spring)](https://skillicons.dev)
+  [![My Skills](https://skillicons.dev/icons?i=java,spring)](https://skillicons.dev)
 
 ### 프론트엔드
+
 - JavaScript
 - Vue.js 2.1.10 (ES6)
 - CSS3
@@ -282,28 +306,31 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 - Tailwind CSS
 - Axios 1.7.9
 - Pinia 2.3.0  
-[![My Skills](https://skillicons.dev/icons?i=js,vue,css,html,tailwind,pinia)](https://skillicons.dev)
-
+  [![My Skills](https://skillicons.dev/icons?i=js,vue,css,html,tailwind,pinia)](https://skillicons.dev)
 
 ### DB & WAS
+
 - MySQL 8.0.40  
-[![My Skills](https://skillicons.dev/icons?i=mysql)](https://skillicons.dev)
+  [![My Skills](https://skillicons.dev/icons?i=mysql)](https://skillicons.dev)
 
 ### API & OpenData
+
 - 사람인 API
 
-
 ### Environment & Tool
+
 - Window 10, 11/ Mac M2
 - STS4 4.24.0 / 4.26.0
 - VisualStudioCode
 - Postman
 - Git, GitHub
 - Google Sheet, Discord  
-[![My Skills](https://skillicons.dev/icons?i=postman,git,github,discord)](https://skillicons.dev)  
+  [![My Skills](https://skillicons.dev/icons?i=postman,git,github,discord)](https://skillicons.dev)
 
 ---
+
 ## 프로젝트 시작 명령어
+
 ```bash
 $ git clone https://github.com/doh3e/piccup.git
 
@@ -319,8 +346,11 @@ $ npm run dev
 
 $ Run As - Spring Boot App
 ```
+
 ---
+
 ## 주요 기능
+
 <details>
   <summary><b>상세 API 명세서 확인</b></summary>
   <details>
@@ -328,12 +358,12 @@ $ Run As - Spring Boot App
     <div>
       <b>Request</b>
       <table align="center">
-        <tr align="center">
+        <tr align="center" style="background-color:#EBEBEB">
           <td>메서드</td>
           <td>요청 url</td>
         </tr>
         <tr align="center">
-          <td>POST</td>
+          <td style="color:orange;">POST</td>
           <td>http://localhost:8080/api/v1/user/signup</td>
         </tr>
       </table>
@@ -354,17 +384,17 @@ $ Run As - Spring Boot App
     </div>
   </details>
   
-  <details>
+<details>
     <summary>2. 로그인, 로그아웃</summary>
     <div>
       <b>Login Request</b>
       <table align="center">
-        <tr align="center">
+        <tr align="center" style="background-color:#EBEBEB">
           <td>메서드</td>
           <td>요청 url</td>
         </tr>
         <tr align="center">
-          <td>POST</td>
+          <td style="color:orange;">POST</td>
           <td>http://localhost:8080/api/v1/user/login</td>
         </tr>
       </table>
@@ -384,7 +414,7 @@ $ Run As - Spring Boot App
       </pre>
       <b>Login Response Elements</b>
       <table align="center">
-        <tr align="center">
+        <tr align="center" style="background-color:#EBEBEB">
           <td>필드</td>
           <td>타입</td>
           <td>설명</td>
@@ -403,18 +433,18 @@ $ Run As - Spring Boot App
       <hr/>
       <b>Logout Request</b>
       <table align="center">
-        <tr align="center">
+        <tr align="center" style="background-color:#EBEBEB">
           <td>메서드</td>
           <td>요청 url</td>
         </tr>
         <tr align="center">
-          <td>POST</td>
+          <td style="color:orange;">POST</td>
           <td>http://localhost:8080/api/v1/user/logout</td>
         </tr>
       </table>
       <b>Logout Request Header</b><br/>
       <table align="center">
-        <tr align="center">
+        <tr align="center" style="background-color:#EBEBEB">
           <td>파라미터</td>
           <td>타입</td>
           <td>필수 여부</td>
@@ -436,457 +466,1501 @@ $ Run As - Spring Boot App
     </div>
   </details>
 
+<details>
+  <summary>3. 이력서</summary>
+  <div>
   <details>
-    <summary>3. 이력서</summary>
-    <div>
-      <h4>3-1. 조회</h4>
-      <b>Request</b>
-      <table align="center">
-        <tr align="center">
-          <td>메서드</td>
-          <td>요청 url</td>
-        </tr>
-        <tr align="center">
-          <td>GET</td>
-          <td>http://localhost:8080/api/v1/resume</td>
-        </tr>
-      </table>
-      <b>Request Header</b><br/>
-      <table align="center">
-        <tr align="center">
-          <td>파라미터</td>
-          <td>타입</td>
-          <td>필수 여부</td>
-          <td>내용</td>
-          <td>설명</td>
-        </tr>
-        <tr align="center">
-          <td>Authorization</td>
-          <td>String</td>
-          <td>필수</td>
-          <td>Bearer [refresh-tokenn]</td>
-          <td>유저 인증 키</td>
-        </tr>
-      </table>
-      <details>
-      <summary><b>Response 예시</b></summary>
-      <pre>
-{
-  "resume": {
-      "resumeId": 22,
-      "userId": 1,
-      "updatedAt": "2024-12-28 22:51:33"
-  },
-  "personalInfo": {
-      "infoId": 19,
-      "resumeId": 22,
-      "username": "Chris Park",
-      "birthDate": "1988-04-10",
-      "gender": "남",
-      "email": "chris.park@example.com",
-      "homePhone": "02-2222-4444",
-      "mobilePhone": "010-2222-4444",
-      "address": "서울시 종로구",
-      "addressDetail": "505동 606호",
-      "postalCode": 45678,
-      "profileImgPath": "c9e0156b-043c-4d3d-bce5-366ace4bf138.jpg",
-      "profileImgName": "민지.jpg",
-      "degree": "학사",
-      "hobby": "등산",
-      "specialty": "프로젝트 관리",
-      "file": null
-  },
-  "projects": [
-    {
-      "projectId": 22,
-      "resumeId": 22,
-      "projectName": "E-learning Platform",
-      "role": "Backend Developer",
-      "startDate": "2022-01-01",
-      "endDate": "2022-06-30",
-      "description": "Developed a backend system for an e-learning platform using Node.js and MongoDB."
-    }
-  ],
-  "languages": [
-    {
-      "languageId": 30,
-      "resumeId": 22,
-      "languageName": "Russian",
-      "testName": "TORFL",
-      "score": "B2",
-      "certCode": "RUS89012",
-      "obtainedAt": "2020-05-30"
-    }
-  ],
-  "preference": {
-      "preId": 22,
-      "resumeId": 22,
-      "disLevel": "1급",
-      "military": "군필",
-      "protected": true,
-      "disabled": true,
-      "veteran": true,
-      "agree": true,
-      "isVeteran": true,
-      "isProtected": true,
-      "isDisabled": true,
-      "isAgree": true
-  },
-  "portfolios": [
-    {
-      "portId": 22,
-      "resumeId": 22,
-      "portUrl": "https://github.com/user5/portfolio11001"
-    }
-  ],
-  "trainings": [
-    {
-      "trainingId": 22,
-      "resumeId": 22,
-      "trainingName": "Leadership Training Program",
-      "institution": "Global Management Institute",
-      "startDate": "2022-07-01",
-      "endDate": "2022-07-15",
-      "description": "Focused on developing leadership and project management skills."
-    }
-  ],
-  "workExperiences": [
-    {
-      "expId": 22,
-      "resumeId": 22,
-      "company": "LogiTech",
-      "department": "Logistics",
-      "startDate": "2016-07-07",
-      "endDate": "2019-06-30",
-      "position": "Logistics Coordinator",
-      "salary": 55000,
-      "description": "Coordinated supply chain activities.",
-      "current": false,
-      "isCurrent": false
-    }
-  ],
-  "educations": [
-    {
-      "eduId": 21,
-      "resumeId": 22,
-      "schoolType": "대학교(4년)",
-      "schoolName": "한국외국어대학교",
-      "major": "국제관계학",
-      "startDate": "2014-03-01",
-      "endDate": "2018-02-28",
-      "status": "졸업",
-      "gpa": 3.6,
-      "majorGpa": 3.7,
-      "gpaScale": 4.5,
-      "qeYear": "2018",
-      "transfer": false,
-      "qe": true,
-      "isTransfer": false,
-      "isQe": true
-    }
-  ],
-  "certifications": [
-    {
-      "certId": 22,
-      "resumeId": 22,
-      "certName": "JLPT N1",
-      "publisher": "일본국제교육지원협회",
-      "obtainedDate": "2020-08-10",
-      "certCode": "JLPT-N1-2020"
-    }
-  ],
-  "papers": [
-    {
-      "paperId": 22,
-      "resumeId": 22,
-      "paperTitle": "AI Ethics and Society",
-      "journal": "Journal of Ethics in AI",
-      "publishedDate": "2022-10-20",
-      "description": "Explores ethical challenges in AI applications."
-    }
-  ],
-  "overseas": [
-    {
-      "overseaId": 22,
-      "resumeId": 22,
-      "country": "South Korea",
-      "startDate": "2019-03-01",
-      "endDate": "2019-08-31",
-      "description": "Attended a university exchange program in South Korea."
-    }
-  ],
-  "skills": [
-    {
-      "skillId": 22,
-      "resumeId": 22,
-      "skillName": "JavaScript",
-      "skillLevel": "전문가"
-    }
-  ],
-  "activities": [
-    {
-      "actId": 22,
-      "resumeId": 22,
-      "actType": "교내활동",
-      "title": "교내 신문 기자",
-      "startDate": "2018-09-01",
-      "endDate": "2019-02-01",
-      "description": "교내 신문 기자로 활동하며 기사 작성 및 인터뷰 경험."
-    }
-  ],
-  "awards": [
-    {
-      "awardId": 22,
-      "resumeId": 22,
-      "awardName": "Creative Solution Award",
-      "awardOrganization": "Hackathon",
-      "awardDate": "2021-10-05",
-      "description": "Won first place for innovative solutions in a global hackathon."
-    }
-  ],
-  "patents": [
-    {
-      "patentId": 21,
-      "resumeId": 22,
-      "patentTitle": "Augmented Reality Glasses",
-      "inventor": "Henry Black",
-      "patentCode": "US7654321I",
-      "description": "A new design for AR glasses with enhanced features."
-    }
-  ],
-  "files": {
-      "workFile": {
-          "fileId": 0,
-          "resumeId": 0,
-          "updatedAt": null,
-          "eduFileName": null,
-          "eduFilePath": null,
-          "portFileName": null,
-          "portFilePath": null,
-          "workFileName": "민지.jpg",
-          "workFilePath": "caf07c6d-00d4-444c-98f4-23a8b5346d76.jpg"
-      },
-      "portFiles": [
+    <summary><b>3-1. 조회</b></summary>
+    <b>Request</b>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>메서드</td>
+        <td>요청 url</td>
+      </tr>
+      <tr align="center">
+        <td style="color:green;">GET</td>
+        <td>http://localhost:8080/api/v1/resume</td>
+      </tr>
+    </table>
+    <b>Request Header</b><br/>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>파라미터</td>
+        <td>타입</td>
+        <td>필수 여부</td>
+        <td>내용</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td>Authorization</td>
+        <td>String</td>
+        <td>필수</td>
+        <td>Bearer [refresh-tokenn]</td>
+        <td>유저 인증 키</td>
+      </tr>
+    </table>
+    <details>
+    <summary><b>Response 예시</b></summary>
+    <pre>
+      {
+        "resume": {
+            "resumeId": 22,
+            "userId": 1,
+            "updatedAt": "2024-12-28 22:51:33"
+        },
+        "personalInfo": {
+            "infoId": 19,
+            "resumeId": 22,
+            "username": "Chris Park",
+            "birthDate": "1988-04-10",
+            "gender": "남",
+            "email": "chris.park@example.com",
+            "homePhone": "02-2222-4444",
+            "mobilePhone": "010-2222-4444",
+            "address": "서울시 종로구",
+            "addressDetail": "505동 606호",
+            "postalCode": 45678,
+            "profileImgPath": "c9e0156b-043c-4d3d-bce5-366ace4bf138.jpg",
+            "profileImgName": "민지.jpg",
+            "degree": "학사",
+            "hobby": "등산",
+            "specialty": "프로젝트 관리",
+            "file": null
+        },
+        "projects": [
           {
-              "fileId": 0,
-              "resumeId": 0,
-              "updatedAt": null,
-              "eduFileName": null,
-              "eduFilePath": null,
-              "portFileName": "민지.jpg",
-              "portFilePath": "715e14a9-a766-4918-b764-fe6864879e21.jpg",
-              "workFileName": null,
-              "workFilePath": null
+            "projectId": 22,
+            "resumeId": 22,
+            "projectName": "E-learning Platform",
+            "role": "Backend Developer",
+            "startDate": "2022-01-01",
+            "endDate": "2022-06-30",
+            "description": "Developed a backend system for an e-learning platform using Node.js and MongoDB."
           }
-      ],
-      "eduFile": {
-          "fileId": 0,
-          "resumeId": 0,
-          "updatedAt": null,
-          "eduFileName": "민지.jpg",
-          "eduFilePath": "90879cff-08af-41e6-b508-5c1fb38a48a6.jpg",
-          "portFileName": null,
-          "portFilePath": null,
-          "workFileName": null,
-          "workFilePath": null
+        ],
+        "languages": [
+          {
+            "languageId": 30,
+            "resumeId": 22,
+            "languageName": "Russian",
+            "testName": "TORFL",
+            "score": "B2",
+            "certCode": "RUS89012",
+            "obtainedAt": "2020-05-30"
+          }
+        ],
+        "preference": {
+            "preId": 22,
+            "resumeId": 22,
+            "disLevel": "1급",
+            "military": "군필",
+            "protected": true,
+            "disabled": true,
+            "veteran": true,
+            "agree": true,
+            "isVeteran": true,
+            "isProtected": true,
+            "isDisabled": true,
+            "isAgree": true
+        },
+        "portfolios": [
+          {
+            "portId": 22,
+            "resumeId": 22,
+            "portUrl": "https://github.com/user5/portfolio11001"
+          }
+        ],
+        "trainings": [
+          {
+            "trainingId": 22,
+            "resumeId": 22,
+            "trainingName": "Leadership Training Program",
+            "institution": "Global Management Institute",
+            "startDate": "2022-07-01",
+            "endDate": "2022-07-15",
+            "description": "Focused on developing leadership and project management skills."
+          }
+        ],
+        "workExperiences": [
+          {
+            "expId": 22,
+            "resumeId": 22,
+            "company": "LogiTech",
+            "department": "Logistics",
+            "startDate": "2016-07-07",
+            "endDate": "2019-06-30",
+            "position": "Logistics Coordinator",
+            "salary": 55000,
+            "description": "Coordinated supply chain activities.",
+            "current": false,
+            "isCurrent": false
+          }
+        ],
+        "educations": [
+          {
+            "eduId": 21,
+            "resumeId": 22,
+            "schoolType": "대학교(4년)",
+            "schoolName": "한국외국어대학교",
+            "major": "국제관계학",
+            "startDate": "2014-03-01",
+            "endDate": "2018-02-28",
+            "status": "졸업",
+            "gpa": 3.6,
+            "majorGpa": 3.7,
+            "gpaScale": 4.5,
+            "qeYear": "2018",
+            "transfer": false,
+            "qe": true,
+            "isTransfer": false,
+            "isQe": true
+          }
+        ],
+        "certifications": [
+          {
+            "certId": 22,
+            "resumeId": 22,
+            "certName": "JLPT N1",
+            "publisher": "일본국제교육지원협회",
+            "obtainedDate": "2020-08-10",
+            "certCode": "JLPT-N1-2020"
+          }
+        ],
+        "papers": [
+          {
+            "paperId": 22,
+            "resumeId": 22,
+            "paperTitle": "AI Ethics and Society",
+            "journal": "Journal of Ethics in AI",
+            "publishedDate": "2022-10-20",
+            "description": "Explores ethical challenges in AI applications."
+          }
+        ],
+        "overseas": [
+          {
+            "overseaId": 22,
+            "resumeId": 22,
+            "country": "South Korea",
+            "startDate": "2019-03-01",
+            "endDate": "2019-08-31",
+            "description": "Attended a university exchange program in South Korea."
+          }
+        ],
+        "skills": [
+          {
+            "skillId": 22,
+            "resumeId": 22,
+            "skillName": "JavaScript",
+            "skillLevel": "전문가"
+          }
+        ],
+        "activities": [
+          {
+            "actId": 22,
+            "resumeId": 22,
+            "actType": "교내활동",
+            "title": "교내 신문 기자",
+            "startDate": "2018-09-01",
+            "endDate": "2019-02-01",
+            "description": "교내 신문 기자로 활동하며 기사 작성 및 인터뷰 경험."
+          }
+        ],
+        "awards": [
+          {
+            "awardId": 22,
+            "resumeId": 22,
+            "awardName": "Creative Solution Award",
+            "awardOrganization": "Hackathon",
+            "awardDate": "2021-10-05",
+            "description": "Won first place for innovative solutions in a global hackathon."
+          }
+        ],
+        "patents": [
+          {
+            "patentId": 21,
+            "resumeId": 22,
+            "patentTitle": "Augmented Reality Glasses",
+            "inventor": "Henry Black",
+            "patentCode": "US7654321I",
+            "description": "A new design for AR glasses with enhanced features."
+          }
+        ],
+        "files": {
+            "workFile": {
+                "fileId": 0,
+                "resumeId": 0,
+                "updatedAt": null,
+                "eduFileName": null,
+                "eduFilePath": null,
+                "portFileName": null,
+                "portFilePath": null,
+                "workFileName": "민지.jpg",
+                "workFilePath": "caf07c6d-00d4-444c-98f4-23a8b5346d76.jpg"
+            },
+            "portFiles": [
+                {
+                    "fileId": 0,
+                    "resumeId": 0,
+                    "updatedAt": null,
+                    "eduFileName": null,
+                    "eduFilePath": null,
+                    "portFileName": "민지.jpg",
+                    "portFilePath": "715e14a9-a766-4918-b764-fe6864879e21.jpg",
+                    "workFileName": null,
+                    "workFilePath": null
+                }
+            ],
+            "eduFile": {
+                "fileId": 0,
+                "resumeId": 0,
+                "updatedAt": null,
+                "eduFileName": "민지.jpg",
+                "eduFilePath": "90879cff-08af-41e6-b508-5c1fb38a48a6.jpg",
+                "portFileName": null,
+                "portFilePath": null,
+                "workFileName": null,
+                "workFilePath": null
+            }
+        }
       }
-  }
-}
-      </pre>
-      </details>
-      <b>Response Elements</b>
-      <table align="center">
-        <tr align="center">
-          <td>필드</td>
-          <td>타입</td>
-          <td>설명</td>
-        </tr>
-        <tr align="center">
-          <td>resume</td>
-          <td>-</td>
-          <td>이력서 정보</td>
-        </tr>
-        <tr align="center">
-          <td>userId</td>
-          <td>Integer</td>
-          <td>이력서 작성한 회원 pk</td>
-        </tr>
-        <tr align="center">
-          <td>updatedAt</td>
-          <td>TimeStamp</td>
-          <td>이력서 작성 및 수정 날짜</td>
-        </tr>
-        <tr align="center">
-          <td>personalInfo</td>
-          <td>-</td>
-          <td>개인 기본 정보</td>
-        </tr>
-        <tr align="center">
-          <td>infoId</td>
-          <td>Integer</td>
-          <td>개인 기본 정보 pk</td>
-        </tr>
-        <tr align="center">
-          <td>username</td>
-          <td>String</td>
-          <td>이름</td>
-        </tr>
-        <tr align="center">
-          <td>birthDate</td>
-          <td>Date</td>
-          <td>생년월일</td>
-        </tr>
-        <tr align="center">
-          <td>gender</td>
-          <td>String</td>
-          <td>성별</td>
-        </tr>
-        <tr align="center">
-          <td>email</td>
-          <td>String</td>
-          <td>이메일</td>
-        </tr>
-        <tr align="center">
-          <td>homePhone</td>
-          <td>String</td>
-          <td>전화번호</td>
-        </tr>
-        <tr align="center">
-          <td>mobilePhone</td>
-          <td>String</td>
-          <td>휴대폰 번호</td>
-        </tr>
-        <tr align="center">
-          <td>address</td>
-          <td>String</td>
-          <td>주소</td>
-        </tr>
-        <tr align="center">
-          <td>addressDetail</td>
-          <td>String</td>
-          <td>상세 주소</td>
-        </tr>
-        <tr align="center">
-          <td>postalCode</td>
-          <td>Integer</td>
-          <td>우편 번호</td>
-        </tr>
-        <tr align="center">
-          <td>profileImgPath</td>
-          <td>String</td>
-          <td>취업사진 파일경로</td>
-        </tr>
-        <tr align="center">
-          <td>profileImgName</td>
-          <td>String</td>
-          <td>취업사진 파일명</td>
-        </tr>
-        <tr align="center">
-          <td>degree</td>
-          <td>String</td>
-          <td>학위</td>
-        </tr>
-        <tr align="center">
-          <td>hobby</td>
-          <td>String</td>
-          <td>취미</td>
-        </tr>
-        <tr align="center">
-          <td>specialty</td>
-          <td>String</td>
-          <td>특기</td>
-        </tr>
-        <tr align="center">
-          <td>file</td>
-          <td>String</td>
-          <td>성적증명서, 포트폴리오 파일경로 및 파일명</td>
-        </tr>
-        <tr align="center">
-          <td>projects</td>
-          <td>-</td>
-          <td>작성한 프로젝트 내용</td>
-        </tr>
-        <tr align="center">
-          <td>projectId</td>
-          <td>Integer</td>
-          <td>프로젝트 pk</td>
-        </tr>
-        <tr align="center">
-          <td>projectName</td>
-          <td>String</td>
-          <td>프로젝트 이름</td>
-        </tr>
-        <tr align="center">
-          <td>role</td>
-          <td>String</td>
-          <td>프로젝트에서 맡은 역할</td>
-        </tr>
-        <tr align="center">
-          <td>startDate</td>
-          <td>Date</td>
-          <td>프로젝트 시작일</td>
-        </tr>
-        <tr align="center">
-          <td>endDate</td>
-          <td>Date</td>
-          <td>프로젝트 종료일</td>
-        </tr>
-        <tr align="center">
-          <td>description</td>
-          <td>String</td>
-          <td>프로젝트 활동 내용</td>
-        </tr>
-        <tr align="center">
-          <td>languages</td>
-          <td>-</td>
-          <td>어학</td>
-        </tr>
-        <tr align="center">
-          <td>languageId</td>
-          <td>Integers</td>
-          <td>어학 pk</td>
-        </tr>
-        <tr align="center">
-          <td>languageName</td>
-          <td>String</td>
-          <td>외국어 명</td>
-        </tr>
-        <tr align="center">
-          <td>testName</td>
-          <td>String</td>
-          <td>시험명</td>
-        </tr>
-        <tr align="center">
-          <td>score</td>
-          <td>String</td>
-          <td>점수</td>
-        </tr>
-        <tr align="center">
-          <td>obtainedAt</td>
-          <td>Date</td>
-          <td>취득일자</td>
-        </tr>
-        <tr align="center">
-          <td>certCode</td>
-          <td>String</td>
-          <td>자격번호</td>
-        </tr>
-        <tr align="center">
-          <td>preference</td>
-          <td>String</td>
-          <td>자격번호</td>
-        </tr>
-      </table>
-    </div>
-  </details>
-
-  <details>
-    <summary>4. 자기소개서</summary>
+    </pre>
+    </details>
+    <details>
+    <summary><b>Response Elements</b></summary>
     <div>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>1.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>resume</td>
+        <td>-</td>
+        <td>이력서 정보</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>userId</td>
+        <td>Integer</td>
+        <td>이력서 작성한 회원 pk</td>
+      </tr>
+      <tr align="center">
+      <td></td>
+        <td>updatedAt</td>
+        <td>TimeStamp</td>
+        <td>이력서 작성 및 수정 날짜</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>personalInfo</td>
+        <td>-</td>
+        <td>개인 기본 정보</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>infoId</td>
+        <td>Integer</td>
+        <td>개인 기본 정보 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>username</td>
+        <td>String</td>
+        <td>이름</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>birthDate</td>
+        <td>Date</td>
+        <td>생년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>gender</td>
+        <td>String</td>
+        <td>성별</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>email</td>
+        <td>String</td>
+        <td>이메일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>homePhone</td>
+        <td>String</td>
+        <td>전화번호</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>mobilePhone</td>
+        <td>String</td>
+        <td>휴대폰 번호</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>address</td>
+        <td>String</td>
+        <td>주소</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>addressDetail</td>
+        <td>String</td>
+        <td>상세 주소</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>postalCode</td>
+        <td>Integer</td>
+        <td>우편 번호</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>profileImgPath</td>
+        <td>String</td>
+        <td>취업사진 파일경로</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>profileImgName</td>
+        <td>String</td>
+        <td>취업사진 파일명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>degree</td>
+        <td>String</td>
+        <td>학위</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>hobby</td>
+        <td>String</td>
+        <td>취미</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>specialty</td>
+        <td>String</td>
+        <td>특기</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>file</td>
+        <td>String</td>
+        <td>성적증명서, 포트폴리오 파일경로 및 파일명</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>2.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>projects</td>
+        <td>-</td>
+        <td>작성한 프로젝트 내용</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>projectId</td>
+        <td>Integer</td>
+        <td>프로젝트 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>projectName</td>
+        <td>String</td>
+        <td>프로젝트 이름</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>role</td>
+        <td>String</td>
+        <td>프로젝트에서 맡은 역할</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>startDate</td>
+        <td>Date</td>
+        <td>프로젝트 시작일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>endDate</td>
+        <td>Date</td>
+        <td>프로젝트 종료일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>description</td>
+        <td>String</td>
+        <td>프로젝트 활동 내용</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>3.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>languages</td>
+        <td>-</td>
+        <td>어학</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>languageId</td>
+        <td>Integers</td>
+        <td>어학 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>languageName</td>
+        <td>String</td>
+        <td>외국어 명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>testName</td>
+        <td>String</td>
+        <td>시험명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>score</td>
+        <td>String</td>
+        <td>점수</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>obtainedAt</td>
+        <td>Date</td>
+        <td>취득일자</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>certCode</td>
+        <td>String</td>
+        <td>자격번호</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>4.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>preference</td>
+        <td>-</td>
+        <td>취업 우대 사항</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>preId</td>
+        <td>Integer</td>
+        <td>취업 우대 사항 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>disLevel</td>
+        <td>String</td>
+        <td>장애 등급</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>military</td>
+        <td>String</td>
+        <td>병역 정보</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>isVeteran</td>
+        <td>Boolean</td>
+        <td>보훈대상 여부</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>isProtected</td>
+        <td>Boolean</td>
+        <td>취업보호대상 여부</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>isDisabled</td>
+        <td>Boolean</td>
+        <td>장애 여부</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>isAgree</td>
+        <td>Boolean</td>
+        <td>민감정보 동의 여부</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>5.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>portfolios</td>
+        <td>-</td>
+        <td>포트폴리오</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>portId</td>
+        <td>Integers</td>
+        <td>포트폴리오 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>portUrl</td>
+        <td>String</td>
+        <td>포트폴리오 url</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>6.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>trainings</td>
+        <td>-</td>
+        <td>교육</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>trainingId</td>
+        <td>Integer</td>
+        <td>교육 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>trainingName</td>
+        <td>String</td>
+        <td>교육 명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>institution</td>
+        <td>String</td>
+        <td>교육 기관</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>startDate</td>
+        <td>Date</td>
+        <td>시작 일자</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>endDate</td>
+        <td>Date</td>
+        <td>종료 일자</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>description</td>
+        <td>String</td>
+        <td>교육 내용</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>7.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>workExperiences</td>
+        <td>-</td>
+        <td>경력</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>expId</td>
+        <td>Integer</td>
+        <td>경력 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>company</td>
+        <td>String</td>
+        <td>회사명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>department</td>
+        <td>String</td>
+        <td>부서명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>startDate</td>
+        <td>Date</td>
+        <td>입사 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>endDate</td>
+        <td>Date</td>
+        <td>퇴사 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>position</td>
+        <td>String</td>
+        <td>직급/직책</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>salary</td>
+        <td>Integer</td>
+        <td>연봉</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>description</td>
+        <td>String</td>
+        <td>업무 내용</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>isCurrent</td>
+        <td>Boolean</td>
+        <td>재직 여부</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>8.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>educatioins</td>
+        <td>-</td>
+        <td>교육</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>eduId</td>
+        <td>Integer</td>
+        <td>교육 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>schoolType</td>
+        <td>String</td>
+        <td>학교 구분</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>schoolName</td>
+        <td>String</td>
+        <td>학교명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>major</td>
+        <td>String</td>
+        <td>전공명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>startDate</td>
+        <td>Date</td>
+        <td>입학 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>endDate</td>
+        <td>Date</td>
+        <td>졸업 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>status</td>
+        <td>String</td>
+        <td>졸업 상태</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>gpa</td>
+        <td>Decimal</td>
+        <td>총 학점</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>majorGpa</td>
+        <td>Decimal</td>
+        <td>전공 학점</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>gpaScale</td>
+        <td>Decimal</td>
+        <td>총점 기준</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>isQe</td>
+        <td>Boolean</td>
+        <td>검정고시 여부</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>qeYear</td>
+        <td>Year</td>
+        <td>검정고시 합격 년도</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>isTransfer</td>
+        <td>Boolean</td>
+        <td>편입 여부</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>9.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>certificatioins</td>
+        <td>-</td>
+        <td>자격증</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>certId</td>
+        <td>Integer</td>
+        <td>자격증 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>certName</td>
+        <td>String</td>
+        <td>자격증명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>publisher</td>
+        <td>String</td>
+        <td>발행처</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>obtainedDate</td>
+        <td>Date</td>
+        <td>취득일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>certCode</td>
+        <td>String</td>
+        <td>자격번호</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>10.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>papers</td>
+        <td>-</td>
+        <td>논문</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>paperId</td>
+        <td>Integers</td>
+        <td>논문 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>paperTitle</td>
+        <td>String</td>
+        <td>논문명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>journal</td>
+        <td>String</td>
+        <td>저널명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>publishedDate</td>
+        <td>Date</td>
+        <td>출판 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>description</td>
+        <td>String</td>
+        <td>논문 설명</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>11.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>overseas</td>
+        <td>-</td>
+        <td>해외 경험</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>overseaId</td>
+        <td>Integers</td>
+        <td>해외 경험 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>country</td>
+        <td>String</td>
+        <td>국가명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>startDate</td>
+        <td>Date</td>
+        <td>시작 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>endDate</td>
+        <td>Date</td>
+        <td>종료 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>description</td>
+        <td>String</td>
+        <td>활동 내용</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>12.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>skills</td>
+        <td>-</td>
+        <td>스킬</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>skillId</td>
+        <td>Integers</td>
+        <td>스킬 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>skillName</td>
+        <td>String</td>
+        <td>스킬명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>skillLevel</td>
+        <td>String</td>
+        <td>숙련도</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>activities</td>
+        <td>-</td>
+        <td>대내외 활동</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>actId</td>
+        <td>Integer</td>
+        <td>대내외 활동 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>actType</td>
+        <td>String</td>
+        <td>활동 유형</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>title</td>
+        <td>String</td>
+        <td>기관명/활동명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>startDate</td>
+        <td>Date</td>
+        <td>시작 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>endDate</td>
+        <td>Date</td>
+        <td>종료 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>description</td>
+        <td>String</td>
+        <td>활동 내용</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>13.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>awards</td>
+        <td>-</td>
+        <td>수상 내역</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>awardId</td>
+        <td>Integer</td>
+        <td>수상 내역 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>awardName</td>
+        <td>String</td>
+        <td>수상명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>awardOrganization</td>
+        <td>String</td>
+        <td>수여기관</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>awardDate</td>
+        <td>Date</td>
+        <td>수상 년월일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>description</td>
+        <td>String</td>
+        <td>수여 내용</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>14.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>patents</td>
+        <td>-</td>
+        <td>특허</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>patentId</td>
+        <td>Integer</td>
+        <td>특허 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>patentTitle</td>
+        <td>String</td>
+        <td>특허명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>inventor</td>
+        <td>String</td>
+        <td>발명자</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>patentCode</td>
+        <td>String</td>
+        <td>특허번호</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>description</td>
+        <td>String</td>
+        <td>설명</td>
+      </tr>
+      </table>
+      </div>
+      <div>
+      <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>15.</td>
+        <td>필드</td>
+        <td>타입</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>fileId</td>
+        <td>Integer</td>
+        <td>파일 pk</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>workFile</td>
+        <td>-</td>
+        <td>경력증명서 파일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>workFileName</td>
+        <td>String</td>
+        <td>경력증명서 파일명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>workFilePath</td>
+        <td>String</td>
+        <td>성적증명서 파일경로</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>portFiles</td>
+        <td>-</td>
+        <td>포트폴리오 파일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>portFileName</td>
+        <td>String</td>
+        <td>포트폴리오 파일명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>portFilePath</td>
+        <td>String</td>
+        <td>포트폴리오 파일경로</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>eduFile</td>
+        <td>-</td>
+        <td>성적증명서 파일</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>eduFileName</td>
+        <td>String</td>
+        <td>성적증명서 파일명</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>eduFilePath</td>
+        <td>String</td>
+        <td>성적증명서 파일경로</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>createdAt</td>
+        <td>Date</td>
+        <td>생성 일자</td>
+      </tr>
+      <tr align="center">
+        <td></td>
+        <td>updatedAt</td>
+        <td>Date</td>
+        <td>수정 일자</td>
+      </tr>
+    </table>
     </div>
+    </details>
   </details>
-
+    <hr/>
   <details>
+    <summary><b>3-2. 이력서 생성</b></summary>
+    <b>Request</b>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>메서드</td>
+        <td>요청 url</td>
+      </tr>
+      <tr align="center">
+        <td style="color:orange;">POST</td>
+        <td>http://localhost:8080/api/v1/resume</td>
+      </tr>
+    </table>
+    <b>Request Header</b><br/>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>파라미터</td>
+        <td>타입</td>
+        <td>필수 여부</td>
+        <td>내용</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td>Authorization</td>
+        <td>String</td>
+        <td>필수</td>
+        <td>Bearer [refresh-tokenn]</td>
+        <td>유저 인증 키</td>
+      </tr>
+    </table>
+    <details>
+    <summary><b>Request Body</b><br/></summary>
+    <pre>
+      {
+        "personalInfo": {
+          "username": "Chris Park",
+          "birthDate": "1988-04-10",
+          "gender": "남",
+          "email": "chris.park@example.com",
+          "homePhone": "02-2222-4444",
+          "mobilePhone": "010-2222-4444",
+          "address": "서울시 종로구",
+          "addressDetail": "505동 606호",
+          "postalCode": 45678,
+          "degree": "학사",
+          "hobby": "등산",
+          "specialty": "프로젝트 관리"
+        },
+        "projects": [
+          {
+            "projectName": "E-learning Platform",
+            "role": "Backend Developer",
+            "startDate": "2022-01-01",
+            "endDate": "2022-06-30",
+            "description": "Developed a backend system for an e-learning platform using Node.js and MongoDB."
+          }
+        ],
+        "languages": [
+          {
+            "languageName": "Russian",
+            "testName": "TORFL",
+            "score": "B2",
+            "certCode": "RUS89012",
+            "obtainedAt": "2020-05-30"
+          }
+        ],
+        "preference": {
+          "disLevel": "1급",
+          "military": "군필",
+          "protected": true,
+          "disabled": true,
+          "veteran": true,
+          "agree": true,
+          "isVeteran": true,
+          "isProtected": true,
+          "isDisabled": true,
+          "isAgree": true
+        },
+        "portfolios": [
+          {
+            "portUrl": "https://github.com/user5/portfolio11001"
+          }
+        ],
+        "trainings": [
+          {
+            "trainingName": "Leadership Training Program",
+            "institution": "Global Management Institute",
+            "startDate": "2022-07-01",
+            "endDate": "2022-07-15",
+            "description": "Focused on developing leadership and project management skills."
+          }
+        ],
+        "workExperiences": [
+          {
+            "company": "LogiTech",
+            "department": "Logistics",
+            "startDate": "2016-07-07",
+            "endDate": "2019-06-30",
+            "position": "Logistics Coordinator",
+            "salary": 55000,
+            "description": "Coordinated supply chain activities.",
+            "current": false,
+            "isCurrent": false
+          }
+        ],
+        "educations": [
+          {
+            "schoolType": "대학교(4년)",
+            "schoolName": "한국외국어대학교",
+            "major": "국제관계학",
+            "startDate": "2014-03-01",
+            "endDate": "2018-02-28",
+            "status": "졸업",
+            "gpa": 3.6,
+            "majorGpa": 3.7,
+            "gpaScale": 4.5,
+            "qeYear": "2018",
+            "transfer": false,
+            "qe": true,
+            "isTransfer": false,
+            "isQe": true
+          }
+        ],
+        "certifications": [
+          {
+            "certName": "JLPT N1",
+            "publisher": "일본국제교육지원협회",
+            "obtainedDate": "2020-08-10",
+            "certCode": "JLPT-N1-2020"
+          }
+        ],
+        "papers": [
+          {
+            "paperTitle": "AI Ethics and Society",
+            "journal": "Journal of Ethics in AI",
+            "publishedDate": "2022-10-20",
+            "description": "Explores ethical challenges in AI applications."
+          }
+        ],
+        "overseas": [
+          {
+            "country": "South Korea",
+            "startDate": "2019-03-01",
+            "endDate": "2019-08-31",
+            "description": "Attended a university exchange program in South Korea."
+          }
+        ],
+        "skills": [
+          {
+            "skillName": "JavaScript",
+            "skillLevel": "전문가"
+          }
+        ],
+        "activities": [
+          {
+            "actType": "교내활동",
+            "title": "교내 신문 기자",
+            "startDate": "2018-09-01",
+            "endDate": "2019-02-01",
+            "description": "교내 신문 기자로 활동하며 기사 작성 및 인터뷰 경험."
+          }
+        ],
+        "awards": [
+          {
+            "awardName": "Creative Solution Award",
+            "awardOrganization": "Hackathon",
+            "awardDate": "2021-10-05",
+            "description": "Won first place for innovative solutions in a global hackathon."
+          }
+        ],
+        "patents": [
+          {
+            "patentTitle": "Augmented Reality Glasses",
+            "inventor": "Henry Black",
+            "patentCode": "US7654321I",
+            "description": "A new design for AR glasses with enhanced features."
+          }
+        ]
+      }
+    </pre>
+  </details>
+  <b>Response</b>
+  <pre>
+    {
+    "message": "이력서 생성 성공하였습니다."
+    }
+  </pre>
+</details>
+<hr/>
+<details>
+  <summary><b>3-3. 이력서 파일 등록</b></summary>
+    <b>Request</b>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>메서드</td>
+        <td>요청 url</td>
+      </tr>
+      <tr align="center">
+        <td style="color:orange;">POST</td>
+        <td>http://localhost:8080/api/v1/resume/files</td>
+      </tr>
+    </table>
+    <b>Request Header</b><br/>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>파라미터</td>
+        <td>타입</td>
+        <td>필수 여부</td>
+        <td>내용</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td>Authorization</td>
+        <td>String</td>
+        <td>필수</td>
+        <td>Bearer [refresh-tokenn]</td>
+        <td>유저 인증 키</td>
+      </tr>
+    </table>
+    <b>Request Body</b><br/>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>Key</td>
+        <td>타입</td>
+        <td>Value</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td>personalFile</td>
+        <td>File</td>
+        <td>{{파일 업로드}}</td>
+        <td>파일 업로드</td>
+      </tr>
+      <tr align="center">
+        <td>portFile</td>
+        <td>File</td>
+        <td>{{포트폴리오 파일 업로드}}</td>
+        <td>포트폴리오 파일 업로드</td>
+      </tr>
+      <tr align="center">
+        <td>eduFile</td>
+        <td>File</td>
+        <td>{{성적증명서 파일 업로드}}</td>
+        <td>성적증명서 파일 업로드</td>
+      </tr>
+      <tr align="center">
+        <td>workFile</td>
+        <td>File</td>
+        <td>{{경력증명서 파일 업로드}}</td>
+        <td>경력증명서 파일 업로드</td>
+      </tr>
+    </table>
+    <b>Response</b>
+  <pre>
+    {
+    "message": "이력서 내 파일 저장 성공하였습니다."
+    }
+  </pre>
+  </details>
+<hr/>
+<details>
+  <summary><b>3-4. 이력서 삭제</b></summary>
+    <b>Request</b>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>메서드</td>
+        <td>요청 url</td>
+      </tr>
+      <tr align="center">
+        <td style="color:red;">DELETE</td>
+        <td>http://localhost:8080/api/v1/resume</td>
+      </tr>
+    </table>
+    <b>Request Header</b><br/>
+    <table align="center">
+      <tr align="center" style="background-color:#EBEBEB">
+        <td>파라미터</td>
+        <td>타입</td>
+        <td>필수 여부</td>
+        <td>내용</td>
+        <td>설명</td>
+      </tr>
+      <tr align="center">
+        <td>Authorization</td>
+        <td>String</td>
+        <td>필수</td>
+        <td>Bearer [refresh-tokenn]</td>
+        <td>유저 인증 키</td>
+      </tr>
+    </table>
+    <b>Response</b>
+  <pre>
+    {
+    "message": "이력서 삭제 성공하였습니다."
+    }
+  </pre>
+  </details>
+  </div>
+</details>
+
+<details>
+  <summary>4. 자기소개서</summary>
+  <div>
+  </div>
+</details>
+
+<details>
     <summary>5. 내 취준데이터</summary>
     <div>
     </div>
@@ -894,14 +1968,17 @@ $ Run As - Spring Boot App
 </details>
 
 ### 1. 회원 가입 및 로그인
+
 - 이메일을 아이디로 회원가입합니다.
 - 프로필 사진과 전화번호를 선택적으로 기입할 수 있습니다.
 - 회원가입 시 등록한 이메일과 비밀번호로 로그인합니다.
+
 ### 2. 이력서 관리
+
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/resume.gif" width="300;" alt=""/> 
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/resume.gif" width="400px;" alt=""/> 
     </td>
     <td>
       <ul>
@@ -914,10 +1991,11 @@ $ Run As - Spring Boot App
 </table>
 
 ### 3. 자소서 관리
+
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/coverletter.gif" width="300;" alt=""/> 
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/coverletter.gif" width="400px;" alt=""/> 
     </td>
     <td>
       <ul>
@@ -927,13 +2005,26 @@ $ Run As - Spring Boot App
       </ul>
     </td>
   </tr>
+  <tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/board.gif" width="400px;" alt=""/> 
+    </td>
+    <td>
+      <ul>
+      <li>내가 작성한 자기소개서들을 전체 조회하고 확인할 수 있습니다.</li>
+      <li>내가 지원한 서류들과 일정들을 입력하고 모아볼 수 있습니다.</li>
+      <li>접수 일정들과 내가 지원한 기업에 대한 피드백들을 입력하고 모아볼 수 있습니다.</li>
+      </ul>
+    </td>
+  </tr>
 </table>
 
 ### 4. 마이 페이지
+
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/calendar.gif" width="300;" alt=""/>  
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/calendar.gif" width="400px;" alt=""/>  
     </td>
     <td>
       <ul>
@@ -947,12 +2038,12 @@ $ Run As - Spring Boot App
   </tr>
 </table>
 
-
 ### 5. 헬프 데스크
+
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/board.gif" width="300;" alt=""/> 
+      <img src="" width="400px;" alt=""/> 
     </td>
     <td>
       <ul>
@@ -965,4 +2056,5 @@ $ Run As - Spring Boot App
 </table>
 
 ---
+
 ## 이슈 관리
