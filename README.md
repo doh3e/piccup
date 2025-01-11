@@ -37,7 +37,7 @@
 
 ---
 
-# 프로젝트 기간
+# 🗓 프로젝트 기간
 
 2024.12.16 ~ 2025.01.05
 
@@ -48,86 +48,65 @@
 <table align="center">
   <tr>
     <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/151860111?v=4" width="150px;" alt=""/>
+      <br/><sub><b>정지은 (팀장)</b><br></sub>
       <a href="https://github.com/doh3e">
-        <img src="https://avatars.githubusercontent.com/u/151860111?v=4" width="150px;" alt=""/>
-        <br/><sub><b>정지은 (팀장)</b><br></sub>
+        <p>GITHUB</p>
       </a>
-      <p></p>
-      <ul align="left">
-        <li>
-          GitHub 관리
-        </li>
-        <li>
-          취준데이터(마이페이지) 백엔드
-        </li>
-        <li>
-          프론트엔드
-        </li>
-      </ul>
     </td>
     <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/66674138?v=4" width="150px;" alt=""/>
+      <br/><sub><b>김수아</b><br></sub>
       <a href="https://github.com/KSAhh">
-        <img src="https://avatars.githubusercontent.com/u/66674138?v=4" width="150px;" alt=""/>
-        <br/><sub><b>김수아</b><br></sub>
+        <p>GITHUB</p> 
       </a>
-      <p></p> 
-      <ul align="left">
-        <li>
-          ERD 설계
-        </li>
-        <li>
-          이력서 관리 백엔드
-        </li>
-        <li>
-          GitHub naming 관리
-        </li>
-      </ul>
     </td>
     <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/175371015?s=400&u=d73959db6eb79273347d82a801027c0b0654d160&v=4" width="150px;" alt=""/>
+      <br/><sub><b>박수연</b><br></sub>
       <a href="https://github.com/SOOYON1122">
-        <img src="https://avatars.githubusercontent.com/u/175371015?s=400&u=d73959db6eb79273347d82a801027c0b0654d160&v=4" width="150px;" alt=""/>
-        <br/><sub><b>박수연</b><br></sub>
+        <p>GITHUB</p>
       </a>
-      <p></p>
-      <ul align="left">
-        <li>
-          회원 백엔드
-        </li>
-        <li>
-          api 명세서 작성 
-        </li>
-      </ul>
     </td>
     <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/121767620?v=4" width="150px;" alt=""/>
+      <br/><sub><b>유보형</b><br></sub>
       <a href="https://github.com/bobobo7git">
-        <img src="https://avatars.githubusercontent.com/u/121767620?v=4" width="150px;" alt=""/>
-        <br/><sub><b>유보형</b><br></sub>
+        <p>GITHUB</p>
       </a>
-      <p></p>
-      <ul align="left">
-        <li>
-          자소서 관리 백엔드
-        </li>
-        <li>
-          더미 데이터 만들기
-        </li>
-      </ul>
     </td>
     <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/174584847?v=4" width="150px;" alt=""/>
+      <br/><sub><b>허건</b><br></sub>
       <a href="https://github.com/Geon72">
-        <img src="https://avatars.githubusercontent.com/u/174584847?v=4" width="150px;" alt=""/>
-        <br/><sub><b>허건</b><br></sub>
+        <p>GITHUB</p>
       </a>
-      <p></p>
-      <ul align="left">
-        <li>
-          프론트엔드
-        </li>
-        <li>
-          UI 설계 
-        </li>
-      </ul>
     </td>
+  </tr>
+</table>
+
+## 세부 역할
+
+<table align="center">
+  <tr>
+    <td>정지은 (팀장)</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>김수아</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>박수연</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>유보형</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>허건</td>
+    <td></td>
   </tr>
 </table>
 
@@ -137,7 +116,7 @@
 
 ## 기획
 
-평균 취업 준비 기간 약 1년, 취업 준비에 체계적인 관리 서비스가 필요하다!
+<span style="font-size:18px; font-style:italic;"><b>평균 취업 준비 기간 약 1년, 취업 준비에 체계적인 관리 서비스가 필요하다!</b></span>
 
 **Piccup** 은 기업마다 다른 자기소개서 문항들, 이력서 요소들, 그리고 중구난방의 채용 일정들에 이리저리 치이는 취업 준비생들의 입장에서 시작했습니다.
 자주 쓰이는 자기소개서 문항들을 보기 좋게 정리해놓고 싶다거나, 지원 직무 별 필요한 이력 사항들을 미리 작성해놓고 싶다는 마음은 취업 준비생들의 마음 한켠에 자리잡고 있을 것입니다.
@@ -168,7 +147,7 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
  ┃ ┃ ┣ 📂java/com/ssafy/piccup
  ┃ ┃ ┃ ┣ 📂config                   // CORS, DB, Security 설정 파일
  ┃ ┃ ┃ ┣ 📂controller               // 회원, 자소서, 이력서 기능 컨트롤러
- ┃ ┃ ┃ ┣ 📂filter                   // JWT 인증 필터터
+ ┃ ┃ ┃ ┣ 📂filter                   // JWT 인증 필터
  ┃ ┃ ┃ ┣ 📂model
  ┃ ┃ ┃ ┃ ┣ 📂dao
  ┃ ┃ ┃ ┃ ┃ ┣ 📂coverletter          // 자소서 및 지원서 Dao
@@ -289,7 +268,7 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 
 ---
 
-## 사용 기술
+## ⚒ 사용 기술
 
 ### 백엔드
 
@@ -339,7 +318,10 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 ### Environment & Tool
 
 <div>
-  <img src="https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=vscode&logoColor=white">
+  <img src="https://img.shields.io/badge/Windows%2010-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white">
+  <img src="https://img.shields.io/badge/Windows%2011-%230079d6.svg?style=for-the-badge&logo=Windows%2011&logoColor=white">
+  <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0">
+  <img src="https://img.shields.io/badge/vscode-0065A9?style=for-the-badge&logo=vscode&logoColor=white">
   <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
@@ -378,10 +360,10 @@ $ Run As - Spring Boot App
 
 ---
 
-## 주요 기능
+## ⚙ 주요 기능
 
 <details>
-  <summary><b>상세 API 명세서 확인</b></summary>
+  <summary><b>⛓ 상세 API 명세서 확인</b></summary>
   <details>
   <summary>1. 회원가입</summary>
     <div>
@@ -2052,7 +2034,7 @@ $ Run As - Spring Boot App
 
 <table>
   <tr>
-    <td style="width:30%;">
+    <td width="30%;">
       <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/calendar.gif" alt=""/>  
     </td>
     <td>
