@@ -293,11 +293,26 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 
 ### 백엔드
 
+<div>
+  <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
+  <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
+</div>
+
 - JAVA (JDK 17)
-- Spring Boot 3.3.x (maven)  
-  [![My Skills](https://skillicons.dev/icons?i=java,spring)](https://skillicons.dev)
+- Spring Boot 3.3.x (maven)
+  <!-- [![My Skills](https://skillicons.dev/icons?i=java,spring&theme=light)](https://skillicons.dev) -->
 
 ### 프론트엔드
+
+<div>
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white">
+  <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+  <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white">
+  <img src="https://img.shields.io/badge/pinia-e6e600?style=for-the-badge&logo=pinia&logoColor=white">
+</div>
 
 - JavaScript
 - Vue.js 2.1.10 (ES6)
@@ -305,13 +320,17 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 - HTML5
 - Tailwind CSS
 - Axios 1.7.9
-- Pinia 2.3.0  
-  [![My Skills](https://skillicons.dev/icons?i=js,vue,css,html,tailwind,pinia)](https://skillicons.dev)
+- Pinia 2.3.0
+  <!-- [![My Skills](https://skillicons.dev/icons?i=js,vue,css,html,tailwind,pinia&theme=light)](https://skillicons.dev) -->
 
 ### DB & WAS
 
-- MySQL 8.0.40  
-  [![My Skills](https://skillicons.dev/icons?i=mysql)](https://skillicons.dev)
+<div>
+  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+</div>
+
+- MySQL 8.0.40
+  <!-- [![My Skills](https://skillicons.dev/icons?i=mysql&theme=light)](https://skillicons.dev) -->
 
 ### API & OpenData
 
@@ -319,13 +338,23 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 
 ### Environment & Tool
 
+<div>
+  <img src="https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=vscode&logoColor=white">
+  <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
+  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+  <img src="https://img.shields.io/badge/googlesheets-34A853?style=for-the-badge&logo=googlesheets&logoColor=white">
+  <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
+</div>
+
 - Window 10, 11/ Mac M2
 - STS4 4.24.0 / 4.26.0
 - VisualStudioCode
 - Postman
 - Git, GitHub
-- Google Sheet, Discord  
-  [![My Skills](https://skillicons.dev/icons?i=postman,git,github,discord)](https://skillicons.dev)
+- Google Sheet, Discord
+  <!-- [![My Skills](https://skillicons.dev/icons?i=vscode&theme=light)](https://skillicons.dev)
+  [![My Skills](https://skillicons.dev/icons?i=postman,git,github,discord)](https://skillicons.dev)   -->
 
 ---
 
@@ -1978,7 +2007,7 @@ $ Run As - Spring Boot App
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/resume.gif" width="400px;" alt=""/> 
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/resume.gif" width="300px;" alt=""/> 
     </td>
     <td>
       <ul>
@@ -1995,7 +2024,7 @@ $ Run As - Spring Boot App
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/coverletter.gif" width="400px;" alt=""/> 
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/coverletter.gif" width="300px;" alt=""/> 
     </td>
     <td>
       <ul>
@@ -2007,7 +2036,7 @@ $ Run As - Spring Boot App
   </tr>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/board.gif" width="400px;" alt=""/> 
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/board.gif" width="300px;" alt=""/> 
     </td>
     <td>
       <ul>
@@ -2024,7 +2053,7 @@ $ Run As - Spring Boot App
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/calendar.gif" width="400px;" alt=""/>  
+      <img src="https://raw.githubusercontent.com/doh3e/piccup/refs/heads/develop/front/src/assets/icons/calendar.gif" width="300px;" alt=""/>  
     </td>
     <td>
       <ul>
@@ -2040,20 +2069,9 @@ $ Run As - Spring Boot App
 
 ### 5. 헬프 데스크
 
-<table>
-  <tr>
-    <td>
-      <img src="" width="400px;" alt=""/> 
-    </td>
-    <td>
-      <ul>
-      <li>서비스 공지사항과 문의 게시판을 제공합니다.</li>
-      <li>문의 사항을 조회하고 직접 작성하여 문의를 남길 수 있습니다.</li>
-      <li>남긴 문의 사항에 대한 답변을 받을 수 있습니다.</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+- 서비스 공지사항과 문의 게시판을 제공합니다.
+- 문의 사항을 조회하고 직접 작성하여 문의를 남길 수 있습니다.
+- 남긴 문의 사항에 대한 답변을 받을 수 있습니다.
 
 ---
 
