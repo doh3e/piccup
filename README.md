@@ -140,9 +140,6 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 
 ```
 📦piccup
- ┣ 📂.mvn
- ┃ ┗ 📂wrapper
- ┃ ┃ ┗ 📜maven-wrapper.properties
  ┣ 📂src
  ┃ ┣ 📂main
  ┃ ┃ ┣ 📂java/com/ssafy/piccup
@@ -172,14 +169,14 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
  ┃ ┃ ┃ ┃ ┣ 📂mydata                 // 내 취준 데이터 mapper
  ┃ ┃ ┃ ┃ ┣ 📂resume                 // 이력서 mapper
  ┃ ┃ ┃ ┃ ┗ 📂user                   // 회원 mapper
- ┃ ┃ ┃ ┣ 📂static                   // 파일 저장 경로
+ ┃ ┃ ┃ ┣ 📂static                   // 파일 저장 경로, 정적 파일용 폴더
  ┃ ┃ ┃ ┃ ┣ 📂education_files
  ┃ ┃ ┃ ┃ ┣ 📂portfolio_files
  ┃ ┃ ┃ ┃ ┣ 📂profile_images
  ┃ ┃ ┃ ┃ ┣ 📂sql                    // sql table schema
  ┃ ┃ ┃ ┃ ┗ 📂work_files             // 마스코트 이미지
- ┃ ┃ ┃ ┗ 📜application.properties   // 서버, my batis, jwt 인증 설정
- ┗ 📜pom.xml                        // 의존성 관리
+ ┃ ┃ ┃ ┗ 📜application.properties   // 설정
+ ┗ 📜pom.xml                        // 의존성
 ```
 
 ### Front
@@ -189,82 +186,33 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
  ┣ 📂public/icons           // 아이콘
  ┣ 📂src
  ┃ ┣ 📂api
- ┃ ┃ ┗ 📜index.js
+ ┃ ┃ ┗ 📜index.js           // 백엔드 API 호출용 axios 설정
  ┃ ┣ 📂assets
- ┃ ┃ ┣ 📂css
- ┃ ┃ ┃ ┣ 📜base.css
- ┃ ┃ ┃ ┣ 📜font.css
- ┃ ┃ ┃ ┣ 📜normalize.css
- ┃ ┃ ┃ ┗ 📜tailwind.css
- ┃ ┃ ┗ 📂fonts
- ┃ ┃ ┃ ┣ 📜NotoSansKR-Black.woff
- ┃ ┃ ┃ ┣ 📜NotoSansKR-Bold.woff
- ┃ ┃ ┃ ┣ 📜NotoSansKR-ExtraBold.woff
- ┃ ┃ ┃ ┣ 📜NotoSansKR-ExtraLight.woff
- ┃ ┃ ┃ ┣ 📜NotoSansKR-Light.woff
- ┃ ┃ ┃ ┣ 📜NotoSansKR-Medium.woff
- ┃ ┃ ┃ ┣ 📜NotoSansKR-Regular.woff
- ┃ ┃ ┃ ┣ 📜NotoSansKR-SemiBold.woff
- ┃ ┃ ┃ ┣ 📜NotoSansKR-Thin.woff
- ┃ ┃ ┃ ┗ 📜NotoSansKR-VariableFont_wght.ttf
- ┃ ┣ 📂components
- ┃ ┃ ┣ 📂CoverLetter
- ┃ ┃ ┃ ┣ 📜CoverLetterSection.vue
- ┃ ┃ ┃ ┗ 📜ResumeTabView.vue
- ┃ ┃ ┣ 📂Main
- ┃ ┃ ┃ ┣ 📜Companies.vue
- ┃ ┃ ┃ ┣ 📜Features.vue
- ┃ ┃ ┃ ┣ 📜Footer.vue
- ┃ ┃ ┃ ┣ 📜Header.vue
- ┃ ┃ ┃ ┣ 📜Hero.vue
- ┃ ┃ ┃ ┣ 📜JobListings.vue
- ┃ ┃ ┃ ┣ 📜JobSearch.vue
- ┃ ┃ ┃ ┣ 📜PopularJobs.vue
- ┃ ┃ ┃ ┣ 📜QuickAccess.vue
- ┃ ┃ ┃ ┗ 📜Testimonials.vue
- ┃ ┃ ┣ 📂mydata
- ┃ ┃ ┃ ┣ 📜Calendar.vue
- ┃ ┃ ┃ ┗ 📜Dashboard.vue
- ┃ ┃ ┗ 📂Resume
- ┃ ┃ ┃ ┣ 📜AcademicAbility.vue
- ┃ ┃ ┃ ┣ 📜Awards.vue
- ┃ ┃ ┃ ┣ 📜Certifications.vue
- ┃ ┃ ┃ ┣ 📜Educations.vue
- ┃ ┃ ┃ ┣ 📜Experience.vue
- ┃ ┃ ┃ ┣ 📜InternExtraActivities.vue
- ┃ ┃ ┃ ┣ 📜PersonalInfo.vue
- ┃ ┃ ┃ ┣ 📜Portfolio.vue
- ┃ ┃ ┃ ┣ 📜ResumeBuilder.vue
- ┃ ┃ ┃ ┣ 📜Sidebar.vue
- ┃ ┃ ┃ ┗ 📜Skills.vue
- ┃ ┣ 📂router
+ ┃ ┃ ┣ 📂css                // 기본 CSS 폴더
+ ┃ ┃ ┗ 📂fonts              // 시스템 폰트 폴더
+ ┃ ┣ 📂components           // 하위 컴포넌트
+ ┃ ┃ ┣ 📂CoverLetter        // 자기소개서 컴포넌트 폴더
+ ┃ ┃ ┣ 📂Main               // 메인화면 컴포넌트 폴더
+ ┃ ┃ ┣ 📂mydata             // 마이데이터 컴포넌트 폴더
+ ┃ ┃ ┗ 📂Resume             // 이력서 컴포넌트 폴더
+ ┃ ┣ 📂router               // 라우터
  ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📂stores
- ┃ ┃ ┣ 📜auth.js
- ┃ ┃ ┣ 📜counter.js
- ┃ ┃ ┗ 📜resume.js
- ┃ ┣ 📂utils
- ┃ ┃ ┗ 📜axios.js
+ ┃ ┣ 📂stores               
+ ┃ ┃ ┣ 📜auth.js            // 회원관리용 상태관리 파일
+ ┃ ┃ ┣ 📜counter.js         // 카운터 상태관리 파일
+ ┃ ┃ ┗ 📜resume.js          // 이력서 상태관리 파일
  ┃ ┣ 📂views
- ┃ ┃ ┣ 📜AuthView.vue
- ┃ ┃ ┣ 📜CoverLetterBoardView.vue
- ┃ ┃ ┣ 📜CoverLetterView.vue
- ┃ ┃ ┣ 📜FAQView.vue
- ┃ ┃ ┣ 📜LoadingView.vue
- ┃ ┃ ┣ 📜MainView.vue
- ┃ ┃ ┣ 📜MydataView.vue
- ┃ ┃ ┗ 📜ResumeView.vue
+ ┃ ┃ ┣ 📜AuthView.vue       // 회원가입/로그인 상위 컴포넌트
+ ┃ ┃ ┣ 📜CoverLetterBoardView.vue   // 자기소개서 목록 상위 컴포넌트
+ ┃ ┃ ┣ 📜CoverLetterView.vue        // 자기소개서 작성 상위 컴포넌트
+ ┃ ┃ ┣ 📜FAQView.vue                // FAQ 상위 컴포넌트
+ ┃ ┃ ┣ 📜LoadingView.vue            // 로딩화면 상위 컴포넌트
+ ┃ ┃ ┣ 📜MainView.vue               // 메인화면 상위 컴포넌트
+ ┃ ┃ ┣ 📜MydataView.vue             // 마이데이터 상위 컴포넌트
+ ┃ ┃ ┗ 📜ResumeView.vue             // 이력서 상위 컴포넌트
  ┃ ┣ 📜App.vue
  ┃ ┗ 📜main.js
- ┣ 📜.gitignore
- ┣ 📜index.html
- ┣ 📜jsconfig.json
- ┣ 📜package-lock.json
- ┣ 📜package.json
- ┣ 📜postcss.config.js
- ┣ 📜README.md
- ┣ 📜tailwind.config.js
- ┗ 📜vite.config.js
+ ┗ 📜index.html
 ```
 
 ---
