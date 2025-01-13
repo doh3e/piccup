@@ -183,26 +183,26 @@ Piccup은 이러한 취업 준비생의 한 자락의 불편과 물안을 해소
 
 ```
 📦front
- ┣ 📂public/icons           // 아이콘
+ ┣ 📂public/icons                   // 아이콘
  ┣ 📂src
  ┃ ┣ 📂api
- ┃ ┃ ┗ 📜index.js           // 백엔드 API 호출용 axios 설정
+ ┃ ┃ ┗ 📜index.js                   // 백엔드 API 호출용 axios 설정
  ┃ ┣ 📂assets
- ┃ ┃ ┣ 📂css                // 기본 CSS 폴더
- ┃ ┃ ┗ 📂fonts              // 시스템 폰트 폴더
- ┃ ┣ 📂components           // 하위 컴포넌트
- ┃ ┃ ┣ 📂CoverLetter        // 자기소개서 컴포넌트 폴더
- ┃ ┃ ┣ 📂Main               // 메인화면 컴포넌트 폴더
- ┃ ┃ ┣ 📂mydata             // 마이데이터 컴포넌트 폴더
- ┃ ┃ ┗ 📂Resume             // 이력서 컴포넌트 폴더
- ┃ ┣ 📂router               // 라우터
+ ┃ ┃ ┣ 📂css                        // 기본 CSS 폴더
+ ┃ ┃ ┗ 📂fonts                      // 시스템 폰트 폴더
+ ┃ ┣ 📂components                   // 하위 컴포넌트
+ ┃ ┃ ┣ 📂CoverLetter                // 자기소개서 컴포넌트 폴더
+ ┃ ┃ ┣ 📂Main                       // 메인화면 컴포넌트 폴더
+ ┃ ┃ ┣ 📂mydata                     // 마이데이터 컴포넌트 폴더
+ ┃ ┃ ┗ 📂Resume                     // 이력서 컴포넌트 폴더
+ ┃ ┣ 📂router                       // 라우터
  ┃ ┃ ┗ 📜index.js
  ┃ ┣ 📂stores               
- ┃ ┃ ┣ 📜auth.js            // 회원관리용 상태관리 파일
- ┃ ┃ ┣ 📜counter.js         // 카운터 상태관리 파일
- ┃ ┃ ┗ 📜resume.js          // 이력서 상태관리 파일
+ ┃ ┃ ┣ 📜auth.js                    // 회원관리용 상태관리 파일
+ ┃ ┃ ┣ 📜counter.js                 // 카운터 상태관리 파일
+ ┃ ┃ ┗ 📜resume.js                  // 이력서 상태관리 파일
  ┃ ┣ 📂views
- ┃ ┃ ┣ 📜AuthView.vue       // 회원가입/로그인 상위 컴포넌트
+ ┃ ┃ ┣ 📜AuthView.vue               // 회원가입/로그인 상위 컴포넌트
  ┃ ┃ ┣ 📜CoverLetterBoardView.vue   // 자기소개서 목록 상위 컴포넌트
  ┃ ┃ ┣ 📜CoverLetterView.vue        // 자기소개서 작성 상위 컴포넌트
  ┃ ┃ ┣ 📜FAQView.vue                // FAQ 상위 컴포넌트
