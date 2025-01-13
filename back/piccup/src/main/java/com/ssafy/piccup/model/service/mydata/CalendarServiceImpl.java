@@ -42,16 +42,24 @@ public class CalendarServiceImpl implements CalendarService {
 	public void updateSchedule(Schedule schedule) {
 		calendarDao.updateSchedule(schedule);
 	}
+	
+	// 스케줄 삭제
+	@Override
+	public void deleteScheduleById(int scheduleId) {
+		calendarDao.deleteSchedule(scheduleId);
+	}
 
 	// 지원 스케줄 조회
 	@Override
 	public List<ApplyCalendarSchedule> getAllApplySchedules(int userId) {
 		return calendarDao.selectAllApplySchedules(userId);
 	}
-
+	
+	// 지원 스케줄 상세 조회
 	@Override
 	public ApplyCalendarSchedule getApplyScheduleById(int applyId, int userId) {
 		return calendarDao.selectOneApplyScheduleById(applyId, userId);
 	}
+
 
 }

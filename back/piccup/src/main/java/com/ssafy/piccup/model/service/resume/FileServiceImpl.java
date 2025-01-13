@@ -191,5 +191,14 @@ public class FileServiceImpl implements FileService {
         	throw new RuntimeException("경력증명서 정보를 가져오는 중 오류가 발생했습니다.", e);
 		}
 	}
+
+    // 실제 파일 출력
+	@Override
+	public File readFile(String fileUuid, String fileDir) throws IOException {
+		Resource resource = resourceLoader.getResource("classpath:/static/" + fileDir + "/" + fileUuid);
+		if (!resource.exists())
+			return null; // 파일 없는 경우 
+		return resource.getFile(); // File 객체반환
+	}
 	
 }

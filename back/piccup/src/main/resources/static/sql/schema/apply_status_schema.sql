@@ -24,13 +24,13 @@ DROP TABLE IF EXISTS `apply_status`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `apply_status` (
   `status_id` int NOT NULL AUTO_INCREMENT,
-  `appy_id` int NOT NULL,
-  `is_progressing` tinyint(1) NOT NULL DEFAULT '1',
-  `current_status` varchar(50) NOT NULL DEFAULT '미정',
+  `apply_id` int NOT NULL,
+  `is_progressing` tinyint NOT NULL DEFAULT '1',
+  `current_status` varchar(50) NOT NULL DEFAULT '미지정',
   PRIMARY KEY (`status_id`),
-  KEY `appy_id` (`appy_id`),
-  CONSTRAINT `apply_status_ibfk_1` FOREIGN KEY (`appy_id`) REFERENCES `apply` (`appy_id`) ON DELETE CASCADE,
-  CONSTRAINT `apply_status_chk_1` CHECK ((`current_status` in (_utf8mb4'서류',_utf8mb4'인적성',_utf8mb4'코딩테스트',_utf8mb4'면접',_utf8mb4'최종합격',_utf8mb4'미정')))
+  KEY `apply_id` (`apply_id`),
+  CONSTRAINT `apply_status_ibfk_1` FOREIGN KEY (`apply_id`) REFERENCES `apply` (`apply_id`) ON DELETE CASCADE,
+  CONSTRAINT `apply_status_chk_1` CHECK ((`current_status` in (_utf8mb4'서류',_utf8mb4'인적성',_utf8mb4'코딩테스트',_utf8mb4'면접',_utf8mb4'최종합격',_utf8mb4'미지정')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

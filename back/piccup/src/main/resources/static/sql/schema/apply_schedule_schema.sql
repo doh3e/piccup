@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `apply_schedule`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `apply_schedule` (
   `schedule_id` int NOT NULL AUTO_INCREMENT,
-  `appy_id` int NOT NULL,
+  `apply_id` int NOT NULL,
   `start_date` datetime DEFAULT NULL,
   `end_date` datetime DEFAULT NULL,
   PRIMARY KEY (`schedule_id`),
-  KEY `appy_id` (`appy_id`),
-  CONSTRAINT `apply_schedule_ibfk_1` FOREIGN KEY (`appy_id`) REFERENCES `apply` (`appy_id`) ON DELETE CASCADE
+  KEY `apply_id` (`apply_id`),
+  CONSTRAINT `apply_schedule_ibfk_1` FOREIGN KEY (`apply_id`) REFERENCES `apply` (`apply_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

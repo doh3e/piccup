@@ -5,7 +5,7 @@ import java.util.List;
 import com.ssafy.piccup.model.dto.coverletter.ApplyFeedback;
 
 public interface ApplyFeedbackDao {
-	public List<ApplyFeedback> selectAll();
+	public List<ApplyFeedback> selectAll(int userId);
 	
 	public ApplyFeedback selectOne(int feedbackId);
 	
