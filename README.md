@@ -91,23 +91,23 @@
 <table align="center">
   <tr>
     <td>정지은 (팀장)</td>
-    <td></td>
+    <td>프로젝트 일정관리, 채용 캘린더 (Back&Front)</td>
   </tr>
   <tr>
     <td>김수아</td>
-    <td></td>
+    <td>프로젝트 일정관리, ERD설계, 이력서 공통항목 (Resume) (Back&Front), 회원가입 및 로그인 (Back&Front)</td>
   </tr>
   <tr>
     <td>박수연</td>
-    <td></td>
+    <td>README 작성, 로그아웃 및 회원기능 관리 (Back)</td>
   </tr>
   <tr>
     <td>유보형</td>
-    <td></td>
+    <td>자기소개서(Coverletter) (Back&Front)</td>
   </tr>
   <tr>
     <td>허건</td>
-    <td></td>
+    <td>Front 총괄, 디자인</td>
   </tr>
 </table>
 
