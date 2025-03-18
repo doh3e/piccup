@@ -91,7 +91,7 @@
 <table align="center">
   <tr>
     <td>정지은 (팀장)</td>
-    <td>프로젝트 일정관리, 채용 캘린더 (Back&Front)</td>
+    <td>프로젝트 일정관리, 깃허브 관리, 명세서 작성 및 문서 생성, 프로젝트 스켈레톤 생성, 채용 캘린더(Back&Front), 마이데이터(Back&Front)</td>
   </tr>
   <tr>
     <td>김수아</td>
